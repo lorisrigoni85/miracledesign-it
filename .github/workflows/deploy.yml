@@ -17,6 +17,8 @@ concurrency:
 
 jobs:
   build:
+    # Il piano gratuito pubblica Pages solo da repository pubblici: finché è privato il deploy non parte.
+    if: ${{ !github.event.repository.private }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
