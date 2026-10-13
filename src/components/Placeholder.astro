@@ -1,0 +1,11 @@
+---
+/* Spazio per un'immagine non ancora disponibile: descrive in mono l'immagine attesa. */
+interface Props {
+  label: string;
+  variant?: 'default' | 'wide' | 'portrait';
+}
+const { label, variant = 'default' } = Astro.props;
+---
+<div class:list={['placeholder', variant !== 'default' && `placeholder--${variant}`]} role="img" aria-label={label}>
+  [{label}]
+</div>

@@ -1,0 +1,228 @@
+---
+/*
+ * Banner di consenso per Google Analytics.
+ * - Nessuno script di Google si carica prima del clic su "Accetta".
+ * - "Rifiuta" ha lo stesso peso di "Accetta"; chiudere con la X equivale a rifiutare.
+ * - La scelta vale 6 mesi, poi il banner si ripropone.
+ * - Il link "Preferenze cookie" nel piè di pagina riapre il banner; revocare il consenso cancella i cookie _ga.
+ * - In sviluppo (npm run dev) il banner funziona ma Analytics non si carica.
+ */
+import { ui, routes, analyticsId, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang].cookies;
+const id = import.meta.env.PROD ? analyticsId : '';
+---
+<section class="cookie" id="cookie-banner" aria-labelledby="cookie-title" data-ga={id} hidden>
+  <div class="container cookie__inner">
+    <div class="cookie__text">
+      <h2 id="cookie-title" class="cookie__label">{t.label}</h2>
+      <p>{t.text} <a href={routes.privacy[lang]}>{t.more}</a></p>
+    </div>
+    <div class="cookie__actions">
+      <button type="button" class="cookie__btn" data-consent="denied">{t.reject}</button>
+      <button type="button" class="cookie__btn" data-consent="granted">{t.accept}</button>
+    </div>
+    <button type="button" class="cookie__close" data-consent="denied" aria-label={t.close}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  const KEY = 'md-cookie-consent';
+  const MAX_AGE = 1000 * 60 * 60 * 24 * 182; // circa 6 mesi
+
+  const banner = document.getElementById('cookie-banner')!;
+  const gaId = banner.dataset.ga;
+
+  type Choice = { value: 'granted' | 'denied'; date: number };
+
+  const read = (): Choice | null => {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return null;
+      const choice = JSON.parse(raw) as Choice;
+      return Date.now() - choice.date < MAX_AGE ? choice : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const save = (value: Choice['value']) => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ value, date: Date.now() }));
+    } catch {
+      /* senza storage la scelta vale solo per questa pagina */
+    }
+  };
+
+  let loaded = false;
+  const loadAnalytics = () => {
+    if (!gaId || loaded) return;
+    loaded = true;
+    const w = window as unknown as { dataLayer: unknown[]; gtag: (...args: unknown[]) => void };
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
+      w.dataLayer.push(arguments);
+    };
+    w.gtag('js', new Date());
+    w.gtag('config', gaId);
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+    document.head.appendChild(s);
+  };
+
+  const clearAnalyticsCookies = () => {
+    const host = location.hostname;
+    const domains = ['', host, `.${host}`, `.${host.replace(/^www\./, '')}`];
+    document.cookie.split(';').forEach((c) => {
+      const name = c.split('=')[0].trim();
+      if (name === '_ga' || name.startsWith('_ga_') || name === '_gid') {
+        domains.forEach((d) => {
+          document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${d ? `; domain=${d}` : ''}`;
+        });
+      }
+    });
+  };
+
+  const show = () => {
+    banner.hidden = false;
+  };
+  const hide = () => {
+    banner.hidden = true;
+  };
+
+  banner.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-consent]');
+    if (!btn) return;
+    const value = btn.dataset.consent as Choice['value'];
+    const wasGranted = loaded;
+    save(value);
+    hide();
+    if (value === 'granted') {
+      loadAnalytics();
+    } else {
+      clearAnalyticsCookies();
+      // Analytics era già attivo in questa pagina: ricarico per fermarlo davvero.
+      if (wasGranted) location.reload();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('[data-cookie-preferences]')) {
+      e.preventDefault();
+      show();
+      banner.querySelector<HTMLButtonElement>('.cookie__btn')?.focus();
+    }
+  });
+
+  const choice = read();
+  if (choice?.value === 'granted') loadAnalytics();
+  else if (!choice) show();
+</script>
+
+<style>
+  .cookie {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    background: var(--ink);
+    color: var(--on-dark);
+    border-top: 1px solid var(--rule-on-dark);
+  }
+  .cookie[hidden] {
+    display: none;
+  }
+  .cookie__inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 40px;
+    padding-block: 20px;
+    padding-right: calc(var(--gutter) + 40px);
+  }
+  .cookie__text {
+    flex: 1 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .cookie__label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-meta);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--on-dark-muted);
+  }
+  .cookie a {
+    color: var(--on-dark);
+    text-underline-offset: 4px;
+  }
+  .cookie a:hover {
+    color: var(--on-dark-muted);
+  }
+  .cookie :focus-visible {
+    outline-color: var(--on-dark);
+  }
+  .cookie__actions {
+    display: flex;
+    gap: 12px;
+  }
+  /* Accetta e Rifiuta hanno lo stesso aspetto: nessuna scelta è spinta più dell'altra */
+  .cookie__btn {
+    min-height: var(--tap);
+    min-width: 120px;
+    padding: 0 24px;
+    border: 1px solid var(--on-dark);
+    border-radius: var(--radius-pill);
+    background: var(--on-dark);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+  }
+  .cookie__btn:hover {
+    background: transparent;
+    color: var(--on-dark);
+  }
+  .cookie__close {
+    position: absolute;
+    top: 8px;
+    right: calc(var(--gutter) - 12px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap);
+    height: var(--tap);
+    border: 0;
+    background: none;
+    color: var(--on-dark);
+    cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    .cookie__actions {
+      width: 100%;
+    }
+    .cookie__btn {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+</style>

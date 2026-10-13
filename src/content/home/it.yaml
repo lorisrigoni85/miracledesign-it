@@ -1,0 +1,61 @@
+# Testi della Home in italiano — fonte: SITE-GUIDE.md, "Home: testi di ogni sezione".
+# I testi tra parentesi quadre sono segnaposto: vanno completati con dati veri.
+
+meta:
+  title: Loris Rigoni — Senior Product Designer | Miracle Design
+  description: Senior Product Designer con oltre 10 anni nel digitale. Progetto piattaforme web e i design system che le mantengono coerenti. Dal 2019 su Telepass.
+
+hero:
+  label: [Senior Product Designer, Design Systems, Web Platforms, UX Strategy]
+  name: Loris Rigoni
+  title: Progetto piattaforme web e i sistemi che le mantengono coerenti mentre crescono.
+  subtitle: "Oltre 10 anni nel digitale, dal codice frontend al product design. Dal 2019 lavoro su Telepass: prima in agenzia, poi in azienda, oggi in consulenza con Dst."
+  primary: Guarda i lavori
+  secondary: Scrivimi
+
+work:
+  label: Lavori in evidenza
+  anchor: lavori
+  telepass:
+    eyebrow: 01 — Telepass · 2019 – oggi
+    title: Sette anni sullo stesso prodotto, da tre posizioni.
+    text: Dalla mappatura del sito nel 2019 al design system Resin, dalla ricerca con utenti e stakeholder al lavoro sulla conversione.
+    stats: [4 portali web, 7 milioni di clienti, oltre 49 componenti]
+    image: "Immagine: schermata attuale di telepass.com"
+
+path:
+  label: Percorso
+  rows:
+    - period: 2024 – oggi
+      company: Dst – Creative Tech Company
+      text: Senior Product Designer. Strategia digitale per Telepass e nuovi clienti.
+    - period: 2021 – 2024
+      company: Telepass
+      text: Product Designer. Design system Resin, 4 portali web, ricerca e A/B test.
+    - period: 2019 – 2021
+      company: Wise Emotions
+      text: UX/UI Designer. Rebranding e nuovo design system per Telepass.
+    - period: 2017 – 2019
+      company: SNDS Social and Search, Lugano
+      text: UI Designer & Frontend Developer. Siti, web app ed e-commerce; coordinamento del team design.
+    - period: 2013 – 2017
+      company: Volo Srl e altri
+      text: Web Designer & Frontend Developer.
+
+about:
+  label: Chi sono
+  title: Liceo artistico, una laurea in ingegneria e anni di codice frontend.
+  text:
+    - Ragiono per sistemi e so cosa serve per costruire ciò che disegno. Per questo mi trovo a mio agio tra business, design e sviluppo.
+    - "Fuori dal lavoro mi trovi in montagna: [ATTIVITÀ IN MONTAGNA]."
+  button: Di più su di me
+  image: Ritratto di Loris, luce naturale
+
+archive:
+  label: Archivio 2016 – 2020
+  link: Vedi tutto
+
+contact:
+  title: Cerchi qualcuno che porti ordine in un prodotto che cresce?
+  quote: La montagna più alta è quella dentro di noi.
+  quoteAuthor: Walter Bonatti

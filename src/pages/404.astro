@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout lang="it" title="Pagina non trovata — Miracle Design" description="Pagina non trovata." alternates={{ it: '/', en: '/en/' }}>
+  <div class="container page-head notfound">
+    <p class="label">404</p>
+    <h1 class="page-title">Questa pagina non c'è più, o non c'è mai stata.</h1>
+    <p class="page-lead" lang="en">This page does not exist.</p>
+    <div class="actions">
+      <a class="btn btn--solid" href="/">Torna alla Home</a>
+      <a class="link" href="/en/" lang="en">Go to the English home</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .notfound {
+    padding-bottom: var(--section-y);
+  }
+</style>

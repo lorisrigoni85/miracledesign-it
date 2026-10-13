@@ -1,0 +1,315 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Placeholder from '../Placeholder.astro';
+import { ui, routes, cvUrl, type Lang } from '../../i18n/ui';
+import { getChapters, chapterUrl } from '../../i18n/chapters';
+import { archive } from '../../data/archive';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const home = (await getEntry('home', lang))!.data;
+const chapters = await getChapters(lang);
+const preview = archive.filter((item) => item.preview);
+---
+<BaseLayout lang={lang} title={home.meta.title} description={home.meta.description} alternates={routes.home} person>
+  <!-- 1. Apertura -->
+  <section class="container hero" aria-labelledby="hero-title">
+    <p class="label hero__label">
+      <span class="hero__dot" aria-hidden="true"></span>
+      {home.hero.label.map((item) => <span>{item}</span>)}
+    </p>
+    <p class="hero__name">{home.hero.name}</p>
+    <h1 id="hero-title" class="hero__title">{home.hero.title}</h1>
+    <p class="hero__subtitle">{home.hero.subtitle}</p>
+    <div class="actions">
+      <a class="btn btn--solid" href={`#${home.work.anchor}`}>{home.hero.primary}</a>
+      <a class="link" href={t.contactAnchor}>{home.hero.secondary}</a>
+    </div>
+  </section>
+
+  <!-- 2. Lavori in evidenza -->
+  <section id={home.work.anchor} class="container work" aria-labelledby="work-title">
+    <h2 id="work-title" class="section-head"><span>{home.work.label}</span></h2>
+
+    <article class="case">
+      <div class="case__text">
+        <p class="mono">{home.work.telepass.eyebrow}</p>
+        <h3 class="case__title">{home.work.telepass.title}</h3>
+        <p class="case__body">{home.work.telepass.text}</p>
+        <ul class="case__stats">
+          {home.work.telepass.stats.map((stat) => <li>{stat}</li>)}
+        </ul>
+        <a class="link" href={routes.telepass[lang]}>{t.readCase} →</a>
+      </div>
+      <div class="case__media">
+        <Placeholder label={home.work.telepass.image} />
+      </div>
+    </article>
+
+    <ol class="rows chapters" aria-label={`Telepass — ${t.chapters}`}>
+      {chapters.map((c) => (
+        <li>
+          <a href={chapterUrl(c)} class="chapters__row">
+            <span class="mono">{c.data.year}</span>
+            <span class="chapters__title">{c.data.title}</span>
+            <span class="chapters__teaser">{c.data.teaser}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- 3. Percorso -->
+  <section class="container section" aria-labelledby="path-title">
+    <h2 id="path-title" class="section-head"><span>{home.path.label}</span></h2>
+    <ol class="rows path">
+      {home.path.rows.map((row) => (
+        <li class="path__row">
+          <span class="mono path__period">{row.period}</span>
+          <span class="path__company">{row.company}</span>
+          <span class="path__text">{row.text}</span>
+        </li>
+      ))}
+    </ol>
+    <a class="link path__cv" href={cvUrl[lang]}>{t.downloadCv}</a>
+  </section>
+
+  <!-- 4. Chi sono (anteprima) -->
+  <section class="band" aria-labelledby="about-title">
+    <div class="container section about">
+      <div class="about__media">
+        <Placeholder label={home.about.image} variant="portrait" />
+      </div>
+      <div class="about__text">
+        <p class="label">{home.about.label}</p>
+        <h2 id="about-title" class="about__title">{home.about.title}</h2>
+        {home.about.text.map((p) => <p class="about__p">{p}</p>)}
+        <div class="actions">
+          <a class="btn btn--outline" href={routes.about[lang]}>{home.about.button}</a>
+          <a class="link" href={cvUrl[lang]}>{t.downloadCv}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Archivio (anteprima) -->
+  <section class="container section" aria-labelledby="archive-title">
+    <div class="section-head">
+      <h2 id="archive-title" class="archive-head">{home.archive.label}</h2>
+      <a href={routes.archive[lang]} class="archive-link">{home.archive.link}</a>
+    </div>
+    <ul class="archive-grid">
+      {preview.map((item) => (
+        <li><span>{item.client}</span><span class="mono">{item.year}</span></li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 96px;
+    padding-bottom: 112px;
+  }
+  @media (max-width: 600px) {
+    /* Sul telefono le informazioni dei "30 secondi" devono restare nella prima schermata */
+    .hero {
+      gap: 24px;
+      padding-top: 40px;
+      padding-bottom: 80px;
+    }
+  }
+  .hero__label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 20px;
+  }
+  .hero__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero__name {
+    font-size: clamp(22px, 2.2vw, 28px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: -16px;
+  }
+  .hero__title {
+    max-width: 1050px;
+    font-size: var(--fs-h1);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+  .hero__subtitle {
+    max-width: 680px;
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+    color: var(--ink-body);
+  }
+
+  .work {
+    padding-bottom: 32px;
+  }
+  .case {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 64px;
+    padding: 56px 0 64px;
+    border-top: 1px solid var(--rule);
+  }
+  .case__text {
+    flex: 1 1 380px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .case__media {
+    flex: 1.3 1 440px;
+    min-width: 0;
+  }
+  .case__title {
+    font-size: var(--fs-h2-case);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+  .case__body {
+    color: var(--ink-body);
+  }
+  .case__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    list-style: none;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .chapters__row {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 4px 32px;
+    align-items: baseline;
+    padding: 20px 0;
+    text-decoration: none;
+  }
+  .chapters__title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .chapters__teaser {
+    color: var(--ink-body);
+  }
+  .chapters__row:hover .chapters__title {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  }
+  @media (max-width: 760px) {
+    .chapters__row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .path__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 32px;
+    padding: 24px 0;
+  }
+  .path__period {
+    flex: 0 0 160px;
+    font-size: 15px;
+  }
+  .path__company {
+    flex: 1 1 240px;
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .path__text {
+    flex: 2 1 320px;
+    color: var(--ink-body);
+  }
+  .path__cv {
+    margin-top: 16px;
+  }
+
+  .band {
+    background: var(--bg-band);
+  }
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 48px 80px;
+  }
+  .about__media {
+    flex: 1 1 320px;
+    max-width: 440px;
+  }
+  .about__text {
+    flex: 1.4 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .about__text .label {
+    color: var(--ink);
+  }
+  .about__title {
+    font-size: var(--fs-h2-about);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+  .about__p {
+    max-width: 600px;
+    color: var(--ink-body);
+  }
+
+  .archive-head {
+    font: inherit;
+    color: var(--ink);
+  }
+  .section-head .archive-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    margin-block: -12px;
+    color: var(--ink);
+  }
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0 48px;
+    list-style: none;
+    padding: 0;
+  }
+  .archive-grid li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+  }
+</style>

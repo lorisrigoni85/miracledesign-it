@@ -1,0 +1,49 @@
+/* Token di design — valori da SITE-GUIDE.md, "Stile visivo". */
+:root {
+  /* Colori */
+  --bg: #f4f5f3;
+  --bg-band: #e9ece8;
+  --surface-placeholder: #e4e7e3;
+  --surface-placeholder-strong: #d5dad5;
+  --ink: #15181a;
+  --ink-body: #3a413e;
+  --ink-muted: #4a524f;
+  --rule: #c9cec9;
+  --rule-strong: #15181a;
+  --rule-on-dark: #3a413e;
+  --on-dark: #f4f5f3;
+  --on-dark-muted: #c9cec9;
+  --accent: #3f6b5a; /* alternative provate: ardesia #4f6475, terra #8a5a3c */
+
+  /* Font */
+  --font-sans: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Scala tipografica */
+  --fs-h1: clamp(40px, 6.2vw, 88px);
+  --fs-contact: clamp(36px, 5vw, 72px);
+  --fs-h2-case: clamp(30px, 3.2vw, 44px);
+  --fs-h2-about: clamp(28px, 3vw, 40px);
+  --fs-lead: clamp(18px, 1.6vw, 22px);
+  --fs-row: 22px;
+  --fs-body: 17px;
+  --fs-nav: 16px;
+  --fs-label: 14px;
+  --fs-meta: 13px;
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: 32px;
+  --section-y: 96px;
+  --radius-media: 6px;
+  --radius-pill: 999px;
+  --tap: 44px;
+  --transition: 180ms ease;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --gutter: 16px;
+    --section-y: 72px;
+  }
+}

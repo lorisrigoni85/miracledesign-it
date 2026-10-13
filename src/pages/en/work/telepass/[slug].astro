@@ -1,0 +1,11 @@
+---
+import ChapterPage from '../../../../components/pages/ChapterPage.astro';
+import { getChapters, chapterSlug } from '../../../../i18n/chapters';
+
+export async function getStaticPaths() {
+  const chapters = await getChapters('en');
+  return chapters.map((entry) => ({ params: { slug: chapterSlug(entry) }, props: { entry } }));
+}
+const { entry } = Astro.props;
+---
+<ChapterPage entry={entry} />

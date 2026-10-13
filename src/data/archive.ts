@@ -1,0 +1,21 @@
+/** Archivio 2016 – 2020 (SITE-GUIDE.md, "Archivio 2016 – 2020"). `preview`: le sei voci mostrate in Home. */
+export const archive = [
+  { client: 'Danilo Radice Architetto', year: 2020, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'Innofida Studio', year: 2020, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'Sinergia HR', year: 2020, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'Banca BPS (Suisse)', year: 2019, type: { it: 'UX/UI', en: 'UX/UI' }, preview: true },
+  { client: 'Caffè Moka Efti', year: 2019, type: { it: 'UX/UI, e-commerce', en: 'UX/UI, e-commerce' }, preview: true },
+  { client: "Portofino's Centri Estetici", year: 2019, type: { it: 'UX/UI, e-commerce', en: 'UX/UI, e-commerce' } },
+  { client: 'Kessel Auto', year: 2018, type: { it: 'UX/UI', en: 'UX/UI' }, preview: true },
+  { client: 'ATED Ticino', year: 2018, type: { it: 'UX/UI, e-commerce', en: 'UX/UI, e-commerce' }, preview: true },
+  { client: 'Cocktail House', year: 2018, type: { it: 'UX/UI, e-commerce', en: 'UX/UI, e-commerce' } },
+  { client: 'Gruppo CSC Allestimenti', year: 2018, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'Helios Elio Cavagna srl', year: 2018, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'Tingenia Studio Ingegneria', year: 2018, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'SNDS Social and Search', year: 2017, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'Istituto Secoli', year: 2017, type: { it: 'UX/UI', en: 'UX/UI' }, preview: true },
+  { client: 'Tamaro Park', year: 2017, type: { it: 'UX/UI, e-commerce', en: 'UX/UI, e-commerce' }, preview: true },
+  { client: 'Quantasia Benessere emozionale', year: 2017, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'Dick & Figli Arredamenti', year: 2017, type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'PRO-M Mtb shop', year: 2016, type: { it: 'Social media marketing', en: 'Social media marketing' } },
+];

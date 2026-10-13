@@ -1,0 +1,188 @@
+---
+import Logo from './Logo.astro';
+import { ui, routes, cvUrl, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  alternates: Record<Lang, string>;
+}
+const { lang, alternates } = Astro.props;
+const t = ui[lang];
+---
+<header class="header">
+  <div class="container header__inner">
+    <a href={routes.home[lang]} class="header__logo">
+      <span class="visually-hidden">Miracle Design — Loris Rigoni, {t.home}</span>
+      <Logo />
+    </a>
+
+    <button class="header__toggle" type="button" aria-expanded="false" aria-controls="site-menu"
+      data-open={t.menuOpen} data-close={t.menuClose}>
+      <span class="visually-hidden">{t.menuOpen}</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path class="icon-open" d="M3 7h18M3 12h18M3 17h18" />
+        <path class="icon-close" d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+
+    <nav id="site-menu" class="header__nav" aria-label={lang === 'it' ? 'Principale' : 'Main'}>
+      <ul class="header__list">
+        <li><a href={t.workAnchor}>{t.nav.work}</a></li>
+        <li><a href={routes.about[lang]}>{t.nav.about}</a></li>
+        <li><a href={cvUrl[lang]}>{t.nav.cv}</a></li>
+        <li><a href={t.contactAnchor} class="header__contact">{t.nav.contact}</a></li>
+        <li class="header__lang" aria-label={t.langLabel}>
+          {lang === 'it'
+            ? <><span aria-current="true">IT</span><span aria-hidden="true">/</span><a href={alternates.en} hreflang="en" lang="en">EN</a></>
+            : <><a href={alternates.it} hreflang="it" lang="it">IT</a><span aria-hidden="true">/</span><span aria-current="true">EN</span></>}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.header__toggle');
+  const nav = document.getElementById('site-menu');
+  if (toggle && nav) {
+    const label = toggle.querySelector('.visually-hidden')!;
+    const set = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      label.textContent = open ? toggle.dataset.close! : toggle.dataset.open!;
+      document.body.classList.toggle('menu-open', open);
+    };
+    toggle.addEventListener('click', () => set(toggle.getAttribute('aria-expanded') !== 'true'));
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) set(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        set(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    padding-block: 20px;
+  }
+  .header__logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    text-decoration: none;
+    position: relative;
+    z-index: 51;
+  }
+  .header__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 32px;
+    list-style: none;
+    padding: 0;
+    font-size: var(--fs-nav);
+  }
+  .header__list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    text-decoration: none;
+  }
+  .header__list a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  .header__list .header__contact {
+    padding: 0 18px;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-pill);
+  }
+  .header__list .header__contact:hover {
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+  }
+  .header__lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    color: var(--ink-muted);
+  }
+  .header__lang [aria-current] {
+    color: var(--ink);
+  }
+  .header__lang a {
+    padding-inline: 4px;
+  }
+  .header__toggle {
+    display: none;
+  }
+
+  /* Telefono: menu a schermo intero, voci grandi, nessuna animazione */
+  @media (max-width: 760px) {
+    .header__toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--tap);
+      height: var(--tap);
+      margin-right: -10px;
+      background: none;
+      border: 0;
+      color: var(--ink);
+      cursor: pointer;
+      position: relative;
+      z-index: 51;
+    }
+    .icon-close,
+    .header__toggle[aria-expanded='true'] .icon-open {
+      display: none;
+    }
+    .header__toggle[aria-expanded='true'] .icon-close {
+      display: inline;
+    }
+    .header__nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: var(--bg);
+      padding: 104px var(--gutter) 32px;
+      overflow-y: auto;
+    }
+    .header__toggle[aria-expanded='true'] + .header__nav {
+      display: block;
+    }
+    .header__list {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .header__list .header__contact {
+      border: 0;
+      padding: 0;
+    }
+    .header__lang {
+      margin-top: 24px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+<style is:global>
+  body.menu-open {
+    overflow: hidden;
+  }
+</style>

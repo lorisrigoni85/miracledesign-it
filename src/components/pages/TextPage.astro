@@ -1,0 +1,77 @@
+---
+/* Pagine di testo semplici: Chi sono, Privacy. */
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Placeholder from '../Placeholder.astro';
+import { ui, routes, cvUrl, email, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  page: 'about' | 'privacy';
+}
+const { lang, page } = Astro.props;
+const t = ui[lang];
+const entry = (await getEntry('pages', `${lang}/${page}`))!;
+const { Content } = await render(entry);
+const isAbout = page === 'about';
+const label = isAbout ? t.nav.about : t.privacy;
+---
+<BaseLayout lang={lang} title={`${label} — Loris Rigoni | Miracle Design`} description={entry.data.description} alternates={routes[page]}>
+  <div class="container">
+    <header class:list={['page-head', isAbout && 'about-head']}>
+      <div class="about-head__text">
+        <p class="label">{label}</p>
+        <h1 class="page-title">{entry.data.title}</h1>
+        {entry.data.lead && <p class="page-lead">{entry.data.lead}</p>}
+      </div>
+      {isAbout && (
+        <div class="about-head__media">
+          <Placeholder label={lang === 'it' ? 'Ritratto di Loris, luce naturale, sfondo semplice' : 'Portrait of Loris, natural light, plain background'} variant="portrait" />
+        </div>
+      )}
+    </header>
+
+    <div class="prose page-body">
+      <Content />
+    </div>
+
+    {isAbout && (
+      <div class="actions page-actions">
+        <a class="btn btn--solid" href={cvUrl[lang]}>{t.downloadCv}</a>
+        <a class="link" href={`mailto:${email}`}>{t.writeMe}</a>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .about-head {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 48px 80px;
+  }
+  .about-head__text {
+    flex: 1.4 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .about-head__media {
+    flex: 1 1 280px;
+    max-width: 400px;
+  }
+  .page-body {
+    padding-bottom: 48px;
+  }
+  .page-body > :global(h2:first-child) {
+    margin-top: 0;
+  }
+  .page-actions {
+    padding-bottom: var(--section-y);
+  }
+  .page-body:last-child {
+    padding-bottom: var(--section-y);
+  }
+</style>

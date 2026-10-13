@@ -1,0 +1,119 @@
+---
+import { getEntry } from 'astro:content';
+import { ui, routes, cvUrl, email, linkedin, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const copy = (await getEntry('home', lang))!.data.contact;
+const year = 2026;
+---
+<footer id={t.contactAnchor.slice(1)} class="footer">
+  <div class="container footer__inner">
+    <h2 class="footer__title">{copy.title}</h2>
+    <a class="footer__email" href={`mailto:${email}`}>{email}</a>
+
+    <figure class="footer__quote">
+      <blockquote><p>“{copy.quote}”</p></blockquote>
+      <figcaption>— {copy.quoteAuthor}</figcaption>
+    </figure>
+
+    <div class="footer__bottom">
+      <p>{t.footerLine} · © {year} Miracle Design · <a href={routes.privacy[lang]}>{t.privacy}</a> · <button type="button" class="footer__prefs" data-cookie-preferences>{t.cookies.preferences}</button></p>
+      <ul class="footer__links">
+        <li><a href={linkedin} rel="me">LinkedIn</a></li>
+        <li><a href={cvUrl[lang]}>CV</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink);
+    color: var(--on-dark);
+  }
+  .footer a {
+    color: var(--on-dark);
+  }
+  .footer a:hover {
+    color: var(--on-dark-muted);
+  }
+  .footer :focus-visible {
+    outline-color: var(--on-dark);
+  }
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-top: 112px;
+    padding-bottom: 48px;
+  }
+  .footer__title {
+    max-width: 900px;
+    font-size: var(--fs-contact);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .footer__email {
+    align-self: flex-start;
+    padding-block: 8px;
+    font-size: clamp(20px, 2.2vw, 30px);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 1px;
+    overflow-wrap: anywhere;
+  }
+  .footer__quote {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--on-dark-muted);
+  }
+  .footer__quote figcaption {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+  }
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule-on-dark);
+    font-size: 15px;
+    color: var(--on-dark-muted);
+  }
+  .footer__bottom p a {
+    display: inline-block;
+    padding-block: 10px;
+  }
+  .footer__prefs {
+    min-height: var(--tap);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--on-dark);
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .footer__prefs:hover {
+    color: var(--on-dark-muted);
+  }
+  .footer__links {
+    display: flex;
+    gap: 8px 28px;
+    list-style: none;
+    padding: 0;
+  }
+  .footer__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+  }
+</style>

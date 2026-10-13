@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+
+# Documento di lavoro con dati personali e strategia: resta solo in locale (il repository è pubblico)
+SITE-GUIDE.md
+.claude/

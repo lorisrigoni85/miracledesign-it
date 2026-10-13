@@ -1,0 +1,96 @@
+---
+/* Pagina madre Telepass: apertura, contesto e indice dei cinque capitoli. */
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Placeholder from '../Placeholder.astro';
+import { ui, routes, type Lang } from '../../i18n/ui';
+import { getChapters, chapterUrl } from '../../i18n/chapters';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const entry = (await getEntry('pages', `${lang}/telepass`))!;
+const { Content } = await render(entry);
+const chapters = await getChapters(lang);
+const name = lang === 'it' ? 'Telepass, 2019 – oggi' : 'Telepass, 2019 – today';
+---
+<BaseLayout lang={lang} title={`${name} — Loris Rigoni | Miracle Design`} description={entry.data.description} alternates={routes.telepass}>
+  <div class="container">
+    <header class="page-head">
+      <nav class="breadcrumb label" aria-label="Breadcrumb">
+        <ol>
+          <li><a href={t.workAnchor}>{t.work}</a></li>
+          <li><span aria-current="page">Telepass</span></li>
+        </ol>
+      </nav>
+      <p class="mono">{name}</p>
+      <h1 class="page-title">{entry.data.title}</h1>
+      <p class="page-lead">{entry.data.lead}</p>
+    </header>
+
+    <Placeholder label={lang === 'it' ? 'Immagine: schermata attuale di telepass.com' : 'Image: current telepass.com screenshot'} variant="wide" />
+
+    <section class="index" aria-labelledby="chapters-title">
+      <h2 id="chapters-title" class="section-head"><span>{t.chapters}</span><span>{chapters.length}</span></h2>
+      <ol class="rows index__list">
+        {chapters.map((c) => (
+          <li>
+            <a href={chapterUrl(c)} class="index__row">
+              <span class="mono">{String(c.data.order).padStart(2, '0')} · {c.data.year}</span>
+              <span class="index__title">{c.data.title}</span>
+              <span class="index__teaser">{c.data.teaser}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <div class="prose body">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .index {
+    padding-top: 80px;
+  }
+  .index__row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 4px 32px;
+    align-items: baseline;
+    padding: 24px 0;
+    text-decoration: none;
+  }
+  .index__title {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .index__teaser {
+    color: var(--ink-body);
+  }
+  .index__row:hover .index__title {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  }
+  @media (max-width: 760px) {
+    .index__row {
+      grid-template-columns: 1fr;
+    }
+  }
+  .body {
+    max-width: none;
+    padding-bottom: var(--section-y);
+  }
+  .body > :global(*) {
+    max-width: 760px;
+  }
+  .body > :global(table) {
+    max-width: none;
+  }
+</style>

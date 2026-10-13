@@ -1,0 +1,39 @@
+---
+/*
+ * Segnaposto del logo Miracle Design.
+ * Da sostituire con assets/brand/miracle-design-logo-currentcolor.svg del pacchetto
+ * portfolio-start (SITE-GUIDE.md, "File del logo"), larghezza minima 200px.
+ */
+---
+<span class="logo" aria-hidden="true">
+  <span class="logo__script">miracle</span>
+  <span class="logo__rule"></span>
+  <span class="logo__word">DESIGN</span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    color: currentColor;
+    white-space: nowrap;
+  }
+  .logo__script {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+  }
+  .logo__rule {
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+  }
+  .logo__word {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+  }
+</style>
