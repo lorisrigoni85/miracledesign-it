@@ -1,5 +1,5 @@
 ---
-title: Sette anni sullo stesso prodotto, da tre posizioni.
+title: Rendere più semplice il modo in cui ci muoviamo.
 description: "Telepass, 2019 – oggi: sette anni sui prodotti web Telepass, in agenzia con Wise Emotions, in azienda e in consulenza con Dst. Cinque capitoli, dal 2019 al 2026."
 lead: Dal 2019 lavoro sui prodotti web di Telepass. Prima in agenzia, con Wise Emotions, poi dentro l'azienda, oggi in consulenza con Dst. Ho visto lo stesso prodotto da tre lati, e ho ripreso gli stessi problemi a un livello sempre più profondo.
 ---
