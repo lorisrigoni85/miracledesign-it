@@ -1,4 +1,4 @@
-/** Archivio 2013 – 2020 (SITE-GUIDE.md, "Archivio"). `preview`: le sei voci mostrate in Home. `year` può essere un periodo se l'anno esatto non è noto. */
+/** Archivio 2020 – 2013 (SITE-GUIDE.md, "Archivio"). `preview`: le sei voci mostrate in Home. `year` può essere un periodo se l'anno esatto non è noto. */
 
 /** Paese del cliente: 'IT' Italia, 'CH' Svizzera. Assente = da confermare. */
 export type Country = 'IT' | 'CH';

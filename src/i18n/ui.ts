@@ -56,7 +56,7 @@ export const ui = {
     summary: 'Sintesi',
     next: {
       label: 'Continua',
-      archive: 'Ora guarda dove sono arrivato',
+      archive: 'Scopri cosa è venuto dopo',
       about: 'Guarda come lavoro, nei progetti',
       telepass: 'Scopri il resto del portfolio',
       cv: 'Ora guarda i progetti',
@@ -94,7 +94,7 @@ export const ui = {
     summary: 'Summary',
     next: {
       label: 'Keep going',
-      archive: 'Now see where it led',
+      archive: 'See what came next',
       about: 'See how I work, in the projects',
       telepass: 'Discover the rest of the portfolio',
       cv: 'Now see the projects',
