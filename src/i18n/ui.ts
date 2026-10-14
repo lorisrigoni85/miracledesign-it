@@ -10,6 +10,7 @@ export const routes = {
   archive: { it: '/archivio/', en: '/en/archive/' },
   about: { it: '/chi-sono/', en: '/en/about/' },
   privacy: { it: '/privacy/', en: '/en/privacy/' },
+  cv: { it: '/cv/', en: '/en/cv/' },
 } satisfies Record<string, Record<Lang, string>>;
 
 export type RouteId = keyof typeof routes;
@@ -58,6 +59,7 @@ export const ui = {
       archive: 'Ora guarda dove sono arrivato',
       about: 'Guarda come lavoro, nei progetti',
       telepass: 'Scopri il resto del portfolio',
+      cv: 'Ora guarda i progetti',
     },
     cookies: {
       label: 'Cookie',
@@ -95,6 +97,7 @@ export const ui = {
       archive: 'Now see where it led',
       about: 'See how I work, in the projects',
       telepass: 'Discover the rest of the portfolio',
+      cv: 'Now see the projects',
     },
     cookies: {
       label: 'Cookies',

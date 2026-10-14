@@ -1,0 +1,194 @@
+---
+/* Pagina CV: stessi contenuti del PDF, nello stile del sito, con il PDF scaricabile. */
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NextStep from '../NextStep.astro';
+import { routes, cvUrl, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const cv = (await getEntry('cv', lang))!.data;
+---
+<BaseLayout lang={lang} title={cv.meta.title} description={cv.meta.description} alternates={routes.cv}>
+  <div class="container">
+    <header class="page-head">
+      <p class="label">CV</p>
+      <h1 class="page-title">{cv.title}</h1>
+      <div class="cv-id">
+        <p class="cv-id__role">{cv.role}</p>
+        <p class="mono">{cv.tagline}</p>
+        <p class="mono">{cv.location}</p>
+      </div>
+      <p class="page-lead">{cv.profile}</p>
+      <div class="actions">
+        <a class="btn btn--solid" href={cvUrl[lang]} download>
+          {cv.download}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 4v12M6 11l6 6 6-6M5 20h14" />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <section class="cv-section" aria-labelledby="cv-exp">
+      <h2 id="cv-exp" class="section-head"><span>{cv.labels.experience}</span></h2>
+      <ol class="rows">
+        {cv.experience.map((job) => (
+          <li class="job">
+            <p class="mono job__period">{job.period}</p>
+            <div class="job__body">
+              <h3 class="job__role">{job.role}</h3>
+              <p class="job__company">{job.company}</p>
+              {job.points.length > 0 && (
+                <ul class="job__points">
+                  {job.points.map((p) => <li>{p}</li>)}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="cv-section" aria-labelledby="cv-skills">
+      <h2 id="cv-skills" class="section-head"><span>{cv.labels.skills}</span></h2>
+      <ul class="rows">
+        {cv.skills.map((s) => (
+          <li class="row2">
+            <p class="row2__key">{s.group}</p>
+            <p class="row2__value">{s.items}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="cv-cert">
+      <h2 id="cv-cert" class="section-head"><span>{cv.labels.certifications}</span></h2>
+      <ul class="rows">
+        {cv.certifications.map((c) => (
+          <li class="row2">
+            <p class="row2__key">{c.name}</p>
+            <p class="mono row2__value">{c.issuer}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="cv-pair">
+      <section class="cv-section" aria-labelledby="cv-edu">
+        <h2 id="cv-edu" class="section-head"><span>{cv.labels.education}</span></h2>
+        <ul class="rows">
+          {cv.education.map((e) => (
+            <li class="simple">
+              <p class="row2__key">{e.name}</p>
+              <p class="mono">{e.issuer}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="cv-section" aria-labelledby="cv-lang">
+        <h2 id="cv-lang" class="section-head"><span>{cv.labels.languages}</span></h2>
+        <ul class="rows">
+          {cv.languages.map((l) => <li class="simple"><p>{l}</p></li>)}
+        </ul>
+      </section>
+    </div>
+
+    <NextStep lang={lang} page="cv" />
+  </div>
+</BaseLayout>
+
+<style>
+  .cv-id {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: -12px;
+  }
+  .cv-id__role {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .btn svg {
+    margin-left: 10px;
+  }
+
+  .cv-section {
+    padding-bottom: 64px;
+  }
+
+  .job {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 8px 32px;
+    padding-block: 28px;
+  }
+  .job__period {
+    padding-top: 4px;
+  }
+  .job__body {
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .job__role {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .job__company {
+    color: var(--ink-body);
+  }
+  .job__points {
+    margin-top: 10px;
+    padding-left: 1.1em;
+    color: var(--ink-body);
+  }
+  .job__points li + li {
+    margin-top: 8px;
+  }
+  .job__points li::marker {
+    color: var(--ink-muted);
+  }
+
+  .row2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    gap: 4px 32px;
+    padding-block: 18px;
+  }
+  .row2__key {
+    font-weight: 500;
+  }
+  .row2__value {
+    color: var(--ink-body);
+  }
+
+  .cv-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+  .simple {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-block: 18px;
+  }
+
+  @media (max-width: 760px) {
+    .job,
+    .row2,
+    .cv-pair {
+      grid-template-columns: 1fr;
+    }
+    .job__period {
+      padding-top: 0;
+    }
+  }
+</style>

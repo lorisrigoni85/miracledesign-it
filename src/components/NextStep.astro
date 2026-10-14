@@ -4,7 +4,7 @@ import { ui, routes, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
-  page: 'archive' | 'about' | 'telepass';
+  page: 'archive' | 'about' | 'telepass' | 'cv';
 }
 const { lang, page } = Astro.props;
 const t = ui[lang];

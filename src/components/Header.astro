@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import { ui, routes, cvUrl, type Lang } from '../i18n/ui';
+import { ui, routes, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -32,7 +32,7 @@ const t = ui[lang];
         <li><a href={t.workAnchor}>{t.nav.work}</a></li>
         <li><a href={routes.archive[lang]}>{t.nav.archive}</a></li>
         <li><a href={routes.about[lang]}>{t.nav.about}</a></li>
-        <li><a href={cvUrl[lang]}>{t.nav.cv}</a></li>
+        <li><a href={routes.cv[lang]}>{t.nav.cv}</a></li>
         <li><a href={t.contactAnchor} class="header__contact">{t.nav.contact}</a></li>
         <li class="header__lang" aria-label={t.langLabel}>
           {lang === 'it'

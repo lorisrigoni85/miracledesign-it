@@ -41,6 +41,7 @@ Il sito è ospitato su GitHub Pages. A ogni push sul ramo `main`, `.github/workf
 | Capitoli Telepass | `src/content/chapters/<lingua>/<indirizzo>.md` |
 | Pagina madre Telepass, Chi sono, Archivio, Privacy | `src/content/pages/<lingua>/*.md` |
 | Elenco dell'archivio | `src/data/archive.ts` |
+| CV (pagina) | `src/content/cv/it.yaml`, `en.yaml`; PDF in `public/cv/` (senza telefono) |
 | Menu, pulsanti, etichette, indirizzi delle pagine | `src/i18n/ui.ts` |
 | Colori, font, spaziature | `src/styles/tokens.css` |
 | Logo (vettoriale) e note sul brand | `src/assets/brand/` (favicon in `public/`) |
@@ -50,7 +51,6 @@ I testi tra parentesi quadre sono segnaposto: si completano con dati veri.
 
 ## Da fare prima della pubblicazione
 
-- PDF del CV in `public/cv/loris-rigoni-cv-it.pdf` e `public/cv/loris-rigoni-cv-en.pdf`.
 - Immagini al posto dei riquadri segnaposto.
 - Versioni inglesi dei capitoli e della pagina Telepass, dopo l'approvazione dell'italiano.
 - Decisioni aperte: SITE-GUIDE.md, "Cosa resta da decidere o raccogliere".

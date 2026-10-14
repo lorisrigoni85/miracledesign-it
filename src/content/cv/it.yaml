@@ -1,0 +1,83 @@
+# CV in italiano — stessi contenuti del PDF (artifact "CV Loris Rigoni – Senior Product Designer", ottobre 2026).
+# Se cambi qualcosa qui, aggiorna anche il PDF in public/cv/.
+
+meta:
+  title: CV — Loris Rigoni | Miracle Design
+  description: Curriculum di Loris Rigoni, Senior Product Designer con oltre 10 anni in piattaforme web e prodotti digitali. Esperienze, competenze, certificazioni.
+
+title: Loris Rigoni
+role: Senior Product Designer
+tagline: Web Platforms & Digital Products · Product Strategy, Design Systems & UX Research
+location: Como, Italia
+download: Scarica il CV in PDF
+profile: Senior Product Designer con oltre 10 anni di esperienza in piattaforme web e prodotti digitali. Metto in connessione i bisogni degli utenti con gli obiettivi di business, trasformando requisiti complessi in esperienze scalabili e ad alte prestazioni, dalla discovery e ricerca fino a design system e UI finale, in stretta collaborazione con product manager, sviluppatori e stakeholder C-level.
+
+labels:
+  experience: Esperienza
+  skills: Competenze
+  certifications: Certificazioni
+  languages: Lingue
+  education: Formazione
+
+experience:
+  - role: Senior Product Designer
+    period: Nov 2024 – oggi
+    company: "Dst – Creative Tech Company · Milano · Cliente principale: Telepass"
+    points:
+      - Continuo a guidare il design dei prodotti web Telepass, una collaborazione attiva dal 2019 tra agenzia, azienda e consulenza.
+      - Definisco strategie digitali e soluzioni UX/UI e di comunicazione, usando dati di prodotto e trend di mercato per ottimizzare l'esperienza utente.
+      - Semplifico processi aziendali complessi con Design Thinking e Service Design; contribuisco a gare e consulenze per nuovi clienti.
+  - role: Product Designer
+    period: Giu 2021 – Ott 2024
+    company: Telepass · Milano
+    points:
+      - Entrato in azienda dopo aver guidato il rebranding Telepass da consulente; responsabile della strategia UX/UI per presentare offerte e servizi su 4 portali web aziendali con 7M di clienti.
+      - Coordinamento del team Content di 4 persone, insieme al PM dedicato, per la gestione dei prodotti su CMS Contentful.
+      - Evoluzione e governance di Resin, il design system interno, con la creazione di oltre 49 componenti insieme a team cross-funzionali di design e sviluppo.
+      - User testing, analisi del comportamento (Clarity, Google Analytics) e A/B test per basare le scelte di design sui dati.
+  - role: UX/UI Designer
+    period: Nov 2019 – Giu 2021
+    company: "Wise Emotions · Milano · Cliente: Telepass"
+    points:
+      - Gestione del rebranding e del redesign dei prodotti web Telepass.
+      - Creazione di un nuovo design system, architettura dei contenuti, wireframe e prototipi.
+      - Gestione delle attività quotidiane con i team Marketing di Telepass per il lancio di offerte e prodotti.
+  - role: UI Designer & Frontend Developer
+    period: Feb 2017 – Mag 2019
+    company: SNDS Social and Search · Lugano, Svizzera
+    points:
+      - "Coordinamento del team Design: 2 junior designer, più apprendisti e stagisti."
+      - Progettazione e sviluppo di siti responsive, web app e piattaforme e-commerce per PMI e grandi aziende in Svizzera e Italia.
+      - Collaborazione con gli sviluppatori backend per integrare i sistemi di pagamento PostFinance, Stripe, PayPal e Amazon Pay.
+  - role: Esperienze precedenti
+    period: 2013 – 2017
+    company: Web Designer & Frontend Developer presso Volo Srl (clienti Eolo S.p.A., M.S. Ambrogio S.p.A.); Art Director per gli eventi HoliTrip.
+    points: []
+
+skills:
+  - group: Strategia e leadership
+    items: Product strategy · Service Design · Design Thinking · Gestione degli stakeholder · Mentoring · Agile (Scrum)
+  - group: Design e ricerca
+    items: Product design end-to-end · Design system · User research · Wireframing e prototipazione · Usability e A/B testing · Accessibilità (WCAG) · Content design
+  - group: Strumenti e AI
+    items: Figma · Adobe Creative Suite · Contentful · Clarity · Google Analytics · Workflow con AI
+
+certifications:
+  - name: Design Thinking – Workshop Skills
+    issuer: ELIS · 2026
+  - name: AI for Product Management
+    issuer: Pendo & Mind the Product · 2025
+  - name: Product Management Basics · Radical Product Thinking
+    issuer: Pendo & Mind the Product · 2025
+  - name: Accessible Design for Web and Products
+    issuer: Telepass Training · 2024
+  - name: "UX Management: Strategy and Tactics"
+    issuer: Interaction Design Foundation · 2023
+
+languages:
+  - Italiano · Madrelingua
+  - Inglese · B2 (Intermedio superiore)
+
+education:
+  - name: Laurea triennale in Ingegneria Civile
+    issuer: Politecnico di Milano · 2012

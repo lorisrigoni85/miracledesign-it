@@ -2,7 +2,7 @@
 /* Piè di pagina centrato: logo, email in evidenza, social, citazione di Bonatti, note legali. */
 import { getEntry } from 'astro:content';
 import Logo from './Logo.astro';
-import { ui, routes, cvUrl, email, linkedin, instagram, type Lang } from '../i18n/ui';
+import { ui, routes, email, linkedin, instagram, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -40,7 +40,7 @@ const year = 2026;
           </svg>
         </a>
       </li>
-      <li><a href={cvUrl[lang]} class="footer__cv">CV</a></li>
+      <li><a href={routes.cv[lang]} class="footer__cv">CV</a></li>
     </ul>
 
     <figure class="footer__quote">

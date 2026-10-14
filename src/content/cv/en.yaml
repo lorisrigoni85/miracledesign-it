@@ -1,0 +1,83 @@
+# CV in English — same content as the PDF (artifact "CV Loris Rigoni – Senior Product Designer", October 2026).
+# If you change something here, update the PDF in public/cv/ too.
+
+meta:
+  title: CV — Loris Rigoni | Miracle Design
+  description: CV of Loris Rigoni, Senior Product Designer with 10+ years in web platforms and digital products. Experience, skills, certifications.
+
+title: Loris Rigoni
+role: Senior Product Designer
+tagline: Web Platforms & Digital Products · Product Strategy, Design Systems & UX Research
+location: Como, Italy
+download: Download the PDF CV
+profile: Senior Product Designer with 10+ years of experience in web platforms and digital products. I connect user needs with business goals, turning complex requirements into scalable, high-performing experiences, from discovery and research to design systems and final UI, working closely with product managers, engineers and C-level stakeholders.
+
+labels:
+  experience: Experience
+  skills: Skills
+  certifications: Certifications
+  languages: Languages
+  education: Education
+
+experience:
+  - role: Senior Product Designer
+    period: Nov 2024 – Present
+    company: "Dst – Creative Tech Company · Milan · Main client: Telepass"
+    points:
+      - Continue to drive design for Telepass web products, a collaboration running since 2019 across agency, in-house and consultancy roles.
+      - Define digital strategy and UX/UI and communication solutions, using product data and market trends to optimise the user experience.
+      - Simplify complex business processes through Design Thinking and Service Design; contribute to pitches and consulting for new clients.
+  - role: Product Designer
+    period: Jun 2021 – Oct 2024
+    company: Telepass · Milan
+    points:
+      - Joined in-house after leading the Telepass rebrand as a consultant; owned UX/UI strategy for presenting offers and services across 4 corporate web portals serving 7M customers.
+      - Coordinated the 4-person Content team, together with the Product Manager, managing products on Contentful CMS.
+      - Evolved and governed Resin, the internal design system, creating 49+ components with cross-functional design and engineering teams.
+      - Ran user testing, behaviour analysis (Clarity, Google Analytics) and A/B tests to ground design decisions in evidence.
+  - role: UX/UI Designer
+    period: Nov 2019 – Jun 2021
+    company: "Wise Emotions · Milan · Client: Telepass"
+    points:
+      - Led the rebranding and redesign of Telepass web products.
+      - Created the new design system from scratch, along with content architecture, wireframes and prototypes.
+      - Managed day-to-day delivery with Telepass Marketing teams to launch offers and products.
+  - role: UI Designer & Frontend Developer
+    period: Feb 2017 – May 2019
+    company: SNDS Social and Search · Lugano, Switzerland
+    points:
+      - "Coordinated the design team: 2 junior designers, plus apprentices and interns."
+      - Designed and built responsive websites, web apps and e-commerce platforms for SMEs and large corporates in Switzerland and Italy.
+      - Worked with backend developers to integrate PostFinance, Stripe, PayPal and Amazon Pay payment systems.
+  - role: Earlier experience
+    period: 2013 – 2017
+    company: Web Designer & Frontend Developer at Volo Srl (clients Eolo S.p.A., M.S. Ambrogio S.p.A.); Art Director for HoliTrip events.
+    points: []
+
+skills:
+  - group: Strategy & leadership
+    items: Product strategy · Service Design · Design Thinking · Stakeholder management · Mentoring · Agile (Scrum)
+  - group: Design & research
+    items: End-to-end product design · Design systems · User research · Wireframing & prototyping · Usability & A/B testing · Accessibility (WCAG) · Content design
+  - group: Tools & AI
+    items: Figma · Adobe Creative Suite · Contentful · Clarity · Google Analytics · AI-assisted workflows
+
+certifications:
+  - name: Design Thinking – Workshop Skills
+    issuer: ELIS · 2026
+  - name: AI for Product Management
+    issuer: Pendo & Mind the Product · 2025
+  - name: Product Management Basics · Radical Product Thinking
+    issuer: Pendo & Mind the Product · 2025
+  - name: Accessible Design for Web and Products
+    issuer: Telepass Training · 2024
+  - name: "UX Management: Strategy and Tactics"
+    issuer: Interaction Design Foundation · 2023
+
+languages:
+  - Italian · Native
+  - English · B2 (Upper-intermediate)
+
+education:
+  - name: Bachelor's Degree in Civil Engineering
+    issuer: Politecnico di Milano · 2012

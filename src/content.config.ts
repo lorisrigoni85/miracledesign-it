@@ -74,4 +74,30 @@ const chapters = defineCollection({
   }),
 });
 
-export const collections = { home, pages, chapters };
+/** CV, un file per lingua: src/content/cv/it.yaml, en.yaml (stessi contenuti del PDF). */
+const cv = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/cv' }),
+  schema: z.object({
+    meta: z.object({ title: z.string(), description: z.string() }),
+    title: z.string(),
+    role: z.string(),
+    tagline: z.string(),
+    location: z.string(),
+    download: z.string(),
+    profile: z.string(),
+    labels: z.object({
+      experience: z.string(),
+      skills: z.string(),
+      certifications: z.string(),
+      languages: z.string(),
+      education: z.string(),
+    }),
+    experience: z.array(z.object({ role: z.string(), period: z.string(), company: z.string(), points: z.array(z.string()) })),
+    skills: z.array(z.object({ group: z.string(), items: z.string() })),
+    certifications: z.array(z.object({ name: z.string(), issuer: z.string() })),
+    languages: z.array(z.string()),
+    education: z.array(z.object({ name: z.string(), issuer: z.string() })),
+  }),
+});
+
+export const collections = { home, pages, chapters, cv };

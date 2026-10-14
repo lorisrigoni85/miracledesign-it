@@ -38,7 +38,7 @@ const label = isAbout ? t.nav.about : t.privacy;
 
     {isAbout && (
       <div class="actions page-actions">
-        <a class="btn btn--solid" href={cvUrl[lang]}>{t.downloadCv}</a>
+        <a class="btn btn--solid" href={cvUrl[lang]} download>{t.downloadCv}</a>
         <a class="link" href={`mailto:${email}`}>{t.writeMe}</a>
       </div>
     )}
