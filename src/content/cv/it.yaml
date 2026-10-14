@@ -1,5 +1,6 @@
 # CV in italiano — stessi contenuti del PDF (artifact "CV Loris Rigoni – Senior Product Designer", ottobre 2026).
 # Se cambi qualcosa qui, aggiorna anche il PDF in public/cv/.
+# Eccezione voluta: le competenze (Strumenti, AI) sono più dettagliate qui che nel PDF.
 
 meta:
   title: CV — Loris Rigoni | Miracle Design
@@ -59,8 +60,10 @@ skills:
     items: Product strategy · Service Design · Design Thinking · Gestione degli stakeholder · Mentoring · Agile (Scrum)
   - group: Design e ricerca
     items: Product design end-to-end · Design system · User research · Wireframing e prototipazione · Usability e A/B testing · Accessibilità (WCAG) · Content design
-  - group: Strumenti e AI
-    items: Figma · Adobe Creative Suite · Contentful · Clarity · Google Analytics · Workflow con AI
+  - group: Strumenti
+    items: Figma · Adobe Creative Suite · Contentful · Atlassian (Jira, Confluence) · Clarity · Google Analytics
+  - group: AI
+    items: Claude Code e Claude Design per prototipi e sviluppo · Agenti AI in Figma · ChatGPT · Gemini
 
 certifications:
   - name: Design Thinking – Workshop Skills
