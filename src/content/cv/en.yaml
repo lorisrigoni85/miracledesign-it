@@ -61,7 +61,7 @@ skills:
   - group: Design & research
     items: End-to-end product design · Design systems · User research · Wireframing & prototyping · Usability & A/B testing · Accessibility (WCAG) · Content design
   - group: Tools
-    items: Figma · Adobe Creative Suite · Contentful · Atlassian (Jira, Confluence) · Clarity · Google Analytics
+    items: Figma · Adobe Creative Suite · Atlassian (Jira, Confluence) · Clarity · Google Analytics · Contentful
   - group: AI
     items: Claude Code and Claude Design for prototyping and development · AI agents in Figma · ChatGPT · Gemini
 
