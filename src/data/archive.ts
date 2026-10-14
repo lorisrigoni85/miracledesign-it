@@ -27,8 +27,8 @@ export const archive: { client: string; year: number | string; country?: Country
   { client: 'Quantasia Benessere emozionale', year: 2017, country: 'CH', type: { it: 'UX/UI', en: 'UX/UI' } },
   { client: 'Dick & Figli Arredamenti', year: 2017, country: 'CH', type: { it: 'UX/UI', en: 'UX/UI' } },
   { client: 'PRO-M Mtb shop', year: 2016, country: 'IT', type: { it: 'Social media marketing', en: 'Social media marketing' } },
-  // Con Volo Srl, 2013 – 2017 (CV, "Esperienze precedenti"): anni esatti da completare.
-  { client: 'Eolo S.p.A.', year: '2013 – 2017', country: 'IT', type: { it: 'Web design, frontend', en: 'Web design, frontend' } },
-  { client: 'M.S. Ambrogio S.p.A.', year: '2013 – 2017', country: 'IT', type: { it: 'Web design, frontend', en: 'Web design, frontend' } },
-  { client: 'HoliTrip', year: '2013 – 2017', type: { it: 'Art direction eventi', en: 'Event art direction' } },
+  // Con Volo Srl (CV, "Esperienze precedenti").
+  { client: 'Eolo S.p.A.', year: 2015, country: 'IT', type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'M.S. Ambrogio S.p.A.', year: 2014, country: 'IT', type: { it: 'UX/UI', en: 'UX/UI' } },
+  { client: 'HoliTrip Festival', year: 2013, country: 'IT', type: { it: 'Art direction', en: 'Art direction' } },
 ];
