@@ -73,7 +73,11 @@ const id = import.meta.env.PROD ? analyticsId : '';
       w.dataLayer.push(arguments);
     };
     w.gtag('js', new Date());
-    w.gtag('config', gaId);
+    // Solo statistiche: niente Google Signals né dati per la pubblicità, anche se attivi nel pannello.
+    w.gtag('config', gaId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
     const s = document.createElement('script');
     s.async = true;
     s.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
