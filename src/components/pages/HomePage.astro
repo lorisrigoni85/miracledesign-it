@@ -5,7 +5,7 @@ import heroPhoto from '../../assets/foto/hero-montagna.jpg';
 import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Placeholder from '../Placeholder.astro';
-import { ui, routes, cvUrl, type Lang } from '../../i18n/ui';
+import { ui, routes, type Lang } from '../../i18n/ui';
 import { getChapters, chapterUrl } from '../../i18n/chapters';
 import { archive } from '../../data/archive';
 
@@ -89,7 +89,6 @@ const preview = archive.filter((item) => item.preview);
         </li>
       ))}
     </ol>
-    <a class="link path__cv" href={cvUrl[lang]} download>{t.downloadCv}</a>
   </section>
 
   <!-- 4. Chi sono (anteprima) -->
@@ -104,7 +103,6 @@ const preview = archive.filter((item) => item.preview);
         {home.about.text.map((p) => <p class="about__p">{p}</p>)}
         <div class="actions">
           <a class="btn btn--outline" href={routes.about[lang]}>{home.about.button}</a>
-          <a class="link" href={cvUrl[lang]} download>{t.downloadCv}</a>
         </div>
       </div>
     </div>
@@ -340,9 +338,6 @@ const preview = archive.filter((item) => item.preview);
   .path__text {
     flex: 2 1 320px;
     color: var(--ink-body);
-  }
-  .path__cv {
-    margin-top: 16px;
   }
 
   .band {
