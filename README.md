@@ -43,13 +43,13 @@ Il sito è ospitato su GitHub Pages. A ogni push sul ramo `main`, `.github/workf
 | Elenco dell'archivio | `src/data/archive.ts` |
 | Menu, pulsanti, etichette, indirizzi delle pagine | `src/i18n/ui.ts` |
 | Colori, font, spaziature | `src/styles/tokens.css` |
+| Logo (vettoriale) e note sul brand | `src/assets/brand/` (favicon in `public/`) |
 | Banner cookie e Google Analytics | `src/components/CookieBanner.astro` (ID in `src/i18n/ui.ts`) |
 
 I testi tra parentesi quadre sono segnaposto: si completano con dati veri.
 
 ## Da fare prima della pubblicazione
 
-- Logo e favicon definitivi dal pacchetto `portfolio-start` (oggi `src/components/Logo.astro` e `public/favicon.svg` sono provvisori).
 - PDF del CV in `public/cv/loris-rigoni-cv-it.pdf` e `public/cv/loris-rigoni-cv-en.pdf`.
 - Immagini al posto dei riquadri segnaposto.
 - Versioni inglesi dei capitoli e della pagina Telepass, dopo l'approvazione dell'italiano.

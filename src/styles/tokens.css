@@ -32,6 +32,7 @@
   --fs-meta: 13px;
 
   /* Layout */
+  --header-h: 80px;
   --container: 1200px;
   --gutter: 32px;
   --section-y: 96px;
