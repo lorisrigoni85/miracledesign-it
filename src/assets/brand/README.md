@@ -23,3 +23,12 @@ In `favicon/`: la "m" è presa dal logo, così marchio e favicon coincidono. Da 
 ```
 
 In `alternative/` c'è la "m" della vecchia favicon, ricalcata: più compatta e leggibile a 16 px, ma di stile diverso dal logo.
+
+## Ritocchi usati nel sito (ottobre 2026)
+
+Il sito non usa direttamente gli SVG di questa cartella ma `src/components/Logo.astro`, che parte dagli stessi tracciati (`logo-paths.ts`) con due ritocchi:
+
+- **"c" e "l" separate di 7 unità**: unite sembravano una "d".
+- **Larghezza ridotta di 18 px** a parità di altezza (header 182 × 57 px, piè di pagina 162 × 51 px), per un logo meno allungato.
+
+Le favicon e i file SVG qui restano quelli originali.

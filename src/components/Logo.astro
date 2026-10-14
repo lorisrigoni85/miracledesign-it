@@ -1,23 +1,65 @@
 ---
 /*
  * Logo Miracle Design, ricostruito in vettoriale (src/assets/brand/README.md).
- * Prende il colore del testo in cui è inserito. Larghezza minima 200px: sotto, "DESIGN" diventa illeggibile.
+ * Prende il colore del testo in cui è inserito.
+ *
+ * Due ritocchi rispetto al file originale:
+ * - "c" e "l" separate di poco: unite sembravano una "d". Il tratto è tagliato lungo il bordo
+ *   sinistro della "l", poi "l" ed "e" sono spostate a destra di CL_GAP unità.
+ * - Larghezza ridotta di `condense` px mantenendo l'altezza, per un logo meno allungato.
  */
-import LogoSvg from '../assets/brand/miracle-design-logo-currentcolor.svg';
+import { base, e, m, dot, line, word } from '../assets/brand/logo-paths';
 
 interface Props {
-  /** Larghezza in px, minimo 200. */
+  /** Larghezza di riferimento in px: fissa l'altezza del logo. */
   width?: number;
+  /** Px tolti alla larghezza mantenendo l'altezza. */
+  condense?: number;
 }
-const { width = 200 } = Astro.props;
+const { width = 200, condense = 18 } = Astro.props;
+const height = Math.round((width * 214) / 750);
+const shownWidth = width - condense;
+
+const CL_GAP = 7;
+/** Linea di taglio tra "c" e "l", parallela al bordo sinistro della "l". */
+const cutX = (y: number) => (564 - 0.71 * (y - 95)).toFixed(1);
+const leftClip = `M-10 0L${cutX(0)} 0L${cutX(260)} 260L-10 260Z`;
+const rightClip = `M${cutX(0)} 0L800 0L800 260L${cutX(260)} 260Z`;
+// Id unici: il logo compare più volte nella stessa pagina (header e piè di pagina).
+const uid = Math.random().toString(36).slice(2, 8);
 ---
-<LogoSvg class="logo" width={width} height={Math.round((width * 214) / 750)} style={`width:${width}px`} aria-hidden="true" focusable="false" />
+<svg
+  class="logo"
+  viewBox={`0 15 ${750 + CL_GAP} 214`}
+  width={shownWidth}
+  height={height}
+  preserveAspectRatio="none"
+  style={`width:${shownWidth}px;height:${height}px`}
+  fill="currentColor"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <clipPath id={`cl-left-${uid}`}><path d={leftClip} /></clipPath>
+    <clipPath id={`cl-right-${uid}`}><path d={rightClip} /></clipPath>
+  </defs>
+  <path fill-rule="evenodd" d={m} />
+  <path d={dot} />
+  <path fill-rule="evenodd" d={base} clip-path={`url(#cl-left-${uid})`} />
+  <g transform={`translate(${CL_GAP} 0)`}>
+    <path fill-rule="evenodd" d={base} clip-path={`url(#cl-right-${uid})`} />
+    <path fill-rule="evenodd" d={e} />
+  </g>
+  <g transform={`translate(${CL_GAP / 2} 0)`}>
+    <path d={line} />
+    <path d={word} fill="none" stroke="currentColor" stroke-width="3" stroke-miterlimit="10" />
+  </g>
+</svg>
 
 <style>
   .logo {
     display: block;
     max-width: 100%;
-    height: auto;
     color: currentColor;
   }
 </style>
