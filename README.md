@@ -3,13 +3,25 @@
 Sito personale di Loris Rigoni, statico, costruito con [Astro](https://astro.build).
 La fonte di tutte le scelte e dei testi è `SITE-GUIDE.md`, che resta solo in locale (contiene dati personali, è esclusa da git): leggerla prima di modificare qualsiasi cosa.
 
-## Comandi
+## Vedere il sito sul Mac
+
+I comandi vanno lanciati **dalla cartella del progetto**. Se la riga del terminale finisce con `~ %` sei nella cartella utente e `npm run dev` dà l'errore `ENOENT ... package.json`. Prima spostati nel progetto (le virgolette servono per lo spazio nel nome):
+
+```bash
+cd "/Users/loris/Documents/prova claude"
+```
+
+Ora la riga finisce con `prova claude %`. Poi avvia il sito:
 
 ```bash
 npm run dev
 ```
 
-Avvia il sito in locale su http://localhost:4321.
+Il sito si apre su http://localhost:4321. Se quell'indirizzo è già occupato (per esempio perché il sito l'ha già avviato Claude), parte su http://localhost:4322: l'indirizzo giusto è scritto nel terminale. Per spegnerlo, nel terminale premi `Ctrl` + `C`.
+
+Se il sito è già acceso basta aprire l'indirizzo nel browser, senza usare il terminale.
+
+## Comandi
 
 ```bash
 npm run build
