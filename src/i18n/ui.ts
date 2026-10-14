@@ -34,7 +34,7 @@ export const analyticsId = 'G-0HE3S5SD1Z';
 export const ui = {
   it: {
     skip: 'Vai al contenuto',
-    nav: { work: 'Lavori', about: 'Chi sono', cv: 'CV', contact: 'Contatti' },
+    nav: { work: 'Lavori', archive: 'Archivio', about: 'Chi sono', cv: 'CV', contact: 'Contatti' },
     workAnchor: '/#lavori',
     contactAnchor: '#contatti',
     menuOpen: 'Apri il menu',
@@ -71,7 +71,7 @@ export const ui = {
   },
   en: {
     skip: 'Skip to content',
-    nav: { work: 'Work', about: 'About', cv: 'CV', contact: 'Contact' },
+    nav: { work: 'Work', archive: 'Archive', about: 'About', cv: 'CV', contact: 'Contact' },
     workAnchor: '/en/#work',
     contactAnchor: '#contact',
     menuOpen: 'Open menu',
