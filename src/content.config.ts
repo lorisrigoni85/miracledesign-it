@@ -42,6 +42,8 @@ const home = defineCollection({
     contact: z.object({
       title: z.string(),
       quote: z.string(),
+      /** Parte finale della citazione, in evidenza. */
+      quoteStrong: z.string(),
       quoteAuthor: z.string(),
     }),
   }),

@@ -4,13 +4,19 @@
  * Prende il colore del testo in cui è inserito. Larghezza minima 200px: sotto, "DESIGN" diventa illeggibile.
  */
 import LogoSvg from '../assets/brand/miracle-design-logo-currentcolor.svg';
+
+interface Props {
+  /** Larghezza in px, minimo 200. */
+  width?: number;
+}
+const { width = 200 } = Astro.props;
 ---
-<LogoSvg class="logo" width="200" height="57" aria-hidden="true" focusable="false" />
+<LogoSvg class="logo" width={width} height={Math.round((width * 214) / 750)} style={`width:${width}px`} aria-hidden="true" focusable="false" />
 
 <style>
   .logo {
     display: block;
-    width: 200px;
+    max-width: 100%;
     height: auto;
     color: currentColor;
   }
