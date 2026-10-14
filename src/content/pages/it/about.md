@@ -9,7 +9,7 @@ Negli anni del liceo artistico ho scoperto l'infinito mondo di internet, quando 
 
 Ho puntato tutto sulla grafica e sul web: prima imparando il codice, poi disegnando interfacce e template, infine curando l'intero processo di design di prodotti digitali.
 
-Ecco la mia motivazione: ragiono per sistemi e so cosa serve per costruire ciò che disegno.
+Arte, scienza e tecnologia: tre mondi che oggi convivono in ogni progetto che seguo.
 
 ## Come lavoro
 
