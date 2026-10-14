@@ -1,5 +1,5 @@
 ---
-/* Piè di pagina centrato, come sul sito precedente: logo, citazione di Bonatti, contatti, social. */
+/* Piè di pagina centrato: logo, email in evidenza, social, citazione di Bonatti, note legali. */
 import { getEntry } from 'astro:content';
 import Logo from './Logo.astro';
 import { ui, routes, cvUrl, email, linkedin, instagram, type Lang } from '../i18n/ui';
@@ -18,17 +18,10 @@ const year = 2026;
       <Logo width={180} />
     </div>
 
-    <figure class="footer__quote">
-      <blockquote>
-        <p>“{copy.quote} <strong>{copy.quoteStrong}</strong>.”</p>
-      </blockquote>
-      <figcaption>{copy.quoteAuthor}</figcaption>
-    </figure>
-
-    <h2 class="visually-hidden">{t.nav.contact}</h2>
-    <ul class="footer__contacts">
-      <li><a href={`mailto:${email}`}>{email}</a></li>
-    </ul>
+    <div class="footer__contact">
+      <h2 class="footer__label">{t.writeMe}</h2>
+      <a class="footer__email" href={`mailto:${email}`}>{email}</a>
+    </div>
 
     <ul class="footer__social">
       <li>
@@ -49,6 +42,13 @@ const year = 2026;
       </li>
       <li><a href={cvUrl[lang]} class="footer__cv">CV</a></li>
     </ul>
+
+    <figure class="footer__quote">
+      <blockquote>
+        <p>“{copy.quote} <strong>{copy.quoteStrong}</strong>.”</p>
+      </blockquote>
+      <figcaption>{copy.quoteAuthor}</figcaption>
+    </figure>
 
     <p class="footer__legal">
       Miracle Design · © {year} · <a href={routes.privacy[lang]}>{t.privacy}</a> ·
@@ -85,50 +85,59 @@ const year = 2026;
     display: inline-flex;
   }
 
-  /* Citazione in evidenza, con la parte finale più marcata */
-  .footer__quote {
+  /* Email in evidenza */
+  .footer__contact {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 12px;
   }
-  .footer__quote blockquote {
-    max-width: 920px;
-    font-size: clamp(32px, 5vw, 64px);
-    font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-  .footer__quote strong {
-    font-weight: 600;
-  }
-  .footer__quote figcaption {
+  .footer__label {
     font-family: var(--font-mono);
     font-size: var(--fs-label);
+    font-weight: 400;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--on-dark-muted);
   }
-
-  .footer__contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    list-style: none;
-    padding: 0;
-    font-size: clamp(20px, 2vw, 28px);
-  }
-  .footer__contacts a {
-    display: inline-flex;
-    align-items: center;
-    min-height: var(--tap);
+  .footer .footer__email {
+    font-size: clamp(30px, 5vw, 64px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
     overflow-wrap: anywhere;
   }
-  .footer__contacts a:hover {
-    text-decoration: underline;
-    text-underline-offset: 6px;
-    text-decoration-thickness: 1px;
+  .footer .footer__email:hover {
+    color: var(--on-dark);
+    text-decoration-thickness: 2px;
+  }
+
+  /* Citazione, in secondo piano */
+  .footer__quote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--on-dark-muted);
+  }
+  .footer__quote blockquote {
+    max-width: 640px;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+  .footer__quote strong {
+    font-weight: 600;
+    color: var(--on-dark);
+  }
+  .footer__quote figcaption {
+    font-family: var(--font-mono);
+    font-size: var(--fs-meta);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .footer__social {
