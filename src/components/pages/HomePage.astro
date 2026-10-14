@@ -251,6 +251,7 @@ const preview = archive.filter((item) => item.preview);
   .case {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 40px 64px;
     padding: 56px 0 64px;
     border-top: 1px solid var(--rule);
@@ -343,10 +344,11 @@ const preview = archive.filter((item) => item.preview);
   .band {
     background: var(--bg-band);
   }
+  /* Immagine e testo affiancati: centrati in verticale */
   .about {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
     gap: 48px 80px;
   }
   .about__media {
