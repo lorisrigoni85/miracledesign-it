@@ -3,14 +3,14 @@ import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NextStep from '../NextStep.astro';
 import { routes, type Lang } from '../../i18n/ui';
-import { archive } from '../../data/archive';
+import { archive, countryName } from '../../data/archive';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
 const entry = (await getEntry('pages', `${lang}/archive`))!;
-const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', type: 'Tipo' } : { client: 'Client', year: 'Year', type: 'Type' };
+const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', country: 'Paese', type: 'Tipo' } : { client: 'Client', year: 'Year', country: 'Country', type: 'Type' };
 ---
 <BaseLayout lang={lang} title={`${entry.data.title} — Loris Rigoni | Miracle Design`} description={entry.data.description} alternates={routes.archive}>
   <div class="container">
@@ -22,14 +22,15 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', type: 'Tipo' } :
     <table class="archive">
       <caption class="visually-hidden">{entry.data.title}</caption>
       <thead>
-        <tr><th scope="col">{head.client}</th><th scope="col">{head.year}</th><th scope="col">{head.type}</th></tr>
+        <tr><th scope="col">{head.client}</th><th scope="col">{head.year}</th><th scope="col">{head.country}</th><th scope="col">{head.type}</th></tr>
       </thead>
       <tbody>
         {archive.map((item) => (
           <tr>
             <th scope="row">{item.client}</th>
             <td class="mono">{item.year}</td>
-            <td>{item.type[lang]}</td>
+            <td class="archive__country">{item.country ? countryName[item.country][lang] : ''}</td>
+            <td class="archive__type">{item.type[lang]}</td>
           </tr>
         ))}
       </tbody>
@@ -64,17 +65,20 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', type: 'Tipo' } :
   .archive tbody th {
     font-weight: 500;
   }
-  .archive td:last-child {
+  .archive__country,
+  .archive__type {
     color: var(--ink-body);
   }
   @media (max-width: 600px) {
+    /* Telefono: nome e anno sulla prima riga, paese e tipo sulla seconda */
     .archive thead {
       display: none;
     }
     .archive tr {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 2px 0;
       padding: 14px 0;
       border-bottom: 1px solid var(--rule);
     }
@@ -83,9 +87,17 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', type: 'Tipo' } :
       padding: 0;
       border: 0;
     }
-    .archive td:last-child {
-      grid-column: 1 / -1;
+    .archive tbody th {
+      flex: 1 0 calc(100% - 64px);
+      padding-right: 16px;
+    }
+    .archive__country,
+    .archive__type {
       font-size: 15px;
+    }
+    .archive__country:not(:empty)::after {
+      content: '·';
+      margin-inline: 8px;
     }
   }
 </style>
