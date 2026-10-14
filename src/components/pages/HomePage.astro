@@ -280,13 +280,16 @@ const preview = archive.filter((item) => item.preview);
   .case__stats {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 24px;
+    gap: 8px 0.6em;
     list-style: none;
     padding: 0;
     font-family: var(--font-mono);
     font-size: var(--fs-label);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+  }
+  .case__stats li:not(:last-child)::after {
+    content: ',';
   }
 
   .chapters__row {
