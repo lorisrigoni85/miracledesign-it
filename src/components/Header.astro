@@ -10,6 +10,19 @@ interface Props {
 }
 const { lang, alternates, overDark = false } = Astro.props;
 const t = ui[lang];
+
+// Voce attiva del menu: la sezione in cui si trova la pagina corrente.
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const section = (base: string) => path.startsWith(base);
+const active = {
+  work: section(routes.telepass[lang]),
+  archive: section(routes.archive[lang]),
+  about: section(routes.about[lang]),
+  cv: section(routes.cv[lang]),
+};
+/** aria-current: "page" sulla pagina stessa, "true" dentro la sezione (es. un capitolo Telepass). */
+const current = (key: keyof typeof active, base: string) =>
+  active[key] ? (path === base ? 'page' : 'true') : undefined;
 ---
 <header class:list={['header', overDark && 'header--over-dark']} data-header>
   <div class="container header__inner">
@@ -29,10 +42,10 @@ const t = ui[lang];
 
     <nav id="site-menu" class="header__nav" aria-label={lang === 'it' ? 'Principale' : 'Main'}>
       <ul class="header__list">
-        <li><a href={t.workAnchor}>{t.nav.work}</a></li>
-        <li><a href={routes.archive[lang]}>{t.nav.archive}</a></li>
-        <li><a href={routes.about[lang]}>{t.nav.about}</a></li>
-        <li><a href={routes.cv[lang]}>{t.nav.cv}</a></li>
+        <li><a href={t.workAnchor} class:list={[active.work && 'is-active']} aria-current={active.work ? 'true' : undefined}>{t.nav.work}</a></li>
+        <li><a href={routes.archive[lang]} class:list={[active.archive && 'is-active']} aria-current={current('archive', routes.archive[lang])}>{t.nav.archive}</a></li>
+        <li><a href={routes.about[lang]} class:list={[active.about && 'is-active']} aria-current={current('about', routes.about[lang])}>{t.nav.about}</a></li>
+        <li><a href={routes.cv[lang]} class:list={[active.cv && 'is-active']} aria-current={current('cv', routes.cv[lang])}>{t.nav.cv}</a></li>
         <li><a href={t.contactAnchor} class="header__contact">{t.nav.contact}</a></li>
         <li class="header__lang" aria-label={t.langLabel}>
           {lang === 'it'
@@ -144,6 +157,12 @@ const t = ui[lang];
     color: var(--hdr-fg);
     text-decoration: underline;
     text-underline-offset: 5px;
+  }
+  /* Voce della pagina attiva: sottolineatura piena, più spessa di quella al passaggio del mouse */
+  .header__list a.is-active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
   }
   .header__list .header__contact {
     padding: 0 18px;
