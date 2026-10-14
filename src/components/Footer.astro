@@ -2,7 +2,7 @@
 /* Piè di pagina centrato, come sul sito precedente: logo, citazione di Bonatti, contatti, social. */
 import { getEntry } from 'astro:content';
 import Logo from './Logo.astro';
-import { ui, routes, cvUrl, email, phone, linkedin, instagram, type Lang } from '../i18n/ui';
+import { ui, routes, cvUrl, email, linkedin, instagram, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -14,10 +14,9 @@ const year = 2026;
 ---
 <footer id={t.contactAnchor.slice(1)} class="footer">
   <div class="container footer__inner">
-    <a href={routes.home[lang]} class="footer__logo">
-      <span class="visually-hidden">Miracle Design — {t.home}</span>
-      <Logo width={260} />
-    </a>
+    <div class="footer__logo" role="img" aria-label="Miracle Design">
+      <Logo width={180} />
+    </div>
 
     <figure class="footer__quote">
       <blockquote>
@@ -29,7 +28,6 @@ const year = 2026;
     <h2 class="visually-hidden">{t.nav.contact}</h2>
     <ul class="footer__contacts">
       <li><a href={`mailto:${email}`}>{email}</a></li>
-      <li><a href={phone.href}>{phone.label}</a></li>
     </ul>
 
     <ul class="footer__social">
@@ -85,9 +83,6 @@ const year = 2026;
   }
   .footer__logo {
     display: inline-flex;
-  }
-  .footer__logo:hover {
-    opacity: 0.8;
   }
 
   /* Citazione in evidenza, con la parte finale più marcata */
