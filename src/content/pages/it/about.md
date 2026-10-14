@@ -5,7 +5,11 @@ description: "Chi è Loris Rigoni: Senior Product Designer a Como, un percorso d
 
 ## Il percorso
 
-Dall'arte all'ingegneria civile al Politecnico di Milano, poi il web, il codice frontend, l'UI design, il product design. Ragiono per sistemi e so cosa serve per costruire ciò che disegno.
+Negli anni del liceo artistico ho scoperto l'infinito mondo di internet, quando il web muoveva i primi passi. All'università ho scelto gli studi scientifici e mi sono laureato in Ingegneria Civile al Politecnico di Milano, anche se l'ingegneria non è diventata la mia strada.
+
+Ho puntato tutto sulla grafica e sul web: prima imparando il codice, poi disegnando interfacce e template, infine curando l'intero processo di design di prodotti digitali.
+
+Ecco la mia motivazione: ragiono per sistemi e so cosa serve per costruire ciò che disegno.
 
 ## Come lavoro
 
