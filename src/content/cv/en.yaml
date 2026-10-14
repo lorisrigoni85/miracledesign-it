@@ -61,9 +61,9 @@ skills:
   - group: Design & research
     items: End-to-end product design · Design systems · User research · Wireframing & prototyping · Usability & A/B testing · Accessibility (WCAG) · Content design
   - group: Tools
-    items: Figma · Adobe Creative Suite · Atlassian (Jira, Confluence) · Clarity · Google Analytics · Contentful
+    items: Figma · Adobe Creative Suite · Storybook · Zeroheight · Atlassian (Jira, Confluence) · Clarity · Hotjar · Google Analytics · Contentful
   - group: AI
-    items: Claude Code and Claude Design for prototyping and development · AI agents in Figma · ChatGPT · Gemini
+    items: Claude Code and Claude Design for prototyping and development · Figma AI & Make · ChatGPT · Gemini
 
 certifications:
   - name: Design Thinking – Workshop Skills
