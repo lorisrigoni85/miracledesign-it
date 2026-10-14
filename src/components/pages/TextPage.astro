@@ -2,7 +2,8 @@
 /* Pagine di testo semplici: Chi sono, Privacy. */
 import { getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Placeholder from '../Placeholder.astro';
+import { Image } from 'astro:assets';
+import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import NextStep from '../NextStep.astro';
 import { ui, routes, cvUrl, email, type Lang } from '../../i18n/ui';
 
@@ -27,7 +28,7 @@ const label = isAbout ? t.nav.about : t.privacy;
       </div>
       {isAbout && (
         <div class="about-head__media">
-          <Placeholder label={lang === 'it' ? 'Ritratto di Loris, luce naturale, sfondo semplice' : 'Portrait of Loris, natural light, plain background'} variant="portrait" />
+          <Image src={ritratto} alt={lang === 'it' ? 'Ritratto di Loris Rigoni' : 'Portrait of Loris Rigoni'} class="portrait" widths={[400, 763]} sizes="(max-width: 760px) 100vw, 400px" loading="eager" />
         </div>
       )}
     </header>
@@ -64,6 +65,14 @@ const label = isAbout ? t.nav.about : t.privacy;
   .about-head__media {
     flex: 1 1 280px;
     max-width: 400px;
+  }
+  .portrait {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 20%;
+    border-radius: var(--radius-media);
   }
   .page-body {
     padding-bottom: 48px;
