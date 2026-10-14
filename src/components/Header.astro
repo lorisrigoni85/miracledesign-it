@@ -103,6 +103,8 @@ const current = (key: keyof typeof active, base: string) =>
     color: var(--hdr-fg);
     background: var(--hdr-bg);
     transition: background-color 200ms ease, color 200ms ease;
+    /* Nel cambio pagina l'header non sfuma con il resto */
+    view-transition-name: site-header;
   }
   .header.is-scrolled {
     --hdr-fg: var(--on-dark);

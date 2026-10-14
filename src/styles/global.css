@@ -378,7 +378,32 @@ a:hover {
   color: var(--ink-muted);
 }
 
+/* Transizione tra le pagine: la pagina che si chiude sfuma, quella nuova compare.
+   L'header resta fermo. Chrome, Edge e Safari recenti; altrove il cambio pagina è normale. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation: 300ms ease-out both page-fade-out;
+}
+::view-transition-new(root) {
+  animation: 450ms ease-in 200ms both page-fade-in;
+}
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
   html {
     scroll-behavior: auto;
   }
