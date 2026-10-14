@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import NextStep from '../NextStep.astro';
 import { routes, type Lang } from '../../i18n/ui';
 import { archive } from '../../data/archive';
 
@@ -33,13 +34,15 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', type: 'Tipo' } :
         ))}
       </tbody>
     </table>
+
+    <NextStep lang={lang} page="archive" />
   </div>
 </BaseLayout>
 
 <style>
   .archive {
     width: 100%;
-    margin-bottom: var(--section-y);
+    margin-bottom: 64px;
     border-collapse: collapse;
     border-top: 1px solid var(--rule-strong);
   }

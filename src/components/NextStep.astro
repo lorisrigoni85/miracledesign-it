@@ -1,0 +1,63 @@
+---
+/* Chiusura delle pagine di secondo livello: invito contestuale a continuare l'esplorazione dalla Home. */
+import { ui, routes, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  page: 'archive' | 'about' | 'telepass';
+}
+const { lang, page } = Astro.props;
+const t = ui[lang];
+// Archivio e Chi sono portano ai lavori in evidenza; Telepass all'inizio della Home.
+const href = page === 'telepass' ? routes.home[lang] : t.workAnchor;
+---
+<nav class="next" aria-label={t.next.label}>
+  <p class="label">{t.next.label}</p>
+  <a class="next__link" href={href}>
+    <span>{t.next[page]}</span>
+    <span class="next__arrow" aria-hidden="true">→</span>
+  </a>
+</nav>
+
+<style>
+  .next {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 24px;
+    padding-bottom: var(--section-y);
+    border-top: 1px solid var(--rule-strong);
+  }
+  .next__link {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0 0.4em;
+    align-self: flex-start;
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    text-decoration: none;
+  }
+  .next__link:hover {
+    color: var(--ink);
+  }
+  .next__link:hover span:first-child {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+  .next__arrow {
+    transition: transform var(--transition);
+  }
+  .next__link:hover .next__arrow {
+    transform: translateX(6px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .next__link:hover .next__arrow {
+      transform: none;
+    }
+  }
+</style>

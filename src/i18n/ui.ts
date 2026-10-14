@@ -53,6 +53,12 @@ export const ui = {
     footerLine: 'Loris Rigoni · Como, Italia',
     privacy: 'Privacy e cookie',
     summary: 'Sintesi',
+    next: {
+      label: 'Continua',
+      archive: 'Ora guarda dove sono arrivato',
+      about: 'Guarda come lavoro, nei progetti',
+      telepass: 'Scopri il resto del portfolio',
+    },
     cookies: {
       label: 'Cookie',
       text: 'Uso Google Analytics per capire quante persone visitano il sito e quali pagine leggono. Si attiva solo se accetti; senza consenso il sito funziona allo stesso modo.',
@@ -84,6 +90,12 @@ export const ui = {
     footerLine: 'Loris Rigoni · Como, Italy',
     privacy: 'Privacy and cookies',
     summary: 'Summary',
+    next: {
+      label: 'Keep going',
+      archive: 'Now see where it led',
+      about: 'See how I work, in the projects',
+      telepass: 'Discover the rest of the portfolio',
+    },
     cookies: {
       label: 'Cookies',
       text: 'I use Google Analytics to understand how many people visit the site and which pages they read. It only runs if you accept; without consent the site works the same way.',

@@ -3,6 +3,7 @@
 import { getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Placeholder from '../Placeholder.astro';
+import NextStep from '../NextStep.astro';
 import { ui, routes, cvUrl, email, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -41,6 +42,8 @@ const label = isAbout ? t.nav.about : t.privacy;
         <a class="link" href={`mailto:${email}`}>{t.writeMe}</a>
       </div>
     )}
+
+    {isAbout && <NextStep lang={lang} page="about" />}
   </div>
 </BaseLayout>
 
@@ -69,7 +72,7 @@ const label = isAbout ? t.nav.about : t.privacy;
     margin-top: 0;
   }
   .page-actions {
-    padding-bottom: var(--section-y);
+    padding-bottom: 64px;
   }
   .page-body:last-child {
     padding-bottom: var(--section-y);
