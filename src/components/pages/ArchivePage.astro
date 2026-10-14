@@ -2,6 +2,7 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NextStep from '../NextStep.astro';
+import Flag from '../Flag.astro';
 import { routes, type Lang } from '../../i18n/ui';
 import { archive, countryName } from '../../data/archive';
 
@@ -29,7 +30,7 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', country: 'Paese'
           <tr>
             <th scope="row">{item.client}</th>
             <td class="mono">{item.year}</td>
-            <td class="mono archive__country">{item.country ? countryName[item.country][lang] : ''}</td>
+            <td class="archive__country">{item.country && <Flag country={item.country} label={countryName[item.country][lang]} />}</td>
             <td class="archive__type">{item.type[lang]}</td>
           </tr>
         ))}
