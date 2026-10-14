@@ -250,6 +250,13 @@ const current = (key: keyof typeof active, base: string) =>
       border: 0;
       padding: 0;
     }
+    /* Nel menu del telefono "Contatti" è una voce come le altre: niente riempimento del pulsante desktop */
+    .header .header__list .header__contact:hover {
+      background: none;
+      color: var(--hdr-fg);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
     .header__lang {
       margin-top: 24px;
       font-size: 16px;
