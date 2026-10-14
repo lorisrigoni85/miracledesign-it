@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import heroPhoto from '../../assets/foto/hero-montagna.jpg';
 import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Placeholder from '../Placeholder.astro';
+import telepassMockup from '../../assets/foto/telepass-mockup.png';
 import { ui, routes, type Lang } from '../../i18n/ui';
 import { getChapters, chapterUrl } from '../../i18n/chapters';
 import { archive } from '../../data/archive';
@@ -60,7 +60,7 @@ const preview = archive.filter((item) => item.preview);
         <a class="link" href={routes.telepass[lang]}>{t.readCase} →</a>
       </div>
       <div class="case__media">
-        <Placeholder label={home.work.telepass.image} />
+        <Image src={telepassMockup} alt={home.work.telepass.image} class="case__img" widths={[600, 900, 1200]} sizes="(max-width: 760px) 100vw, 640px" />
       </div>
     </article>
 
@@ -267,6 +267,10 @@ const preview = archive.filter((item) => item.preview);
   .case__media {
     flex: 1.3 1 440px;
     min-width: 0;
+  }
+  .case__img {
+    width: 100%;
+    height: auto;
   }
   .case__title {
     font-size: var(--fs-h2-case);

@@ -2,7 +2,8 @@
 /* Pagina madre Telepass: apertura, contesto e indice dei cinque capitoli. */
 import { getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Placeholder from '../Placeholder.astro';
+import { Image } from 'astro:assets';
+import telepassMockup from '../../assets/foto/telepass-mockup.png';
 import NextStep from '../NextStep.astro';
 import { ui, routes, type Lang } from '../../i18n/ui';
 import { getChapters, chapterUrl } from '../../i18n/chapters';
@@ -31,7 +32,7 @@ const name = lang === 'it' ? 'Telepass, 2019 – oggi' : 'Telepass, 2019 – tod
       <p class="page-lead">{entry.data.lead}</p>
     </header>
 
-    <Placeholder label={lang === 'it' ? 'Immagine: schermata attuale di telepass.com' : 'Image: current telepass.com screenshot'} variant="wide" />
+    <Image src={telepassMockup} alt={lang === 'it' ? 'Il sito telepass.com su computer e su telefono' : 'The telepass.com website on desktop and mobile'} class="mockup" widths={[800, 1200, 1814]} sizes="(max-width: 1264px) 100vw, 1200px" />
 
     <section class="index" aria-labelledby="chapters-title">
       <h2 id="chapters-title" class="section-head"><span>{t.chapters}</span><span>{chapters.length}</span></h2>
@@ -57,6 +58,13 @@ const name = lang === 'it' ? 'Telepass, 2019 – oggi' : 'Telepass, 2019 – tod
 </BaseLayout>
 
 <style>
+  .mockup {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    margin-inline: auto;
+  }
   .index {
     padding-top: 80px;
   }
