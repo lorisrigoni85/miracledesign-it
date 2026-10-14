@@ -6,10 +6,11 @@ meta:
   description: Senior Product Designer con oltre 10 anni nel digitale. Progetto piattaforme web e i design system che le mantengono coerenti. Dal 2019 su Telepass.
 
 hero:
-  label: [Senior Product Designer, Design Systems, Web Platforms, UX Strategy]
+  label: Senior Product Designer · Como
   name: Loris Rigoni
-  title: Progetto piattaforme web e i sistemi che le mantengono coerenti mentre crescono.
-  subtitle: "Oltre 10 anni nel digitale, dal codice frontend al product design. Dal 2019 lavoro su Telepass: prima in agenzia, poi in azienda, oggi in consulenza con Dst."
+  claim: Progetto piattaforme web e i sistemi che le mantengono coerenti mentre crescono.
+  subtitle: Oltre 10 anni nel digitale, dal codice frontend al product design. Ho lavorato in agenzia, in azienda e oggi in consulenza.
+  imageAlt: Loris Rigoni in montagna, con le cime innevate alle spalle
   primary: Guarda i lavori
   secondary: Scrivimi
 

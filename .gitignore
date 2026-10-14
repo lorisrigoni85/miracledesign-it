@@ -7,3 +7,4 @@ dist/
 SITE-GUIDE.md
 .claude/
 COSA-MANCA.md
+src/pages/proposte-*.astro

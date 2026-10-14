@@ -8,10 +8,11 @@ const home = defineCollection({
   schema: z.object({
     meta: z.object({ title: z.string(), description: z.string() }),
     hero: z.object({
-      label: z.array(z.string()),
+      label: z.string(),
       name: z.string(),
-      title: z.string(),
+      claim: z.string(),
       subtitle: z.string(),
+      imageAlt: z.string(),
       primary: z.string(),
       secondary: z.string(),
     }),

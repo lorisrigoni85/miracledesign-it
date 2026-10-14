@@ -5,11 +5,13 @@ import { ui, routes, cvUrl, type Lang } from '../i18n/ui';
 interface Props {
   lang: Lang;
   alternates: Record<Lang, string>;
+  /** In cima alla pagina c'è una foto scura: testi chiari anche prima dello scorrimento. */
+  overDark?: boolean;
 }
-const { lang, alternates } = Astro.props;
+const { lang, alternates, overDark = false } = Astro.props;
 const t = ui[lang];
 ---
-<header class="header" data-header>
+<header class:list={['header', overDark && 'header--over-dark']} data-header>
   <div class="container header__inner">
     <a href={routes.home[lang]} class="header__logo">
       <span class="visually-hidden">Miracle Design — Loris Rigoni, {t.home}</span>
@@ -93,6 +95,11 @@ const t = ui[lang];
     --hdr-muted: var(--on-dark-muted);
     --hdr-bg: var(--ink);
   }
+  /* Sopra la foto scura dell'apertura: testi chiari, fondo ancora trasparente */
+  .header--over-dark {
+    --hdr-fg: var(--on-dark);
+    --hdr-muted: var(--on-dark-muted);
+  }
   .header :focus-visible {
     outline-color: var(--hdr-fg);
   }
@@ -147,6 +154,7 @@ const t = ui[lang];
     color: var(--bg);
     text-decoration: none;
   }
+  .header--over-dark .header__contact:hover,
   .header.is-scrolled .header__contact:hover {
     color: var(--ink);
   }

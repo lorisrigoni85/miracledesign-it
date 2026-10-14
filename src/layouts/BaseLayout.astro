@@ -13,9 +13,11 @@ interface Props {
   alternates: Record<Lang, string>;
   /** Dati strutturati Person, solo in Home. */
   person?: boolean;
+  /** La pagina si apre con una foto scura sotto l'header: header chiaro anche in cima. */
+  darkHero?: boolean;
 }
 
-const { lang, title, description, alternates, person = false } = Astro.props;
+const { lang, title, description, alternates, person = false, darkHero = false } = Astro.props;
 const t = ui[lang];
 const site = Astro.site!;
 const canonical = new URL(Astro.url.pathname, site).href;
@@ -63,7 +65,7 @@ const jsonLd = person
   </head>
   <body>
     <a class="skip-link" href="#main">{t.skip}</a>
-    <Header lang={lang} alternates={alternates} />
+    <Header lang={lang} alternates={alternates} overDark={darkHero} />
     <main id="main">
       <slot />
     </main>

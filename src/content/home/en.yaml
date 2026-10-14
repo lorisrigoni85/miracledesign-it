@@ -6,10 +6,11 @@ meta:
   description: Senior Product Designer with 10+ years in digital. I design web platforms and the design systems that keep them consistent. On Telepass since 2019.
 
 hero:
-  label: [Senior Product Designer, Design Systems, Web Platforms, UX Strategy]
+  label: Senior Product Designer · Como, Italy
   name: Loris Rigoni
-  title: I design web platforms and the systems that keep them consistent as they grow.
-  subtitle: "10+ years in digital, from frontend code to product design. Since 2019 I have worked on Telepass: first at an agency, then in-house, now as a consultant with Dst."
+  claim: I design web platforms and the systems that keep them consistent as they grow.
+  subtitle: 10+ years in digital, from frontend code to product design. I have worked at an agency, in-house and now as a consultant.
+  imageAlt: Loris Rigoni in the mountains, with snowy peaks behind him
   primary: See the work
   secondary: Get in touch
 
