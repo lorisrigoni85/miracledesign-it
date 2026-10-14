@@ -19,6 +19,8 @@ I think in systems and I know what it takes to build what I design. That is why 
 
 <div class="placeholder" role="img" aria-label="A real photo in the mountains">[A real photo in the mountains]</div>
 
+More from the mountains on [Instagram](https://www.instagram.com/loris.snodstar/).
+
 ## Continuous learning
 
 | Certification | Issuer | Year |

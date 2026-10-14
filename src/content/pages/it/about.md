@@ -19,6 +19,8 @@ Parto dal capire cosa c'è: mappature, dati, interviste. Poi decido e spiego per
 
 <div class="placeholder" role="img" aria-label="Foto vera in montagna">[Foto vera in montagna]</div>
 
+Altre foto dalla montagna su [Instagram](https://www.instagram.com/loris.snodstar/).
+
 ## Formazione continua
 
 | Certificazione | Ente | Anno |

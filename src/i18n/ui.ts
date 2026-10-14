@@ -26,6 +26,7 @@ export const cvUrl: Record<Lang, string> = {
 
 export const email = 'loris@miracledesign.it';
 export const linkedin = 'https://www.linkedin.com/in/loris-rigoni-b60a516b/';
+export const instagram = 'https://www.instagram.com/loris.snodstar/';
 
 /** Google Analytics 4: si carica solo dopo il consenso (components/CookieBanner.astro). */
 export const analyticsId = 'G-0HE3S5SD1Z';
