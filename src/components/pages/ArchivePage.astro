@@ -86,9 +86,15 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', country: 'Paese'
       padding: 0;
       border: 0;
     }
+    /* Prima riga: nome e anno (larghezza fissa, così paese e tipo vanno sempre a capo) */
     .archive tbody th {
-      flex: 1 0 calc(100% - 64px);
+      flex: 0 0 calc(100% - 104px);
       padding-right: 16px;
+    }
+    .archive tbody th + td {
+      flex: 0 0 104px;
+      text-align: right;
+      white-space: nowrap;
     }
     .archive__type {
       font-size: 15px;
