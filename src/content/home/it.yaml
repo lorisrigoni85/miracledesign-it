@@ -3,10 +3,10 @@
 
 meta:
   title: Loris Rigoni — Senior Product Designer | Miracle Design
-  description: Senior Product Designer con oltre 10 anni nel digitale. Progetto piattaforme web e i design system che le mantengono coerenti. Dal 2019 su Telepass.
+  description: Senior Product Designer con oltre 10 anni nel digitale. Progetto piattaforme web e i design system che le mantengono coerenti.
 
 hero:
-  label: Senior Product Designer · Como
+  label: Senior Product Designer
   name: Loris Rigoni
   claim: Progetto piattaforme web e i sistemi che le mantengono coerenti mentre crescono.
   subtitle: Oltre 10 anni nel digitale, dal codice frontend al product design. Ho lavorato in agenzia, in azienda e oggi in consulenza.
@@ -19,9 +19,9 @@ work:
   anchor: lavori
   telepass:
     eyebrow: 01 — Telepass · 2019 – oggi
-    title: Sette anni sullo stesso prodotto, da tre posizioni.
+    title: Il volto digitale della mobilità Telepass.
     text: Dalla mappatura del sito nel 2019 al design system Resin, dalla ricerca con utenti e stakeholder al lavoro sulla conversione.
-    stats: [4 portali web, 7 milioni di clienti, oltre 49 componenti]
+    stats: [4 portali web, oltre 7 milioni di clienti, Resin Design System]
     image: "Immagine: schermata attuale di telepass.com"
 
 path:
