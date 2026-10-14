@@ -11,14 +11,14 @@ const { country, label } = Astro.props;
 ---
 <span class="flag" role="img" aria-label={label} title={label}>
   {country === 'IT' && (
-    <svg viewBox="0 0 3 2" width="21" height="14" aria-hidden="true">
-      <rect width="1" height="2" fill="#009246" />
-      <rect x="1" width="1" height="2" fill="#ffffff" />
-      <rect x="2" width="1" height="2" fill="#ce2b37" />
+    <svg viewBox="0 0 3 3" width="16" height="16" aria-hidden="true">
+      <rect width="1" height="3" fill="#009246" />
+      <rect x="1" width="1" height="3" fill="#ffffff" />
+      <rect x="2" width="1" height="3" fill="#ce2b37" />
     </svg>
   )}
   {country === 'CH' && (
-    <svg viewBox="0 0 32 32" width="14" height="14" aria-hidden="true">
+    <svg viewBox="0 0 32 32" width="16" height="16" aria-hidden="true">
       <rect width="32" height="32" fill="#da291c" />
       <path d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z" fill="#ffffff" />
     </svg>
@@ -31,9 +31,10 @@ const { country, label } = Astro.props;
     vertical-align: middle;
     line-height: 0;
   }
+  /* Tutte inscritte in un cerchio dello stesso diametro */
   .flag svg {
     display: block;
-    border-radius: 2px;
+    border-radius: 50%;
     /* Bordo sottile: separa il bianco del tricolore dal fondo chiaro */
     box-shadow: 0 0 0 1px rgba(21, 24, 26, 0.15);
   }
