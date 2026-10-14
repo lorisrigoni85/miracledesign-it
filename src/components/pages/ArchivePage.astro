@@ -29,7 +29,7 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', country: 'Paese'
           <tr>
             <th scope="row">{item.client}</th>
             <td class="mono">{item.year}</td>
-            <td class="archive__country">{item.country ? countryName[item.country][lang] : ''}</td>
+            <td class="mono archive__country">{item.country ? countryName[item.country][lang] : ''}</td>
             <td class="archive__type">{item.type[lang]}</td>
           </tr>
         ))}
@@ -65,7 +65,6 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', country: 'Paese'
   .archive tbody th {
     font-weight: 500;
   }
-  .archive__country,
   .archive__type {
     color: var(--ink-body);
   }
@@ -91,7 +90,6 @@ const head = lang === 'it' ? { client: 'Cliente', year: 'Anno', country: 'Paese'
       flex: 1 0 calc(100% - 64px);
       padding-right: 16px;
     }
-    .archive__country,
     .archive__type {
       font-size: 15px;
     }
