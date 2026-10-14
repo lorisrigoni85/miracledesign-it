@@ -186,11 +186,19 @@ const current = (key: keyof typeof active, base: string) =>
     font-size: var(--fs-label);
     color: var(--hdr-muted);
   }
+  /* Lingua attiva in grassetto; l'altra più tenue, che si accende e si sottolinea al passaggio del mouse */
   .header__lang [aria-current] {
     color: var(--hdr-fg);
+    font-weight: 600;
   }
-  .header__lang a {
+  .header__list .header__lang a {
     padding-inline: 4px;
+    color: var(--hdr-muted);
+  }
+  .header__list .header__lang a:hover {
+    color: var(--hdr-fg);
+    text-decoration: underline;
+    text-underline-offset: 5px;
   }
   .header__toggle {
     display: none;
