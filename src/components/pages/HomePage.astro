@@ -15,7 +15,8 @@ interface Props {
 const { lang } = Astro.props;
 const t = ui[lang];
 const home = (await getEntry('home', lang))!.data;
-const chapters = await getChapters(lang);
+// In Home i capitoli vanno dal più recente, come il Percorso.
+const chapters = (await getChapters(lang)).reverse();
 const preview = archive.filter((item) => item.preview);
 ---
 <BaseLayout lang={lang} title={home.meta.title} description={home.meta.description} alternates={routes.home} person darkHero>
