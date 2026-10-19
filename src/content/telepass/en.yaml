@@ -67,6 +67,6 @@ moments:
 
 diagrams:
   map: { components: "~40 components", templates: "16 templates", alt: "Around 40 components gathered into 16 templates" }
-  research: { steps: [Data, Stakeholders, Users, Workshop, Priorities], alt: "Research path: data, stakeholders, 12 users, workshops, priorities" }
+  research: { steps: [Data, Stakeholders, Users, Workshops, Priorities], alt: "Research path: data, stakeholders, 12 users, workshops, priorities" }
   cards: { before: "6 cards", after: "3 flexible cards", alt: "Six kinds of card became three" }
   business: { page: The page, ask: Who are you?, newcomer: "Newcomers: trust", customer: "Customers: services", activate: sign up, app: app, alt: "The page recognises its visitors: newcomers go to sign-up, customers go to the app" }
