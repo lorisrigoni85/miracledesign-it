@@ -6,7 +6,7 @@ import { Image } from 'astro:assets';
 import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import NextStep from '../NextStep.astro';
 import type { ImageMetadata } from 'astro';
-import { ui, routes, cvUrl, email, type Lang } from '../../i18n/ui';
+import { ui, routes, type Lang } from '../../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -60,13 +60,6 @@ const label = isAbout ? t.nav.about : t.privacy;
           <a class="btn btn--outline" href={routes.mountains[lang]}>{mountains.teaser.link} →</a>
         </div>
       </section>
-    )}
-
-    {isAbout && (
-      <div class="actions page-actions">
-        <a class="btn btn--solid" href={cvUrl[lang]} download>{t.downloadCv}</a>
-        <a class="link" href={`mailto:${email}`}>{t.writeMe}</a>
-      </div>
     )}
 
     {isAbout && <NextStep lang={lang} page="about" />}
@@ -144,9 +137,6 @@ const label = isAbout ? t.nav.about : t.privacy;
   }
   .page-body > :global(h2:first-child) {
     margin-top: 0;
-  }
-  .page-actions {
-    padding-bottom: 64px;
   }
   .page-body:last-child {
     padding-bottom: var(--section-y);
