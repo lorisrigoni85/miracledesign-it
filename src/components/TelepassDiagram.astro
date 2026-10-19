@@ -1,5 +1,7 @@
 ---
-/* Schemi dei momenti Telepass, nello stile del sito: linee sottili, angoli 8px, accento solo sull'elemento chiave. */
+/* Schemi dei momenti Telepass, nello stile del sito: linee sottili, angoli 8px, accento solo sull'elemento chiave.
+   Le scritte sono testo HTML a dimensione fissa, così restano leggibili anche sul telefono;
+   sotto i 600px gli schemi si dispongono in verticale. */
 import type { CollectionEntry } from 'astro:content';
 
 type Diagrams = CollectionEntry<'telepass'>['data']['diagrams'];
@@ -9,74 +11,210 @@ interface Props {
   labels: Diagrams;
 }
 const { kind, labels } = Astro.props;
-// Id unici per le frecce: più schemi nella stessa pagina.
-const uid = `${kind}-${Math.random().toString(36).slice(2, 7)}`;
-const arrow = `arrow-${uid}`;
-const research = labels.research.steps.map((step, k) => ({ step, count: k === 1 ? '8' : k === 2 ? '12' : '' }));
+
+// 2019: componenti evidenziati e template che li contiene
+const accentComponents = new Set([3, 12, 17, 26, 35]);
+const accentTemplate = 5;
+
+// 2024: le sei vecchie card della mappatura 2019, come wireframe (viewBox 60 × 80)
+const oldCards = [
+  // Pacchetto: titolo, elenco puntato, barra di attivazione in fondo
+  `<rect class="w-line w-strong" x="8" y="9" width="30" height="4" rx="2" />
+   <circle class="w-fill" cx="10" cy="24" r="2" /><rect class="w-line" x="15" y="22.5" width="34" height="3" rx="1.5" />
+   <circle class="w-fill" cx="10" cy="33" r="2" /><rect class="w-line" x="15" y="31.5" width="28" height="3" rx="1.5" />
+   <circle class="w-fill" cx="10" cy="42" r="2" /><rect class="w-line" x="15" y="40.5" width="32" height="3" rx="1.5" />
+   <rect class="w-fill" x="0" y="62" width="60" height="18" />`,
+  // Add-on: titolo, prezzo grande, elenco, bottone pieno
+  `<rect class="w-line w-strong" x="8" y="9" width="26" height="4" rx="2" />
+   <rect class="w-fill" x="8" y="18" width="20" height="7" rx="1.5" />
+   <rect class="w-line" x="8" y="32" width="40" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="39" width="34" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="46" width="38" height="3" rx="1.5" />
+   <rect class="w-fill" x="8" y="60" width="44" height="10" rx="2" />`,
+  // Comunicazione: grande illustrazione, testo, link
+  `<rect class="w-fill" x="0" y="0" width="60" height="36" />
+   <circle class="w-cut" cx="20" cy="18" r="8" /><rect class="w-cut" x="32" y="12" width="16" height="14" rx="2" />
+   <rect class="w-line w-strong" x="8" y="44" width="34" height="4" rx="2" />
+   <rect class="w-line" x="8" y="53" width="44" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="66" width="18" height="3" rx="1.5" />`,
+  // Servizio: icona tonda al centro, titolo centrato, bottone a contorno
+  `<circle class="w-fill" cx="30" cy="20" r="9" />
+   <rect class="w-line w-strong" x="15" y="36" width="30" height="4" rx="2" />
+   <rect class="w-line" x="12" y="45" width="36" height="3" rx="1.5" />
+   <rect class="w-frame-sm" x="14" y="60" width="32" height="9" rx="4.5" />`,
+  // Sconto: percentuale in grande, testo
+  `<rect class="w-line" x="8" y="9" width="34" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="16" width="26" height="3" rx="1.5" />
+   <rect class="w-fill" x="8" y="30" width="26" height="14" rx="2" />
+   <rect class="w-line" x="38" y="38" width="14" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="58" width="40" height="3" rx="1.5" />`,
+  // Pacchetto secondario: elenco a sinistra, prezzo e bottone a destra
+  `<rect class="w-line" x="6" y="12" width="24" height="3" rx="1.5" />
+   <rect class="w-line" x="6" y="20" width="20" height="3" rx="1.5" />
+   <rect class="w-line" x="6" y="28" width="24" height="3" rx="1.5" />
+   <rect class="w-line" x="6" y="36" width="18" height="3" rx="1.5" />
+   <rect class="w-line" x="6" y="44" width="22" height="3" rx="1.5" />
+   <rect class="w-band" x="36" y="0" width="24" height="80" />
+   <rect class="w-fill" x="40" y="30" width="16" height="5" rx="1" />
+   <rect class="w-fill" x="40" y="42" width="16" height="7" rx="1.5" />`,
+];
+
+// Le tre card nuove di Resin: stessa struttura (titolo, testo, link), cambia solo la parte alta
+const newCards = [
+  // Generic: illustrazione tonda, testo centrato, badge
+  `<rect class="w-accent" x="40" y="6" width="14" height="5" rx="2.5" />
+   <circle class="w-fill" cx="30" cy="25" r="11" />
+   <rect class="w-line w-strong" x="18" y="43" width="24" height="4" rx="2" />
+   <rect class="w-line" x="12" y="52" width="36" height="3" rx="1.5" />
+   <rect class="w-line" x="16" y="58" width="28" height="3" rx="1.5" />
+   <rect class="w-accent" x="22" y="68" width="16" height="3" rx="1.5" />`,
+  // Icon: piccola icona in alto a sinistra, testo allineato a sinistra
+  `<rect class="w-fill" x="8" y="10" width="13" height="11" rx="2" />
+   <rect class="w-line w-strong" x="8" y="30" width="28" height="4" rx="2" />
+   <rect class="w-line" x="8" y="39" width="44" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="45" width="40" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="51" width="30" height="3" rx="1.5" />
+   <rect class="w-accent" x="8" y="66" width="16" height="3" rx="1.5" />`,
+  // Full image: immagine a tutta larghezza, badge, testo
+  `<rect class="w-fill" x="0" y="0" width="60" height="34" />
+   <path class="w-cut" d="M0 34 L18 18 L28 26 L40 14 L60 30 V34 Z" />
+   <rect class="w-accent" x="40" y="5" width="14" height="5" rx="2.5" />
+   <rect class="w-line w-strong" x="8" y="42" width="30" height="4" rx="2" />
+   <rect class="w-line" x="8" y="51" width="44" height="3" rx="1.5" />
+   <rect class="w-line" x="8" y="57" width="34" height="3" rx="1.5" />
+   <rect class="w-accent" x="8" y="68" width="16" height="3" rx="1.5" />`,
+];
 ---
-<figure class="diagram">
+<figure class={`diagram diagram--${kind}`} role="img" aria-label={labels[kind].alt}>
   {kind === 'map' && (
-    <svg viewBox="0 0 640 260" role="img" aria-label={labels.map.alt}>
-      <defs><marker id={arrow} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" class="d-head" /></marker></defs>
-      {Array.from({ length: 40 }).map((_, k) => (
-        <rect x={20 + (k % 10) * 30} y={30 + Math.floor(k / 10) * 30} width="22" height="22" rx="4" class={k % 7 === 0 ? 'd-accent' : 'd-box'} />
-      ))}
-      <path d="M330 105 H380" class="d-line" marker-end={`url(#${arrow})`} />
-      {Array.from({ length: 16 }).map((_, k) => (
-        <rect x={400 + (k % 4) * 52} y={20 + Math.floor(k / 4) * 52} width="44" height="44" rx="6" class="d-box" />
-      ))}
-      <text x="170" y="200" class="d-text" text-anchor="middle">{labels.map.components}</text>
-      <text x="498" y="252" class="d-text" text-anchor="middle">{labels.map.templates}</text>
-    </svg>
+    <div class="flow">
+      <div class="node">
+        <svg class="map-components" viewBox="0 0 296 116" aria-hidden="true">
+          {Array.from({ length: 40 }).map((_, k) => {
+            const x = (k % 10) * 30;
+            const y = Math.floor(k / 10) * 30;
+            const on = accentComponents.has(k);
+            return (
+              <g>
+                <rect x={x} y={y} width="26" height="26" rx="5" class={on ? 'd-accent' : 'd-box'} />
+                {k % 4 === 0 && <rect x={x + 6} y={y + 11.5} width="14" height="3" rx="1.5" class={on ? 'd-on' : 'd-mark'} />}
+                {k % 4 === 1 && <circle cx={x + 13} cy={y + 13} r="5" class={on ? 'd-on' : 'd-mark'} />}
+                {k % 4 === 2 && <rect x={x + 6} y={y + 7} width="14" height="12" rx="2" class={on ? 'd-on' : 'd-mark'} />}
+              </g>
+            );
+          })}
+        </svg>
+        <p class="d-label">{labels.map.components}</p>
+      </div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="node">
+        <svg class="map-templates" viewBox="0 0 230 230" aria-hidden="true">
+          {Array.from({ length: 16 }).map((_, k) => {
+            const x = (k % 4) * 60;
+            const y = Math.floor(k / 4) * 60;
+            const on = k === accentTemplate;
+            const v = k % 3;
+            return (
+              <g>
+                <rect x={x} y={y} width="50" height="50" rx="5" class={on ? 'd-box d-box--on' : 'd-box'} />
+                <rect x={x + 6} y={y + 6} width="38" height="4" rx="1" class="d-mark" />
+                <rect x={x + 6} y={y + 14} width="38" height={v === 0 ? 14 : 10} rx="1.5" class={on ? 'd-accent' : 'd-mark'} />
+                {v !== 2 && <rect x={x + 6} y={y + (v === 0 ? 32 : 28)} width="17" height="12" rx="1.5" class={on ? 'd-accent' : 'd-mark'} />}
+                {v !== 2 && <rect x={x + 27} y={y + (v === 0 ? 32 : 28)} width="17" height="12" rx="1.5" class="d-mark" />}
+                {v === 2 && <rect x={x + 6} y={y + 28} width="38" height="3" rx="1.5" class="d-mark" />}
+                {v === 2 && <rect x={x + 6} y={y + 35} width="30" height="3" rx="1.5" class="d-mark" />}
+              </g>
+            );
+          })}
+        </svg>
+        <p class="d-label">{labels.map.templates}</p>
+      </div>
+    </div>
   )}
 
   {kind === 'research' && (
-    <svg viewBox="0 0 640 160" role="img" aria-label={labels.research.alt}>
-      {research.map(({ step, count }, k) => (
-        <g>
-          <rect x={10 + k * 126} y="40" width="110" height="64" rx="8" class={k === 4 ? 'd-accent' : 'd-box'} />
-          <text x={65 + k * 126} y={count ? 66 : 77} class={k === 4 ? 'd-text-on' : 'd-text'} text-anchor="middle">{step}</text>
-          {count && <text x={65 + k * 126} y="90" class="d-num" text-anchor="middle">{count}</text>}
-          {k < 4 && <path d={`M${122 + k * 126} 72 H${134 + k * 126}`} class="d-line" />}
-        </g>
-      ))}
-    </svg>
+    <div class="research">
+      <ul class="sources">
+        {labels.research.sources.map((s) => <li class="chip">{s}</li>)}
+      </ul>
+      <svg class="join" viewBox="0 0 40 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 20 C24 20 16 60 40 60 M0 60 H40 M0 100 C24 100 16 60 40 60" />
+      </svg>
+      <span class="arrow arrow--mobile" aria-hidden="true">→</span>
+      <div class="stack">
+        <span class="stack__sheet"></span>
+        <span class="stack__sheet"></span>
+        <span class="stack__top chip">{labels.research.workshop}</span>
+      </div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="chip chip--accent">{labels.research.result}</div>
+    </div>
   )}
 
   {kind === 'cards' && (
-    <svg viewBox="0 0 640 170" role="img" aria-label={labels.cards.alt}>
-      <defs><marker id={arrow} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" class="d-head" /></marker></defs>
-      {Array.from({ length: 6 }).map((_, k) => (
-        <rect x={10 + (k % 3) * 70} y={20 + Math.floor(k / 3) * 70} width="58" height="58" rx="6" class="d-box" />
-      ))}
-      <path d="M240 75 H300" class="d-line" marker-end={`url(#${arrow})`} />
-      {Array.from({ length: 3 }).map((_, k) => (
-        <rect x={330 + k * 100} y="30" width="86" height="96" rx="8" class={k === 1 ? 'd-accent' : 'd-box'} />
-      ))}
-      <text x="110" y="166" class="d-text" text-anchor="middle">{labels.cards.before}</text>
-      <text x="473" y="160" class="d-text" text-anchor="middle">{labels.cards.after}</text>
-    </svg>
+    <div class="cards">
+      <svg width="0" height="0" class="visually-hidden" aria-hidden="true"><defs><clipPath id="wire-clip"><rect width="60" height="80" rx="4" /></clipPath></defs></svg>
+      <div class="resin">
+        <div class="found">
+          <span class="d-label">{labels.cards.foundation}</span>
+          <span class="found__items">{labels.cards.foundationItems}</span>
+        </div>
+        <div class="kits">
+          {labels.cards.kits.map((kit) => <div class="chip kit">{kit}</div>)}
+        </div>
+      </div>
+      <div class="flow flow--cards">
+        <div class="node">
+          <div class="wire-grid wire-grid--old">
+            {oldCards.map((c) => (
+              <svg class="wire" viewBox="0 0 60 80" aria-hidden="true">
+                <g clip-path="url(#wire-clip)"><rect class="w-bg" width="60" height="80" /><Fragment set:html={c} /></g>
+                <rect class="w-frame" x="0.6" y="0.6" width="58.8" height="78.8" rx="4" />
+              </svg>
+            ))}
+          </div>
+          <p class="d-label">{labels.cards.before}</p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="node">
+          <div class="wire-grid wire-grid--new">
+            {newCards.map((c, k) => (
+              <div class="wire-item">
+                <svg class="wire wire--new" viewBox="0 0 60 80" aria-hidden="true">
+                  <g clip-path="url(#wire-clip)"><rect class="w-bg" width="60" height="80" /><Fragment set:html={c} /></g>
+                  <rect class="w-frame" x="0.6" y="0.6" width="58.8" height="78.8" rx="4" />
+                </svg>
+                <span class="wire-name">{labels.cards.names[k]}</span>
+              </div>
+            ))}
+          </div>
+          <p class="d-label">{labels.cards.after}</p>
+        </div>
+      </div>
+    </div>
   )}
 
   {kind === 'business' && (
-    <svg viewBox="0 0 640 200" role="img" aria-label={labels.business.alt}>
-      <rect x="10" y="70" width="120" height="60" rx="8" class="d-box" />
-      <text x="70" y="105" class="d-text" text-anchor="middle">{labels.business.page}</text>
-      <path d="M130 100 H180" class="d-line" />
-      <circle cx="212" cy="100" r="32" class="d-accent" />
-      <text x="212" y="105" class="d-text-on d-text-sm" text-anchor="middle">{labels.business.ask}</text>
-      <path d="M244 100 C 280 100, 280 45, 316 45" class="d-line" />
-      <path d="M244 100 C 280 100, 280 155, 316 155" class="d-line" />
-      <rect x="316" y="18" width="200" height="54" rx="8" class="d-box" />
-      <text x="416" y="50" class="d-text" text-anchor="middle">{labels.business.newcomer}</text>
-      <rect x="316" y="128" width="200" height="54" rx="8" class="d-box" />
-      <text x="416" y="160" class="d-text" text-anchor="middle">{labels.business.customer}</text>
-      <path d="M516 45 H560" class="d-line" />
-      <path d="M516 155 H560" class="d-line" />
-      <text x="600" y="50" class="d-small" text-anchor="middle">{labels.business.activate}</text>
-      <circle cx="600" cy="155" r="20" class="d-dot" />
-      <text x="600" y="160" class="d-small" text-anchor="middle">{labels.business.app}</text>
-    </svg>
+    <div class="biz">
+      <div class="chip">{labels.business.page}</div>
+      <span class="link-line" aria-hidden="true"></span>
+      <div class="ask">{labels.business.ask}</div>
+      <svg class="join join--fork" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 50 C22 50 18 25 40 25 M0 50 C22 50 18 75 40 75" />
+      </svg>
+      <div class="branches">
+        <div class="branch">
+          <div class="chip">{labels.business.newcomer}</div>
+          <span class="link-line" aria-hidden="true"></span>
+          <span class="pill">{labels.business.activate}</span>
+        </div>
+        <div class="branch">
+          <div class="chip">{labels.business.customer}</div>
+          <span class="link-line" aria-hidden="true"></span>
+          <span class="pill">{labels.business.app}</span>
+        </div>
+      </div>
+    </div>
   )}
 </figure>
 
@@ -84,7 +222,7 @@ const research = labels.research.steps.map((step, k) => ({ step, count: k === 1 
   .diagram {
     max-width: 760px;
     margin: 40px 0 0;
-    padding: 28px;
+    padding: 32px;
     background: var(--bg-band);
     border-radius: var(--radius-media);
   }
@@ -93,54 +231,414 @@ const research = labels.research.steps.map((step, k) => ({ step, count: k === 1 
     width: 100%;
     height: auto;
   }
+
+  /* Elementi comuni */
+  .d-label {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 10px 16px;
+    background: var(--bg);
+    border: 1.25px solid var(--ink-muted);
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--ink);
+  }
+  .chip--accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+  }
+  .arrow {
+    flex: none;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--ink-muted);
+  }
+  .arrow--mobile {
+    display: none;
+  }
+  .flow {
+    display: flex;
+    align-items: stretch;
+    gap: 28px;
+  }
+  .flow > .arrow {
+    align-self: center;
+  }
+  /* Disegno appoggiato all'etichetta, etichette sempre in fondo e allineate tra loro */
+  .node {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+  .join {
+    flex: 0 0 40px;
+    align-self: stretch;
+    width: 40px;
+    height: auto;
+  }
+  .join path {
+    fill: none;
+    stroke: var(--ink-muted);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Forme SVG */
   .d-box {
     fill: var(--bg);
     stroke: var(--ink-muted);
     stroke-width: 1.25;
   }
+  .d-box--on {
+    stroke: var(--accent);
+    stroke-width: 2;
+  }
   .d-accent {
     fill: var(--accent);
   }
-  .d-dot {
+  .d-mark {
+    fill: var(--rule);
+  }
+  .d-on {
     fill: var(--bg);
-    stroke: var(--ink);
-    stroke-width: 1.25;
+    opacity: 0.85;
   }
-  .d-line {
-    fill: none;
-    stroke: var(--ink-muted);
-    stroke-width: 1.25;
+
+  /* 2019 */
+  .map-components {
+    max-width: 296px;
+    margin: 0 auto;
   }
-  .d-head {
-    fill: var(--ink-muted);
+  .map-templates {
+    max-width: 210px;
+    margin: 0 auto;
   }
-  .d-text {
-    font-family: var(--font-sans);
-    font-size: 15px;
-    fill: var(--ink);
+
+  /* 2022 – 23 */
+  .research {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
-  .d-text-on {
-    font-family: var(--font-sans);
+  .sources {
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: 12px;
+    flex: 1.2 1 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .research .join {
+    margin: 0 -16px;
+  }
+  .stack {
+    position: relative;
+    flex: 1 1 0;
+    padding: 0 12px 12px 0;
+  }
+  .stack__sheet {
+    position: absolute;
+    inset: 0 12px 12px 0;
+    background: var(--bg);
+    border: 1.25px solid var(--ink-muted);
+    border-radius: 8px;
+  }
+  .stack__sheet:nth-child(1) {
+    transform: translate(12px, 12px);
+  }
+  .stack__sheet:nth-child(2) {
+    transform: translate(6px, 6px);
+  }
+  .stack__top {
+    position: relative;
+    min-height: 72px;
+  }
+  .research > .chip--accent {
+    flex: 1 1 0;
+    min-height: 72px;
+  }
+
+  /* 2024 */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 16px;
+    background: var(--accent);
+    border-radius: 8px;
+    color: var(--bg);
+    text-align: center;
+  }
+  .found .d-label {
+    margin: 0;
+    color: var(--bg);
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+  .found__items {
     font-size: 15px;
     font-weight: 500;
+  }
+  .kits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 0 12%;
+  }
+  .kit {
+    position: relative;
+    margin-top: 20px;
+  }
+  .kit::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    height: 21px;
+    border-left: 1.25px solid var(--ink-muted);
+  }
+  .flow--cards {
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .flow--cards .arrow {
+    align-self: center;
+    margin-bottom: 30px;
+  }
+  .flow--cards .node:first-child {
+    flex: 0.8 1 0;
+  }
+  .wire-grid {
+    display: grid;
+    gap: 10px;
+  }
+  .wire-grid--old {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .wire-grid--new {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .wire-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .wire-name {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    text-align: center;
+  }
+  .wire :global(.w-bg) {
     fill: var(--bg);
   }
-  .d-text-sm {
-    font-size: 13px;
+  .wire :global(.w-frame) {
+    fill: none;
+    stroke: var(--ink-muted);
+    stroke-width: 1.2;
   }
-  .d-num {
-    font-family: var(--font-mono);
-    font-size: 15px;
+  .wire--new :global(.w-frame) {
+    stroke: var(--ink);
+    stroke-width: 1.5;
+  }
+  .wire :global(.w-line) {
+    fill: var(--rule);
+  }
+  .wire :global(.w-strong) {
     fill: var(--ink-muted);
   }
-  .d-small {
+  .wire :global(.w-fill) {
+    fill: #b5bcb6;
+  }
+  .wire :global(.w-band) {
+    fill: var(--bg-band);
+  }
+  .wire :global(.w-cut) {
+    fill: var(--bg);
+    opacity: 0.7;
+  }
+  .wire :global(.w-frame-sm) {
+    fill: none;
+    stroke: #b5bcb6;
+    stroke-width: 1.5;
+  }
+  .wire :global(.w-accent) {
+    fill: var(--accent);
+  }
+
+  /* 2026 */
+  .biz {
+    display: flex;
+    align-items: center;
+  }
+  .biz > .chip {
+    flex: 0 0 auto;
+  }
+  .link-line {
+    flex: 1 0 20px;
+    height: 0;
+    border-top: 1.25px solid var(--ink-muted);
+  }
+  .ask {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .branches {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    flex: 1 1 auto;
+  }
+  .branch {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .branch .chip {
+    flex: 1 1 auto;
+  }
+  .branch .link-line {
+    flex: 0 0 20px;
+  }
+  .pill {
+    flex: none;
+    width: 76px;
+    padding: 6px 14px;
+    border: 1.25px solid var(--ink);
+    border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 13px;
-    fill: var(--ink-muted);
+    text-align: center;
+    color: var(--ink);
   }
+
   @media (max-width: 900px) {
     .diagram {
-      padding: 16px;
+      padding: 20px;
+    }
+  }
+
+  /* Telefono: tutto in verticale */
+  @media (max-width: 600px) {
+    .flow,
+    .research,
+    .biz {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+    .arrow {
+      align-self: center;
+      transform: rotate(90deg);
+    }
+    .arrow--mobile {
+      display: block;
+    }
+    .join {
+      display: none;
+    }
+    .sources {
+      grid-auto-rows: auto;
+    }
+    .stack {
+      margin-right: 0;
+    }
+    .flow--cards .arrow {
+      margin-bottom: 0;
+    }
+    .wire-grid--old {
+      width: 100%;
+      max-width: 240px;
+      margin-inline: auto;
+    }
+    .kits {
+      padding: 0;
+      gap: 12px;
+    }
+    .biz {
+      align-items: center;
+    }
+    .biz > .chip {
+      align-self: stretch;
+    }
+    .link-line {
+      flex: 0 0 20px;
+      width: 0;
+      height: 20px;
+      border-top: 0;
+      border-left: 1.25px solid var(--ink-muted);
+    }
+    .branches {
+      position: relative;
+      grid-template-rows: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-self: stretch;
+      margin-top: -16px;
+      padding-top: 24px;
+    }
+    /* Biforcazione: dal cerchio scende una linea che si apre verso i due rami */
+    .branches::before,
+    .branches::after {
+      content: '';
+      position: absolute;
+    }
+    .branches::before {
+      top: 0;
+      left: 50%;
+      height: 12px;
+      border-left: 1.25px solid var(--ink-muted);
+    }
+    .branches::after {
+      top: 12px;
+      left: calc(25% - 3px);
+      right: calc(25% - 3px);
+      height: 12px;
+      border: 1.25px solid var(--ink-muted);
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+    }
+    .branch {
+      flex-direction: column;
+      padding: 0;
+    }
+    .branch .chip {
+      align-self: stretch;
+      flex: 1 1 auto;
     }
   }
 </style>

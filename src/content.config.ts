@@ -84,8 +84,16 @@ const telepass = defineCollection({
     ),
     diagrams: z.object({
       map: z.object({ components: z.string(), templates: z.string(), alt: z.string() }),
-      research: z.object({ steps: z.array(z.string()).length(5), alt: z.string() }),
-      cards: z.object({ before: z.string(), after: z.string(), alt: z.string() }),
+      research: z.object({ sources: z.array(z.string()).length(3), workshop: z.string(), result: z.string(), alt: z.string() }),
+      cards: z.object({
+        foundation: z.string(),
+        foundationItems: z.string(),
+        kits: z.array(z.string()).length(2),
+        before: z.string(),
+        after: z.string(),
+        names: z.array(z.string()).length(3),
+        alt: z.string(),
+      }),
       business: z.object({
         page: z.string(),
         ask: z.string(),

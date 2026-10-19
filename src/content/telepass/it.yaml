@@ -69,6 +69,6 @@ moments:
 
 diagrams:
   map: { components: "~40 componenti", templates: "16 template", alt: "Circa 40 componenti raccolti in 16 template" }
-  research: { steps: [Dati, Stakeholder, Utenti, Workshop, Priorità], alt: "Percorso della ricerca: dati, stakeholder, 12 utenti, workshop, priorità" }
-  cards: { before: "6 card", after: "3 card flessibili", alt: "Sei tipi di card diventati tre" }
+  research: { sources: [Dati, "Business e manager", "12 utenti"], workshop: Workshop, result: Priorità condivise, alt: "Percorso della ricerca: dati, business e manager, 12 utenti, poi più workshop e infine le priorità condivise" }
+  cards: { foundation: Foundation, foundationItems: "Token · colori primitivi · font · icone · illustrazioni", kits: [UI Kit web, UI Kit app], before: "Prima: 6 card", after: "Dopo: 3 card flessibili", names: [Generic, Icon, Full image], alt: "Le foundation di Resin alimentano due UI Kit, web e app. Sei tipi di card diventano tre: generica, con icona, con immagine a tutta superficie" }
   business: { page: La pagina, ask: Chi sei?, newcomer: "Chi arriva: fiducia", customer: "Chi c’è già: servizi", activate: attiva, app: app, alt: "La pagina riconosce chi la visita: chi arriva va verso l’attivazione, chi è già cliente verso l’app" }
