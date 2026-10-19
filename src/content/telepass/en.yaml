@@ -28,10 +28,10 @@ moments:
     year: "2019"
     short: Mapping
     where: Wise Emotions
-    title: Before designing, understand what is there.
+    title: Getting to know everything, piece by piece.
     text:
-      - "As soon as I joined Wise Emotions, before designing anything, I mapped the public area of telepass.com: around 40 components and 16 templates, each with its role, its purpose and what needed fixing."
-      - That map became the foundation of the design system built afterwards.
+      - "At Wise Emotions I worked on Telepass from the very start, beginning with a complete map of its portals: around 40 components and 16 templates, each with its purpose, its strengths and the limitations that could be improved."
+      - That map later became the foundation of the design system built afterwards.
     principle: Make it explicit, so it can be shared.
     diagram: map
   - id: listening

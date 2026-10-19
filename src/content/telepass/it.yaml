@@ -28,10 +28,10 @@ moments:
     year: "2019"
     short: Mappare
     where: Wise Emotions
-    title: Prima di disegnare, capire cosa c’è.
+    title: Imparare a conoscere tutto, pezzo per pezzo.
     text:
-      - "Appena entrato in Wise Emotions, prima di disegnare qualsiasi cosa, ho mappato l’area pubblica di telepass.com: circa 40 componenti e 16 template, ognuno con il suo ruolo, la sua funzione e cosa andava sistemato."
-      - Quella mappa è diventata la base del design system costruito dopo.
+      - "In Wise Emotions fin da subito ho avuto modo di lavorare su Telepass, partendo da una mappatura completa dei loro portali: circa 40 componenti e 16 template, ognuno con la sua funzione, i suoi pregi e le limitazioni che potevano essere migliorate."
+      - Quella mappa è diventata poi la base del design system costruito in seguito.
     principle: Formalizzare, per rendere condivisibile.
     diagram: map
   - id: ascoltare
