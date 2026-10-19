@@ -41,6 +41,7 @@ Il sito è ospitato su GitHub Pages. A ogni push sul ramo `main`, `.github/workf
 | Pagina Telepass (apertura, posizioni, quattro momenti, testi degli schemi) | `src/content/telepass/it.yaml`, `en.yaml` |
 | Chi sono, Archivio, Privacy | `src/content/pages/<lingua>/*.md` |
 | Elenco dell'archivio | `src/data/archive.ts` |
+| Pagina Montagna (attività, cime, didascalie) | `src/content/mountains/it.yaml`, `en.yaml`; foto in `src/assets/montagna/` |
 | CV (pagina) | `src/content/cv/it.yaml`, `en.yaml`; PDF in `public/cv/` (senza telefono) |
 | Menu, pulsanti, etichette, indirizzi delle pagine | `src/i18n/ui.ts` |
 | Colori, font, spaziature | `src/styles/tokens.css` |

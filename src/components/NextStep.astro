@@ -4,12 +4,12 @@ import { ui, routes, type Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
-  page: 'archive' | 'about' | 'telepass' | 'cv';
+  page: 'archive' | 'about' | 'telepass' | 'cv' | 'mountains';
 }
 const { lang, page } = Astro.props;
 const t = ui[lang];
-// Archivio e Chi sono portano ai lavori in evidenza; Telepass all'inizio della Home.
-const href = page === 'telepass' ? routes.home[lang] : t.workAnchor;
+// Archivio, Chi sono e CV portano ai lavori in evidenza; Telepass all'inizio della Home; Montagna a Chi sono.
+const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? routes.about[lang] : t.workAnchor;
 ---
 <div class="next">
   <a class="btn btn--outline next__btn" href={href}>

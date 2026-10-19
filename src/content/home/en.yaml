@@ -10,7 +10,7 @@ hero:
   name: Loris Rigoni
   claim: I design web platforms and the systems that keep them consistent as they grow.
   subtitle: 10+ years in digital, from frontend code to product design. I have worked at an agency, in-house and now as a consultant.
-  imageAlt: Loris Rigoni in the mountains, with snowy peaks behind him
+  imageAlt: Loris Rigoni in the mountains, with snowy peaks in the background
   primary: See the work
   secondary: Get in touch
 
@@ -48,7 +48,7 @@ about:
   title: Designer, Alpinist, Traveller, Photographer, Casual Nerd, Coder, Wizard.
   text:
     - I think in systems and I know what it takes to build what I design. That is why I am at ease between business, design and engineering.
-    - "Outside work you will find me on my mountains: [MOUNTAIN ACTIVITIES]."
+    - "Outside work you will find me on my mountains: ski mountaineering, alpinism and high-altitude trekking."
   button: More about me
   image: Portrait of Loris, natural light
 

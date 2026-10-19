@@ -11,6 +11,7 @@ export const routes = {
   about: { it: '/chi-sono/', en: '/en/about/' },
   privacy: { it: '/privacy/', en: '/en/privacy/' },
   cv: { it: '/cv/', en: '/en/cv/' },
+  mountains: { it: '/montagna/', en: '/en/mountains/' },
 } satisfies Record<string, Record<Lang, string>>;
 
 export type RouteId = keyof typeof routes;
@@ -49,6 +50,7 @@ export const ui = {
       about: 'Guarda come lavoro, nei progetti',
       telepass: 'Scopri il resto del portfolio',
       cv: 'Ora guarda i progetti',
+      mountains: 'Torna a Chi sono',
     },
     cookies: {
       label: 'Cookie',
@@ -81,6 +83,7 @@ export const ui = {
       about: 'See how I work, in the projects',
       telepass: 'Discover the rest of the portfolio',
       cv: 'Now see the projects',
+      mountains: 'Back to About',
     },
     cookies: {
       label: 'Cookies',

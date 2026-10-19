@@ -1,0 +1,153 @@
+---
+/* Pagina Montagna: attività, alcune cime e galleria foto. */
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NextStep from '../NextStep.astro';
+import PhotoGallery from '../PhotoGallery.astro';
+import { ui, routes, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const page = (await getEntry('mountains', lang))!.data;
+---
+<BaseLayout lang={lang} title={page.meta.title} description={page.meta.description} alternates={routes.mountains}>
+  <div class="container">
+    <header class="page-head">
+      <nav class="breadcrumb label" aria-label="Breadcrumb">
+        <ol>
+          <li><a href={routes.about[lang]}>{t.nav.about}</a></li>
+          <li><span aria-current="page">{page.label}</span></li>
+        </ol>
+      </nav>
+      <h1 class="page-title">{page.title}</h1>
+      <p class="page-lead">{page.lead}</p>
+    </header>
+
+    <section class="block" aria-labelledby="m-activities">
+      <h2 id="m-activities" class="section-head"><span>{page.activitiesLabel}</span></h2>
+      <ul class="activities">
+        {page.activities.map((a) => (
+          <li>
+            <h3>{a.name}</h3>
+            <p>{a.text}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="m-peaks">
+      <h2 id="m-peaks" class="section-head"><span>{page.peaksLabel}</span></h2>
+      <table class="peaks">
+        <caption class="visually-hidden">{page.peaksLabel}</caption>
+        <thead>
+          <tr><th scope="col">{page.peaksHead.peak}</th><th scope="col">{page.peaksHead.height}</th><th scope="col">{page.peaksHead.where}</th></tr>
+        </thead>
+        <tbody>
+          {page.peaks.map((p) => (
+            <tr>
+              <th scope="row">{p.name}</th>
+              <td class="mono">{p.height}</td>
+              <td>{p.where}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block" aria-labelledby="m-photos">
+      <h2 id="m-photos" class="section-head"><span>{page.photosLabel}</span><span>{page.photos.length}</span></h2>
+      <PhotoGallery photos={page.photos} labels={page.gallery} />
+    </section>
+
+    <NextStep lang={lang} page="mountains" />
+  </div>
+</BaseLayout>
+
+<style>
+  .block {
+    padding-bottom: 72px;
+  }
+  .activities {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .activities li {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .activities h3 {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .activities p {
+    color: var(--ink-body);
+  }
+  .peaks {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .peaks th,
+  .peaks td {
+    padding: 16px 16px 16px 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    vertical-align: baseline;
+  }
+  .peaks thead th {
+    font-family: var(--font-mono);
+    font-size: var(--fs-meta);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .peaks tbody th {
+    font-weight: 500;
+  }
+  .peaks td:last-child {
+    color: var(--ink-body);
+  }
+  .peaks td.mono {
+    white-space: nowrap;
+  }
+  @media (max-width: 900px) {
+    .activities {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .activities {
+      grid-template-columns: 1fr;
+    }
+    .peaks thead {
+      display: none;
+    }
+    .peaks tr {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2px 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .peaks th,
+    .peaks td {
+      padding: 0;
+      border: 0;
+    }
+    .peaks td:last-child {
+      grid-column: 1 / -1;
+      font-size: 15px;
+    }
+  }
+</style>

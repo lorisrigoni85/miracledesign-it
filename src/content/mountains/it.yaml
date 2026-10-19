@@ -1,0 +1,46 @@
+# Pagina "Montagna" in italiano. Fonte: CV alpinistico di Loris (ottobre 2026).
+# Le foto stanno in src/assets/montagna/; `file` è il nome senza estensione.
+
+meta:
+  title: Montagna — Loris Rigoni | Miracle Design
+  description: Scialpinismo, alpinismo e trekking in alta quota, dalle Orobie ai 4.000 delle Alpi fino al campo base dell’Everest.
+
+label: Montagna
+title: Sulle mie montagne.
+lead: "Scialpinismo, alpinismo classico, canali invernali e trekking in alta quota: dalle Orobie di casa ai 4.000 delle Alpi, fino al campo base dell’Everest."
+
+activitiesLabel: Cosa faccio
+activities:
+  - name: Scialpinismo
+    text: Dal Monte Rosa al Bernina, fino al Tien Shan in Kirghizistan.
+  - name: Alpinismo classico
+    text: Vie normali sui 4.000 e sulle grandi cime di Ortles e Bernina.
+  - name: Canali invernali
+    text: Neve e misto tra Grigne, Presolana e Orobie.
+  - name: Trekking in quota
+    text: Campo base dell’Everest, Caucaso, Tour du Mont Blanc.
+
+peaksLabel: Alcune cime
+peaksHead: { peak: Cima, height: Quota, where: Dove }
+peaks:
+  - { name: Kala Patthar, height: 5.643 m, where: "Nepal, Himalaya · trekking al campo base dell’Everest" }
+  - { name: Punta Gnifetti, height: 4.554 m, where: Monte Rosa }
+  - { name: Aragats, height: 4.090 m, where: "Armenia, Caucaso · cima nord e sud" }
+  - { name: Gran Paradiso, height: 4.061 m, where: "Via normale, anche con gli sci" }
+  - { name: Pizzo Bernina, height: 4.049 m, where: Via normale italiana }
+
+photosLabel: Foto
+photos:
+  - { file: cresta-cordata, alt: "In cordata su una cresta di neve, sopra un mare di nuvole" }
+  - { file: vetta-selfie, alt: "Loris in vetta, con casco e piccozza, davanti a una cresta innevata" }
+  - { file: scialpinismo, alt: "Loris in salita con gli sci sullo zaino, in un canale innevato" }
+  - { file: ghiacciaio, alt: "Loris con l’attrezzatura da alpinismo davanti a un grande seracco" }
+  - { file: aragats, alt: "Loris in cima all’Aragats, in Armenia, con la bandiera armena" }
+
+gallery: { open: Apri la foto, close: Chiudi, prev: Foto precedente, next: Foto successiva }
+
+# Anteprima nella pagina Chi sono
+teaser:
+  text: "Fuori dal lavoro pratico scialpinismo, alpinismo e trekking in alta quota: dalle Orobie di casa ai 4.000 delle Alpi, fino al campo base dell’Everest."
+  link: Le mie montagne
+  photo: cresta-cordata

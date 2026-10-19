@@ -1,0 +1,46 @@
+# "Mountains" page in English. Source: Loris's mountaineering CV (October 2026).
+# Photos live in src/assets/montagna/; `file` is the name without extension.
+
+meta:
+  title: Mountains — Loris Rigoni | Miracle Design
+  description: Ski mountaineering, alpinism and high-altitude trekking, from the Orobie to the Alpine 4,000s and Everest base camp.
+
+label: Mountains
+title: On my mountains.
+lead: "Ski mountaineering, classic alpinism, winter gullies and high-altitude trekking: from the Orobie close to home to the Alpine 4,000s, all the way to Everest base camp."
+
+activitiesLabel: What I do
+activities:
+  - name: Ski mountaineering
+    text: From Monte Rosa to the Bernina, and the Tian Shan in Kyrgyzstan.
+  - name: Classic alpinism
+    text: Normal routes on the 4,000s and the big peaks of Ortler and Bernina.
+  - name: Winter gullies
+    text: Snow and mixed climbing in the Grigne, Presolana and Orobie.
+  - name: High-altitude trekking
+    text: Everest base camp, the Caucasus, the Tour du Mont Blanc.
+
+peaksLabel: Some summits
+peaksHead: { peak: Summit, height: Height, where: Where }
+peaks:
+  - { name: Kala Patthar, height: "5,643 m", where: "Nepal, Himalaya · Everest base camp trek" }
+  - { name: Punta Gnifetti, height: "4,554 m", where: Monte Rosa }
+  - { name: Aragats, height: "4,090 m", where: "Armenia, Caucasus · north and south summits" }
+  - { name: Gran Paradiso, height: "4,061 m", where: "Normal route, on skis too" }
+  - { name: Piz Bernina, height: "4,049 m", where: Italian normal route }
+
+photosLabel: Photos
+photos:
+  - { file: cresta-cordata, alt: "Roped up on a snow ridge above a sea of clouds" }
+  - { file: vetta-selfie, alt: "Loris on a summit, with helmet and ice axe, in front of a snowy ridge" }
+  - { file: scialpinismo, alt: "Loris climbing a snowy gully with skis on the backpack" }
+  - { file: ghiacciaio, alt: "Loris with mountaineering gear in front of a large serac" }
+  - { file: aragats, alt: "Loris on the summit of Aragats, Armenia, holding the Armenian flag" }
+
+gallery: { open: Open photo, close: Close, prev: Previous photo, next: Next photo }
+
+# Teaser on the About page
+teaser:
+  text: "Outside work I go ski mountaineering, climbing and high-altitude trekking: from the Orobie close to home to the Alpine 4,000s, all the way to Everest base camp."
+  link: My mountains
+  photo: cresta-cordata

@@ -125,4 +125,24 @@ const cv = defineCollection({
   }),
 });
 
-export const collections = { home, pages, telepass, cv };
+/** Pagina Montagna, un file per lingua: src/content/mountains/it.yaml, en.yaml */
+const mountains = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/mountains' }),
+  schema: z.object({
+    meta: z.object({ title: z.string(), description: z.string() }),
+    label: z.string(),
+    title: z.string(),
+    lead: z.string(),
+    activitiesLabel: z.string(),
+    activities: z.array(z.object({ name: z.string(), text: z.string() })),
+    peaksLabel: z.string(),
+    peaksHead: z.object({ peak: z.string(), height: z.string(), where: z.string() }),
+    peaks: z.array(z.object({ name: z.string(), height: z.string(), where: z.string() })),
+    photosLabel: z.string(),
+    photos: z.array(z.object({ file: z.string(), alt: z.string() })),
+    gallery: z.object({ open: z.string(), close: z.string(), prev: z.string(), next: z.string() }),
+    teaser: z.object({ text: z.string(), link: z.string(), photo: z.string() }),
+  }),
+});
+
+export const collections = { home, pages, telepass, cv, mountains };
