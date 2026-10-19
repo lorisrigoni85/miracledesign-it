@@ -43,7 +43,22 @@ const year = 2026;
       <li><a href={routes.cv[lang]} class="footer__cv">CV</a></li>
     </ul>
 
-    <figure class="footer__quote">
+    <figure class="footer__quote" data-ridge>
+      <!-- Easter egg: passando sopra la citazione (o toccandola) una cordata di due alpinisti percorre la cresta -->
+      <svg class="footer__ridge" viewBox="0 -4 360 52" aria-hidden="true">
+        <path class="ridge__line" data-ridge-path d="M0 44 L30 40 L52 30 L66 33 L92 17 L108 23 L124 19 L144 31 L172 25 L198 9 L214 16 L234 13 L258 28 L282 22 L306 33 L332 28 L360 40" />
+        <path class="ridge__rope" data-rope d="" />
+        <g class="ridge__climber" data-climber>
+          <circle cx="0" cy="-11" r="2" />
+          <path d="M0 -9 V-4 M0 -4 L-2.2 0 M0 -4 L2.2 0 M0 -7.5 L3.5 -5" data-legs />
+          <rect x="-3.6" y="-9" width="2.6" height="4" rx="0.8" />
+        </g>
+        <g class="ridge__climber" data-climber>
+          <circle cx="0" cy="-11" r="2" />
+          <path d="M0 -9 V-4 M0 -4 L-2.2 0 M0 -4 L2.2 0 M0 -7.5 L3.5 -5" data-legs />
+          <rect x="-3.6" y="-9" width="2.6" height="4" rx="0.8" />
+        </g>
+      </svg>
       <blockquote>
         <p>“{copy.quote} <strong>{copy.quoteStrong}</strong>.”</p>
       </blockquote>
@@ -56,6 +71,52 @@ const year = 2026;
     </p>
   </div>
 </footer>
+
+<script>
+  // La cordata: due alpinisti legati in corda camminano lungo la cresta, da sinistra a destra
+  const quote = document.querySelector<HTMLElement>('[data-ridge]');
+  const ridge = quote?.querySelector<SVGPathElement>('[data-ridge-path]');
+  const rope = quote?.querySelector<SVGPathElement>('[data-rope]');
+  const climbers = quote ? [...quote.querySelectorAll<SVGGElement>('[data-climber]')] : [];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let running = false;
+
+  const walk = () => {
+    if (!quote || !ridge || !rope || running || still) return;
+    running = true;
+    quote.classList.add('is-walking');
+    const total = ridge.getTotalLength();
+    const gap = 20;
+    const duration = 14000;
+    const start = performance.now();
+    const legs = (t: number) => {
+      const s = Math.sin(t / 180) * 2.2;
+      return `M0 -9 V-4 M0 -4 L${-s} 0 M0 -4 L${s} 0 M0 -7.5 L3.5 -5`;
+    };
+    const frame = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      const lead = p * (total + gap);
+      const points = [lead, lead - gap].map((d) => ridge.getPointAtLength(Math.max(0, Math.min(total, d))));
+      climbers.forEach((c, i) => {
+        c.setAttribute('transform', `translate(${points[i].x} ${points[i].y})`);
+        c.querySelector('[data-legs]')?.setAttribute('d', legs(now + i * 160));
+      });
+      const [a, b] = points;
+      const mx = (a.x + b.x) / 2;
+      const my = (a.y + b.y) / 2 - 3;
+      rope.setAttribute('d', `M${b.x + 0.5} ${b.y - 6} Q${mx} ${my + 4} ${a.x - 0.5} ${a.y - 6}`);
+      if (p < 1) requestAnimationFrame(frame);
+      else {
+        quote.classList.remove('is-walking');
+        running = false;
+      }
+    };
+    requestAnimationFrame(frame);
+  };
+
+  quote?.addEventListener('mouseenter', walk);
+  quote?.addEventListener('click', walk);
+</script>
 
 <style>
   .footer {
@@ -122,6 +183,46 @@ const year = 2026;
     align-items: center;
     gap: 12px;
     color: var(--on-dark-muted);
+  }
+  .footer__ridge {
+    width: min(100%, 360px);
+    height: auto;
+    margin-bottom: 4px;
+    overflow: visible;
+  }
+  .ridge__line {
+    fill: none;
+    stroke: var(--on-dark-muted);
+    stroke-width: 1;
+    stroke-linejoin: round;
+    opacity: 0.35;
+    transition: opacity 0.6s ease;
+  }
+  .ridge__rope {
+    fill: none;
+    stroke: #8fbfa8; /* verde del sito, schiarito per il fondo scuro */
+    stroke-width: 0.8;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .ridge__climber {
+    fill: var(--on-dark);
+    stroke: var(--on-dark);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .ridge__climber circle,
+  .ridge__climber rect {
+    stroke: none;
+  }
+  .footer__quote.is-walking .ridge__line {
+    opacity: 0.7;
+  }
+  .footer__quote.is-walking .ridge__climber,
+  .footer__quote.is-walking .ridge__rope {
+    opacity: 1;
   }
   .footer__quote blockquote {
     max-width: 640px;
