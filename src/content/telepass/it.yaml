@@ -30,8 +30,8 @@ moments:
     where: Wise Emotions
     title: Imparare a conoscere tutto, pezzo per pezzo.
     text:
-      - "In Wise Emotions fin da subito ho avuto modo di lavorare su Telepass, partendo da una mappatura completa dei loro portali: circa 40 componenti e 16 template, ognuno con la sua funzione, i suoi pregi e le limitazioni che potevano essere migliorate."
-      - Quella mappa è diventata poi la base del design system costruito in seguito.
+      - "In Wise Emotions fin da subito ho avuto modo di lavorare su Telepass, partendo da una mappatura completa dei loro portali: circa 40 componenti e 16 template, ognuno con la sua funzione, i suoi pregi e i limiti che si potevano migliorare."
+      - Quella mappa è diventata la base del design system che avremmo costruito negli anni successivi.
     principle: Formalizzare, per rendere condivisibile.
     diagram: map
   - id: ascoltare
