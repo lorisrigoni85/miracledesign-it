@@ -3,7 +3,7 @@ title: Privacy and cookies
 description: Privacy and cookie notice for miracledesign.it.
 ---
 
-[DRAFT — to be completed with the chosen hosting and reviewed before publishing.]
+[DRAFT — to be reviewed before publishing.]
 
 ## Data controller
 
@@ -32,7 +32,11 @@ You can change your choice at any time from the "Cookie preferences" link at the
 
 ## Hosting
 
-[TO BE DEFINED: chosen hosting provider.]
+The site is hosted on GitHub Pages, a service of GitHub, Inc. (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States). Like any web server, GitHub Pages logs the IP address of visitors and stores it for security purposes, even if the visitor has no GitHub account. GitHub complies with the EU-U.S. and Swiss-U.S. Data Privacy Framework. More details in [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+
+Fonts are hosted on the site itself: no external font service receives visitor data.
+
+The miracledesign.it domain and email are managed by Aruba S.p.A.
 
 ## Your rights
 
