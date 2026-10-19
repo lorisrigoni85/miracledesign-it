@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MountainIsland from '../components/MountainIsland.astro';
 ---
 <BaseLayout lang="it" title="Fuori sentiero — Miracle Design" description="Pagina non trovata." alternates={{ it: '/', en: '/en/' }}>
   <div class="container notfound">
@@ -13,29 +14,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <!-- Illustrazione: montagna con il sentiero che si interrompe davanti a una frattura -->
-    <svg class="notfound__art" viewBox="0 0 480 340" aria-hidden="true">
-      <!-- catena lontana -->
-      <path class="far" d="M0 250 L60 196 L100 214 L160 140 L205 182 L250 158 L300 214 L352 166 L410 204 L480 176 V340 H0 Z" />
-      <!-- sole basso -->
-      <circle class="sun" cx="398" cy="82" r="20" />
-      <!-- montagna principale -->
-      <path class="peak" d="M30 340 L205 78 L292 206 L326 178 L452 340 Z" />
-      <!-- neve sulla cima -->
-      <path class="snow" d="M170 130 L188 118 L205 134 L222 117 L240 129" />
-      <!-- sentiero che sale -->
-      <path class="trail" d="M118 340 C 150 312, 122 286, 166 266 S 232 246, 206 220 S 238 196, 256 190" />
-      <!-- frattura: il sentiero si interrompe -->
-      <path class="crack" d="M266 170 L276 192 L266 214 L278 242 L270 262" />
-      <!-- il sentiero prosegue, irraggiungibile, dall'altra parte -->
-      <path class="trail trail--far" d="M290 252 C 304 242, 320 246, 330 234 S 346 224, 352 232" />
-      <!-- cartello -->
-      <path class="post" d="M244 190 V150" />
-      <rect class="sign" x="220" y="128" width="50" height="24" rx="3" />
-      <text class="sign__text" x="245" y="145" text-anchor="middle">404</text>
-      <!-- sei qui -->
-      <circle class="here" cx="256" cy="190" r="6" />
-    </svg>
+    <!-- Illustrazione: isola con montagne, il sentiero si interrompe davanti a una frattura -->
+    <div class="notfound__art">
+      <MountainIsland />
+    </div>
   </div>
 </BaseLayout>
 
@@ -59,54 +41,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     height: auto;
     justify-self: end;
   }
-  .far {
-    fill: var(--bg-band);
-  }
-  .sun {
-    fill: none;
-    stroke: var(--rule);
-    stroke-width: 1.5;
-  }
-  .peak {
-    fill: var(--bg);
-    stroke: var(--ink);
-    stroke-width: 1.5;
-    stroke-linejoin: round;
-  }
-  .snow,
-  .crack,
-  .post {
-    fill: none;
-    stroke: var(--ink);
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .trail {
-    fill: none;
-    stroke: var(--ink);
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-dasharray: 6 7;
-  }
-  .trail--far {
-    stroke: var(--rule);
-  }
-  .sign {
-    fill: var(--bg);
-    stroke: var(--ink);
-    stroke-width: 1.5;
-  }
-  .sign__text {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 500;
-    fill: var(--ink);
-  }
-  .here {
-    fill: var(--accent);
-  }
-
   @media (max-width: 760px) {
     .notfound {
       grid-template-columns: 1fr;
