@@ -5,9 +5,11 @@ description: 'About Loris Rigoni: Senior Product Designer based in Como, a path 
 
 ## The path
 
-[English adaptation: to be written once the Italian text is approved.]
+During my years at art school I discovered the endless world of the internet, back when the web was taking its first steps. At university I chose science and graduated in Civil Engineering at Politecnico di Milano, even though engineering did not become my path.
 
-I think in systems and I know what it takes to build what I design. That is why I am at ease between business, design and engineering.
+I went all in on graphics and the web: first learning to code, then designing interfaces and templates, and finally leading the whole design process of digital products.
+
+Art, science and technology: three worlds that now live together in every project I work on.
 
 ## How I work
 
