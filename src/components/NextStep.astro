@@ -31,6 +31,12 @@ const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? ro
   .next__btn:hover .next__arrow {
     transform: translateX(4px);
   }
+  @media (max-width: 600px) {
+    .next {
+      display: flex;
+      justify-content: center;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .next__btn:hover .next__arrow {
       transform: none;
