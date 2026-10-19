@@ -13,9 +13,11 @@ Arte, scienza e tecnologia: tre mondi che oggi convivono in ogni progetto che se
 
 ## Come lavoro
 
-Parto dal capire cosa c'è: mappature, dati, interviste. Poi decido e spiego perché. Lavoro con business, contenuti, marketing e sviluppo, e costruisco sistemi che altri possono usare senza di me.
+Per me il design è un lavoro di squadra. All'inizio cerco di capire bene da dove partiamo: guardo i dati, ascolto le persone, metto in fila quello che c'è. Poi coinvolgo i colleghi, e spesso le idee migliori nascono proprio lì, ragionando insieme davanti a una bozza.
 
-[DA COMPLETARE CON LORIS]
+Con gli sviluppatori mi piace avere un rapporto diretto, dalla prima idea fino al rilascio. Avendo scritto codice per tanti anni capisco i loro problemi, e insieme troviamo la strada più semplice. Lo stesso vale con chi si occupa di business, contenuti e marketing: ci confrontiamo, a volte la vediamo in modo diverso, ma alla fine arriviamo a una scelta che tutti capiscono.
+
+Quando un progetto esce, mi piace pensare che sia un po' di tutti.
 
 ## Formazione continua
 
