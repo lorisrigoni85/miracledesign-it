@@ -15,11 +15,6 @@ export const routes = {
 
 export type RouteId = keyof typeof routes;
 
-export const chapterBase: Record<Lang, string> = {
-  it: '/lavori/telepass/',
-  en: '/en/work/telepass/',
-};
-
 export const cvUrl: Record<Lang, string> = {
   it: '/cv/loris-rigoni-cv-it.pdf',
   en: '/cv/loris-rigoni-cv-en.pdf',
@@ -46,14 +41,8 @@ export const ui = {
     readCase: 'Leggi il caso',
     downloadCv: 'Scarica il CV',
     writeMe: 'Scrivimi',
-    chapter: 'Capitolo',
-    chapters: 'Capitoli',
-    prevChapter: 'Capitolo precedente',
-    nextChapter: 'Capitolo successivo',
-    backToIndex: 'Torna a Telepass, 2019 – oggi',
     footerLine: 'Loris Rigoni · Como, Italia',
     privacy: 'Privacy e cookie',
-    summary: 'Sintesi',
     next: {
       label: 'Continua',
       archive: 'Scopri cosa è venuto dopo',
@@ -84,14 +73,8 @@ export const ui = {
     readCase: 'Read the case study',
     downloadCv: 'Download CV',
     writeMe: 'Get in touch',
-    chapter: 'Chapter',
-    chapters: 'Chapters',
-    prevChapter: 'Previous chapter',
-    nextChapter: 'Next chapter',
-    backToIndex: 'Back to Telepass, 2019 – today',
     footerLine: 'Loris Rigoni · Como, Italy',
     privacy: 'Privacy and cookies',
-    summary: 'Summary',
     next: {
       label: 'Keep going',
       archive: 'See what came next',

@@ -49,7 +49,7 @@ const home = defineCollection({
   }),
 });
 
-/** Pagine di testo (pagina madre Telepass, Chi sono, Archivio, Privacy), una per lingua. */
+/** Pagine di testo (Chi sono, Archivio, Privacy), una per lingua. */
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
@@ -59,18 +59,43 @@ const pages = defineCollection({
   }),
 });
 
-/** Capitoli del caso Telepass: src/content/chapters/<lingua>/<slug>.md */
-const chapters = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/chapters' }),
+/** Pagina Telepass, un file per lingua: src/content/telepass/it.yaml, en.yaml */
+const telepass = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/telepass' }),
   schema: z.object({
-    /** Chiave comune alle due lingue, per il selettore di lingua. */
-    key: z.string(),
-    order: z.number(),
-    year: z.string(),
+    meta: z.object({ title: z.string(), description: z.string() }),
+    name: z.string(),
     title: z.string(),
-    teaser: z.string(),
-    description: z.string(),
-    summary: z.array(z.object({ term: z.string(), value: z.string() })),
+    lead: z.string(),
+    mockupAlt: z.string(),
+    positions: z.array(z.object({ period: z.string(), name: z.string(), text: z.string() })),
+    navLabel: z.string(),
+    moments: z.array(
+      z.object({
+        id: z.string(),
+        year: z.string(),
+        short: z.string(),
+        where: z.string(),
+        title: z.string(),
+        text: z.array(z.string()),
+        principle: z.string(),
+        diagram: z.enum(['map', 'research', 'cards', 'business']),
+      }),
+    ),
+    diagrams: z.object({
+      map: z.object({ components: z.string(), templates: z.string(), alt: z.string() }),
+      research: z.object({ steps: z.array(z.string()).length(5), alt: z.string() }),
+      cards: z.object({ before: z.string(), after: z.string(), alt: z.string() }),
+      business: z.object({
+        page: z.string(),
+        ask: z.string(),
+        newcomer: z.string(),
+        customer: z.string(),
+        activate: z.string(),
+        app: z.string(),
+        alt: z.string(),
+      }),
+    }),
   }),
 });
 
@@ -100,4 +125,4 @@ const cv = defineCollection({
   }),
 });
 
-export const collections = { home, pages, chapters, cv };
+export const collections = { home, pages, telepass, cv };

@@ -1,0 +1,72 @@
+# Telepass page in English: opening, three positions and the four moments.
+# Each moment has a direct address: /en/work/telepass/#<id>
+
+meta:
+  title: Telepass, 2019 – today — Loris Rigoni | Miracle Design
+  description: "Telepass, 2019 – today: Telepass web products at an agency, in-house and as a consultant. Four moments, from the first map of the site to design that serves the business."
+
+name: Telepass, 2019 – today
+title: Making the way we move simpler.
+lead: "Since 2019 I have worked on Telepass web products: first at an agency, then in-house, now as a consultant. From the first map of the site to the choices that guide its growth today: four moments of a journey still in progress."
+mockupAlt: The telepass.com website on desktop and mobile
+
+positions:
+  - period: 2019 – 2021
+    name: Wise Emotions
+    text: "At an agency: the system is born"
+  - period: 2021 – 2024
+    name: Telepass
+    text: "In-house: the system grows"
+  - period: 2024 – today
+    name: Dst
+    text: "As a consultant: everyday challenges, where design meets business"
+
+navLabel: Moments
+
+moments:
+  - id: mapping
+    year: "2019"
+    short: Mapping
+    where: Wise Emotions
+    title: Before designing, understand what is there.
+    text:
+      - "As soon as I joined Wise Emotions, before designing anything, I mapped the public area of telepass.com: around 40 components and 16 templates, each with its role, its purpose and what needed fixing."
+      - That map became the foundation of the design system built afterwards.
+    principle: Make it explicit, so it can be shared.
+    diagram: map
+  - id: listening
+    year: 2022-23
+    short: Listening
+    where: Telepass
+    title: Listening before redesigning.
+    text:
+      - "Before the redesign we listened to the people who live with the site every day: 8 people from internal teams and 12 users, customers and not, through interviews and usability tests."
+      - A workshop with the team turned what we had heard into shared priorities.
+    principle: Every project that followed answers one of these priorities.
+    diagram: research
+  - id: redesigning
+    year: "2024"
+    short: Redesigning
+    where: Telepass
+    title: Renewing without starting over.
+    text:
+      - The telepass.com redesign started from the design system already in use, because several teams work on the site every day.
+      - "One typeface, the brand colours and a leaner library: six kinds of card became three."
+    principle: Fewer components, more flexible.
+    diagram: cards
+  - id: business
+    year: "2026"
+    short: Business
+    where: Dst for Telepass
+    title: Putting design at the service of the business.
+    text:
+      - "With Dst the work shifts to conversion: every page has to lead its visitors to the next step."
+      - The offer page recognises newcomers and existing customers and tells each a different story. The site leads to the app at the right moments, with a clear action that keeps the context, on desktop as on mobile.
+    principle: One action, not a choice.
+    diagram: business
+
+diagrams:
+  map: { components: "~40 components", templates: "16 templates", alt: "Around 40 components gathered into 16 templates" }
+  research: { steps: [Data, Stakeholders, Users, Workshop, Priorities], alt: "Research path: data, 8 stakeholders, 12 users, workshop, priorities" }
+  cards: { before: "6 cards", after: "3 flexible cards", alt: "Six kinds of card became three" }
+  business: { page: The page, ask: Who are you?, newcomer: "Newcomers: trust", customer: "Customers: services", activate: sign up, app: app, alt: "The page recognises its visitors: newcomers go to sign-up, customers go to the app" }

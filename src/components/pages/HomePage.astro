@@ -6,7 +6,6 @@ import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import telepassMockup from '../../assets/foto/telepass-mockup.png';
 import { ui, routes, type Lang } from '../../i18n/ui';
-import { getChapters, chapterUrl } from '../../i18n/chapters';
 import { archive } from '../../data/archive';
 
 interface Props {
@@ -15,8 +14,9 @@ interface Props {
 const { lang } = Astro.props;
 const t = ui[lang];
 const home = (await getEntry('home', lang))!.data;
-// In Home i capitoli vanno dal più recente, come il Percorso.
-const chapters = (await getChapters(lang)).reverse();
+// I quattro momenti Telepass, dal più recente come il Percorso; ognuno porta al suo punto della pagina Telepass.
+const telepass = (await getEntry('telepass', lang))!.data;
+const moments = [...telepass.moments].reverse();
 const preview = archive.filter((item) => item.preview);
 ---
 <BaseLayout lang={lang} title={home.meta.title} description={home.meta.description} alternates={routes.home} person darkHero>
@@ -65,13 +65,13 @@ const preview = archive.filter((item) => item.preview);
       </div>
     </article>
 
-    <ol class="rows chapters" aria-label={`Telepass — ${t.chapters}`}>
-      {chapters.map((c) => (
+    <ol class="rows chapters" aria-label={`Telepass — ${telepass.navLabel}`}>
+      {moments.map((m) => (
         <li>
-          <a href={chapterUrl(c)} class="chapters__row">
-            <span class="mono">{c.data.year}</span>
-            <span class="chapters__title">{c.data.title}</span>
-            <span class="chapters__teaser">{c.data.teaser}</span>
+          <a href={`${routes.telepass[lang]}#${m.id}`} class="chapters__row">
+            <span class="mono">{m.year}</span>
+            <span class="chapters__title">{m.title}</span>
+            <span class="chapters__teaser">{m.principle}</span>
           </a>
         </li>
       ))}

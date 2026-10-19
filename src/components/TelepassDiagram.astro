@@ -1,0 +1,146 @@
+---
+/* Schemi dei momenti Telepass, nello stile del sito: linee sottili, angoli 8px, accento solo sull'elemento chiave. */
+import type { CollectionEntry } from 'astro:content';
+
+type Diagrams = CollectionEntry<'telepass'>['data']['diagrams'];
+
+interface Props {
+  kind: 'map' | 'research' | 'cards' | 'business';
+  labels: Diagrams;
+}
+const { kind, labels } = Astro.props;
+// Id unici per le frecce: più schemi nella stessa pagina.
+const uid = `${kind}-${Math.random().toString(36).slice(2, 7)}`;
+const arrow = `arrow-${uid}`;
+const research = labels.research.steps.map((step, k) => ({ step, count: k === 1 ? '8' : k === 2 ? '12' : '' }));
+---
+<figure class="diagram">
+  {kind === 'map' && (
+    <svg viewBox="0 0 640 260" role="img" aria-label={labels.map.alt}>
+      <defs><marker id={arrow} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" class="d-head" /></marker></defs>
+      {Array.from({ length: 40 }).map((_, k) => (
+        <rect x={20 + (k % 10) * 30} y={30 + Math.floor(k / 10) * 30} width="22" height="22" rx="4" class={k % 7 === 0 ? 'd-accent' : 'd-box'} />
+      ))}
+      <path d="M330 105 H380" class="d-line" marker-end={`url(#${arrow})`} />
+      {Array.from({ length: 16 }).map((_, k) => (
+        <rect x={400 + (k % 4) * 52} y={20 + Math.floor(k / 4) * 52} width="44" height="44" rx="6" class="d-box" />
+      ))}
+      <text x="170" y="200" class="d-text" text-anchor="middle">{labels.map.components}</text>
+      <text x="498" y="252" class="d-text" text-anchor="middle">{labels.map.templates}</text>
+    </svg>
+  )}
+
+  {kind === 'research' && (
+    <svg viewBox="0 0 640 160" role="img" aria-label={labels.research.alt}>
+      {research.map(({ step, count }, k) => (
+        <g>
+          <rect x={10 + k * 126} y="40" width="110" height="64" rx="8" class={k === 4 ? 'd-accent' : 'd-box'} />
+          <text x={65 + k * 126} y={count ? 66 : 77} class={k === 4 ? 'd-text-on' : 'd-text'} text-anchor="middle">{step}</text>
+          {count && <text x={65 + k * 126} y="90" class="d-num" text-anchor="middle">{count}</text>}
+          {k < 4 && <path d={`M${122 + k * 126} 72 H${134 + k * 126}`} class="d-line" />}
+        </g>
+      ))}
+    </svg>
+  )}
+
+  {kind === 'cards' && (
+    <svg viewBox="0 0 640 170" role="img" aria-label={labels.cards.alt}>
+      <defs><marker id={arrow} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" class="d-head" /></marker></defs>
+      {Array.from({ length: 6 }).map((_, k) => (
+        <rect x={10 + (k % 3) * 70} y={20 + Math.floor(k / 3) * 70} width="58" height="58" rx="6" class="d-box" />
+      ))}
+      <path d="M240 75 H300" class="d-line" marker-end={`url(#${arrow})`} />
+      {Array.from({ length: 3 }).map((_, k) => (
+        <rect x={330 + k * 100} y="30" width="86" height="96" rx="8" class={k === 1 ? 'd-accent' : 'd-box'} />
+      ))}
+      <text x="110" y="166" class="d-text" text-anchor="middle">{labels.cards.before}</text>
+      <text x="473" y="160" class="d-text" text-anchor="middle">{labels.cards.after}</text>
+    </svg>
+  )}
+
+  {kind === 'business' && (
+    <svg viewBox="0 0 640 200" role="img" aria-label={labels.business.alt}>
+      <rect x="10" y="70" width="120" height="60" rx="8" class="d-box" />
+      <text x="70" y="105" class="d-text" text-anchor="middle">{labels.business.page}</text>
+      <path d="M130 100 H180" class="d-line" />
+      <circle cx="212" cy="100" r="32" class="d-accent" />
+      <text x="212" y="105" class="d-text-on d-text-sm" text-anchor="middle">{labels.business.ask}</text>
+      <path d="M244 100 C 280 100, 280 45, 316 45" class="d-line" />
+      <path d="M244 100 C 280 100, 280 155, 316 155" class="d-line" />
+      <rect x="316" y="18" width="200" height="54" rx="8" class="d-box" />
+      <text x="416" y="50" class="d-text" text-anchor="middle">{labels.business.newcomer}</text>
+      <rect x="316" y="128" width="200" height="54" rx="8" class="d-box" />
+      <text x="416" y="160" class="d-text" text-anchor="middle">{labels.business.customer}</text>
+      <path d="M516 45 H560" class="d-line" />
+      <path d="M516 155 H560" class="d-line" />
+      <text x="600" y="50" class="d-small" text-anchor="middle">{labels.business.activate}</text>
+      <circle cx="600" cy="155" r="20" class="d-dot" />
+      <text x="600" y="160" class="d-small" text-anchor="middle">{labels.business.app}</text>
+    </svg>
+  )}
+</figure>
+
+<style>
+  .diagram {
+    max-width: 760px;
+    margin: 40px 0 0;
+    padding: 28px;
+    background: var(--bg-band);
+    border-radius: var(--radius-media);
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .d-box {
+    fill: var(--bg);
+    stroke: var(--ink-muted);
+    stroke-width: 1.25;
+  }
+  .d-accent {
+    fill: var(--accent);
+  }
+  .d-dot {
+    fill: var(--bg);
+    stroke: var(--ink);
+    stroke-width: 1.25;
+  }
+  .d-line {
+    fill: none;
+    stroke: var(--ink-muted);
+    stroke-width: 1.25;
+  }
+  .d-head {
+    fill: var(--ink-muted);
+  }
+  .d-text {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    fill: var(--ink);
+  }
+  .d-text-on {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 500;
+    fill: var(--bg);
+  }
+  .d-text-sm {
+    font-size: 13px;
+  }
+  .d-num {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    fill: var(--ink-muted);
+  }
+  .d-small {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    fill: var(--ink-muted);
+  }
+  @media (max-width: 900px) {
+    .diagram {
+      padding: 16px;
+    }
+  }
+</style>

@@ -1,15 +1,10 @@
 import type { APIRoute } from 'astro';
 import { routes } from '../i18n/ui';
-import { getChapters, getTwin, chapterUrl } from '../i18n/chapters';
 
 /** Sitemap con entrambe le lingue e le alternative hreflang (SITE-GUIDE.md, "SEO e condivisione"). */
 export const GET: APIRoute = async ({ site }) => {
   const abs = (path: string) => new URL(path, site).href;
   const pairs: { it: string; en: string }[] = Object.values(routes).map((r) => ({ ...r }));
-  for (const c of await getChapters('it')) {
-    const twin = await getTwin(c);
-    if (twin) pairs.push({ it: chapterUrl(c), en: chapterUrl(twin) });
-  }
   const urls = pairs.flatMap((p) =>
     (['it', 'en'] as const).map(
       (lang) => `  <url>

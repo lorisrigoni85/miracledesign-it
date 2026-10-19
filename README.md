@@ -38,8 +38,8 @@ Il sito è ospitato su GitHub Pages. A ogni push sul ramo `main`, `.github/workf
 | Cosa | File |
 | --- | --- |
 | Home | `src/content/home/it.yaml`, `en.yaml` |
-| Capitoli Telepass | `src/content/chapters/<lingua>/<indirizzo>.md` |
-| Pagina madre Telepass, Chi sono, Archivio, Privacy | `src/content/pages/<lingua>/*.md` |
+| Pagina Telepass (apertura, posizioni, quattro momenti, testi degli schemi) | `src/content/telepass/it.yaml`, `en.yaml` |
+| Chi sono, Archivio, Privacy | `src/content/pages/<lingua>/*.md` |
 | Elenco dell'archivio | `src/data/archive.ts` |
 | CV (pagina) | `src/content/cv/it.yaml`, `en.yaml`; PDF in `public/cv/` (senza telefono) |
 | Menu, pulsanti, etichette, indirizzi delle pagine | `src/i18n/ui.ts` |
@@ -52,5 +52,4 @@ I testi tra parentesi quadre sono segnaposto: si completano con dati veri.
 ## Da fare prima della pubblicazione
 
 - Immagini al posto dei riquadri segnaposto.
-- Versioni inglesi dei capitoli e della pagina Telepass, dopo l'approvazione dell'italiano.
 - Decisioni aperte: SITE-GUIDE.md, "Cosa resta da decidere o raccogliere".

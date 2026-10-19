@@ -1,0 +1,72 @@
+# Pagina Telepass in italiano: apertura, tre posizioni e i quattro momenti.
+# Ogni momento ha un indirizzo diretto: /lavori/telepass/#<id>
+
+meta:
+  title: Telepass, 2019 – oggi — Loris Rigoni | Miracle Design
+  description: "Telepass, 2019 – oggi: i prodotti web di Telepass in agenzia, in azienda e in consulenza. Quattro momenti, dalla prima mappa del sito al design al servizio del business."
+
+name: Telepass, 2019 – oggi
+title: Rendere più semplice il modo in cui ci muoviamo.
+lead: "Dal 2019 lavoro sui prodotti web di Telepass: prima in agenzia, poi in azienda, oggi in consulenza. Dalla prima mappa del sito alle scelte che oggi ne guidano la crescita: quattro momenti di un percorso ancora in corso."
+mockupAlt: Il sito telepass.com su computer e su telefono
+
+positions:
+  - period: 2019 – 2021
+    name: Wise Emotions
+    text: "In agenzia: il sistema nasce"
+  - period: 2021 – 2024
+    name: Telepass
+    text: "In azienda: il sistema cresce"
+  - period: 2024 – oggi
+    name: Dst
+    text: "In consulenza: le sfide di ogni giorno, dove il design incontra il business"
+
+navLabel: Momenti
+
+moments:
+  - id: mappare
+    year: "2019"
+    short: Mappare
+    where: Wise Emotions
+    title: Prima di disegnare, capire cosa c’è.
+    text:
+      - "Appena entrato in Wise Emotions, prima di disegnare qualsiasi cosa, ho mappato l’area pubblica di telepass.com: circa 40 componenti e 16 template, ognuno con il suo ruolo, la sua funzione e cosa andava sistemato."
+      - Quella mappa è diventata la base del design system costruito dopo.
+    principle: Formalizzare, per rendere condivisibile.
+    diagram: map
+  - id: ascoltare
+    year: 2022-23
+    short: Ascoltare
+    where: Telepass
+    title: Ascoltare prima di ridisegnare.
+    text:
+      - "Prima del redesign abbiamo ascoltato chi il sito lo vive ogni giorno: 8 persone dei team interni e 12 utenti, clienti e non, con interviste e test di usabilità."
+      - Un workshop con il team ha trasformato quello che avevamo sentito in priorità condivise.
+    principle: Ogni progetto successivo risponde a una di queste priorità.
+    diagram: research
+  - id: ridisegnare
+    year: "2024"
+    short: Ridisegnare
+    where: Telepass
+    title: Rinnovare senza ricominciare da zero.
+    text:
+      - Il redesign di telepass.com è partito dal design system già in uso, perché sul sito lavorano più team ogni giorno.
+      - "Un solo carattere tipografico, i colori del brand e una libreria più snella: sei tipi di card diventati tre."
+    principle: Meno componenti, più flessibili.
+    diagram: cards
+  - id: conversione
+    year: "2026"
+    short: Conversione
+    where: Dst per Telepass
+    title: Mettere il design al servizio del business.
+    text:
+      - "Con Dst il lavoro si sposta sulla conversione: ogni pagina deve accompagnare chi la visita al passo successivo."
+      - La pagina offerta riconosce chi arriva e chi è già cliente, e cambia racconto. Il sito porta verso l’app nei momenti giusti, con un’azione chiara che non perde il contesto, sul computer come sul telefono.
+    principle: Un’azione, non una scelta.
+    diagram: business
+
+diagrams:
+  map: { components: "~40 componenti", templates: "16 template", alt: "Circa 40 componenti raccolti in 16 template" }
+  research: { steps: [Dati, Stakeholder, Utenti, Workshop, Priorità], alt: "Percorso della ricerca: dati, 8 stakeholder, 12 utenti, workshop, priorità" }
+  cards: { before: "6 card", after: "3 card flessibili", alt: "Sei tipi di card diventati tre" }
+  business: { page: La pagina, ask: Chi sei?, newcomer: "Chi arriva: fiducia", customer: "Chi c’è già: servizi", activate: attiva, app: app, alt: "La pagina riconosce chi la visita: chi arriva va verso l’attivazione, chi è già cliente verso l’app" }
