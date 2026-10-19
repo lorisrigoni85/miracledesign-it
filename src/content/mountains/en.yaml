@@ -42,6 +42,7 @@ photos:
   - { file: scialpinismo, alt: "Climbing a snowy gully with skis on the backpack" }
   - { file: ghiacciaio, alt: "With mountaineering gear, in front of a large serac" }
   - { file: aragats, alt: "On the summit of Aragats, Armenia, holding the Armenian flag" }
+  - { file: capra, alt: "On a summit with a curious goat, under the metal cross", position: "84% 50%" }
 
 gallery: { open: Open photo, close: Close, prev: Previous photo, next: Next photo }
 

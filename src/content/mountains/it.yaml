@@ -42,6 +42,7 @@ photos:
   - { file: scialpinismo, alt: "In salita con gli sci sullo zaino, in un canale innevato" }
   - { file: ghiacciaio, alt: "Con l’attrezzatura da alpinismo, davanti a un grande seracco" }
   - { file: aragats, alt: "In cima all’Aragats, in Armenia, con la bandiera armena" }
+  - { file: capra, alt: "In vetta con una capra curiosa, sotto la croce di metallo", position: "84% 50%" }
 
 gallery: { open: Apri la foto, close: Chiudi, prev: Foto precedente, next: Foto successiva }
 
