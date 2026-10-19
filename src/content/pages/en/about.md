@@ -11,11 +11,13 @@ I think in systems and I know what it takes to build what I design. That is why 
 
 ## How I work
 
-For me, design is a team effort. At the start I try to understand where we stand: I look at the data, listen to people and lay out what is already there. Then I bring my colleagues in, and that is often where the best ideas come from, thinking things through together over a rough draft.
+For me, everything in product design is a team effort. The early stages of the process are more private and reflective: you try to understand what you have to work with, such as data, possible interviews with people and earlier tests, and also what you don't have at that moment.
 
-With developers I like to keep a direct line, from the first idea to the release. Having written code for many years, I understand their problems, and together we find the simplest way forward. The same goes for the people in business, content and marketing: we talk things over, sometimes we see things differently, but in the end we reach a choice everyone understands.
+Then comes the exchange with colleagues, and that is often where the best ideas are born, thinking things through together over a draft and a beer. With developers I like to keep a direct line, from the first idea to the release. Having written code for many years, I can see where the tricky parts might be, and how to make them simple.
 
-When a project goes live, I like to think it belongs a little to everyone.
+The same goes for the other stakeholders in the company, managers, product owners and everyone in marketing: we talk things over, sometimes we see them differently, but in the end we reach a choice everyone understands.
+
+When a project or a new feature finally sees the light, I like to think it belongs a little to everyone.
 
 ## Continuous learning
 

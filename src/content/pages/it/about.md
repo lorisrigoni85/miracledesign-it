@@ -13,11 +13,13 @@ Arte, scienza e tecnologia: tre mondi che oggi convivono in ogni progetto che se
 
 ## Come lavoro
 
-Per me il design è un lavoro di squadra. All'inizio cerco di capire bene da dove partiamo: guardo i dati, ascolto le persone, metto in fila quello che c'è. Poi coinvolgo i colleghi, e spesso le idee migliori nascono proprio lì, ragionando insieme davanti a una bozza.
+Per me tutto ciò che è design di prodotto è lavoro di squadra. Le prime fasi del processo sono più intime e riflessive: si cerca di capire cosa si ha a disposizione, cioè dati, possibili interviste alle persone, test precedenti, e anche di cosa non disponiamo in quel momento.
 
-Con gli sviluppatori mi piace avere un rapporto diretto, dalla prima idea fino al rilascio. Avendo scritto codice per tanti anni capisco i loro problemi, e insieme troviamo la strada più semplice. Lo stesso vale con chi si occupa di business, contenuti e marketing: ci confrontiamo, a volte la vediamo in modo diverso, ma alla fine arriviamo a una scelta che tutti capiscono.
+Interviene poi il confronto con i colleghi, e spesso le idee migliori nascono proprio lì, ragionando insieme davanti a una bozza e una birra. Con gli sviluppatori mi piace avere un rapporto diretto, dalla prima idea fino al rilascio. Avendo scritto codice per tanti anni capisco quali possono essere le criticità, e come renderle semplici.
 
-Quando un progetto esce, mi piace pensare che sia un po' di tutti.
+Vale lo stesso con gli altri stakeholder in azienda, manager, product owner e tutte le figure del marketing: ci confrontiamo, a volte la vediamo in modo diverso, ma alla fine arriviamo a una scelta che tutti capiscono.
+
+Quando un progetto o una nuova feature vedono finalmente la luce, mi piace pensare che siano un po' di tutti.
 
 ## Formazione continua
 
