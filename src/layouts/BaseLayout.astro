@@ -71,5 +71,41 @@ const jsonLd = person
     </main>
     <Footer lang={lang} />
     <CookieBanner lang={lang} />
+    <script is:inline>
+      // Comparsa allo scroll: i blocchi sotto la piega entrano con una dissolvenza e una leggera salita.
+      // Quelli già visibili all'apertura non si toccano; senza JavaScript o con "riduci movimento" tutto resta visibile.
+      (() => {
+        if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const selector = [
+          'main section:not(.hero):not([data-story])',
+          'main .moment > *',
+          'main .page-body > *',
+          'main .archive tbody tr',
+          'main .next',
+        ].join(',');
+        const all = [...document.querySelectorAll(selector)];
+        const targets = all.filter((el) => !all.some((other) => other !== el && other.contains(el)));
+        const fold = window.innerHeight;
+        const io = new IntersectionObserver(
+          (entries) => {
+            let n = 0;
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              e.target.style.transitionDelay = `${Math.min(n++, 4) * 80}ms`;
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px' },
+        );
+        for (const el of targets) {
+          if (el.getBoundingClientRect().top < fold) continue;
+          el.setAttribute('data-reveal', '');
+          io.observe(el);
+        }
+        // In stampa tutto deve essere visibile
+        addEventListener('beforeprint', () => targets.forEach((el) => el.classList.add('is-in')));
+      })();
+    </script>
   </body>
 </html>
