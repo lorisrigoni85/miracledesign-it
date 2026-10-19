@@ -13,7 +13,9 @@ summary:
   - { term: Scala, value: circa 40 componenti, 16 template }
 ---
 
-<div class="placeholder placeholder--wide" role="img" aria-label="Immagine: il sito telepass.com del 2019, il prima">[Immagine: il sito telepass.com del 2019, il "prima"]</div>
+![La home dell'area Privati di telepass.com a luglio 2019: titoli in Dosis, offerta estiva "Fino a 2 anni gratis", pulsanti Nuovo cliente e Già cliente](../../../assets/foto/telepass-2019.png)
+
+*telepass.com, area Privati, luglio 2019: il sito prima del lavoro. Fonte: Internet Archive.*
 
 ## Il problema
 

@@ -302,6 +302,26 @@ a:hover {
 .prose .placeholder {
   margin-block: 40px;
 }
+.prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-media);
+}
+.prose > p:first-child > img {
+  margin-top: 0;
+}
+/* Didascalia: il paragrafo in corsivo subito sotto un'immagine */
+.prose p:has(> img) + p > em:only-child {
+  display: block;
+  margin-top: -8px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  font-style: normal;
+  color: var(--ink-muted);
+}
 @media (max-width: 600px) {
   /* Le tabelle larghe scorrono nel loro riquadro, mai la pagina */
   .prose table {
