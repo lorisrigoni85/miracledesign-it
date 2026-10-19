@@ -23,13 +23,13 @@ activities:
 peaksLabel: Some summits
 peaksHead: { peak: Summit, height: Height, where: Where }
 peaks:
-  - { name: Kala Patthar, height: "5,643 m", where: "Nepal, Himalaya · Everest base camp trek" }
-  - { name: Punta Gnifetti, height: "4,554 m", where: Monte Rosa }
-  - { name: Aragats, height: "4,090 m", where: "Armenia, Caucasus · north and south summits" }
-  - { name: Gran Paradiso, height: "4,061 m", where: "Normal route, on skis too" }
-  - { name: Piz Bernina, height: "4,049 m", where: Italian normal route }
-  - { name: Ortler, height: "3,905 m", where: Normal route }
-  - { name: Gran Zebrù, height: "3,851 m", where: Normal route }
+  - { name: Kala Patthar, height: "5,643 m", where: "Nepal, Himalayas" }
+  - { name: Punta Gnifetti, height: "4,554 m", where: "Italy and Switzerland, Pennine Alps · Monte Rosa" }
+  - { name: Aragats, height: "4,090 m", where: "Armenia, Caucasus" }
+  - { name: Gran Paradiso, height: "4,061 m", where: "Italy, Graian Alps" }
+  - { name: Piz Bernina, height: "4,049 m", where: "Switzerland, Rhaetian Alps · Bernina Range" }
+  - { name: Ortler, height: "3,905 m", where: "Italy, Rhaetian Alps · Ortler Alps" }
+  - { name: Gran Zebrù, height: "3,851 m", where: "Italy, Rhaetian Alps · Ortler Alps" }
 
 photosLabel: Photos
 photos:
