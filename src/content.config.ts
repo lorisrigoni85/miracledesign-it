@@ -145,7 +145,7 @@ const mountains = defineCollection({
     activities: z.array(z.object({ name: z.string(), icon: z.enum(['ski', 'axe', 'couloir', 'trek']), text: z.string() })),
     peaksLabel: z.string(),
     peaksHead: z.object({ peak: z.string(), height: z.string(), where: z.string() }),
-    peaks: z.array(z.object({ name: z.string(), height: z.string(), where: z.string() })),
+    peaks: z.array(z.object({ name: z.string(), height: z.string(), where: z.string(), country: z.array(z.enum(['IT', 'CH', 'NP', 'AM'])) })),
     photosLabel: z.string(),
     photos: z.array(z.object({ file: z.string(), alt: z.string(), position: z.string().optional() })),
     gallery: z.object({ open: z.string(), close: z.string(), prev: z.string(), next: z.string() }),

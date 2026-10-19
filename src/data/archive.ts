@@ -1,11 +1,13 @@
 /** Archivio 2020 – 2013 (SITE-GUIDE.md, "Archivio"). `preview`: le sei voci mostrate in Home. `year` può essere un periodo se l'anno esatto non è noto. */
 
 /** Paese del cliente: 'IT' Italia, 'CH' Svizzera. Assente = da confermare. */
-export type Country = 'IT' | 'CH';
+export type Country = 'IT' | 'CH' | 'NP' | 'AM';
 
 export const countryName: Record<Country, { it: string; en: string }> = {
   IT: { it: 'Italia', en: 'Italy' },
   CH: { it: 'Svizzera', en: 'Switzerland' },
+  NP: { it: 'Nepal', en: 'Nepal' },
+  AM: { it: 'Armenia', en: 'Armenia' },
 };
 
 export const archive: { client: string; year: number | string; country?: Country; type: { it: string; en: string }; preview?: boolean }[] = [

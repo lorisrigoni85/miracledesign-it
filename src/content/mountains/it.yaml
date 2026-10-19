@@ -27,13 +27,13 @@ activities:
 peaksLabel: Alcune cime
 peaksHead: { peak: Cima, height: Quota, where: Dove }
 peaks:
-  - { name: Kala Patthar, height: 5.643 m, where: "Nepal, Himalaya" }
-  - { name: Punta Gnifetti, height: 4.554 m, where: "Italia e Svizzera, Alpi Pennine · Monte Rosa" }
-  - { name: Aragats, height: 4.090 m, where: "Armenia, Caucaso" }
-  - { name: Gran Paradiso, height: 4.061 m, where: "Italia, Alpi Graie" }
-  - { name: Pizzo Bernina, height: 4.049 m, where: "Svizzera, Alpi Retiche · Gruppo del Bernina" }
-  - { name: Ortles, height: 3.905 m, where: "Italia, Alpi Retiche · Ortles-Cevedale" }
-  - { name: Gran Zebrù, height: 3.851 m, where: "Italia, Alpi Retiche · Ortles-Cevedale" }
+  - { name: Kala Patthar, height: 5.643 m, where: "Nepal, Himalaya", country: [NP] }
+  - { name: Punta Gnifetti, height: 4.554 m, where: "Italia e Svizzera, Alpi Pennine · Monte Rosa", country: [IT, CH] }
+  - { name: Aragats, height: 4.090 m, where: "Armenia, Caucaso", country: [AM] }
+  - { name: Gran Paradiso, height: 4.061 m, where: "Italia, Alpi Graie", country: [IT] }
+  - { name: Pizzo Bernina, height: 4.049 m, where: "Svizzera, Alpi Retiche · Gruppo del Bernina", country: [CH] }
+  - { name: Ortles, height: 3.905 m, where: "Italia, Alpi Retiche · Ortles-Cevedale", country: [IT] }
+  - { name: Gran Zebrù, height: 3.851 m, where: "Italia, Alpi Retiche · Ortles-Cevedale", country: [IT] }
 
 photosLabel: Foto
 photos:

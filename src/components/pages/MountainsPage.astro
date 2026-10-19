@@ -5,6 +5,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import NextStep from '../NextStep.astro';
 import PhotoGallery from '../PhotoGallery.astro';
 import ActivityIcon from '../ActivityIcon.astro';
+import Flag from '../Flag.astro';
+import { countryName } from '../../data/archive';
 import { ui, routes, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -50,7 +52,12 @@ const page = (await getEntry('mountains', lang))!.data;
         <tbody>
           {page.peaks.map((p) => (
             <tr>
-              <th scope="row">{p.name}</th>
+              <th scope="row">
+                <span class="peak">
+                  <span class="peak__flags">{p.country.map((c) => <Flag country={c} label={countryName[c][lang]} />)}</span>
+                  {p.name}
+                </span>
+              </th>
               <td class="mono">{p.height}</td>
               <td>{p.where}</td>
             </tr>
@@ -119,6 +126,20 @@ const page = (await getEntry('mountains', lang))!.data;
   }
   .peaks tbody th {
     font-weight: 500;
+  }
+  .peak {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* Larghezza fissa per due bandierine sovrapposte: i nomi restano allineati */
+  .peak__flags {
+    display: inline-flex;
+    flex: none;
+    width: 28px;
+  }
+  .peak__flags > :global(* + *) {
+    margin-left: -4px;
   }
   .peaks td:last-child {
     color: var(--ink-body);
