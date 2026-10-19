@@ -50,8 +50,10 @@ moments:
     where: Telepass
     title: Rinnovare senza ricominciare da zero.
     text:
-      - Il redesign di telepass.com è partito dal design system già in uso, perché sul sito lavorano più team ogni giorno.
-      - "Un solo carattere tipografico, i colori del brand e una libreria più snella: sei tipi di card diventati tre."
+      - "Il redesign di telepass.com è stato il cuore del mio lavoro in Telepass, e da lì è nato Resin, il design system del sito."
+      - "Siamo partiti dalle fondamenta: una library di foundation con i design token, i colori primitivi, la tipografia, le icone e le illustrazioni. Sopra, due UI Kit distinti, uno per il web e uno per l’app, che condividono le stesse regole ma rispondono a contesti diversi."
+      - "Con queste basi abbiamo potuto semplificare: un solo carattere tipografico, i colori del brand usati in modo coerente e una libreria più snella. Le card, per esempio, erano di sei tipi diversi, nati negli anni per esigenze diverse: sono diventate tre, più flessibili, capaci di coprire gli stessi casi."
+      - "Poi la parte più delicata: sostituire i componenti uno alla volta, con il sito sempre online. Ogni rilascio andava coordinato con il data entry dei contenuti e con i test QA, perché sul sito lavorano più team ogni giorno e nessuno doveva fermarsi."
     principle: Meno componenti, più flessibili.
     diagram: cards
   - id: conversione
