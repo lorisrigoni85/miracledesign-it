@@ -28,14 +28,16 @@ peaks:
   - { name: Aragats, height: "4,090 m", where: "Armenia, Caucasus · north and south summits" }
   - { name: Gran Paradiso, height: "4,061 m", where: "Normal route, on skis too" }
   - { name: Piz Bernina, height: "4,049 m", where: Italian normal route }
+  - { name: Ortler, height: "3,905 m", where: Normal route }
+  - { name: Gran Zebrù, height: "3,851 m", where: Normal route }
 
 photosLabel: Photos
 photos:
   - { file: cresta-cordata, alt: "Roped up on a snow ridge above a sea of clouds" }
-  - { file: vetta-selfie, alt: "Loris on a summit, with helmet and ice axe, in front of a snowy ridge" }
-  - { file: scialpinismo, alt: "Loris climbing a snowy gully with skis on the backpack" }
-  - { file: ghiacciaio, alt: "Loris with mountaineering gear in front of a large serac" }
-  - { file: aragats, alt: "Loris on the summit of Aragats, Armenia, holding the Armenian flag" }
+  - { file: vetta-selfie, alt: "On a summit, with helmet and ice axe, in front of a snowy ridge" }
+  - { file: scialpinismo, alt: "Climbing a snowy gully with skis on the backpack" }
+  - { file: ghiacciaio, alt: "With mountaineering gear, in front of a large serac" }
+  - { file: aragats, alt: "On the summit of Aragats, Armenia, holding the Armenian flag" }
 
 gallery: { open: Open photo, close: Close, prev: Previous photo, next: Next photo }
 
