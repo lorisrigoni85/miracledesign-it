@@ -134,7 +134,7 @@ const mountains = defineCollection({
     title: z.string(),
     lead: z.string(),
     activitiesLabel: z.string(),
-    activities: z.array(z.object({ name: z.string(), text: z.string() })),
+    activities: z.array(z.object({ name: z.string(), icon: z.enum(['ski', 'axe', 'couloir', 'trek']), text: z.string() })),
     peaksLabel: z.string(),
     peaksHead: z.object({ peak: z.string(), height: z.string(), where: z.string() }),
     peaks: z.array(z.object({ name: z.string(), height: z.string(), where: z.string() })),

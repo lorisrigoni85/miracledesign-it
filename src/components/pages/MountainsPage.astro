@@ -4,6 +4,7 @@ import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NextStep from '../NextStep.astro';
 import PhotoGallery from '../PhotoGallery.astro';
+import ActivityIcon from '../ActivityIcon.astro';
 import { ui, routes, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -31,6 +32,7 @@ const page = (await getEntry('mountains', lang))!.data;
       <ul class="activities">
         {page.activities.map((a) => (
           <li>
+            <ActivityIcon icon={a.icon} />
             <h3>{a.name}</h3>
             <p>{a.text}</p>
           </li>
@@ -82,8 +84,11 @@ const page = (await getEntry('mountains', lang))!.data;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding-top: 16px;
+    padding-top: 20px;
     border-top: 1px solid var(--rule);
+  }
+  .activities li :global(.activity-icon) {
+    margin-bottom: 8px;
   }
   .activities h3 {
     font-size: var(--fs-row);

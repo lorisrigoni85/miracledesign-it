@@ -12,12 +12,16 @@ lead: "Ski mountaineering, classic alpinism, winter gullies and high-altitude tr
 activitiesLabel: What I do
 activities:
   - name: Ski mountaineering
+    icon: ski
     text: From Monte Rosa to the Bernina, and the Tian Shan in Kyrgyzstan.
   - name: Classic alpinism
+    icon: axe
     text: Normal routes on the 4,000s and the big peaks of Ortler and Bernina.
   - name: Winter gullies
+    icon: couloir
     text: Snow and mixed climbing in the Grigne, Presolana and Orobie.
   - name: High-altitude trekking
+    icon: trek
     text: Everest base camp, the Caucasus, the Tour du Mont Blanc.
 
 peaksLabel: Some summits

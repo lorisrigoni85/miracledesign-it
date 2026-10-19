@@ -12,12 +12,16 @@ lead: "Scialpinismo, alpinismo classico, canali invernali e trekking in alta quo
 activitiesLabel: Cosa faccio
 activities:
   - name: Scialpinismo
+    icon: ski
     text: Dal Monte Rosa al Bernina, fino al Tien Shan in Kirghizistan.
   - name: Alpinismo classico
+    icon: axe
     text: Vie normali sui 4.000 e sulle grandi cime di Ortles e Bernina.
   - name: Canali invernali
+    icon: couloir
     text: Neve e misto tra Grigne, Presolana e Orobie.
   - name: Trekking in quota
+    icon: trek
     text: Campo base dell’Everest, Caucaso, Tour du Mont Blanc.
 
 peaksLabel: Alcune cime
