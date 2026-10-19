@@ -35,13 +35,13 @@ moments:
     principle: Formalizzare, per rendere condivisibile.
     diagram: map
   - id: ascoltare
-    year: 2022-23
+    year: "2022 – 23"
     short: Ascoltare
     where: Telepass
     title: Ascoltare prima di ridisegnare.
     text:
-      - "Prima del redesign abbiamo ascoltato chi il sito lo vive ogni giorno: 8 persone dei team interni e 12 utenti, clienti e non, con interviste e test di usabilità."
-      - Un workshop con il team ha trasformato quello che avevamo sentito in priorità condivise.
+      - "Prima di ridisegnare qualsiasi cosa abbiamo ascoltato chi il sito lo vive ogni giorno: le figure di riferimento del business e i manager dei team interni, senza tralasciare 12 utenti, clienti e non, tra interviste e test di usabilità."
+      - "I workshop, poi, si sono confermati lo strumento perfetto per mettere allo stesso tavolo business e team di prodotto, e trasformare la nostra analisi in priorità condivise."
     principle: Ogni progetto successivo risponde a una di queste priorità.
     diagram: research
   - id: ridisegnare
@@ -67,6 +67,6 @@ moments:
 
 diagrams:
   map: { components: "~40 componenti", templates: "16 template", alt: "Circa 40 componenti raccolti in 16 template" }
-  research: { steps: [Dati, Stakeholder, Utenti, Workshop, Priorità], alt: "Percorso della ricerca: dati, 8 stakeholder, 12 utenti, workshop, priorità" }
+  research: { steps: [Dati, Stakeholder, Utenti, Workshop, Priorità], alt: "Percorso della ricerca: dati, stakeholder, 12 utenti, workshop, priorità" }
   cards: { before: "6 card", after: "3 card flessibili", alt: "Sei tipi di card diventati tre" }
   business: { page: La pagina, ask: Chi sei?, newcomer: "Chi arriva: fiducia", customer: "Chi c’è già: servizi", activate: attiva, app: app, alt: "La pagina riconosce chi la visita: chi arriva va verso l’attivazione, chi è già cliente verso l’app" }
