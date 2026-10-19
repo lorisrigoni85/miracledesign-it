@@ -16,6 +16,9 @@ const { kind, labels } = Astro.props;
 const accentComponents = new Set([3, 12, 17, 26, 35]);
 const accentTemplate = 5;
 
+// 2026: "Prospect: fiducia e scoperta" → titolo in grassetto e descrizione sotto
+const split = (label: string) => label.split(/:\s*/);
+
 // 2024: le sei vecchie card della mappatura 2019, come wireframe (viewBox 60 × 80)
 const oldCards = [
   // Pacchetto: titolo, elenco puntato, barra di attivazione in fondo
@@ -204,12 +207,12 @@ const newCards = [
       </svg>
       <div class="branches">
         <div class="branch">
-          <div class="chip">{labels.business.newcomer}</div>
+          <div class="chip chip--two">{split(labels.business.newcomer).map((part, k) => (k === 0 ? <strong>{part}</strong> : <span>{part}</span>))}</div>
           <span class="link-line" aria-hidden="true"></span>
           <span class="pill">{labels.business.activate}</span>
         </div>
         <div class="branch">
-          <div class="chip">{labels.business.customer}</div>
+          <div class="chip chip--two">{split(labels.business.customer).map((part, k) => (k === 0 ? <strong>{part}</strong> : <span>{part}</span>))}</div>
           <span class="link-line" aria-hidden="true"></span>
           <span class="pill">{labels.business.app}</span>
         </div>
@@ -534,14 +537,29 @@ const newCards = [
   .branch .link-line {
     flex: 0 0 20px;
   }
+  .chip--two {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .chip--two strong {
+    font-weight: 600;
+  }
+  .chip--two span {
+    display: block;
+    font-size: 14px;
+    color: var(--ink-body);
+  }
+  .chip--two span::first-letter {
+    text-transform: uppercase;
+  }
   .pill {
     flex: none;
-    width: 76px;
-    padding: 6px 14px;
+    padding: 7px 14px;
     border: 1.25px solid var(--ink);
     border-radius: 999px;
-    font-family: var(--font-mono);
     font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
     text-align: center;
     color: var(--ink);
   }
