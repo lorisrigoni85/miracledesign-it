@@ -15,7 +15,7 @@ const trees = [
 ];
 const rays = Array.from({ length: 8 }, (_, i) => i * 45);
 ---
-<svg class="island" viewBox="0 0 520 470" aria-hidden="true">
+<svg class="island" viewBox="0 0 520 490" aria-hidden="true">
   <defs>
     <linearGradient id="mi-grass" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#d7ecc4" />
@@ -62,11 +62,11 @@ const rays = Array.from({ length: 8 }, (_, i) => i * 45);
     <filter id="mi-soft" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#2f3a36" flood-opacity="0.14" />
     </filter>
-    <filter id="mi-blur"><feGaussianBlur stdDeviation="10" /></filter>
+    <filter id="mi-blur" x="-30%" y="-150%" width="160%" height="400%"><feGaussianBlur stdDeviation="10" /></filter>
   </defs>
 
   <!-- ombra sotto l'isola -->
-  <ellipse cx="260" cy="440" rx="170" ry="16" fill="#2f3a36" opacity="0.12" filter="url(#mi-blur)" />
+  <ellipse cx="260" cy="438" rx="170" ry="16" fill="#2f3a36" opacity="0.12" filter="url(#mi-blur)" />
 
   <!-- isola: terra, bordo d'erba, prato -->
   <path d="M40 360 A220 54 0 0 0 480 360 L480 390 A220 54 0 0 1 40 390 Z" fill="url(#mi-earth)" />
@@ -85,16 +85,16 @@ const rays = Array.from({ length: 8 }, (_, i) => i * 45);
   <g filter="url(#mi-soft)">
     <!-- sinistra -->
     <path d="M72 352 L140 200 Q150 182 160 200 L232 352 Z" fill="url(#mi-mount)" />
-    <path d="M150 186 L232 352 L152 352 Z" fill="url(#mi-mount-shade)" opacity="0.55" />
+    <path d="M150 196 L232 352 L152 352 Z" fill="url(#mi-mount-shade)" opacity="0.55" />
     <path d="M124 236 L140 200 Q150 182 160 200 L177 236 Q170 230 163 238 Q156 246 150 238 Q143 229 136 240 Q130 246 124 236 Z" fill="url(#mi-snow)" />
     <!-- destra -->
     <path d="M288 354 L360 184 Q370 165 380 184 L456 354 Z" fill="url(#mi-mount)" />
-    <path d="M370 170 L456 354 L372 354 Z" fill="url(#mi-mount-shade)" opacity="0.55" />
+    <path d="M370 180 L456 354 L372 354 Z" fill="url(#mi-mount-shade)" opacity="0.55" />
     <path d="M343 224 L360 184 Q370 165 380 184 L398 224 Q391 217 384 226 Q377 234 370 226 Q363 217 356 228 Q349 234 343 224 Z" fill="url(#mi-snow)" />
     <!-- principale -->
     <path d="M152 358 L248 130 Q260 106 272 130 L372 358 Z" fill="url(#mi-mount)" />
-    <path d="M260 112 L372 358 L262 358 Z" fill="url(#mi-mount-shade)" opacity="0.55" />
-    <path d="M226 210 L248 130 Q260 106 272 130 L294 210 Q286 200 278 212 Q270 224 262 212 Q254 200 246 214 Q238 224 226 210 Z" fill="url(#mi-snow)" />
+    <path d="M260 124 L372 358 L262 358 Z" fill="url(#mi-mount-shade)" opacity="0.55" />
+    <path d="M229 176 L248 130 Q260 106 272 130 L292 176 Q284 168 276 178 Q268 188 260 178 Q252 168 244 179 Q236 186 229 176 Z" fill="url(#mi-snow)" />
   </g>
 
   <!-- sentiero sulla montagna principale: sale e si interrompe alla frattura -->
