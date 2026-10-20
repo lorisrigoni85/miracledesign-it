@@ -145,10 +145,11 @@ const preview = archive.filter((item) => item.preview);
   }
   .hero__photo {
     position: absolute;
-    top: 0;
+    /* Foto alzata di 25px: è anche 25px più alta, così il fondo resta coperto */
+    top: -25px;
     right: 0;
     width: 72%;
-    height: 100%;
+    height: calc(100% + 25px);
     object-fit: cover;
     /* Figura spostata di 100px verso il testo */
     object-position: calc(70% - 100px) 30%;
@@ -261,6 +262,7 @@ const preview = archive.filter((item) => item.preview);
       background: linear-gradient(180deg, rgba(21, 24, 26, 0) 25%, rgba(21, 24, 26, 0.85) 58%, var(--ink) 75%);
     }
     .hero__photo {
+      top: 0;
       width: 100%;
       height: 70%;
       object-position: 80% 20%;
