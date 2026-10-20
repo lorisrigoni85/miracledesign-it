@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
-import heroPhoto from '../../assets/foto/hero-montagna.jpg';
+import heroPhoto from '../../assets/foto/hero-ritratto.jpg';
 import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import telepassMockup from '../../assets/foto/telepass-mockup.png';
@@ -141,7 +141,7 @@ const preview = archive.filter((item) => item.preview);
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(21, 24, 26, 0.6) 0%, rgba(21, 24, 26, 0.3) 40%, rgba(21, 24, 26, 0) 60%);
+    background: linear-gradient(90deg, rgba(21, 24, 26, 0.45) 0%, rgba(21, 24, 26, 0.18) 36%, rgba(21, 24, 26, 0) 52%);
   }
   .hero__photo {
     position: absolute;
@@ -150,13 +150,16 @@ const preview = archive.filter((item) => item.preview);
     width: 72%;
     height: 100%;
     object-fit: cover;
-    object-position: 70% 30%;
+    /* Figura spostata di 100px verso il testo */
+    object-position: calc(70% - 100px) 30%;
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
     mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
   }
   .hero__content {
     position: relative;
     z-index: 1;
+    /* Ombra leggera: il testo resta leggibile anche dove la velatura è più tenue */
+    text-shadow: 0 1px 14px rgba(21, 24, 26, 0.35);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -260,7 +263,7 @@ const preview = archive.filter((item) => item.preview);
     .hero__photo {
       width: 100%;
       height: 70%;
-      object-position: 62% 20%;
+      object-position: 80% 20%;
       -webkit-mask-image: none;
       mask-image: none;
     }
