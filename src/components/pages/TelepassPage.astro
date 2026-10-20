@@ -6,6 +6,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import NextStep from '../NextStep.astro';
 import TelepassDiagram from '../TelepassDiagram.astro';
 import DeviceMockup from '../DeviceMockup.astro';
+import { emphasis } from '../../utils/emphasis';
 import { ui, routes, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -61,7 +62,7 @@ const page = (await getEntry('telepass', lang))!.data;
           <p class="label">{String(i + 1).padStart(2, '0')} · {m.where}</p>
           <h2 id={`${m.id}-title`} class="moment__title">{m.title}</h2>
           <div class="moment__text">
-            {m.text.map((p) => <p>{p}</p>)}
+            {m.text.map((p) => <p set:html={emphasis(p)} />)}
           </div>
           <blockquote class="moment__principle"><p>{m.principle}</p></blockquote>
           <TelepassDiagram kind={m.diagram} labels={page.diagrams} />

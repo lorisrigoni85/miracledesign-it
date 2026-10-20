@@ -5,6 +5,7 @@ import heroPhoto from '../../assets/foto/hero-ritratto.jpg';
 import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import telepassMockup from '../../assets/foto/telepass-mockup.png';
+import { emphasis } from '../../utils/emphasis';
 import { ui, routes, type Lang } from '../../i18n/ui';
 import { archive } from '../../data/archive';
 
@@ -54,7 +55,7 @@ const preview = archive.filter((item) => item.preview);
       <div class="case__text">
         <p class="mono">{home.work.telepass.eyebrow}</p>
         <h3 class="case__title">{home.work.telepass.title}</h3>
-        <p class="case__body">{home.work.telepass.text}</p>
+        <p class="case__body" set:html={emphasis(home.work.telepass.text)} />
         <ul class="case__stats">
           {home.work.telepass.stats.map((stat) => <li>{stat}</li>)}
         </ul>
@@ -86,7 +87,7 @@ const preview = archive.filter((item) => item.preview);
         <li class="path__row">
           <span class="mono path__period">{row.period}</span>
           <span class="path__company">{row.company}</span>
-          <span class="path__text">{row.text}</span>
+          <span class="path__text" set:html={emphasis(row.text)} />
         </li>
       ))}
     </ol>
@@ -101,7 +102,7 @@ const preview = archive.filter((item) => item.preview);
       <div class="about__text">
         <p class="label">{home.about.label}</p>
         <h2 id="about-title" class="about__title">{home.about.title}</h2>
-        {home.about.text.map((p) => <p class="about__p">{p}</p>)}
+        {home.about.text.map((p) => <p class="about__p" set:html={emphasis(p)} />)}
         <div class="actions">
           <a class="btn btn--solid" href={routes.about[lang]}>{home.about.button} →</a>
         </div>

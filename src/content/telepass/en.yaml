@@ -30,7 +30,7 @@ moments:
     where: Wise Emotions
     title: Continuous discovery, piece by piece.
     text:
-      - "At Wise Emotions I worked on Telepass from the very start, beginning with a complete map of its portals: around 40 components and 16 templates, each with its purpose, its strengths and the limitations that could be improved."
+      - "At Wise Emotions I worked on Telepass from the very start, beginning with a complete map of its portals: **around 40 components and 16 templates**, each with its purpose, its strengths and the limitations that could be improved."
       - That map became the foundation of the design system we would build in the years that followed.
     principle: Make it explicit, so it can be shared.
     diagram: map
@@ -40,8 +40,8 @@ moments:
     where: Telepass
     title: Listening before redesigning.
     text:
-      - "Before redesigning anything, we listened to the people who live with the site every day: key business figures and the managers of internal teams, without leaving out 12 users, customers and not, through interviews and usability tests."
-      - "The workshops then proved to be the perfect tool to bring business and product teams to the same table, and turn our analysis into shared priorities."
+      - "Before redesigning anything, we listened to the people who live with the site every day: key business figures and the managers of internal teams, without leaving out **12 users**, customers and not, through interviews and usability tests."
+      - "The workshops then proved to be the perfect tool to bring business and product teams to the same table, and turn our analysis into **shared priorities**."
     principle: Every project that followed answers one of these priorities.
     diagram: research
   - id: redesigning
@@ -50,10 +50,10 @@ moments:
     where: Telepass
     title: Renewing without starting over.
     text:
-      - "The telepass.com redesign was the heart of my work at Telepass, and it gave birth to Resin, a design system for all the brand’s digital products."
-      - "We started from the foundations: foundation libraries with design tokens, primitive colours, a single typeface, and icons and illustrations tied to the services on offer. On top of it, two separate UI Kits, one for the web and one for the app, sharing the same rules but answering different contexts."
-      - "With these foundations in place we could simplify: one typeface, the brand colours used consistently and a leaner library. The cards, for example, came in six different kinds, born over the years for different needs: they became three, more flexible, covering the same cases."
-      - "Then the most delicate part: replacing the components one at a time, with the site always online. Every release had to be coordinated with content data entry and QA testing, because several teams work on the site every day and no one could stop."
+      - "The telepass.com redesign was the heart of my work at Telepass, and it gave birth to **Resin**, a design system for all the brand’s digital products."
+      - "We started from the foundations: foundation libraries with design tokens, primitive colours, a single typeface, and icons and illustrations tied to the services on offer. On top of it, **two separate UI Kits**, one for the web and one for the app, sharing the same rules but answering different contexts."
+      - "With these foundations in place we could simplify: one typeface, the brand colours used consistently and a leaner library. The cards, for example, came in six different kinds, born over the years for different needs: **they became three**, more flexible, covering the same cases."
+      - "Then the most delicate part: replacing the components one at a time, **with the site always online**. Every release had to be coordinated with content data entry and QA testing, because several teams work on the site every day and no one could stop."
     principle: Fewer components, more flexible.
     diagram: cards
   - id: business
@@ -62,8 +62,8 @@ moments:
     where: Dst for Telepass
     title: Design at the service of the business.
     text:
-      - "With Dst the work shifts to conversion: every page has to lead its visitors to the next step."
-      - "An offer page, for example, recognises whether a visitor is new or already a customer, and tells each a different story. And the site leads to the app at the right moments, with a clear action, on desktop as on mobile."
+      - "With Dst the work shifts to **conversion**: every page has to lead its visitors to the next step."
+      - "An offer page, for example, recognises whether **a visitor is new or already a customer**, and tells each a different story. And the site leads to the app at the right moments, with a clear action, on desktop as on mobile."
     principle: One action, not a choice.
     diagram: business
 

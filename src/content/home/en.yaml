@@ -20,7 +20,7 @@ work:
   telepass:
     eyebrow: 01 — Telepass · 2019 – today
     title: The digital face of Telepass mobility.
-    text: From mapping the site in 2019 to the Resin design system, from research with users and stakeholders to work on conversion.
+    text: From mapping the site in 2019 to the **Resin design system**, from research with users and stakeholders to work on **conversion**.
     stats: [4 web portals, 7M customers, 49+ components]
     image: The telepass.com website on desktop and mobile
 
@@ -29,25 +29,25 @@ path:
   rows:
     - period: 2024 – today
       company: Dst – Creative Tech Company
-      text: Senior Product Designer. Digital strategy for Telepass and new clients.
+      text: "**Senior Product Designer.** Digital strategy for Telepass and new clients."
     - period: 2021 – 2024
       company: Telepass
-      text: Product Designer. Resin design system, 4 web portals, research and A/B testing.
+      text: "**Product Designer.** Resin design system, 4 web portals, research and A/B testing."
     - period: 2019 – 2021
       company: Wise Emotions
-      text: UX/UI Designer. Rebrand and new design system for Telepass.
+      text: "**UX/UI Designer.** Rebrand and new design system for Telepass."
     - period: 2017 – 2019
       company: SNDS Social and Search, Lugano
-      text: UI Designer & Frontend Developer. Websites, web apps and e-commerce; design team lead.
+      text: "**UI Designer & Frontend Developer.** Websites, web apps and e-commerce; design team lead."
     - period: 2013 – 2017
       company: Volo Srl and others
-      text: Web Designer & Frontend Developer.
+      text: "**Web Designer & Frontend Developer.**"
 
 about:
   label: About
   title: Designer, Alpinist, Traveller, Photographer, Casual Nerd, Coder, Wizard.
   text:
-    - I think in systems and I know what it takes to build what I design. That is why I am at ease between business, design and engineering.
+    - "**I think in systems** and I know what it takes to build what I design. That is why I am at ease between **business, design and engineering**."
     - "Outside work you will find me on my mountains, where I go ski mountaineering, climbing and high-altitude trekking."
   button: More about me
   image: Portrait of Loris, natural light

@@ -20,7 +20,7 @@ work:
   telepass:
     eyebrow: 01 — Telepass · 2019 – oggi
     title: Il volto digitale della mobilità Telepass.
-    text: Dalla mappatura del sito nel 2019 al design system Resin, dalla ricerca con utenti e stakeholder al lavoro sulla conversione.
+    text: Dalla mappatura del sito nel 2019 al **design system Resin**, dalla ricerca con utenti e stakeholder al lavoro sulla **conversione**.
     stats: [4 portali web, oltre 7 milioni di clienti, il Design System Resin]
     image: Il sito telepass.com su computer e su telefono
 
@@ -29,25 +29,25 @@ path:
   rows:
     - period: 2024 – oggi
       company: Dst – Creative Tech Company
-      text: Senior Product Designer. Strategia digitale per Telepass e nuovi clienti.
+      text: "**Senior Product Designer.** Strategia digitale per Telepass e nuovi clienti."
     - period: 2021 – 2024
       company: Telepass
-      text: Product Designer. Design system Resin, 4 portali web, ricerca e A/B test.
+      text: "**Product Designer.** Design system Resin, 4 portali web, ricerca e A/B test."
     - period: 2019 – 2021
       company: Wise Emotions
-      text: UX/UI Designer. Rebranding e nuovo design system per Telepass.
+      text: "**UX/UI Designer.** Rebranding e nuovo design system per Telepass."
     - period: 2017 – 2019
       company: SNDS Social and Search, Lugano
-      text: UI Designer & Frontend Developer. Siti, web app ed e-commerce; coordinamento del team design.
+      text: "**UI Designer & Frontend Developer.** Siti, web app ed e-commerce; coordinamento del team design."
     - period: 2013 – 2017
       company: Volo Srl e altri
-      text: Web Designer & Frontend Developer.
+      text: "**Web Designer & Frontend Developer.**"
 
 about:
   label: Chi sono
   title: Designer, Alpinist, Traveller, Photographer, Casual Nerd, Coder, Wizard.
   text:
-    - Ragiono per sistemi e so cosa serve per costruire ciò che disegno. Per questo mi trovo a mio agio tra business, design e sviluppo.
+    - "**Ragiono per sistemi** e so cosa serve per costruire ciò che disegno. Per questo mi trovo a mio agio tra **business, design e sviluppo**."
     - "Fuori dal lavoro mi trovi sulle mie montagne: pratico scialpinismo, alpinismo e trekking ad alta quota."
   button: Di più su di me
   image: Ritratto di Loris, luce naturale

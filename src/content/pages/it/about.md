@@ -5,19 +5,19 @@ description: "Chi è Loris Rigoni: Senior Product Designer a Como, un percorso d
 
 ## Il percorso
 
-Negli anni del liceo artistico ho scoperto l'infinito mondo di internet, quando il web muoveva i primi passi. All'università ho scelto gli studi scientifici e mi sono laureato in Ingegneria Civile al Politecnico di Milano, anche se l'ingegneria non è diventata la mia strada.
+Negli anni del liceo artistico ho scoperto l'infinito mondo di internet, quando il web muoveva i primi passi. All'università ho scelto gli studi scientifici e mi sono laureato in **Ingegneria Civile al Politecnico di Milano**, anche se l'ingegneria non è diventata la mia strada.
 
 Ho puntato tutto sulla grafica e sul web: prima imparando il codice, poi disegnando interfacce e template, infine curando l'intero processo di design di prodotti digitali.
 
-Arte, scienza e tecnologia: tre mondi che oggi convivono in ogni progetto che seguo.
+**Arte, scienza e tecnologia**: tre mondi che oggi convivono in ogni progetto che seguo.
 
 ## Come lavoro
 
-Per me tutto ciò che è design di prodotto è lavoro di squadra. Le prime fasi del processo sono più intime e riflessive: si cerca di capire cosa si ha a disposizione, cioè dati, possibili interviste alle persone, test precedenti, e anche di cosa non disponiamo in quel momento.
+Per me tutto ciò che è design di prodotto è **lavoro di squadra**. Le prime fasi del processo sono più intime e riflessive: si cerca di capire cosa si ha a disposizione, cioè dati, possibili interviste alle persone, test precedenti, e anche di cosa non disponiamo in quel momento.
 
-Interviene poi il confronto con i colleghi, e spesso le idee migliori nascono proprio lì, ragionando insieme davanti a una bozza e una birra. Con gli sviluppatori mi piace avere un rapporto diretto, dalla prima idea fino al rilascio. Avendo scritto codice per tanti anni capisco quali possono essere le criticità, e come renderle semplici.
+Interviene poi il confronto con i colleghi, e spesso le idee migliori nascono proprio lì, ragionando insieme davanti a una bozza e una birra. Con gli sviluppatori mi piace avere un **rapporto diretto**, dalla prima idea fino al rilascio. Avendo scritto codice per tanti anni capisco quali possono essere le criticità, e come renderle semplici.
 
-Vale lo stesso con gli altri stakeholder in azienda, manager, product owner e tutte le figure del marketing: ci confrontiamo, a volte la vediamo in modo diverso, ma alla fine arriviamo a una scelta che tutti capiscono.
+Vale lo stesso con gli altri stakeholder in azienda, manager, product owner e tutte le figure del marketing: ci confrontiamo, a volte la vediamo in modo diverso, ma alla fine arriviamo a **una scelta che tutti capiscono**.
 
 Quando un progetto o una nuova feature vedono finalmente la luce, mi piace pensare che siano un po' di tutti.
 

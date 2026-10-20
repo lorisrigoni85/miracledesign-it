@@ -448,3 +448,12 @@ a:hover {
   opacity: 1;
   transform: none;
 }
+
+/* Grassetto nei testi: semibold e colore pieno, per far emergere i concetti chiave */
+main p strong,
+main li strong,
+main td strong,
+.path__text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
