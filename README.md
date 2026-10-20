@@ -33,6 +33,8 @@ Genera il sito pubblicabile nella cartella `dist/`.
 
 Il sito è ospitato su GitHub Pages. A ogni push sul ramo `main`, `.github/workflows/deploy.yml` compila il sito e lo pubblica su https://miracledesign.it (dominio indicato in `public/CNAME`). Dominio e posta restano su Aruba.
 
+La procedura completa (GitHub, DNS su Aruba, certificato) e come fare le modifiche sono spiegate in `PUBBLICAZIONE.md`.
+
 ## Dove sono i testi
 
 | Cosa | File |
@@ -49,8 +51,3 @@ Il sito è ospitato su GitHub Pages. A ogni push sul ramo `main`, `.github/workf
 | Banner cookie e Google Analytics | `src/components/CookieBanner.astro` (ID in `src/i18n/ui.ts`) |
 
 I testi tra parentesi quadre sono segnaposto: si completano con dati veri.
-
-## Da fare prima della pubblicazione
-
-- Immagini al posto dei riquadri segnaposto.
-- Decisioni aperte: SITE-GUIDE.md, "Cosa resta da decidere o raccogliere".
