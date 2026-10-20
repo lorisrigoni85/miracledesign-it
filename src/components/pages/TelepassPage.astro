@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NextStep from '../NextStep.astro';
 import TelepassDiagram from '../TelepassDiagram.astro';
-import telepassMockup from '../../assets/foto/telepass-mockup.png';
+import DeviceMockup from '../DeviceMockup.astro';
 import { ui, routes, type Lang } from '../../i18n/ui';
 
 interface Props {
@@ -29,7 +29,7 @@ const page = (await getEntry('telepass', lang))!.data;
       <p class="page-lead">{page.lead}</p>
     </header>
 
-    <Image src={telepassMockup} alt={page.mockupAlt} class="mockup" widths={[800, 1200, 1814]} sizes="(max-width: 1064px) 100vw, 1000px" />
+    <DeviceMockup alt={page.mockupAlt} />
 
     <ul class="positions">
       {page.positions.map((p) => (
@@ -130,13 +130,6 @@ const page = (await getEntry('telepass', lang))!.data;
 </script>
 
 <style>
-  .mockup {
-    display: block;
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    margin-inline: auto;
-  }
   .positions {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
