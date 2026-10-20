@@ -243,7 +243,8 @@ const page = (await getEntry('telepass', lang))!.data;
     font-size: clamp(56px, 8vw, 120px);
     line-height: 1;
     letter-spacing: -0.04em;
-    color: var(--rule);
+    /* Grigio chiaro ma con contrasto 3:1, il minimo per i testi grandi */
+    color: #878f89;
   }
   .moment .label {
     margin-top: 16px;
