@@ -50,4 +50,4 @@ La procedura completa (GitHub, DNS su Aruba, certificato) e come fare le modific
 | Logo (vettoriale) e note sul brand | `src/assets/brand/` (favicon in `public/`) |
 | Banner cookie e Google Analytics | `src/components/CookieBanner.astro` (ID in `src/i18n/ui.ts`) |
 
-I testi tra parentesi quadre sono segnaposto: si completano con dati veri.
+Per mettere una parola in grassetto nei testi basta scriverla tra due asterischi doppi: `**parola**`. Nei file YAML, se una riga inizia con il grassetto, va racchiusa tra virgolette.
