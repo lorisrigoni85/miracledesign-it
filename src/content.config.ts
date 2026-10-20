@@ -70,6 +70,7 @@ const telepass = defineCollection({
     mockupAlt: z.string(),
     positions: z.array(z.object({ period: z.string(), name: z.string(), text: z.string() })),
     navLabel: z.string(),
+    closing: z.string(),
     moments: z.array(
       z.object({
         id: z.string(),

@@ -67,6 +67,7 @@ const page = (await getEntry('telepass', lang))!.data;
           <TelepassDiagram kind={m.diagram} labels={page.diagrams} />
         </article>
       ))}
+      <p class="story__closing">{page.closing}</p>
     </div>
   </section>
 
@@ -242,8 +243,20 @@ const page = (await getEntry('telepass', lang))!.data;
     padding-bottom: 120px;
     scroll-margin-top: calc(var(--header-h) + 24px);
   }
-  .moment:last-child {
+  .moment:last-of-type {
     padding-bottom: 32px;
+  }
+  /* Chiusura: una porta aperta dopo i quattro momenti */
+  .story__closing {
+    max-width: 760px;
+    margin-top: 64px;
+    padding: 40px 0 32px;
+    border-top: 1px solid var(--rule-strong);
+    font-size: var(--fs-h2-case);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
   .moment__year {
     font-family: var(--font-mono);
