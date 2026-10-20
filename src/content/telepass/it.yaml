@@ -22,8 +22,6 @@ positions:
     text: "In consulenza: le sfide di ogni giorno, dove il design incontra il business"
 
 navLabel: Momenti
-# Frase di chiusura, dopo i quattro momenti
-closing: "Un cammino, e un’esplorazione, che continua ancora oggi, giorno dopo giorno."
 
 moments:
   - id: mappare
