@@ -22,6 +22,7 @@ positions:
     text: "As a consultant: everyday challenges, where design meets business"
 
 navLabel: Moments
+# Closing line, after the four moments
 closing: "A journey, and an exploration, that still goes on today, day after day."
 
 moments:
