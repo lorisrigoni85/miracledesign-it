@@ -19,7 +19,10 @@ const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? ro
 </div>
 
 <style>
+  /* A destra su computer, centrato su telefono */
   .next {
+    display: flex;
+    justify-content: flex-end;
     padding-bottom: var(--section-y);
   }
   .next__btn {
@@ -33,7 +36,6 @@ const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? ro
   }
   @media (max-width: 600px) {
     .next {
-      display: flex;
       justify-content: center;
     }
   }
