@@ -55,7 +55,7 @@ moments:
       - "Con queste basi abbiamo potuto semplificare: un solo carattere tipografico, i colori del brand usati in modo coerente e una libreria più snella. Le card, per esempio, erano di sei tipi diversi, nati negli anni per esigenze diverse: **sono diventate tre**, più flessibili, capaci di coprire gli stessi casi."
       - "Poi la parte più delicata: sostituire i componenti uno alla volta, **con il sito sempre online**. Ogni rilascio andava coordinato con il data entry dei contenuti e con i test QA, perché sul sito lavorano più team ogni giorno e nessuno doveva fermarsi."
     link:
-      label: Esplora il Telepass Design System
+      label: Esplora il Design System di Telepass
       url: "https://zeroheight.com/943425b5c/p/028e0f-telepass-design-system"
       text: "Resin è documentato su **zeroheight**: foundation, componenti e regole d’uso in un unico punto di riferimento per designer e sviluppatori. Un risultato di squadra, costruito giorno dopo giorno insieme ai colleghi dei team di design e sviluppo di Telepass."
       image: design-system-cover
