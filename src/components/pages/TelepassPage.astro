@@ -63,6 +63,11 @@ const page = (await getEntry('telepass', lang))!.data;
           <h2 id={`${m.id}-title`} class="moment__title">{m.title}</h2>
           <div class="moment__text">
             {m.text.map((p) => <p set:html={emphasis(p)} />)}
+            {m.link && (
+              <p class="moment__link">
+                <a class="link" href={m.link.url} target="_blank" rel="noopener">{m.link.label} <span aria-hidden="true">↗</span><span class="visually-hidden"> {lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a new tab)'}</span></a>
+              </p>
+            )}
           </div>
           <blockquote class="moment__principle"><p>{m.principle}</p></blockquote>
           <TelepassDiagram kind={m.diagram} labels={page.diagrams} />
@@ -265,6 +270,12 @@ const page = (await getEntry('telepass', lang))!.data;
     max-width: 640px;
     margin-top: 24px;
     color: var(--ink-body);
+  }
+  .moment__link {
+    margin-top: 8px;
+  }
+  .moment__link [aria-hidden='true'] {
+    margin-left: 0.25em;
   }
   .moment__principle {
     max-width: 640px;
