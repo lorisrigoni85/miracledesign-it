@@ -1,5 +1,5 @@
 ---
-title: Liceo artistico, una laurea in ingegneria e anni di codice frontend.
+title: Il liceo artistico, una laurea in ingegneria e anni di codice. Poi l’amore per il prodotto.
 description: "Chi è Loris Rigoni: Senior Product Designer a Como, un percorso dall'arte all'ingegneria civile al codice frontend, e la montagna."
 ---
 

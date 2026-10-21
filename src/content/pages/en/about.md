@@ -1,5 +1,5 @@
 ---
-title: Art school, a civil engineering degree and years of frontend code.
+title: Art school, an engineering degree and years of code. Then, a love for product.
 description: 'About Loris Rigoni: Senior Product Designer based in Como, a path from art to civil engineering to frontend code, and the mountains.'
 ---
 
