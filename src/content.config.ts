@@ -78,8 +78,15 @@ const telepass = defineCollection({
         where: z.string(),
         title: z.string(),
         text: z.array(z.string()),
-        /** Link esterno facoltativo, sotto il testo del momento */
-        link: z.object({ label: z.string(), url: z.string().url() }).optional(),
+        /** Link esterno facoltativo: semplice sotto il testo, oppure scheda con immagine e testo dopo lo schema */
+        link: z
+          .object({
+            label: z.string(),
+            url: z.string().url(),
+            text: z.string().optional(),
+            image: z.string().optional(),
+          })
+          .optional(),
         principle: z.string(),
         diagram: z.enum(['map', 'research', 'cards', 'business']),
       }),

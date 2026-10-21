@@ -54,7 +54,11 @@ moments:
       - "Siamo partiti dalle fondamenta: delle library di foundation con design token, colori primitivi, una tipografia unica, icone e illustrazioni contestuali ai servizi offerti. Sopra, **due UI Kit distinti**, uno per il web e uno per l’app, che condividono le stesse regole ma rispondono a contesti diversi."
       - "Con queste basi abbiamo potuto semplificare: un solo carattere tipografico, i colori del brand usati in modo coerente e una libreria più snella. Le card, per esempio, erano di sei tipi diversi, nati negli anni per esigenze diverse: **sono diventate tre**, più flessibili, capaci di coprire gli stessi casi."
       - "Poi la parte più delicata: sostituire i componenti uno alla volta, **con il sito sempre online**. Ogni rilascio andava coordinato con il data entry dei contenuti e con i test QA, perché sul sito lavorano più team ogni giorno e nessuno doveva fermarsi."
-    link: { label: Esplora il Telepass Design System su zeroheight, url: "https://zeroheight.com/943425b5c/p/028e0f-telepass-design-system" }
+    link:
+      label: Esplora il Telepass Design System
+      url: "https://zeroheight.com/943425b5c/p/028e0f-telepass-design-system"
+      text: "Resin è documentato su **zeroheight**: foundation, componenti e regole d’uso in un unico punto di riferimento per designer e sviluppatori. Un risultato di squadra, costruito giorno dopo giorno insieme ai colleghi dei team di design e sviluppo di Telepass."
+      image: design-system-cover
     principle: Meno componenti, più flessibili.
     diagram: cards
   - id: conversione
