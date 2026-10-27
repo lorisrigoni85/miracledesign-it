@@ -11,3 +11,6 @@ src/pages/proposte-*.astro
 
 # Copia d’archivio del vecchio sito (scaricata il 20/10/2026): resta solo in locale
 Old/
+
+# Rapporti settimanali di Google Analytics: restano solo in locale
+report-analytics/
