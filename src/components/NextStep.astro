@@ -12,6 +12,8 @@ const t = ui[lang];
 const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? routes.about[lang] : t.workAnchor;
 ---
 <div class="next">
+  <!-- Azioni in più prima del pulsante (es. Scarica il CV) -->
+  <slot />
   <a class="btn btn--outline next__btn" href={href}>
     {t.next[page]}
     <span class="next__arrow" aria-hidden="true">→</span>
@@ -22,7 +24,9 @@ const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? ro
   /* A destra su computer, centrato su telefono */
   .next {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
+    gap: 12px 16px;
     padding-bottom: var(--section-y);
   }
   .next__btn {

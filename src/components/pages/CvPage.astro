@@ -103,7 +103,14 @@ const cv = (await getEntry('cv', lang))!.data;
       </section>
     </div>
 
-    <NextStep lang={lang} page="cv" />
+    <NextStep lang={lang} page="cv">
+      <a class="btn btn--solid" href={cvUrl[lang]} download>
+        {cv.download}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M12 4v12M6 11l6 6 6-6M5 20h14" />
+        </svg>
+      </a>
+    </NextStep>
   </div>
 </BaseLayout>
 
