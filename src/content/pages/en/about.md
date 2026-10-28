@@ -25,6 +25,7 @@ When a project or a new feature finally sees the light, I like to think it belon
 
 | Certification | Issuer | Year |
 | --- | --- | --- |
+| [Google AI – Specialization (8 courses)](https://www.coursera.org/account/accomplishments/specialization/V8NS3GAZ17LA) | Google · Coursera | 2026 |
 | Design Thinking – Workshop Skills | ELIS | 2026 |
 | AI for Product Management | Pendo & Mind the Product | 2025 |
 | Product Management Basics · Radical Product Thinking | Pendo & Mind the Product | 2025 |

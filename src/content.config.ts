@@ -136,7 +136,7 @@ const cv = defineCollection({
     }),
     experience: z.array(z.object({ role: z.string(), period: z.string(), company: z.string(), points: z.array(z.string()) })),
     skills: z.array(z.object({ group: z.string(), items: z.string() })),
-    certifications: z.array(z.object({ name: z.string(), issuer: z.string() })),
+    certifications: z.array(z.object({ name: z.string(), issuer: z.string(), url: z.string().url().optional() })),
     languages: z.array(z.string()),
     education: z.array(z.object({ name: z.string(), issuer: z.string() })),
   }),

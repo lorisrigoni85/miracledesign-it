@@ -69,7 +69,13 @@ const cv = (await getEntry('cv', lang))!.data;
       <ul class="rows">
         {cv.certifications.map((c) => (
           <li class="row2">
-            <p class="row2__key">{c.name}</p>
+            <p class="row2__key">
+              {c.url ? (
+                <a class="link" href={c.url} target="_blank" rel="noopener">{c.name}<span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> {lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a new tab)'}</span></a>
+              ) : (
+                c.name
+              )}
+            </p>
             <p class="mono row2__value">{c.issuer}</p>
           </li>
         ))}
@@ -102,6 +108,9 @@ const cv = (await getEntry('cv', lang))!.data;
 </BaseLayout>
 
 <style>
+  .ext {
+    margin-left: 0.25em;
+  }
   .cv-id {
     display: flex;
     flex-direction: column;

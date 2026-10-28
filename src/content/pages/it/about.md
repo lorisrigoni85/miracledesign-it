@@ -25,6 +25,7 @@ Quando un progetto o una nuova feature vedono finalmente la luce, mi piace pensa
 
 | Certificazione | Ente | Anno |
 | --- | --- | --- |
+| [Google AI – Specializzazione (8 corsi)](https://www.coursera.org/account/accomplishments/specialization/V8NS3GAZ17LA) | Google · Coursera | 2026 |
 | Design Thinking – Workshop Skills | ELIS | 2026 |
 | AI for Product Management | Pendo & Mind the Product | 2025 |
 | Product Management Basics · Radical Product Thinking | Pendo & Mind the Product | 2025 |
