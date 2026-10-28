@@ -29,6 +29,10 @@ const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? ro
     gap: 12px 16px;
     padding-bottom: var(--section-y);
   }
+  /* Azione in più (es. Scarica il CV): a sinistra, allineata al testo; il pulsante principale resta a destra */
+  .next > :global(:not(.next__btn)) {
+    margin-right: auto;
+  }
   .next__btn {
     gap: 10px;
   }
@@ -41,6 +45,9 @@ const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? ro
   @media (max-width: 600px) {
     .next {
       justify-content: center;
+    }
+    .next > :global(:not(.next__btn)) {
+      margin-right: 0;
     }
   }
   @media (prefers-reduced-motion: reduce) {
