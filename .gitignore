@@ -7,6 +7,7 @@ dist/
 SITE-GUIDE.md
 .claude/
 COSA-MANCA.md
+PIANO-AI.md
 src/pages/proposte-*.astro
 
 # Copia d’archivio del vecchio sito (scaricata il 20/10/2026): resta solo in locale
