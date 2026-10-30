@@ -1,0 +1,458 @@
+---
+/* Schemi del caso "Questo portfolio", nello stesso stile degli schemi Telepass:
+   fondo --bg-band, linee sottili, angoli 8px, accento solo sull'elemento chiave. Sotto i 600px tutto in verticale. */
+import type { CollectionEntry } from 'astro:content';
+
+type Diagrams = CollectionEntry<'portfolio'>['data']['diagrams'];
+
+interface Props {
+  kind: 'spec' | 'loop' | 'choices' | 'pipeline' | 'report';
+  labels: Diagrams;
+}
+const { kind, labels } = Astro.props;
+
+// Salvataggi al giorno dalla storia git, 13–21 ottobre 2026
+const commits = [
+  { day: '13', n: 3 },
+  { day: '14', n: 43 },
+  { day: '15', n: 2 },
+  { day: '16', n: 0 },
+  { day: '17', n: 0 },
+  { day: '18', n: 0 },
+  { day: '19', n: 27 },
+  { day: '20', n: 29 },
+  { day: '21', n: 4 },
+];
+const max = Math.max(...commits.map((c) => c.n));
+---
+<figure class={`diagram diagram--${kind}`} role="img" aria-label={labels[kind].alt}>
+  {kind === 'spec' && (
+    <div class="flow">
+      <div class="doc">
+        <p class="doc__title">{labels.spec.doc}</p>
+        <ul class="doc__items">
+          {labels.spec.items.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="doc__rule mono">{labels.spec.rule}</p>
+      </div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="chip chip--accent">{labels.spec.agent}</div>
+    </div>
+  )}
+
+  {kind === 'loop' && (
+    <div class="loop">
+      <ol class="steps">
+        {labels.loop.steps.map((step, i) => (
+          <li class:list={['chip', i === 1 && 'chip--accent']}>{step}</li>
+        ))}
+      </ol>
+      <p class="loop__back mono" aria-hidden="true">↺</p>
+      <div class="chart">
+        <p class="d-label chart__title">{labels.loop.chart}</p>
+        <ul class="bars">
+          {commits.map((c) => (
+            <li class="bar" style={`--h: ${c.n / max}`}>
+              <span class="bar__n mono">{c.n}</span>
+              <span class:list={['bar__fill', c.n === max && 'bar__fill--max']}></span>
+              <span class="bar__day mono">{c.day}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )}
+
+  {kind === 'choices' && (
+    <div class="flow">
+      <div class="node">
+        <div class="pages">
+          <span class="page page--parent"></span>
+          <div class="page-row">
+            {Array.from({ length: 5 }).map(() => <span class="page"></span>)}
+          </div>
+        </div>
+        <p class="d-label">{labels.choices.before}</p>
+      </div>
+      <span class="arrow" aria-hidden="true">→</span>
+      <div class="node">
+        <div class="single">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <span class="single__moment"><span class:list={['single__dot', i === 0 && 'single__dot--on']}></span><span class="single__line"></span></span>
+          ))}
+        </div>
+        <p class="d-label">{labels.choices.after}</p>
+      </div>
+    </div>
+  )}
+
+  {kind === 'pipeline' && (
+    <div class="pipe">
+      <div class="flow flow--steps">
+        {labels.pipeline.steps.map((step, i) => (
+          <>
+            {i > 0 && <span class="arrow" aria-hidden="true">→</span>}
+            <div class:list={['chip', i === labels.pipeline.steps.length - 1 && 'chip--accent']}>{step}</div>
+          </>
+        ))}
+      </div>
+      <div class="dns">
+        <p class="d-label">{labels.pipeline.dns}</p>
+        <div class="dns__rows">
+          <span class="chip chip--small">✓ {labels.pipeline.site}</span>
+          <span class="chip chip--small chip--quiet">= {labels.pipeline.mail}</span>
+        </div>
+      </div>
+    </div>
+  )}
+
+  {kind === 'report' && (
+    <div class="report">
+      <p class="report__title mono">{labels.report.title}</p>
+      <ul class="report__numbers">
+        {labels.report.numbers.map((n) => (
+          <li><span class="report__value">{n.value}</span><span class="report__label">{n.label}</span></li>
+        ))}
+      </ul>
+      <ul class="report__parts">
+        {labels.report.parts.map((p) => <li class="chip chip--small">{p}</li>)}
+      </ul>
+    </div>
+  )}
+</figure>
+
+<style>
+  .diagram {
+    max-width: 760px;
+    margin: 40px 0 0;
+    padding: 32px;
+    background: var(--bg-band);
+    border-radius: var(--radius-media);
+  }
+
+  /* Elementi comuni, come negli schemi Telepass */
+  .d-label {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 10px 16px;
+    background: var(--bg);
+    border: 1.25px solid var(--ink-muted);
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--ink);
+  }
+  .chip--accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+  }
+  .chip--small {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+  .chip--quiet {
+    border-style: dashed;
+    color: var(--ink-body);
+  }
+  .arrow {
+    flex: none;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--ink-muted);
+  }
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .node {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  /* 12.10 — la specifica */
+  .doc {
+    flex: 1.4 1 0;
+    padding: 20px 22px;
+    background: var(--bg);
+    border: 1.25px solid var(--ink-muted);
+    border-radius: 8px;
+  }
+  .doc__title {
+    font-weight: 500;
+  }
+  .doc__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .doc__items li {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--bg-band);
+    font-size: 14px;
+  }
+  .doc__rule {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-body);
+  }
+  .diagram--spec .chip--accent {
+    flex: 1 1 0;
+  }
+
+  /* 14.10 — il ciclo e i salvataggi */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .steps li {
+    position: relative;
+  }
+  .steps li:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -22px;
+    font-size: 20px;
+    color: var(--ink-muted);
+  }
+  .loop__back {
+    margin-top: 10px;
+    font-size: 22px;
+    line-height: 1;
+    text-align: center;
+    color: var(--ink-muted);
+  }
+  .chart {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+  }
+  .chart__title {
+    margin-top: 8px;
+  }
+  .bars {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 8px;
+    height: 160px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+  .bar__fill {
+    width: 100%;
+    max-width: 36px;
+    height: calc(var(--h) * 100px);
+    min-height: 1px;
+    border-radius: 4px 4px 0 0;
+    background: var(--ink-muted);
+  }
+  .bar__fill--max {
+    background: var(--accent);
+  }
+  .bar__n,
+  .bar__day {
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+  .bar__day {
+    padding-top: 6px;
+    border-top: 1px solid var(--rule-strong);
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 19.10 — prima e dopo */
+  .pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .page-row {
+    display: flex;
+    gap: 6px;
+  }
+  .page {
+    display: block;
+    width: 28px;
+    height: 38px;
+    background: var(--bg);
+    border: 1.25px solid var(--ink-muted);
+    border-radius: 4px;
+  }
+  .page--parent {
+    width: 40px;
+    height: 52px;
+  }
+  .single {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 140px;
+    margin: 0 auto;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+  }
+  .single__moment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .single__dot {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rule);
+  }
+  .single__dot--on {
+    background: var(--accent);
+  }
+  .single__line {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--rule);
+  }
+
+  /* 20.10 — messa online */
+  .flow--steps {
+    gap: 14px;
+  }
+  .flow--steps .chip {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 10px;
+  }
+  .dns {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+  }
+  .dns .d-label {
+    margin-top: 8px;
+  }
+  .dns__rows {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  /* 27.10 — il rapporto */
+  .report {
+    padding: 22px;
+    background: var(--bg);
+    border: 1.25px solid var(--ink-muted);
+    border-radius: 8px;
+  }
+  .report__title {
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+  .report__numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .report__numbers li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .report__value {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .report__label {
+    font-size: 14px;
+    color: var(--ink-body);
+  }
+  .report__parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 0;
+    padding: 16px 0 0;
+    list-style: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 900px) {
+    .diagram {
+      padding: 20px;
+    }
+  }
+
+  /* Telefono: tutto in verticale */
+  @media (max-width: 600px) {
+    .flow {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+    .arrow {
+      align-self: center;
+      transform: rotate(90deg);
+    }
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .steps li:not(:last-child)::after {
+      right: auto;
+      left: 50%;
+      bottom: -26px;
+      transform: translateX(-50%) rotate(90deg);
+    }
+    .bars {
+      gap: 4px;
+    }
+    .report__numbers {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

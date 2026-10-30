@@ -1,0 +1,168 @@
+---
+/* Caso "Questo portfolio": apertura con mockup del sito, tre numeri, cinque momenti (Story.astro) e cosa ho imparato. */
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NextStep from '../NextStep.astro';
+import Story from '../Story.astro';
+import DeviceMockup from '../DeviceMockup.astro';
+import PortfolioDiagram from '../PortfolioDiagram.astro';
+import { emphasis } from '../../utils/emphasis';
+import { ui, routes, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const page = (await getEntry('portfolio', lang))!.data;
+const repoUrl = 'https://github.com/lorisrigoni85/miracledesign-it';
+const newTab = lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a new tab)';
+---
+<BaseLayout lang={lang} title={page.meta.title} description={page.meta.description} alternates={routes.portfolio}>
+  <div class="container">
+    <header class="page-head">
+      <nav class="breadcrumb label" aria-label="Breadcrumb">
+        <ol>
+          <li><a href={routes.work[lang]}>{t.work}</a></li>
+          <li><span aria-current="page">{page.name.split(',')[0]}</span></li>
+        </ol>
+      </nav>
+      <p class="mono">{page.name}</p>
+      <h1 class="page-title">{page.title}</h1>
+      <p class="page-lead">{page.lead}</p>
+    </header>
+
+    <DeviceMockup alt={page.mockupAlt} set="portfolio" />
+
+    <ul class="facts">
+      {page.facts.map((f) => (
+        <li><strong>{f.value}</strong><span>{f.label}</span></li>
+      ))}
+    </ul>
+  </div>
+
+  <Story label={page.navLabel} moments={page.moments}>
+    {page.moments.map((m, i) => (
+      <article id={m.id} class="moment" data-moment aria-labelledby={`${m.id}-title`}>
+        <p class="moment__year" aria-hidden="true">{m.year}</p>
+        <p class="label">{String(i + 1).padStart(2, '0')} · {m.where}</p>
+        <h2 id={`${m.id}-title`} class="moment__title">{m.title}</h2>
+        <div class="moment__text">
+          {m.text.map((p) => <p set:html={emphasis(p)} />)}
+          {m.list && (
+            <ul class="points">
+              {m.list.map((item) => <li><strong>{item.title}</strong> {item.text}</li>)}
+            </ul>
+          )}
+        </div>
+        <blockquote class="moment__principle"><p>{m.principle}</p></blockquote>
+        <PortfolioDiagram kind={m.diagram} labels={page.diagrams} />
+      </article>
+    ))}
+  </Story>
+
+  <section class="container learned" aria-labelledby="learned-title">
+    <h2 id="learned-title" class="section-head"><span>{page.learned.label}</span></h2>
+    <p class="learned__intro" set:html={emphasis(page.learned.intro)} />
+    <ol class="learned__points">
+      {page.learned.points.map((p, i) => (
+        <li>
+          <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+          <strong>{p.title}</strong>
+          <span>{p.text}</span>
+        </li>
+      ))}
+    </ol>
+    <p class="learned__repo">
+      <a class="link" href={repoUrl} target="_blank" rel="noopener">{page.learned.repo}<span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> {newTab}</span></a>
+    </p>
+  </section>
+
+  <div class="container">
+    <NextStep lang={lang} page="portfolio" />
+  </div>
+</BaseLayout>
+
+<style>
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 32px;
+    margin: 64px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .facts li {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 20px;
+  }
+  .facts strong {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .facts span {
+    color: var(--ink-body);
+  }
+
+  .points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 4px 0 0;
+    padding-left: 1.1em;
+  }
+  .points strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .learned {
+    padding-bottom: 64px;
+  }
+  .learned__intro {
+    max-width: 760px;
+    margin-top: 32px;
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.4;
+  }
+  .learned__points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin: 48px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .learned__points li {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .learned__points strong {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .learned__points li > span:last-child {
+    color: var(--ink-body);
+  }
+  .learned__repo {
+    margin-top: 40px;
+  }
+  .learned__repo .ext {
+    margin-left: 0.25em;
+  }
+
+  @media (max-width: 900px) {
+    .facts,
+    .learned__points {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

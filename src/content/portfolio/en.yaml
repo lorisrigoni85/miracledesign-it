@@ -1,0 +1,136 @@
+# "This portfolio" case study in English: an adaptation of it.yaml, approved by Loris on 30/10/2026.
+# Numbers come from the repository's git history and the Analytics report for 19–25 October 2026.
+
+meta:
+  title: This portfolio, built with an AI agent — Loris Rigoni | Miracle Design
+  description: "How Loris Rigoni redesigned miracledesign.it and put it online in eight days by directing Claude Code: the spec, the working loop with the agent, design choices, going live and measuring."
+
+name: This portfolio, October 2026
+title: This portfolio. Designed by me, built with an AI agent.
+lead: "The old miracledesign.it was a gallery of 2016–2020 projects. I needed a career portfolio. I redesigned it and put it online in eight days by directing Claude Code: I decided what and why, the agent wrote the code. I wrote frontend code for years, but before this project I had never used git for versioning and deployment: as a designer I have more fun with libraries, tokens and components."
+mockupAlt: The miracledesign.it website on desktop and mobile
+facts:
+  - value: 8 days
+    label: from the spec to the live site
+  - value: 105 commits
+    label: 43 in a single evening
+  - value: Claude Code
+    label: with Astro, GitHub Pages and Google Analytics 4
+
+navLabel: Five moments
+moments:
+  - id: spec
+    year: "12.10"
+    short: The spec
+    where: Claude
+    title: The spec first, then the code.
+    text:
+      - "Before writing a line, I wrote the rules. In a chat with Claude I set down **positioning, audience, the three arguments** to make, the site map and the copy for every section."
+      - "The document becomes the **single source of truth**: the agent reads it first, and where a decision is still open it has to ask, not invent. Placeholders stay in square brackets until I have real data."
+    principle: You give an agent rules, not just requests.
+    diagram: spec
+  - id: loop
+    year: "14.10"
+    short: The loop
+    where: Claude Code
+    title: "The loop: ask, look, correct."
+    text:
+      - "The real work is a **short loop**. I ask for a change, look at it in the browser, then correct or approve it."
+      - "On 14 October there are **43 commits in one evening**: logo, header, footer, archive, menu, CV page. Each commit is a small, reversible decision."
+    principle: Many small visible steps instead of one big delivery.
+    diagram: loop
+  - id: choices
+    year: "19.10"
+    short: The choices
+    where: Design direction
+    title: The choices that stayed mine.
+    text:
+      - "The agent proposes, but design judgement can't be delegated. I often had to **course-correct**: on vocabulary, on readability, on how information was cut. Sometimes the agent wandered off, added more than needed or over-explained, and the job was to bring it back to the essentials."
+    list:
+      - title: The logo.
+        text: "The original file no longer existed: it was rebuilt as a vector from the old png. I had it corrected until the letters matched the original script."
+      - title: The Home opening.
+        text: The spec wanted it light, with Telepass and Dst up front. I chose a dark full-screen opening, with my portrait and my name as the headline.
+      - title: Telepass on a single page.
+        text: "The map had a parent page and five chapters. Once built, it felt too fragmented: it became a single page with four moments and an index that follows the scroll."
+      - title: What to leave out.
+        text: No e-commerce case study built on old material, no phone number in the footer, no Facebook.
+      - title: Accessibility.
+        text: Minimum contrast fixed on years and labels where the grey was too light.
+    principle: AI speeds up execution, direction stays human.
+    diagram: choices
+  - id: live
+    year: "20.10"
+    short: Live
+    where: GitHub Pages · Aruba
+    title: Going live without breaking anything.
+    text:
+      - "I made the technical decisions by **understanding the trade-offs**, not by delegating them."
+    list:
+      - title: Hosting.
+        text: "Netlify was ruled out because on the free plan the site stops when credits run out; Aruba's FTP required allow-listing every IP address. I chose GitHub Pages: free, and every commit is published automatically."
+      - title: Domain and email.
+        text: "They stay on Aruba: I only changed the website records, without touching the email ones."
+      - title: HTTPS.
+        text: "The certificate wouldn't issue: Aruba's DNS servers weren't in sync yet. We waited, then forced a new request."
+      - title: Privacy.
+        text: "Google Analytics only starts after consent, with Signals and advertising data switched off in the code."
+    principle: You don't need to write the code, you need to understand what you're deciding.
+    diagram: pipeline
+  - id: measuring
+    year: "27.10"
+    short: Measuring
+    where: Google Analytics 4
+    title: Measuring.
+    text:
+      - "A portfolio site without measurement is an opinion. With the agent I wrote a script that reads Google Analytics data every week and produces a short report: **5 numbers, 3 observations, 1 suggestion**."
+      - "First week online: 39 visitors, almost a minute and a half each, the Telepass page read past 90% by 10 people. **LinkedIn** is the channel that brings the most visits after direct links. The data also showed what was missing: email clicks weren't being counted, so I added them."
+    principle: Design, publish, measure, correct. Your own site included.
+    diagram: report
+
+diagrams:
+  spec:
+    doc: Site guidelines
+    items: [Positioning, Audience, Three arguments, Site map, Copy]
+    rule: "[PLACEHOLDER] → ask, don't invent"
+    agent: Claude Code reads it first
+    alt: "Diagram: a guidelines document with positioning, audience, three arguments, site map and copy, plus the rule not to invent placeholders, which Claude Code reads before building."
+  loop:
+    steps: [I ask, The agent builds, I look in the browser, I approve or correct]
+    chart: Commits per day, 13–21 October
+    alt: "Diagram of the working loop: I ask, the agent builds, I look in the browser, I approve or correct, and it starts again. Below, commits per day from 13 to 21 October: 3, 43, 2, 0, 0, 0, 27, 29, 4."
+  choices:
+    before: "Spec: parent page and 5 chapters"
+    after: "Choice: one page, 4 moments"
+    alt: "Before and after: the spec had a Telepass parent page and five separate chapters; the final choice is a single page with four moments."
+  pipeline:
+    steps: [Commit, GitHub, GitHub Pages, miracledesign.it]
+    dns: DNS on Aruba
+    site: Website records changed
+    mail: Email untouched
+    alt: "Diagram of going live: every commit goes to GitHub and GitHub Pages publishes it on miracledesign.it. On Aruba's DNS only the website records change, email stays untouched."
+  report:
+    title: Weekly report · 19–25 October
+    numbers:
+      - value: "39"
+        label: visitors
+      - value: 1 min 31 s
+        label: each
+      - value: 65%
+        label: engaged visits
+      - value: "11"
+        label: from LinkedIn
+    parts: [5 numbers, 3 observations, 1 suggestion]
+    alt: "Excerpt of the weekly report for 19–25 October: 39 visitors, 1 minute 31 seconds each, 65% engaged visits, 11 visitors from LinkedIn. The report is made of 5 numbers, 3 observations and 1 suggestion."
+
+learned:
+  label: What I learned
+  intro: "For months I've seen, at work and across the digital world, how much AI is entering product work and above all design. I wanted to understand it by **getting my hands dirty**, not by hearsay."
+  points:
+    - title: It needs a captain.
+      text: "The agent is fast and tireless, but it tends to wander. The value is in holding the course: what to say, to whom, in which words."
+    - title: The spec matters more than the prompt.
+      text: The time spent writing the rules up front came back many times over.
+    - title: The role shifts towards strategy.
+      text: "Less time on execution, more time on positioning, content and choices. At this stage of my career, that's exactly the level I want to work at."
+  repo: The site's code on GitHub

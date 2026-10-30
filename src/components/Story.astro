@@ -1,0 +1,268 @@
+---
+/* Racconto di un caso studio a momenti: indice fisso a sinistra (barra orizzontale sul telefono) che segue lo scorrimento.
+   I momenti arrivano nello slot come <article class="moment" data-moment id="…">, con .moment__year, .label,
+   .moment__title, .moment__text e .moment__principle. Usato dalle pagine Telepass e Questo portfolio. */
+interface Props {
+  label: string;
+  moments: { id: string; year: string; short: string }[];
+}
+const { label, moments } = Astro.props;
+---
+<section class="story container" aria-label={label} data-story>
+  <nav class="story__nav" aria-label={label}>
+    <div class="story__track" aria-hidden="true"><span class="story__progress" data-progress></span></div>
+    <ol>
+      {moments.map((m) => (
+        <li>
+          <a href={`#${m.id}`} data-nav={m.id}>
+            <span class="mono story__year"><span class="story__dot" aria-hidden="true"></span>{m.year}</span>
+            <span class="story__short">{m.short}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <div class="story__body">
+    <slot />
+  </div>
+</section>
+
+<script>
+  // Indice che segue lo scorrimento: momento attivo e barra di avanzamento.
+  const story = document.querySelector<HTMLElement>('[data-story]');
+  if (story) {
+    const links = new Map(
+      [...story.querySelectorAll<HTMLAnchorElement>('[data-nav]')].map((a) => [a.dataset.nav!, a]),
+    );
+    const setActive = (id: string) => {
+      links.forEach((a, key) => {
+        const on = key === id;
+        a.classList.toggle('is-active', on);
+        if (on) a.setAttribute('aria-current', 'step');
+        else a.removeAttribute('aria-current');
+        // Telefono: la barra orizzontale tiene in vista il momento attivo.
+        if (on && window.matchMedia('(max-width: 900px)').matches) {
+          a.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+        }
+      });
+    };
+
+    // Attivo: l'ultimo momento il cui inizio ha superato il 40% dello schermo (in fondo alla pagina, l'ultimo).
+    const moments = [...story.querySelectorAll<HTMLElement>('[data-moment]')];
+    let current = '';
+    const updateActive = () => {
+      const line = window.innerHeight * 0.4;
+      let id = moments[0].id;
+      for (const m of moments) if (m.getBoundingClientRect().top <= line) id = m.id;
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      const last = moments[moments.length - 1];
+      if (atBottom && last.getBoundingClientRect().top < window.innerHeight) id = last.id;
+      if (id !== current) {
+        current = id;
+        setActive(id);
+      }
+    };
+
+    const bar = story.querySelector<HTMLElement>('[data-progress]');
+    const updateProgress = () => {
+      const r = story.getBoundingClientRect();
+      const total = r.height - window.innerHeight * 0.5;
+      const done = Math.min(1, Math.max(0, (window.innerHeight * 0.4 - r.top) / total));
+      bar?.style.setProperty('--progress', String(done));
+    };
+
+    const update = () => {
+      updateActive();
+      updateProgress();
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+</script>
+
+<style>
+  .story {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 64px;
+    padding-top: var(--section-y);
+    /* L'indice fisso si ferma qui, lontano dal pulsante sotto */
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .story__nav {
+    position: sticky;
+    top: calc(var(--header-h) + 40px);
+    align-self: start;
+    display: flex;
+    gap: 20px;
+  }
+  .story__track {
+    position: relative;
+    width: 1px;
+    background: var(--rule);
+  }
+  .story__progress {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: calc(var(--progress, 0) * 100%);
+    background: var(--ink);
+  }
+  .story__nav ol {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .story__nav a {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 12px;
+    align-items: baseline;
+    min-height: var(--tap);
+    padding-block: 6px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  .story__dot {
+    position: absolute;
+    left: -25px;
+    top: 14px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1px solid var(--ink-muted);
+    background: var(--bg);
+    transition: background-color var(--transition), border-color var(--transition);
+  }
+  .story__year {
+    grid-column: 1 / -1;
+  }
+  .story__short {
+    grid-column: 1 / -1;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .story__nav a:hover,
+  .story__nav a.is-active {
+    color: var(--ink);
+  }
+  .story__nav a.is-active .story__dot {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .story :global(.moment) {
+    padding-bottom: 120px;
+    scroll-margin-top: calc(var(--header-h) + 24px);
+  }
+  .story :global(.moment:last-child) {
+    padding-bottom: 32px;
+  }
+  .story :global(.moment__year) {
+    font-family: var(--font-mono);
+    font-size: clamp(56px, 8vw, 120px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    /* Grigio chiaro ma con contrasto 3:1, il minimo per i testi grandi */
+    color: #878f89;
+  }
+  .story :global(.moment .label) {
+    margin-top: 16px;
+  }
+  .story :global(.moment__title) {
+    max-width: 760px;
+    margin-top: 12px;
+    font-size: var(--fs-h2-case);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+  .story :global(.moment__text) {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 640px;
+    margin-top: 24px;
+    color: var(--ink-body);
+  }
+  .story :global(.moment__principle) {
+    max-width: 640px;
+    margin: 32px 0 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--accent);
+    font-size: clamp(22px, 2.2vw, 28px);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  /* Telefono e tablet: indice orizzontale fisso sotto l'header */
+  @media (max-width: 900px) {
+    .story {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding-top: 64px;
+    }
+    .story__nav {
+      top: var(--header-h);
+      z-index: 5;
+      margin-inline: calc(-1 * var(--gutter));
+      padding-inline: var(--gutter);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .story__track {
+      display: none;
+    }
+    .story__nav ol {
+      flex-direction: row;
+      gap: 24px;
+    }
+    .story__nav a {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      white-space: nowrap;
+      padding-block: 10px;
+    }
+    /* Pallino prima dell'anno: verde sul momento attivo, grigio spento sugli altri */
+    .story__dot {
+      position: static;
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 8px;
+      vertical-align: 1px;
+      border: 0;
+      background: var(--rule);
+    }
+    .story__nav a.is-active .story__dot {
+      background: var(--accent);
+    }
+    .story__short {
+      font-size: 15px;
+    }
+    .story :global(.moment) {
+      padding-top: 40px;
+      padding-bottom: 72px;
+      scroll-margin-top: calc(var(--header-h) + 64px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story__nav a,
+    .story__dot {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,136 @@
+# Caso studio "Questo portfolio" in italiano. Testo approvato da Loris il 30/10/2026 (bozza in BOZZA-CASO-1.md).
+# I numeri vengono dalla storia git del repository e dal rapporto Analytics del 19–25 ottobre 2026.
+
+meta:
+  title: Questo portfolio, costruito con un agente AI — Loris Rigoni | Miracle Design
+  description: "Come Loris Rigoni ha riprogettato e messo online miracledesign.it in otto giorni dirigendo Claude Code: specifica, ciclo di lavoro con l'agente, scelte di design, messa online e misura."
+
+name: Questo portfolio, ottobre 2026
+title: Questo portfolio. Progettato da me, costruito con un agente AI.
+lead: "Il vecchio miracledesign.it era una galleria di progetti 2016–2020. Serviva un portfolio di carriera. L'ho riprogettato e messo online in otto giorni, dirigendo Claude Code: io decidevo cosa e perché, l'agente scriveva il codice. Ho scritto codice frontend per anni, ma prima di questo progetto non avevo mai usato git per il versioning e il deploy: da designer mi diverto di più con library, token e componenti."
+mockupAlt: Il sito miracledesign.it su computer e su telefono
+facts:
+  - value: 8 giorni
+    label: dalla specifica al sito online
+  - value: 105 salvataggi
+    label: 43 in una sola sera
+  - value: Claude Code
+    label: con Astro, GitHub Pages e Google Analytics 4
+
+navLabel: Cinque momenti
+moments:
+  - id: specifica
+    year: "12.10"
+    short: La specifica
+    where: Claude
+    title: Prima la specifica, poi il codice.
+    text:
+      - "Prima di scrivere una riga ho scritto le regole. In una chat con Claude ho messo nero su bianco **posizionamento, pubblico, i tre argomenti** da sostenere, la mappa del sito e i testi di ogni sezione."
+      - "Il documento diventa la **fonte unica**: l'agente lo legge per primo, e dove una decisione è aperta deve chiedere, non inventare. I segnaposto restano tra parentesi quadre finché non ho un dato vero."
+    principle: A un agente si danno regole, non solo richieste.
+    diagram: spec
+  - id: ciclo
+    year: "14.10"
+    short: Il ciclo
+    where: Claude Code
+    title: "Il ciclo: chiedo, guardo, correggo."
+    text:
+      - "Il lavoro vero è un **ciclo corto**. Chiedo una modifica, la guardo nel browser, la correggo o la approvo."
+      - "Il 14 ottobre ci sono **43 salvataggi in una sera**: logo, header, piè di pagina, archivio, menu, pagina CV. Ogni salvataggio è una decisione piccola e reversibile."
+    principle: Tanti passi piccoli che si vedono, invece di una consegna grande.
+    diagram: loop
+  - id: scelte
+    year: "19.10"
+    short: Le scelte
+    where: Direzione di design
+    title: Le scelte che sono rimaste mie.
+    text:
+      - "L'agente propone, ma il giudizio di design non si delega. Spesso è servito **correggere il tiro**: sul lessico, sulla leggibilità dei testi, sul taglio delle informazioni. A volte l'agente divagava, aggiungeva più del necessario o spiegava troppo, e il lavoro era riportarlo all'essenziale."
+    list:
+      - title: Il logo.
+        text: "Il file originale non esisteva più: è stato ricostruito in vettoriale dal vecchio png. L'ho fatto correggere finché le lettere non erano coerenti con il corsivo originale."
+      - title: L'apertura della Home.
+        text: La specifica la voleva chiara, con Telepass e Dst in evidenza. Ho scelto un'apertura scura a tutto schermo, con il ritratto e il nome come titolo.
+      - title: Telepass in una pagina sola.
+        text: "La mappa prevedeva una pagina madre e cinque capitoli. Vista costruita era troppo frammentata: è diventata una pagina unica con quattro momenti e un indice che segue lo scorrimento."
+      - title: Cosa togliere.
+        text: Niente caso studio e-commerce con materiale vecchio, niente telefono nel piè di pagina, niente Facebook.
+      - title: Accessibilità.
+        text: Contrasto minimo corretto su anni ed etichette dove il grigio era troppo chiaro.
+    principle: L'AI accelera l'esecuzione, la direzione resta umana.
+    diagram: choices
+  - id: online
+    year: "20.10"
+    short: Online
+    where: GitHub Pages · Aruba
+    title: Messa online, senza rompere niente.
+    text:
+      - "Le decisioni tecniche le ho prese **capendo i compromessi**, non delegandole."
+    list:
+      - title: Hosting.
+        text: "Netlify scartato perché nel piano gratuito il sito si ferma quando finiscono i crediti; l'FTP di Aruba richiedeva di autorizzare ogni indirizzo IP. Scelto GitHub Pages: gratuito, ogni salvataggio pubblicato in automatico."
+      - title: Dominio e posta.
+        text: "Restano su Aruba: ho cambiato solo i record del sito, senza toccare quelli della posta."
+      - title: HTTPS.
+        text: "Il certificato non partiva: i server DNS di Aruba non erano ancora allineati. Abbiamo aspettato e poi forzato una nuova richiesta."
+      - title: Privacy.
+        text: "Google Analytics parte solo dopo il consenso, con Signals e dati pubblicitari spenti già nel codice."
+    principle: Non serve saper scrivere il codice, serve capire cosa si sta decidendo.
+    diagram: pipeline
+  - id: misurare
+    year: "27.10"
+    short: Misurare
+    where: Google Analytics 4
+    title: Misurare.
+    text:
+      - "Un sito di portfolio senza misura è un'opinione. Con l'agente ho scritto uno script che ogni settimana legge i dati di Google Analytics e produce un breve rapporto: **5 numeri, 3 osservazioni, 1 suggerimento**."
+      - "Prima settimana online: 39 visitatori, quasi un minuto e mezzo a testa, la pagina Telepass letta oltre il 90% da 10 persone. **LinkedIn** è il canale che porta più visite dopo i link diretti. I dati hanno mostrato anche cosa mancava: i click sull'email non venivano contati, e li ho aggiunti."
+    principle: Progettare, pubblicare, misurare, correggere. Anche per il proprio sito.
+    diagram: report
+
+diagrams:
+  spec:
+    doc: Linee guida del sito
+    items: [Posizionamento, Pubblico, Tre argomenti, Mappa del sito, Testi]
+    rule: "[SEGNAPOSTO] → chiedere, non inventare"
+    agent: Claude Code la legge per prima
+    alt: "Schema: un documento di linee guida con posizionamento, pubblico, tre argomenti, mappa e testi, più la regola di non inventare i segnaposto, che Claude Code legge prima di costruire."
+  loop:
+    steps: [Chiedo, L'agente costruisce, Guardo nel browser, Approvo o correggo]
+    chart: Salvataggi al giorno, 13–21 ottobre
+    alt: "Schema del ciclo di lavoro: chiedo, l'agente costruisce, guardo nel browser, approvo o correggo, e si ricomincia. Sotto, i salvataggi al giorno dal 13 al 21 ottobre: 3, 43, 2, 0, 0, 0, 27, 29, 4."
+  choices:
+    before: "Specifica: pagina madre e 5 capitoli"
+    after: "Scelta: una pagina, 4 momenti"
+    alt: "Prima e dopo: la specifica prevedeva per Telepass una pagina madre e cinque capitoli separati; la scelta finale è una pagina unica con quattro momenti."
+  pipeline:
+    steps: [Salvataggio, GitHub, GitHub Pages, miracledesign.it]
+    dns: DNS su Aruba
+    site: Record del sito cambiati
+    mail: Posta intatta
+    alt: "Schema della messa online: ogni salvataggio va su GitHub e GitHub Pages lo pubblica su miracledesign.it. Sui DNS di Aruba cambiano solo i record del sito, la posta resta intatta."
+  report:
+    title: Rapporto settimanale · 19–25 ottobre
+    numbers:
+      - value: "39"
+        label: visitatori
+      - value: 1 min 31 s
+        label: a testa
+      - value: 65%
+        label: visite con vero interesse
+      - value: "11"
+        label: da LinkedIn
+    parts: [5 numeri, 3 osservazioni, 1 suggerimento]
+    alt: "Estratto del rapporto settimanale del 19–25 ottobre: 39 visitatori, 1 minuto e 31 secondi a testa, 65% di visite con vero interesse, 11 visitatori da LinkedIn. Il rapporto è fatto di 5 numeri, 3 osservazioni e 1 suggerimento."
+
+learned:
+  label: Cosa ho imparato
+  intro: "Da mesi vedo, in azienda e nel mondo digitale, quanto l'AI stia entrando nel lavoro di prodotto e soprattutto nella progettazione. Volevo capirlo **sporcandomi le mani**, non per sentito dire."
+  points:
+    - title: Serve un capitano.
+      text: "L'agente è veloce e instancabile, ma tende a divagare. Il valore sta nel tenere la rotta: cosa dire, a chi, con quali parole."
+    - title: La specifica conta più del prompt.
+      text: Il tempo speso a scrivere le regole prima è tornato indietro moltiplicato.
+    - title: Il ruolo si sposta verso la strategia.
+      text: "Meno tempo sull'esecuzione, più tempo su posizionamento, contenuti e scelte. In questa fase della mia carriera è proprio il livello su cui voglio lavorare."
+  repo: Il codice del sito su GitHub

@@ -12,8 +12,9 @@ interface Props {
   stats: string[];
   href: string;
   linkLabel: string;
-  image: ImageMetadata;
-  imageAlt: string;
+  /** Immagine fissa; senza, la parte destra prende lo slot "media" (es. un mockup animato). */
+  image?: ImageMetadata;
+  imageAlt?: string;
   /** h3 nella Home (sotto "Lavori in evidenza"), h2 nella pagina Lavori. */
   level?: 'h2' | 'h3';
 }
@@ -31,7 +32,11 @@ const Heading = level;
     <a class="link" href={href}>{linkLabel} →</a>
   </div>
   <div class="case__media">
-    <Image src={image} alt={imageAlt} class="case__img" widths={[600, 900, 1200]} sizes="(max-width: 760px) 100vw, 640px" />
+    {image ? (
+      <Image src={image} alt={imageAlt ?? ''} class="case__img" widths={[600, 900, 1200]} sizes="(max-width: 760px) 100vw, 640px" />
+    ) : (
+      <slot name="media" />
+    )}
   </div>
 </article>
 

@@ -118,6 +118,52 @@ const telepass = defineCollection({
   }),
 });
 
+/** Caso studio "Questo portfolio", un file per lingua: src/content/portfolio/it.yaml, en.yaml */
+const portfolio = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/portfolio' }),
+  schema: z.object({
+    meta: z.object({ title: z.string(), description: z.string() }),
+    name: z.string(),
+    title: z.string(),
+    lead: z.string(),
+    mockupAlt: z.string(),
+    facts: z.array(z.object({ value: z.string(), label: z.string() })),
+    navLabel: z.string(),
+    moments: z.array(
+      z.object({
+        id: z.string(),
+        year: z.string(),
+        short: z.string(),
+        where: z.string(),
+        title: z.string(),
+        text: z.array(z.string()),
+        /** Elenco facoltativo dopo il testo: titoletto in grassetto e frase. */
+        list: z.array(z.object({ title: z.string(), text: z.string() })).optional(),
+        principle: z.string(),
+        diagram: z.enum(['spec', 'loop', 'choices', 'pipeline', 'report']),
+      }),
+    ),
+    diagrams: z.object({
+      spec: z.object({ doc: z.string(), items: z.array(z.string()), rule: z.string(), agent: z.string(), alt: z.string() }),
+      loop: z.object({ steps: z.array(z.string()).length(4), chart: z.string(), alt: z.string() }),
+      choices: z.object({ before: z.string(), after: z.string(), alt: z.string() }),
+      pipeline: z.object({ steps: z.array(z.string()).length(4), dns: z.string(), site: z.string(), mail: z.string(), alt: z.string() }),
+      report: z.object({
+        title: z.string(),
+        numbers: z.array(z.object({ value: z.string(), label: z.string() })),
+        parts: z.array(z.string()).length(3),
+        alt: z.string(),
+      }),
+    }),
+    learned: z.object({
+      label: z.string(),
+      intro: z.string(),
+      points: z.array(z.object({ title: z.string(), text: z.string() })),
+      repo: z.string(),
+    }),
+  }),
+});
+
 /** Pagina Lavori, un file per lingua: src/content/work/it.yaml, en.yaml. I casi sono in ordine di pagina. */
 const work = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/work' }),
@@ -128,9 +174,9 @@ const work = defineCollection({
     cases: z.array(
       z.object({
         /** Chiave di routes (src/i18n/ui.ts) della pagina del caso. */
-        route: z.enum(['telepass']),
-        /** Immagine in src/assets/foto, scelta in WorkPage.astro. */
-        image: z.enum(['telepass']),
+        route: z.enum(['telepass', 'portfolio']),
+        /** Immagine della scheda, scelta in WorkPage.astro (portfolio: mockup animato). */
+        image: z.enum(['telepass', 'portfolio']),
         eyebrow: z.string(),
         title: z.string(),
         text: z.string(),
@@ -188,4 +234,4 @@ const mountains = defineCollection({
   }),
 });
 
-export const collections = { home, pages, telepass, work, cv, mountains };
+export const collections = { home, pages, telepass, portfolio, work, cv, mountains };

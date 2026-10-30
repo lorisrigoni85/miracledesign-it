@@ -1,21 +1,23 @@
 ---
 /*
- * Mockup di telepass.com su computer e telefono, disegnato in CSS.
- * Dentro gli schermi ruotano le quattro slide del carosello della home (schermate di ottobre 2026),
- * sincronizzate tra i due dispositivi. Con "riduci movimento" resta ferma la prima slide.
+ * Mockup di un sito su computer e telefono, disegnato in CSS.
+ * Dentro gli schermi ruotano le schermate di src/assets/<set>/ (desktop-N.jpg e mobile-N.jpg),
+ * sincronizzate tra i due dispositivi: per Telepass le quattro slide del carosello della home (ottobre 2026),
+ * per questo portfolio quattro pagine del sito. Con "riduci movimento" resta ferma la prima slide.
  */
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
   alt: string;
+  set?: 'telepass' | 'portfolio';
 }
-const { alt } = Astro.props;
+const { alt, set = 'telepass' } = Astro.props;
 
-const files = import.meta.glob<{ default: ImageMetadata }>('../assets/telepass/*.jpg', { eager: true });
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/{telepass,portfolio}/*.jpg', { eager: true });
 const pick = (prefix: string) =>
   Object.entries(files)
-    .filter(([path]) => path.includes(`/${prefix}-`))
+    .filter(([path]) => path.includes(`/${set}/${prefix}-`))
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([, mod]) => mod.default);
 const desktop = pick('desktop');

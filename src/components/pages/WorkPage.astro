@@ -2,6 +2,7 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CaseCard from '../CaseCard.astro';
+import DeviceMockup from '../DeviceMockup.astro';
 import telepassMockup from '../../assets/foto/telepass-mockup.png';
 import { ui, routes, type Lang } from '../../i18n/ui';
 
@@ -11,7 +12,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = ui[lang];
 const page = (await getEntry('work', lang))!.data;
-const images = { telepass: telepassMockup };
+const images = { telepass: telepassMockup, portfolio: undefined };
 ---
 <BaseLayout lang={lang} title={page.meta.title} description={page.meta.description} alternates={routes.work}>
   <div class="container">
@@ -32,7 +33,9 @@ const images = { telepass: telepassMockup };
           image={images[c.image]}
           imageAlt={c.imageAlt}
           level="h2"
-        />
+        >
+          {c.image === 'portfolio' && <DeviceMockup slot="media" alt={c.imageAlt} set="portfolio" />}
+        </CaseCard>
       ))}
     </div>
 

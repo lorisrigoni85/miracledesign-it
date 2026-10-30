@@ -16,6 +16,13 @@ cases:
     text: Dalla mappatura del sito nel 2019 al **design system Resin**, dalla ricerca con utenti e stakeholder al lavoro sulla **conversione**. In agenzia, in azienda e oggi in consulenza.
     tags: [Design system, User research, Conversione]
     imageAlt: Il sito telepass.com su computer e su telefono
+  - route: portfolio
+    image: portfolio
+    eyebrow: Questo portfolio · ottobre 2026
+    title: Progettato da me, costruito con un agente AI.
+    text: Il sito che stai guardando, riprogettato e messo online in otto giorni **dirigendo Claude Code**. Dalla specifica alle scelte di design, dalla messa online alla misura settimanale.
+    tags: [AI, Claude Code, Direzione di design]
+    imageAlt: Il sito miracledesign.it su computer e su telefono
 
 archive:
   eyebrow: 2020 – 2013
