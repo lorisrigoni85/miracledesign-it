@@ -17,6 +17,7 @@ hero:
 work:
   label: Selected work
   anchor: work
+  all: All work
   telepass:
     eyebrow: 01 — Telepass · 2019 – today
     title: The digital face of Telepass mobility.

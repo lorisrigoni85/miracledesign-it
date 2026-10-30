@@ -28,7 +28,7 @@ const page = (await getEntry('telepass', lang))!.data;
     <header class="page-head">
       <nav class="breadcrumb label" aria-label="Breadcrumb">
         <ol>
-          <li><a href={t.workAnchor}>{t.work}</a></li>
+          <li><a href={routes.work[lang]}>{t.work}</a></li>
           <li><span aria-current="page">Telepass</span></li>
         </ol>
       </nav>

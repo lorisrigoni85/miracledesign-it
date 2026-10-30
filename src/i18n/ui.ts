@@ -6,6 +6,7 @@ export const defaultLang: Lang = 'it';
 /** Pagine fisse con il loro indirizzo in ciascuna lingua (SITE-GUIDE.md, "Mappa del sito e URL"). */
 export const routes = {
   home: { it: '/', en: '/en/' },
+  work: { it: '/lavori/', en: '/en/work/' },
   telepass: { it: '/lavori/telepass/', en: '/en/work/telepass/' },
   archive: { it: '/archivio/', en: '/en/archive/' },
   about: { it: '/chi-sono/', en: '/en/about/' },
@@ -32,7 +33,6 @@ export const ui = {
   it: {
     skip: 'Vai al contenuto',
     nav: { work: 'Lavori', archive: 'Archivio', about: 'Chi sono', cv: 'CV', contact: 'Contatti' },
-    workAnchor: '/#lavori',
     contactAnchor: '#contatti',
     menuOpen: 'Apri il menu',
     menuClose: 'Chiudi il menu',
@@ -65,7 +65,6 @@ export const ui = {
   en: {
     skip: 'Skip to content',
     nav: { work: 'Work', archive: 'Archive', about: 'About', cv: 'CV', contact: 'Contact' },
-    workAnchor: '/en/#work',
     contactAnchor: '#contact',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',

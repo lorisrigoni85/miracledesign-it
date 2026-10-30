@@ -6,9 +6,6 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
   redirects: {
-    // "Lavori" / "Work" vivono come sezione della Home (SITE-GUIDE.md, Menu)
-    '/lavori/': '/#lavori',
-    '/en/work/': '/en/#work',
     // Vecchie pagine dei capitoli Telepass: ora sono momenti della pagina Telepass.
     '/lavori/telepass/mappatura-2019/': '/lavori/telepass/#mappare',
     '/lavori/telepass/ricerca-2022/': '/lavori/telepass/#ascoltare',

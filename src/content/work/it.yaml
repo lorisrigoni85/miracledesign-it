@@ -1,0 +1,24 @@
+# Pagina Lavori in italiano: tutti i casi studio, poi l'archivio.
+# Un caso nuovo si aggiunge in "cases" (e in en.yaml), con la sua pagina e la sua chiave in routes.
+
+meta:
+  title: Lavori — Loris Rigoni | Miracle Design
+  description: "I casi studio di Loris Rigoni, Senior Product Designer: piattaforme web, design system, ricerca con utenti e dati."
+
+title: Lavori
+lead: Casi studio raccontati dall'inizio alla fine. Il problema, la ricerca, le scelte e cosa è successo dopo.
+
+cases:
+  - route: telepass
+    image: telepass
+    eyebrow: Telepass · 2019 – oggi
+    title: Il volto digitale della mobilità Telepass.
+    text: Dalla mappatura del sito nel 2019 al **design system Resin**, dalla ricerca con utenti e stakeholder al lavoro sulla **conversione**. In agenzia, in azienda e oggi in consulenza.
+    tags: [Design system, User research, Conversione]
+    imageAlt: Il sito telepass.com su computer e su telefono
+
+archive:
+  eyebrow: 2020 – 2013
+  title: Archivio
+  text: Siti, e-commerce e piattaforme dei primi anni, progettati e sviluppati per aziende in Svizzera e in Italia.
+  link: Vedi l'archivio

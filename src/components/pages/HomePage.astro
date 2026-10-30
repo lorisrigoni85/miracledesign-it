@@ -5,6 +5,7 @@ import heroPhoto from '../../assets/foto/hero-ritratto.jpg';
 import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import telepassMockup from '../../assets/foto/telepass-mockup.png';
+import CaseCard from '../CaseCard.astro';
 import { emphasis } from '../../utils/emphasis';
 import { ui, routes, type Lang } from '../../i18n/ui';
 import { archive } from '../../data/archive';
@@ -51,20 +52,16 @@ const preview = archive.filter((item) => item.preview);
   <section id={home.work.anchor} class="container work" aria-labelledby="work-title">
     <h2 id="work-title" class="section-head"><span>{home.work.label}</span></h2>
 
-    <article class="case">
-      <div class="case__text">
-        <p class="mono">{home.work.telepass.eyebrow}</p>
-        <h3 class="case__title">{home.work.telepass.title}</h3>
-        <p class="case__body" set:html={emphasis(home.work.telepass.text)} />
-        <ul class="case__stats">
-          {home.work.telepass.stats.map((stat) => <li>{stat}</li>)}
-        </ul>
-        <a class="link" href={routes.telepass[lang]}>{t.readCase} →</a>
-      </div>
-      <div class="case__media">
-        <Image src={telepassMockup} alt={home.work.telepass.image} class="case__img" widths={[600, 900, 1200]} sizes="(max-width: 760px) 100vw, 640px" />
-      </div>
-    </article>
+    <CaseCard
+      eyebrow={home.work.telepass.eyebrow}
+      title={home.work.telepass.title}
+      text={home.work.telepass.text}
+      stats={home.work.telepass.stats}
+      href={routes.telepass[lang]}
+      linkLabel={t.readCase}
+      image={telepassMockup}
+      imageAlt={home.work.telepass.image}
+    />
 
     <ol class="rows chapters" aria-label={`Telepass — ${telepass.navLabel}`}>
       {moments.map((m) => (
@@ -77,6 +74,9 @@ const preview = archive.filter((item) => item.preview);
         </li>
       ))}
     </ol>
+    <div class="actions work-actions">
+      <a class="btn btn--outline" href={routes.work[lang]}>{home.work.all} →</a>
+    </div>
   </section>
 
   <!-- 3. Percorso -->
@@ -280,52 +280,8 @@ const preview = archive.filter((item) => item.preview);
     padding-top: var(--section-y);
     padding-bottom: 32px;
   }
-  .case {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 40px 64px;
-    padding: 56px 0 64px;
-    border-top: 1px solid var(--rule);
-  }
-  .case__text {
-    flex: 1 1 380px;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-  }
-  .case__media {
-    flex: 1.3 1 440px;
-    min-width: 0;
-  }
-  .case__img {
-    width: 100%;
-    height: auto;
-  }
-  .case__title {
-    font-size: var(--fs-h2-case);
-    font-weight: 500;
-    line-height: var(--lh-h2-case);
-    letter-spacing: -0.025em;
-  }
-  .case__body {
-    color: var(--ink-body);
-  }
-  .case__stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 0.6em;
-    list-style: none;
-    padding: 0;
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .case__stats li:not(:last-child)::after {
-    content: ',';
+  .work-actions {
+    margin-top: 40px;
   }
 
   .chapters__row {

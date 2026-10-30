@@ -19,6 +19,8 @@ const home = defineCollection({
     work: z.object({
       label: z.string(),
       anchor: z.string(),
+      /** Pulsante verso la pagina Lavori. */
+      all: z.string(),
       telepass: z.object({
         eyebrow: z.string(),
         title: z.string(),
@@ -116,6 +118,30 @@ const telepass = defineCollection({
   }),
 });
 
+/** Pagina Lavori, un file per lingua: src/content/work/it.yaml, en.yaml. I casi sono in ordine di pagina. */
+const work = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/work' }),
+  schema: z.object({
+    meta: z.object({ title: z.string(), description: z.string() }),
+    title: z.string(),
+    lead: z.string(),
+    cases: z.array(
+      z.object({
+        /** Chiave di routes (src/i18n/ui.ts) della pagina del caso. */
+        route: z.enum(['telepass']),
+        /** Immagine in src/assets/foto, scelta in WorkPage.astro. */
+        image: z.enum(['telepass']),
+        eyebrow: z.string(),
+        title: z.string(),
+        text: z.string(),
+        tags: z.array(z.string()),
+        imageAlt: z.string(),
+      }),
+    ),
+    archive: z.object({ eyebrow: z.string(), title: z.string(), text: z.string(), link: z.string() }),
+  }),
+});
+
 /** CV, un file per lingua: src/content/cv/it.yaml, en.yaml (stessi contenuti del PDF). */
 const cv = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/cv' }),
@@ -162,4 +188,4 @@ const mountains = defineCollection({
   }),
 });
 
-export const collections = { home, pages, telepass, cv, mountains };
+export const collections = { home, pages, telepass, work, cv, mountains };

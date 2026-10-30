@@ -8,8 +8,8 @@ interface Props {
 }
 const { lang, page } = Astro.props;
 const t = ui[lang];
-// Archivio, Chi sono e CV portano ai lavori in evidenza; Telepass all'inizio della Home; Montagna a Chi sono.
-const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? routes.about[lang] : t.workAnchor;
+// Archivio, Chi sono e CV portano alla pagina Lavori; Telepass all'inizio della Home; Montagna a Chi sono.
+const href = page === 'telepass' ? routes.home[lang] : page === 'mountains' ? routes.about[lang] : routes.work[lang];
 ---
 <div class="next">
   <!-- Azioni in più prima del pulsante (es. Scarica il CV) -->

@@ -1,0 +1,86 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseCard from '../CaseCard.astro';
+import telepassMockup from '../../assets/foto/telepass-mockup.png';
+import { ui, routes, type Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const page = (await getEntry('work', lang))!.data;
+const images = { telepass: telepassMockup };
+---
+<BaseLayout lang={lang} title={page.meta.title} description={page.meta.description} alternates={routes.work}>
+  <div class="container">
+    <header class="page-head">
+      <h1 class="page-title">{page.title}</h1>
+      <p class="page-lead">{page.lead}</p>
+    </header>
+
+    <div class="cases">
+      {page.cases.map((c) => (
+        <CaseCard
+          eyebrow={c.eyebrow}
+          title={c.title}
+          text={c.text}
+          stats={c.tags}
+          href={routes[c.route][lang]}
+          linkLabel={t.readCase}
+          image={images[c.image]}
+          imageAlt={c.imageAlt}
+          level="h2"
+        />
+      ))}
+    </div>
+
+    <!-- L'archivio chiude la pagina: una riga, non un caso -->
+    <a class="archive-row" href={routes.archive[lang]}>
+      <span class="mono">{page.archive.eyebrow}</span>
+      <span class="archive-row__title">{page.archive.title}</span>
+      <span class="archive-row__text">{page.archive.text}</span>
+      <span class="archive-row__link">{page.archive.link} →</span>
+    </a>
+  </div>
+</BaseLayout>
+
+<style>
+  .archive-row {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.4fr) auto;
+    gap: 4px 32px;
+    align-items: baseline;
+    margin-bottom: var(--section-y);
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+  }
+  .archive-row__title {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .archive-row__text {
+    color: var(--ink-body);
+  }
+  .archive-row__link {
+    white-space: nowrap;
+  }
+  .archive-row:hover .archive-row__link,
+  .archive-row:hover .archive-row__title {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  }
+  @media (max-width: 760px) {
+    .archive-row {
+      grid-template-columns: 1fr;
+    }
+    .archive-row__link {
+      margin-top: 8px;
+    }
+  }
+</style>

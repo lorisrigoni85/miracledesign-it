@@ -1,0 +1,24 @@
+# Work page in English: all case studies, then the archive.
+# A new case goes into "cases" (and into it.yaml), with its own page and its key in routes.
+
+meta:
+  title: Work — Loris Rigoni | Miracle Design
+  description: "Case studies by Loris Rigoni, Senior Product Designer: web platforms, design systems, research with users and data."
+
+title: Work
+lead: Case studies told from start to finish. The problem, the research, the choices and what happened next.
+
+cases:
+  - route: telepass
+    image: telepass
+    eyebrow: Telepass · 2019 – today
+    title: The digital face of Telepass mobility.
+    text: From mapping the site in 2019 to the **Resin design system**, from research with users and stakeholders to work on **conversion**. At an agency, in-house and now as a consultant.
+    tags: [Design system, User research, Conversion]
+    imageAlt: The telepass.com website on desktop and mobile
+
+archive:
+  eyebrow: 2020 – 2013
+  title: Archive
+  text: Websites, e-commerce and platforms from the early years, designed and built for companies in Switzerland and Italy.
+  link: See the archive

@@ -17,6 +17,7 @@ hero:
 work:
   label: Lavori in evidenza
   anchor: lavori
+  all: Tutti i lavori
   telepass:
     eyebrow: 01 — Telepass · 2019 – oggi
     title: Il volto digitale della mobilità Telepass.
