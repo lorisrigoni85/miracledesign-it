@@ -16,6 +16,13 @@ cases:
     text: From mapping the site in 2019 to the **Resin design system**, from research with users and stakeholders to work on **conversion**. At an agency, in-house and now as a consultant.
     tags: [Design system, User research, Conversion]
     imageAlt: The telepass.com website on desktop and mobile
+  - route: grigna
+    image: grigna
+    eyebrow: Grigna · personal design system
+    title: A design system for designers and for AI agents.
+    text: "Principles, components and their states, and **accessibility by construction**, with rules written for two readers: people and agents. Plus a test with and without the system."
+    tags: [Design system, Accessibility, AI]
+    imageAlt: Grigna's buttons in their variants and states
   - route: portfolio
     image: portfolio
     eyebrow: This portfolio · October 2026

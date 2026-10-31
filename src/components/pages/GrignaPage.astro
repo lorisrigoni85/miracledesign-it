@@ -1,0 +1,622 @@
+---
+/* Caso Grigna: pagina "specimen", non un racconto in momenti. Principi, componenti dal vivo, accessibilità,
+   due lettori, token, la prova con e senza sistema. Gli esempi vivi sono pagine isolate (src/pages/demo/grigna/)
+   caricate in cornici: qui si cambiano tema e colori agendo sul loro <html>. */
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NextStep from '../NextStep.astro';
+import { emphasis } from '../../utils/emphasis';
+import { ui, routes, type Lang } from '../../i18n/ui';
+import shotWithout from '../../assets/grigna/esperimento-a.jpg';
+import shotWith from '../../assets/grigna/esperimento-b.jpg';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const page = (await getEntry('grigna', lang))!.data;
+const siteUrl = 'https://grigna.miracledesign.it';
+const newTab = lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a new tab)';
+const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
+---
+<BaseLayout lang={lang} title={page.meta.title} description={page.meta.description} alternates={routes.grigna}>
+  <div class="container">
+    <header class="page-head">
+      <nav class="breadcrumb label" aria-label="Breadcrumb">
+        <ol>
+          <li><a href={routes.work[lang]}>{t.work}</a></li>
+          <li><span aria-current="page">{page.name}</span></li>
+        </ol>
+      </nav>
+      <p class="mono">{page.label}</p>
+      <h1 class="page-title">{page.title}</h1>
+      <p class="page-lead">{page.lead}</p>
+      <div class="actions">
+        <a class="btn btn--solid" href={siteUrl} target="_blank" rel="noopener">{page.siteLabel} ↗<span class="visually-hidden"> {newTab}</span></a>
+      </div>
+    </header>
+
+    <div class="frame frame--strip">
+      <iframe src={demo('vetrina')} title={page.demoTitle} loading="lazy" data-demo></iframe>
+    </div>
+
+    <ul class="facts">
+      {page.facts.map((f) => (
+        <li><strong>{f.value}</strong><span>{f.label}</span></li>
+      ))}
+    </ul>
+
+    <!-- Principi -->
+    <section class="block" aria-labelledby="principi">
+      <h2 id="principi" class="section-head"><span>{page.principles.label}</span></h2>
+      <p class="block__intro">{page.principles.intro}</p>
+      <ol class="principles">
+        {page.principles.items.map((p, i) => (
+          <li>
+            <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+            <strong>{p.title}</strong>
+            <span>{p.text}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Componenti: esploratore dal vivo -->
+    <section class="block" aria-labelledby="componenti">
+      <h2 id="componenti" class="section-head"><span>{page.components.label}</span></h2>
+      <p class="block__intro">{page.components.intro}</p>
+      <div class="controls">
+        <p class="controls__hint">{page.components.hint}</p>
+        <div class="switch" role="group" aria-label={page.components.theme}>
+          <button type="button" aria-pressed="true" data-theme-set="light" data-target="explorer">{page.components.light}</button>
+          <button type="button" aria-pressed="false" data-theme-set="dark" data-target="explorer">{page.components.dark}</button>
+        </div>
+      </div>
+      <div class="frame">
+        <iframe id="explorer" src={demo('componenti')} title={page.demoTitle} loading="lazy" data-demo></iframe>
+      </div>
+      <blockquote class="quote"><p>{page.components.quote}</p></blockquote>
+    </section>
+
+    <!-- Accessibilità -->
+    <section class="block" aria-labelledby="accessibilita">
+      <h2 id="accessibilita" class="section-head"><span>{page.a11y.label}</span></h2>
+      <p class="block__intro">{page.a11y.intro}</p>
+      <div class="split">
+        <dl class="rules">
+          {page.a11y.items.map((r) => (
+            <div><dt>{r.title}</dt><dd>{r.text}</dd></div>
+          ))}
+        </dl>
+        <div class="split__demo">
+          <div class="controls">
+            <button class="toggle" type="button" aria-pressed="false" data-gray="a11y-demo">
+              <span class="toggle__track" aria-hidden="true"><span class="toggle__thumb"></span></span>
+              {page.a11y.toggle}
+            </button>
+          </div>
+          <div class="frame">
+            <iframe id="a11y-demo" src={demo('accessibilita')} title={page.demoTitle} loading="lazy" data-demo></iframe>
+          </div>
+          <p class="note">{page.a11y.toggleHint}</p>
+        </div>
+      </div>
+      <blockquote class="quote"><p>{page.a11y.quote}</p></blockquote>
+    </section>
+
+    <!-- Due lettori -->
+    <section class="block" aria-labelledby="lettori">
+      <h2 id="lettori" class="section-head"><span>{page.readers.label}</span></h2>
+      <p class="block__intro">{page.readers.intro}</p>
+      <div class="split">
+        <dl class="rules">
+          {page.readers.items.map((r) => (
+            <div><dt>{r.title}</dt><dd>{r.text}</dd></div>
+          ))}
+        </dl>
+        <figure class="agent-rules">
+          <figcaption class="mono">{page.readers.example}</figcaption>
+          <div class="agent-rules__cols">
+            <div>
+              <p class="agent-rules__head agent-rules__head--yes">{page.readers.always}</p>
+              <ul>{page.readers.alwaysItems.map((i) => <li>{i}</li>)}</ul>
+            </div>
+            <div>
+              <p class="agent-rules__head agent-rules__head--no">{page.readers.never}</p>
+              <ul>{page.readers.neverItems.map((i) => <li>{i}</li>)}</ul>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <blockquote class="quote"><p>{page.readers.quote}</p></blockquote>
+    </section>
+
+    <!-- Token e temi -->
+    <section class="block" aria-labelledby="token">
+      <h2 id="token" class="section-head"><span>{page.tokens.label}</span></h2>
+      <p class="block__intro">{page.tokens.intro}</p>
+      <ol class="chain">
+        {page.tokens.levels.map((l, i) => (
+          <li>
+            <span class="mono">{String(i + 1).padStart(2, '0')} · {l.name}</span>
+            <span class="chain__token"><span class="chain__swatch" aria-hidden="true"></span>{l.token}</span>
+            <span class="chain__text">{l.text}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="note note--wide">{page.tokens.dark}</p>
+    </section>
+
+    <!-- La prova -->
+    <section class="block" aria-labelledby="prova">
+      <h2 id="prova" class="section-head"><span>{page.experiment.label}</span></h2>
+      <p class="block__intro">{page.experiment.intro}</p>
+      <p class="honest">{page.experiment.honest}</p>
+      <table class="compare">
+        <caption class="visually-hidden">{page.experiment.label}</caption>
+        <thead>
+          <tr><th scope="col"><span class="visually-hidden">—</span></th><th scope="col">{page.experiment.without}</th><th scope="col">{page.experiment.with}</th></tr>
+        </thead>
+        <tbody>
+          {page.experiment.rows.map((r) => (
+            <tr><th scope="row">{r.label}</th><td>{r.without}</td><td class="compare__with">{r.with}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <div class="shots">
+        <figure>
+          <figcaption><span class="mono">{page.experiment.without}</span> {page.experiment.shotWithout}</figcaption>
+          <Image src={shotWithout} alt={page.experiment.shotWithout} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 560px" />
+        </figure>
+        <figure>
+          <figcaption><span class="mono">{page.experiment.with}</span> {page.experiment.shotWith}</figcaption>
+          <Image src={shotWith} alt={page.experiment.shotWith} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 560px" />
+        </figure>
+      </div>
+      <p class="block__intro" set:html={emphasis(page.experiment.learned)} />
+      <blockquote class="quote"><p>{page.experiment.quote}</p></blockquote>
+    </section>
+
+    <section class="closing">
+      <p>{page.closing.text}</p>
+      <a class="btn btn--solid" href={siteUrl} target="_blank" rel="noopener">{page.closing.button} ↗<span class="visually-hidden"> {newTab}</span></a>
+    </section>
+
+    <NextStep lang={lang} page="grigna" />
+  </div>
+</BaseLayout>
+
+<script>
+  // Cornici delle demo: altezza uguale al contenuto, tema chiaro/scuro e vista senza colori.
+  const frames = [...document.querySelectorAll<HTMLIFrameElement>('iframe[data-demo]')];
+  const fit = (f: HTMLIFrameElement) => {
+    // Altezza del body, non del documento: quella del documento non scende mai sotto l'altezza della cornice.
+    const body = f.contentDocument?.body;
+    if (body) f.style.height = `${Math.ceil(body.getBoundingClientRect().height)}px`;
+  };
+  frames.forEach((f) => {
+    const watch = () => {
+      fit(f);
+      const body = f.contentDocument?.body;
+      if (body) new ResizeObserver(() => fit(f)).observe(body);
+    };
+    if (f.contentDocument?.readyState === 'complete' && f.contentDocument.body?.childElementCount) watch();
+    f.addEventListener('load', watch);
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-set]').forEach((b) =>
+    b.addEventListener('click', () => {
+      const frame = document.getElementById(b.dataset.target!) as HTMLIFrameElement | null;
+      frame?.contentDocument?.documentElement.setAttribute('data-theme', b.dataset.themeSet!);
+      b.parentElement?.querySelectorAll('button').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    }),
+  );
+
+  document.querySelectorAll<HTMLButtonElement>('[data-gray]').forEach((b) =>
+    b.addEventListener('click', () => {
+      const on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(on));
+      document.getElementById(b.dataset.gray!)?.classList.toggle('is-gray', on);
+    }),
+  );
+</script>
+
+<style>
+  .page-head .actions {
+    margin-top: 32px;
+  }
+
+  /* Cornici delle demo */
+  .frame {
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-media);
+    background: var(--bg);
+  }
+  .frame--strip {
+    margin-top: 48px;
+  }
+  .frame iframe {
+    display: block;
+    width: 100%;
+    height: 200px;
+    border: 0;
+    transition: filter 300ms ease;
+  }
+  .frame--strip iframe {
+    height: 80px;
+  }
+  .frame iframe.is-gray {
+    filter: grayscale(1);
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 32px;
+    margin: 48px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .facts li {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 20px;
+  }
+  .facts strong {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .facts span {
+    color: var(--ink-body);
+  }
+
+  /* Sezioni */
+  .block {
+    padding-top: var(--section-y);
+  }
+  .block__intro {
+    max-width: 720px;
+    margin-top: 24px;
+    color: var(--ink-body);
+  }
+  .quote {
+    max-width: 640px;
+    margin: 40px 0 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--accent);
+    font-size: clamp(22px, 2.2vw, 28px);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .note {
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--ink-muted);
+  }
+  .note--wide {
+    max-width: 720px;
+    margin-top: 32px;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 32px;
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .principles li {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .principles strong {
+    font-size: var(--fs-row);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .principles li > span:last-child {
+    color: var(--ink-body);
+  }
+
+  /* Comandi sopra le demo */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin: 32px 0 16px;
+  }
+  .controls__hint {
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+  .switch {
+    display: inline-flex;
+    padding: 3px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+  }
+  .switch button {
+    min-height: 38px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-body);
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .switch button[aria-pressed='true'] {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: var(--tap);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+  }
+  .toggle__track {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    background: var(--rule-strong);
+    transition: background-color var(--transition);
+  }
+  .toggle__thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg);
+    transition: transform var(--transition);
+  }
+  .toggle[aria-pressed='true'] .toggle__track {
+    background: var(--ink);
+  }
+  .toggle[aria-pressed='true'] .toggle__thumb {
+    transform: translateX(20px);
+  }
+
+  /* Testo a sinistra, esempio a destra */
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 48px;
+    align-items: start;
+    margin-top: 40px;
+  }
+  .split__demo .controls {
+    margin-top: 0;
+  }
+  .rules {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .rules div {
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .rules dt {
+    font-weight: 500;
+  }
+  .rules dd {
+    margin: 4px 0 0;
+    color: var(--ink-body);
+  }
+
+  .agent-rules {
+    margin: 0;
+    padding: 24px;
+    background: var(--bg-band);
+    border-radius: var(--radius-media);
+  }
+  .agent-rules figcaption {
+    color: var(--ink-muted);
+  }
+  .agent-rules__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 16px;
+  }
+  .agent-rules__head {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+  }
+  .agent-rules__head::before {
+    font-family: var(--font-mono);
+  }
+  .agent-rules__head--yes::before {
+    content: '✓';
+    color: var(--accent);
+  }
+  .agent-rules__head--no::before {
+    content: '✕';
+    color: var(--ink-muted);
+  }
+  .agent-rules ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0 0;
+    padding-left: 1.1em;
+    color: var(--ink-body);
+  }
+
+  /* Catena dei token */
+  .chain {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .chain li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 32px 0 0;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .chain li:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    top: 56px;
+    right: 8px;
+    color: var(--ink-muted);
+  }
+  .chain__token {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--fs-row);
+    font-weight: 500;
+  }
+  /* Il verde abete 500 di Grigna, lo stesso valore in tutti e tre i livelli */
+  .chain__swatch {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    border-radius: 6px;
+    background: #2f6b4f;
+  }
+  .chain__text {
+    color: var(--ink-body);
+  }
+
+  /* La prova */
+  .honest {
+    max-width: 720px;
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: var(--bg-band);
+    border-radius: var(--radius-media);
+  }
+  .compare {
+    width: 100%;
+    margin-top: 40px;
+    border-collapse: collapse;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .compare th,
+  .compare td {
+    padding: 16px 16px 16px 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    vertical-align: baseline;
+  }
+  .compare thead th {
+    font-family: var(--font-mono);
+    font-size: var(--fs-meta);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .compare tbody th {
+    font-weight: 400;
+    color: var(--ink-body);
+  }
+  .compare td {
+    font-weight: 500;
+  }
+  .compare__with {
+    color: var(--accent);
+  }
+  .shots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .shots figure {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+  }
+  .shots figcaption {
+    font-size: 15px;
+    color: var(--ink-body);
+  }
+  .shots figcaption .mono {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .shots :global(img) {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-media);
+  }
+
+  .closing {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    margin: var(--section-y) 0 64px;
+    padding: 32px 0;
+    border-top: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--fs-row);
+  }
+
+  @media (max-width: 900px) {
+    .facts,
+    .principles,
+    .chain,
+    .split,
+    .shots {
+      grid-template-columns: 1fr;
+    }
+    .principles {
+      gap: 24px;
+    }
+    .chain li {
+      padding-bottom: 24px;
+    }
+    .chain li:not(:last-child)::after {
+      content: '↓';
+      top: auto;
+      bottom: 4px;
+      right: auto;
+      left: 0;
+    }
+  }
+  @media (max-width: 600px) {
+    .agent-rules__cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

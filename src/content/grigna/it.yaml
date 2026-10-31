@@ -1,0 +1,133 @@
+# Caso studio Grigna in italiano: pagina "specimen" (principi, componenti, accessibilità, due lettori, token, esperimento).
+# Testo approvato da Loris il 31/10/2026 (bozza in BOZZA-CASO-2.md). Niente date, niente Quotik.
+# Fonte dei contenuti: ~/Documents/design-system (docs/principi.md, docs/componenti/, AGENTS.md, esperimento/confronto.md).
+
+meta:
+  title: Grigna, un design system per persone e agenti AI — Loris Rigoni | Miracle Design
+  description: "Grigna, il design system di Loris Rigoni pensato per chi progetta e per gli agenti AI: principi, componenti con i loro stati, accessibilità per costruzione e un esperimento con e senza sistema."
+
+name: Grigna
+label: Design system · progetto personale
+title: Grigna. Un design system per chi progetta e per gli agenti AI.
+lead: "Un design system serve prima di tutto a chi progetta: dà a designer e sviluppatori le stesse regole, gli stessi nomi e gli stessi componenti. Grigna aggiunge un secondo lettore, l'agente AI. Le regole che rendono coerente il lavoro di un team sono le stesse che impediscono a un agente di inventare colori, spazi e componenti."
+siteLabel: Esplora la documentazione
+demoTitle: Componenti di Grigna, esempi dal vivo
+facts:
+  - value: 3 livelli
+    label: di token, dal valore grezzo al componente
+  - value: 7 componenti
+    label: in HTML e CSS, senza framework
+  - value: Chiaro e scuro
+    label: stessi nomi, valori diversi
+
+principles:
+  label: Sei principi
+  intro: Sei idee guidano Grigna. Quando una regola più specifica non copre un caso, si decide partendo da qui.
+  items:
+    - title: Il sistema è il contesto.
+      text: Ogni scelta è scritta, ha un nome ed è verificabile da uno script, non solo da un occhio esperto.
+    - title: Pulito e luminoso.
+      text: Superfici chiare, molto spazio, un solo colore d'accento. L'interfaccia si fa da parte e lascia la scena ai contenuti.
+    - title: Il colore ha sempre un significato.
+      text: Il verde abete indica l'azione, i colori di feedback lo stato. Un colore non decora e non distingue categorie.
+    - title: Accessibile per costruzione.
+      text: Contrasto, area di tocco e focus sono regole controllate, non buone intenzioni.
+    - title: Meno scelte, più coerenza.
+      text: "Si sceglie uno spazio con un nome, non «16px» o «15px che sta meglio». Se manca qualcosa, si aggiunge al sistema."
+    - title: Niente contenuti inventati.
+      text: "Gli esempi usano segnaposto chiari. E un dato che manca non si mostra: niente trattini, «n.d.» o stime."
+
+components:
+  label: Componenti
+  intro: "Sette componenti, in HTML e CSS senza framework. Ogni pagina della documentazione ha le stesse sezioni nello stesso ordine: esempio dal vivo, quando usarlo e quando no, codice, varianti e stati, token, accessibilità, regole per gli agenti."
+  hint: Scegli un componente e guarda i suoi stati. Gli esempi sono veri, non immagini.
+  theme: Tema
+  light: Chiaro
+  dark: Scuro
+  quote: Ogni componente dice anche quando non usarlo.
+
+a11y:
+  label: Accessibile per costruzione
+  intro: "L'accessibilità in Grigna non è una revisione finale: è scritta nei token e controllata dalla build."
+  items:
+    - title: Contrasto
+      text: 4,5:1 per il testo, 3:1 per bordi e grafica. Se un abbinamento non passa, la build si ferma.
+    - title: Area di tocco
+      text: Almeno 44px per ogni elemento interattivo.
+    - title: Testo
+      text: Il testo corrente non scende mai sotto i 16px.
+    - title: Focus
+      text: Sempre visibile da tastiera, con lo stesso anello verde ovunque.
+    - title: HTML nativo
+      text: "Un pulsante per le azioni, un link per la navigazione, un'etichetta per ogni campo, details per l'accordion."
+    - title: Mai solo colore
+      text: Ogni colore con un significato è accompagnato da un testo, un'icona o una forma.
+  toggle: Guarda senza colori
+  toggleHint: "Prova a togliere i colori: lo stato dei badge, il filtro attivo e l'errore si capiscono lo stesso, grazie a testo, spunta e messaggio."
+  quote: Un'informazione che passa solo dal colore non arriva a tutti.
+
+readers:
+  label: Un sistema, due lettori
+  intro: "Ogni pagina della documentazione chiude con una sezione «Per gli agenti»: regole brevi, nomi esatti di classi e token, cosa non inventare mai."
+  items:
+    - title: Per le persone
+      text: Il perché delle scelte, quando usare un elemento e quando no, esempi giusti e sbagliati.
+    - title: Per gli agenti
+      text: "Un file di regole (AGENTS.md), una versione Markdown accanto a ogni pagina, llms.txt e tutti i token in un file solo."
+    - title: Un controllo automatico
+      text: Legge una pagina e segnala ogni colore, spazio o dimensione scritto a mano.
+    - title: Quando il sistema non basta
+      text: "L'agente non improvvisa: usa la soluzione più vicina e dichiara cosa mancava. Le aggiunte le decide una persona."
+  example: Bottone, regole per gli agenti
+  always: Sempre
+  alwaysItems:
+    - Un solo bottone primario per vista.
+    - Un testo che comincia con un verbo.
+  never: Mai
+  neverItems:
+    - Mai colori, bordi o spazi personalizzati sul bottone.
+    - Mai un div cliccabile al posto di un bottone.
+  quote: Le regole che tengono coerente un team sono le stesse che servono a un agente.
+
+tokens:
+  label: Token e temi
+  intro: Tre livelli, dal valore grezzo al componente. Il tema chiaro e quello scuro usano gli stessi nomi; cambia solo il valore. Formato standard W3C Design Tokens.
+  levels:
+    - name: Primitivo
+      text: Il valore grezzo. Non si usa direttamente.
+      token: abete 500
+    - name: Semantico
+      text: Un valore con un significato.
+      token: accento
+    - name: Componente
+      text: Il valore di un componente. Punta solo ai semantici.
+      token: sfondo del bottone primario
+  dark: "Nel tema scuro lo stesso accento punta a un altro verde, abete 300: il bottone non cambia nome, cambia valore."
+
+experiment:
+  label: La prova
+  intro: "Un design system ben strutturato cambia quello che un agente costruisce? Ho dato la stessa richiesta a due agenti uguali: costruire una pagina con un elenco di schede, filtri e uno stato per ogni scheda. Uno lavorava in una cartella vuota, l'altro dentro Grigna. La richiesta non nominava il sistema e non diceva che mancavano dati reali. Un solo tentativo, senza correzioni."
+  honest: "Va detto con onestà: la pagina senza sistema era più bella, più ricca e «da prodotto». Il sistema non l'ha resa più bella. L'ha resa coerente, verificabile e onesta."
+  without: Senza sistema
+  with: Con Grigna
+  rows:
+    - label: Segnalazioni del controllo automatico
+      without: "142"
+      with: "0"
+    - label: Colori diversi scritti a mano
+      without: "44"
+      with: "0"
+    - label: Dimensioni del testo diverse
+      without: "11"
+      with: "Le 9 di Grigna"
+    - label: Contenuti
+      without: 14 elementi inventati, su luoghi veri, senza avvisi
+      with: Segnaposto, con un avviso in pagina
+  shotWithout: "La pagina dell'agente senza sistema: curata, ma con contenuti e stati inventati e nessun avviso."
+  shotWith: "La pagina dell'agente con Grigna: più spoglia, con segnaposto dichiarati in cima alla pagina."
+  learned: "La prova ha trovato anche i limiti di Grigna. L'agente ha elencato da solo cosa mancava invece di improvvisare, e da lì sono nati sei miglioramenti: un componente per i segnaposto, token di layout che mancavano, un filtro che non reggeva troppe opzioni, un controllo automatico più severo."
+  quote: Una demo convincente non è una base su cui costruire.
+
+closing:
+  text: La documentazione completa, per persone e agenti, è online.
+  button: Esplora Grigna

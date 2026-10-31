@@ -15,10 +15,12 @@ interface Props {
   /** Immagine fissa; senza, la parte destra prende lo slot "media" (es. un mockup animato). */
   image?: ImageMetadata;
   imageAlt?: string;
+  /** Bordo e angoli arrotondati attorno all'immagine (schermate su fondo bianco). */
+  framed?: boolean;
   /** h3 nella Home (sotto "Lavori in evidenza"), h2 nella pagina Lavori. */
   level?: 'h2' | 'h3';
 }
-const { eyebrow, title, text, stats, href, linkLabel, image, imageAlt, level = 'h3' } = Astro.props;
+const { eyebrow, title, text, stats, href, linkLabel, image, imageAlt, framed = false, level = 'h3' } = Astro.props;
 const Heading = level;
 ---
 <article class="case">
@@ -33,7 +35,7 @@ const Heading = level;
   </div>
   <div class="case__media">
     {image ? (
-      <Image src={image} alt={imageAlt ?? ''} class="case__img" widths={[600, 900, 1200]} sizes="(max-width: 760px) 100vw, 640px" />
+      <Image src={image} alt={imageAlt ?? ''} class:list={['case__img', framed && 'case__img--framed']} widths={[600, 900, 1200]} sizes="(max-width: 760px) 100vw, 640px" />
     ) : (
       <slot name="media" />
     )}
@@ -64,6 +66,10 @@ const Heading = level;
   .case__img {
     width: 100%;
     height: auto;
+  }
+  .case__img--framed {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-media);
   }
   .case__title {
     font-size: var(--fs-h2-case);

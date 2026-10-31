@@ -1,0 +1,364 @@
+/* Copia di ~/Documents/design-system/dist/grigna-components.css (Grigna), usata solo dalle demo in /demo/grigna/. Non modificarla: si ricopia da lì. */
+/* Grigna: componenti. Richiede dist/grigna.css.
+   File generato da scripts/build-tokens.mjs: non modificarlo a mano. */
+
+/* Grigna · base
+   Regole comuni a tutti i componenti: hidden, focus visibile e movimento ridotto. */
+
+:where([class^="grigna-"], [class*=" grigna-"]) {
+  box-sizing: border-box;
+}
+
+/* L'attributo hidden vince sempre sullo stile dei componenti */
+[hidden] {
+  display: none !important;
+}
+
+:where([class^="grigna-"]):focus-visible {
+  outline: var(--grigna-size-focus-ring) solid var(--grigna-color-focus-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where([class^="grigna-"]) {
+    transition: none !important;
+  }
+}
+
+/* Grigna · accordion
+   <div class="grigna-accordion">
+     <details class="grigna-accordion__item">
+       <summary class="grigna-accordion__summary">Titolo della sezione</summary>
+       <div class="grigna-accordion__content"><p>Contenuto.</p></div>
+     </details>
+   </div>
+   Costruito su <details> e <summary>: si apre e si chiude senza JavaScript, da mouse e tastiera.
+   Una sola sezione aperta alla volta: lo stesso attributo name su tutti i <details> del gruppo.
+   Aperto all'inizio: attributo open. */
+
+.grigna-accordion {
+  border: 1px solid var(--grigna-accordion-border);
+  border-radius: var(--grigna-accordion-radius);
+  background: var(--grigna-accordion-bg);
+  color: var(--grigna-accordion-text);
+  overflow: hidden;
+}
+
+.grigna-accordion__item + .grigna-accordion__item {
+  border-top: 1px solid var(--grigna-accordion-border);
+}
+
+.grigna-accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--grigna-accordion-gap);
+  min-height: var(--grigna-accordion-min-height);
+  padding: var(--grigna-accordion-padding-y) var(--grigna-accordion-padding-x);
+  font: var(--grigna-accordion-summary-font);
+  list-style: none;
+  cursor: pointer;
+  transition: background-color 120ms ease-out;
+}
+.grigna-accordion__summary::-webkit-details-marker { display: none; }
+.grigna-accordion__summary:hover { background: var(--grigna-accordion-bg-hover); }
+
+/* Il focus resta dentro il contenitore, che ha overflow: hidden */
+.grigna-accordion__summary:focus-visible { outline-offset: calc(-1 * var(--grigna-size-focus-ring)); }
+
+/* Freccia disegnata dal CSS: punta in giù da chiuso, in su da aperto */
+.grigna-accordion__summary::after {
+  content: "";
+  width: var(--grigna-size-icon-sm);
+  height: var(--grigna-size-icon-sm);
+  flex: none;
+  background: var(--grigna-accordion-icon);
+  clip-path: polygon(12% 32%, 24% 20%, 50% 46%, 76% 20%, 88% 32%, 50% 70%);
+  transition: transform 160ms ease-out;
+}
+.grigna-accordion__item[open] > .grigna-accordion__summary::after { transform: rotate(180deg); }
+
+/* Spazio sopra il testo, per staccarlo dal titolo quando la sezione è aperta */
+.grigna-accordion__content {
+  padding: var(--grigna-accordion-padding-y) var(--grigna-accordion-padding-x) var(--grigna-accordion-padding-x);
+  font: var(--grigna-accordion-content-font);
+}
+.grigna-accordion__content > * { margin: 0; }
+.grigna-accordion__content > * + * { margin-top: var(--grigna-space-xs); }
+
+/* Grigna · badge
+   <span class="grigna-badge grigna-badge--success">Pubblicata</span>
+   Etichetta che non si clicca. Varianti: --neutral (default), --accent, --success, --warning, --danger, --info.
+   Il colore non basta da solo: il testo deve dire lo stato. */
+
+.grigna-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--grigna-badge-gap);
+  min-height: var(--grigna-badge-height);
+  padding: 0 var(--grigna-badge-padding-x);
+  border: 1px solid var(--grigna-badge-neutral-border);
+  border-radius: var(--grigna-badge-radius);
+  background: var(--grigna-badge-neutral-bg);
+  color: var(--grigna-badge-neutral-text);
+  font: var(--grigna-badge-font);
+  white-space: nowrap;
+}
+.grigna-badge svg {
+  width: var(--grigna-size-icon-sm);
+  height: var(--grigna-size-icon-sm);
+  flex: none;
+}
+
+.grigna-badge--accent  { border-color: transparent; background: var(--grigna-badge-accent-bg);  color: var(--grigna-badge-accent-text); }
+.grigna-badge--success { border-color: transparent; background: var(--grigna-badge-success-bg); color: var(--grigna-badge-success-text); }
+.grigna-badge--warning { border-color: transparent; background: var(--grigna-badge-warning-bg); color: var(--grigna-badge-warning-text); }
+.grigna-badge--danger  { border-color: transparent; background: var(--grigna-badge-danger-bg);  color: var(--grigna-badge-danger-text); }
+.grigna-badge--info    { border-color: transparent; background: var(--grigna-badge-info-bg);    color: var(--grigna-badge-info-text); }
+
+/* Grigna · bottone
+   <button class="grigna-button grigna-button--primary">Salva</button>
+   Varianti: --primary (al massimo una per vista), --secondary (default), --ghost.
+   Misura: --sm solo in aree dense su desktop. */
+
+.grigna-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--grigna-button-gap);
+  min-height: var(--grigna-button-height);
+  padding: 0 var(--grigna-button-padding-x);
+  border: 1px solid var(--grigna-button-secondary-border);
+  border-radius: var(--grigna-button-radius);
+  background: var(--grigna-button-secondary-bg);
+  color: var(--grigna-button-secondary-text);
+  font: var(--grigna-button-font);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease-out;
+}
+.grigna-button:hover { background: var(--grigna-button-secondary-bg-hover); }
+
+.grigna-button--primary {
+  border-color: transparent;
+  background: var(--grigna-button-primary-bg);
+  color: var(--grigna-button-primary-text);
+}
+.grigna-button--primary:hover { background: var(--grigna-button-primary-bg-hover); }
+
+.grigna-button--ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--grigna-button-ghost-text);
+}
+.grigna-button--ghost:hover { background: var(--grigna-button-ghost-bg-hover); }
+
+.grigna-button--sm {
+  min-height: var(--grigna-button-height-sm);
+  padding: 0 var(--grigna-button-padding-x-sm);
+  font: var(--grigna-button-font-sm);
+}
+
+.grigna-button svg {
+  width: var(--grigna-size-icon-md);
+  height: var(--grigna-size-icon-md);
+  flex: none;
+}
+
+.grigna-button:disabled,
+.grigna-button[aria-disabled="true"] {
+  border-color: transparent;
+  background: var(--grigna-color-surface-subtle);
+  color: var(--grigna-color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Grigna · scheda
+   <article class="grigna-card">
+     <div class="grigna-card__media"><img src="…" alt="…"></div>
+     <div class="grigna-card__body">…</div>
+   </article>
+   Scheda cliccabile: aggiungi --interactive e metti un unico link sul titolo
+   con la classe grigna-card__link (tutta la scheda diventa cliccabile). */
+
+.grigna-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--grigna-card-border);
+  border-radius: var(--grigna-card-radius);
+  background: var(--grigna-card-bg);
+  box-shadow: var(--grigna-card-shadow);
+  transition: box-shadow 160ms ease-out;
+}
+
+.grigna-card__media {
+  aspect-ratio: 16 / 9;
+  background: var(--grigna-color-surface-subtle);
+}
+.grigna-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grigna-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grigna-card-gap);
+  padding: var(--grigna-card-padding);
+}
+
+.grigna-card--interactive:hover { box-shadow: var(--grigna-card-shadow-hover); }
+
+.grigna-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+.grigna-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.grigna-card__link:focus-visible { outline: none; }
+.grigna-card--interactive:has(.grigna-card__link:focus-visible) {
+  outline: var(--grigna-size-focus-ring) solid var(--grigna-color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Grigna · filtro (chip)
+   <button class="grigna-chip" aria-pressed="false">Escursionismo</button>
+   Si attiva e disattiva: lo stato sta in aria-pressed, non in una classe.
+   Quando è attivo mostra una spunta, così lo stato non dipende solo dal colore.
+   Un gruppo di filtri va in un contenitore con role="group" e aria-label. */
+
+.grigna-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--grigna-chip-gap);
+  min-height: var(--grigna-chip-height);
+  padding: 0 var(--grigna-chip-padding-x);
+  border: 1px solid var(--grigna-chip-border);
+  border-radius: var(--grigna-chip-radius);
+  background: var(--grigna-chip-bg);
+  color: var(--grigna-chip-text);
+  font: var(--grigna-chip-font);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease-out;
+}
+.grigna-chip:hover { background: var(--grigna-chip-bg-hover); }
+
+.grigna-chip[aria-pressed="true"] {
+  border-color: var(--grigna-chip-selected-border);
+  background: var(--grigna-chip-selected-bg);
+  color: var(--grigna-chip-selected-text);
+}
+.grigna-chip[aria-pressed="true"]::before {
+  content: "";
+  width: var(--grigna-size-icon-sm);
+  height: var(--grigna-size-icon-sm);
+  flex: none;
+  background: currentColor;
+  clip-path: polygon(14% 52%, 26% 40%, 41% 55%, 75% 21%, 87% 33%, 41% 79%);
+}
+
+.grigna-chip svg {
+  width: var(--grigna-size-icon-sm);
+  height: var(--grigna-size-icon-sm);
+  flex: none;
+}
+
+/* Grigna · campo
+   <div class="grigna-field">
+     <label class="grigna-field__label" for="nome">Nome</label>
+     <input class="grigna-field__input" id="nome" aria-describedby="nome-aiuto">
+     <p class="grigna-field__help" id="nome-aiuto">Testo di aiuto</p>
+   </div>
+   Errore: aria-invalid="true" sull'input e un <p class="grigna-field__error"> collegato con aria-describedby.
+   Funziona con <input>, <select> e <textarea>. L'etichetta è sempre visibile: il segnaposto non la sostituisce. */
+
+.grigna-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grigna-field-gap);
+}
+
+.grigna-field__label {
+  font: var(--grigna-field-label-font);
+  color: var(--grigna-field-text);
+}
+
+.grigna-field__input {
+  width: 100%;
+  min-height: var(--grigna-field-height);
+  padding: 0 var(--grigna-field-padding-x);
+  border: 1px solid var(--grigna-field-border);
+  border-radius: var(--grigna-field-radius);
+  background: var(--grigna-field-bg);
+  color: var(--grigna-field-text);
+  font: var(--grigna-field-font);
+}
+/* Select: freccia disegnata dal CSS, con lo stesso margine interno del testo a sinistra */
+select.grigna-field__input {
+  appearance: none;
+  padding-right: calc(var(--grigna-field-padding-x) + var(--grigna-size-icon-md) + var(--grigna-space-xs));
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - var(--grigna-field-padding-x) - 10px) 50%,
+    calc(100% - var(--grigna-field-padding-x) - 5px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+textarea.grigna-field__input {
+  min-height: calc(var(--grigna-field-height) * 2.5);
+  padding-block: var(--grigna-field-padding-x);
+  resize: vertical;
+}
+.grigna-field__input::placeholder { color: var(--grigna-field-placeholder); }
+
+.grigna-field__input:focus-visible {
+  outline: var(--grigna-size-focus-ring) solid var(--grigna-field-border-focus);
+  outline-offset: 0;
+  border-color: var(--grigna-field-border-focus);
+}
+
+.grigna-field__input[aria-invalid="true"] {
+  border-color: var(--grigna-field-border-error);
+  box-shadow: inset 0 0 0 1px var(--grigna-field-border-error);
+}
+
+.grigna-field__help,
+.grigna-field__error {
+  margin: 0;
+  font: var(--grigna-field-help-font);
+  color: var(--grigna-field-help-text);
+}
+.grigna-field__error { color: var(--grigna-field-error-text); }
+
+.grigna-field__input:disabled {
+  background: var(--grigna-color-surface-subtle);
+  color: var(--grigna-color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Grigna · segnaposto
+   <span class="grigna-placeholder" style="--w: 5ch" role="img" aria-label="Dato di esempio"></span>
+   Una barra neutra al posto di un dato che non c'è ancora: solo in prototipi ed esempi.
+   Con dati veri un dato mancante non si mostra. La larghezza si regola con --w (in ch). */
+
+.grigna-placeholder {
+  display: inline-block;
+  width: var(--w, 6ch);
+  height: 0.75em;
+  border-radius: var(--grigna-placeholder-radius);
+  background: var(--grigna-placeholder-bg);
+  vertical-align: middle;
+}

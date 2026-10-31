@@ -164,6 +164,70 @@ const portfolio = defineCollection({
   }),
 });
 
+/** Caso studio Grigna, un file per lingua: src/content/grigna/it.yaml, en.yaml */
+const titled = z.object({ title: z.string(), text: z.string() });
+const grigna = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/grigna' }),
+  schema: z.object({
+    meta: z.object({ title: z.string(), description: z.string() }),
+    name: z.string(),
+    label: z.string(),
+    title: z.string(),
+    lead: z.string(),
+    siteLabel: z.string(),
+    demoTitle: z.string(),
+    facts: z.array(z.object({ value: z.string(), label: z.string() })),
+    principles: z.object({ label: z.string(), intro: z.string(), items: z.array(titled).length(6) }),
+    components: z.object({
+      label: z.string(),
+      intro: z.string(),
+      hint: z.string(),
+      theme: z.string(),
+      light: z.string(),
+      dark: z.string(),
+      quote: z.string(),
+    }),
+    a11y: z.object({
+      label: z.string(),
+      intro: z.string(),
+      items: z.array(titled),
+      toggle: z.string(),
+      toggleHint: z.string(),
+      quote: z.string(),
+    }),
+    readers: z.object({
+      label: z.string(),
+      intro: z.string(),
+      items: z.array(titled),
+      example: z.string(),
+      always: z.string(),
+      alwaysItems: z.array(z.string()),
+      never: z.string(),
+      neverItems: z.array(z.string()),
+      quote: z.string(),
+    }),
+    tokens: z.object({
+      label: z.string(),
+      intro: z.string(),
+      levels: z.array(z.object({ name: z.string(), text: z.string(), token: z.string() })).length(3),
+      dark: z.string(),
+    }),
+    experiment: z.object({
+      label: z.string(),
+      intro: z.string(),
+      honest: z.string(),
+      without: z.string(),
+      with: z.string(),
+      rows: z.array(z.object({ label: z.string(), without: z.string(), with: z.string() })),
+      shotWithout: z.string(),
+      shotWith: z.string(),
+      learned: z.string(),
+      quote: z.string(),
+    }),
+    closing: z.object({ text: z.string(), button: z.string() }),
+  }),
+});
+
 /** Pagina Lavori, un file per lingua: src/content/work/it.yaml, en.yaml. I casi sono in ordine di pagina. */
 const work = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/work' }),
@@ -174,9 +238,9 @@ const work = defineCollection({
     cases: z.array(
       z.object({
         /** Chiave di routes (src/i18n/ui.ts) della pagina del caso. */
-        route: z.enum(['telepass', 'portfolio']),
+        route: z.enum(['telepass', 'portfolio', 'grigna']),
         /** Immagine della scheda, scelta in WorkPage.astro (portfolio: mockup animato). */
-        image: z.enum(['telepass', 'portfolio']),
+        image: z.enum(['telepass', 'portfolio', 'grigna']),
         eyebrow: z.string(),
         title: z.string(),
         text: z.string(),
@@ -234,4 +298,4 @@ const mountains = defineCollection({
   }),
 });
 
-export const collections = { home, pages, telepass, portfolio, work, cv, mountains };
+export const collections = { home, pages, telepass, portfolio, grigna, work, cv, mountains };

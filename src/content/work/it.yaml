@@ -16,6 +16,13 @@ cases:
     text: Dalla mappatura del sito nel 2019 al **design system Resin**, dalla ricerca con utenti e stakeholder al lavoro sulla **conversione**. In agenzia, in azienda e oggi in consulenza.
     tags: [Design system, User research, Conversione]
     imageAlt: Il sito telepass.com su computer e su telefono
+  - route: grigna
+    image: grigna
+    eyebrow: Grigna · design system personale
+    title: Un design system per chi progetta e per gli agenti AI.
+    text: "Principi, componenti con i loro stati e **accessibilità per costruzione**, con regole scritte per due lettori: le persone e gli agenti. E una prova con e senza sistema."
+    tags: [Design system, Accessibilità, AI]
+    imageAlt: I bottoni di Grigna nelle loro varianti e nei loro stati
   - route: portfolio
     image: portfolio
     eyebrow: Questo portfolio · ottobre 2026

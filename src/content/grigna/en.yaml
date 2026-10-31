@@ -1,0 +1,132 @@
+# Grigna case study in English: an adaptation of it.yaml, approved by Loris on 31/10/2026.
+# No dates, no Quotik. Source: ~/Documents/design-system.
+
+meta:
+  title: Grigna, a design system for people and AI agents — Loris Rigoni | Miracle Design
+  description: "Grigna, Loris Rigoni's design system for designers and AI agents: principles, components and their states, accessibility by construction and an experiment with and without the system."
+
+name: Grigna
+label: Design system · personal project
+title: Grigna. A design system for designers and for AI agents.
+lead: "A design system serves designers first: it gives designers and developers the same rules, the same names and the same components. Grigna adds a second reader, the AI agent. The rules that keep a team's work consistent are the same ones that stop an agent from inventing colours, spacing and components."
+siteLabel: Explore the documentation
+demoTitle: Grigna components, live examples
+facts:
+  - value: 3 tiers
+    label: of tokens, from raw value to component
+  - value: 7 components
+    label: in HTML and CSS, no framework
+  - value: Light and dark
+    label: same names, different values
+
+principles:
+  label: Six principles
+  intro: Six ideas guide Grigna. When a more specific rule doesn't cover a case, you decide from here.
+  items:
+    - title: The system is the context.
+      text: Every choice is written down, has a name and can be checked by a script, not just by an expert eye.
+    - title: Clean and bright.
+      text: Light surfaces, plenty of space, a single accent colour. The interface steps back and leaves the stage to the content.
+    - title: Colour always means something.
+      text: Fir green signals action, feedback colours signal status. Colour never decorates and never tells categories apart.
+    - title: Accessible by construction.
+      text: Contrast, touch area and focus are checked rules, not good intentions.
+    - title: Fewer choices, more consistency.
+      text: "You pick a named space, not “16px” or “15px looks better”. If something is missing, it goes into the system."
+    - title: No invented content.
+      text: "Examples use clear placeholders. And missing data isn't shown: no dashes, “n/a” or estimates."
+
+components:
+  label: Components
+  intro: "Seven components, in HTML and CSS with no framework. Every documentation page has the same sections in the same order: live example, when to use it and when not, code, variants and states, tokens, accessibility, rules for agents."
+  hint: Pick a component and look at its states. The examples are real, not images.
+  theme: Theme
+  light: Light
+  dark: Dark
+  quote: Every component also says when not to use it.
+
+a11y:
+  label: Accessible by construction
+  intro: "In Grigna accessibility isn't a final review: it's written into the tokens and checked by the build."
+  items:
+    - title: Contrast
+      text: 4.5:1 for text, 3:1 for borders and graphics. If a pairing fails, the build stops.
+    - title: Touch area
+      text: At least 44px for every interactive element.
+    - title: Text
+      text: Body text never goes below 16px.
+    - title: Focus
+      text: Always visible from the keyboard, with the same green ring everywhere.
+    - title: Native HTML
+      text: "A button for actions, a link for navigation, a label for every field, details for the accordion."
+    - title: Never colour alone
+      text: Every meaningful colour comes with text, an icon or a shape.
+  toggle: View without colour
+  toggleHint: "Try removing the colours: the badge status, the active filter and the error still make sense, thanks to text, check mark and message."
+  quote: Information carried by colour alone doesn't reach everyone.
+
+readers:
+  label: One system, two readers
+  intro: "Every documentation page ends with a “For agents” section: short rules, exact class and token names, what never to invent."
+  items:
+    - title: For people
+      text: Why each choice was made, when to use an element and when not, right and wrong examples.
+    - title: For agents
+      text: "A rules file (AGENTS.md), a Markdown version next to every page, llms.txt and all tokens in a single file."
+    - title: An automatic check
+      text: It reads a page and flags every hand-written colour, space or size.
+    - title: When the system isn't enough
+      text: "The agent doesn't improvise: it uses the closest option and says what was missing. A person decides what gets added."
+  example: Button, rules for agents
+  always: Always
+  alwaysItems:
+    - Only one primary button per view.
+    - Text that starts with a verb.
+  never: Never
+  neverItems:
+    - Never custom colours, borders or spacing on the button.
+    - Never a clickable div instead of a button.
+  quote: The rules that keep a team consistent are the same ones an agent needs.
+
+tokens:
+  label: Tokens and themes
+  intro: Three tiers, from raw value to component. Light and dark themes use the same names; only the value changes. Standard W3C Design Tokens format.
+  levels:
+    - name: Primitive
+      text: The raw value. Never used directly.
+      token: fir 500
+    - name: Semantic
+      text: A value with a meaning.
+      token: accent
+    - name: Component
+      text: A component's value. It only points to semantic tokens.
+      token: primary button background
+  dark: "In the dark theme the same accent points to another green, fir 300: the button keeps its name, only the value changes."
+
+experiment:
+  label: The test
+  intro: "Does a well-structured design system change what an agent builds? I gave the same request to two identical agents: build a page with a list of cards, filters and a status on each card. One worked in an empty folder, the other inside Grigna. The request didn't mention the system and didn't say real data was missing. One attempt each, no corrections."
+  honest: "In all honesty: the page without the system looked better, richer and more “product-like”. The system didn't make it prettier. It made it consistent, verifiable and honest."
+  without: Without a system
+  with: With Grigna
+  rows:
+    - label: Flags from the automatic check
+      without: "142"
+      with: "0"
+    - label: Different hand-written colours
+      without: "44"
+      with: "0"
+    - label: Different text sizes
+      without: "11"
+      with: "Grigna's 9"
+    - label: Content
+      without: 14 invented items, in real places, no warning
+      with: Placeholders, with a warning on the page
+  shotWithout: "The page by the agent without a system: polished, but with invented content and statuses and no warning."
+  shotWith: "The page by the agent with Grigna: plainer, with placeholders declared at the top of the page."
+  learned: "The test also found Grigna's limits. The agent listed what was missing instead of improvising, and that led to six improvements: a placeholder component, missing layout tokens, a filter that couldn't handle too many options, a stricter automatic check."
+  quote: A convincing demo is not a foundation to build on.
+
+closing:
+  text: The full documentation, for people and agents, is online.
+  button: Explore Grigna

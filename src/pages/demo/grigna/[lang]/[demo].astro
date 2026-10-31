@@ -1,0 +1,335 @@
+---
+/* Demo isolate di Grigna, caricate in cornici (iframe) dalla pagina del caso studio.
+   Stanno fuori dal layout del sito: usano solo i CSS di Grigna (copia in src/styles/grigna/) e il font Inter locale.
+   La pagina del caso cambia tema e colori agendo su <html> di queste pagine (stessa origine). */
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '../../../../styles/grigna/grigna.css';
+import '../../../../styles/grigna/grigna-components.css';
+import { languages, type Lang } from '../../../../i18n/ui';
+import { demos, grignaDemo, type Demo } from '../../../../data/grigna-demo';
+
+export function getStaticPaths() {
+  return languages.flatMap((lang) => demos.map((demo) => ({ params: { lang, demo } })));
+}
+
+const { lang, demo } = Astro.params as { lang: Lang; demo: Demo };
+const t = grignaDemo[lang];
+const components = ['button', 'field', 'chip', 'card', 'badge', 'accordion', 'placeholder'] as const;
+const badgeVariants = ['neutral', 'accent', 'success', 'warning', 'danger', 'info'] as const;
+---
+<!doctype html>
+<html lang={lang} data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{t.title}</title>
+  </head>
+  <body class:list={['demo', `demo--${demo}`]}>
+    {demo === 'vetrina' && (
+      <div class="strip">
+        <button class="grigna-button grigna-button--primary" type="button">{t.button.save}</button>
+        <button class="grigna-button" type="button">{t.button.draft}</button>
+        <div class="row" role="group" aria-label={t.chip.group}>
+          <button class="grigna-chip" type="button" aria-pressed="true" data-toggle>{t.chip.a}</button>
+          <button class="grigna-chip" type="button" aria-pressed="false" data-toggle>{t.chip.b}</button>
+        </div>
+        <span class="grigna-badge grigna-badge--success">{t.badge.success}</span>
+        <span class="grigna-badge grigna-badge--warning">{t.badge.warning}</span>
+      </div>
+    )}
+
+    {demo === 'componenti' && (
+      <div class="explorer">
+        <div class="row picker" role="group" aria-label={t.componentsLabel}>
+          {components.map((c, i) => (
+            <button class="grigna-chip" type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-pick={c}>{t[c].name}</button>
+          ))}
+        </div>
+
+        <section class="panel" data-panel="button">
+          <div class="grid">
+            <figure><figcaption>{t.variants.primary}</figcaption><button class="grigna-button grigna-button--primary" type="button">{t.button.save}</button></figure>
+            <figure><figcaption>{t.variants.secondary}</figcaption><button class="grigna-button" type="button">{t.button.draft}</button></figure>
+            <figure><figcaption>{t.variants.ghost}</figcaption><button class="grigna-button grigna-button--ghost" type="button">{t.button.cancel}</button></figure>
+            <figure><figcaption>{t.variants.small}</figcaption><button class="grigna-button grigna-button--sm" type="button">{t.button.small}</button></figure>
+          </div>
+          <div class="grid">
+            <figure><figcaption>{t.states.normal}</figcaption><button class="grigna-button grigna-button--primary" type="button">{t.button.save}</button></figure>
+            <figure><figcaption>{t.states.hover}</figcaption><button class="grigna-button grigna-button--primary is-hover" type="button" tabindex="-1">{t.button.save}</button></figure>
+            <figure><figcaption>{t.states.focus}</figcaption><button class="grigna-button grigna-button--primary is-focus" type="button" tabindex="-1">{t.button.save}</button></figure>
+            <figure><figcaption>{t.states.disabled}</figcaption><button class="grigna-button grigna-button--primary" type="button" disabled>{t.button.save}</button></figure>
+          </div>
+          <p class="rule"><strong>{t.rule}</strong> {t.button.rule}</p>
+        </section>
+
+        <section class="panel" data-panel="field" hidden>
+          <div class="grid grid--wide">
+            <figure><figcaption>{t.states.normal}</figcaption>
+              <div class="grigna-field">
+                <label class="grigna-field__label" for={`f1-${lang}`}>{t.field.label}</label>
+                <input class="grigna-field__input" id={`f1-${lang}`} placeholder={t.field.placeholder} aria-describedby={`f1h-${lang}`} />
+                <p class="grigna-field__help" id={`f1h-${lang}`}>{t.field.help}</p>
+              </div>
+            </figure>
+            <figure><figcaption>{t.states.focus}</figcaption>
+              <div class="grigna-field">
+                <label class="grigna-field__label" for={`f2-${lang}`}>{t.field.label}</label>
+                <input class="grigna-field__input is-focus" id={`f2-${lang}`} placeholder={t.field.placeholder} tabindex="-1" />
+              </div>
+            </figure>
+            <figure><figcaption>{t.states.error}</figcaption>
+              <div class="grigna-field">
+                <label class="grigna-field__label" for={`f3-${lang}`}>{t.field.numberLabel}</label>
+                <input class="grigna-field__input" id={`f3-${lang}`} value="abc" aria-invalid="true" aria-describedby={`f3e-${lang}`} />
+                <p class="grigna-field__error" id={`f3e-${lang}`}>{t.field.error}</p>
+              </div>
+            </figure>
+            <figure><figcaption>{t.states.disabled}</figcaption>
+              <div class="grigna-field">
+                <label class="grigna-field__label" for={`f4-${lang}`}>{t.field.label}</label>
+                <input class="grigna-field__input" id={`f4-${lang}`} placeholder={t.field.placeholder} disabled />
+              </div>
+            </figure>
+          </div>
+          <p class="rule"><strong>{t.rule}</strong> {t.field.rule}</p>
+        </section>
+
+        <section class="panel" data-panel="chip" hidden>
+          <div class="grid">
+            <figure><figcaption>{t.states.off}</figcaption><button class="grigna-chip" type="button" aria-pressed="false" data-toggle>{t.chip.b}</button></figure>
+            <figure><figcaption>{t.states.on}</figcaption><button class="grigna-chip" type="button" aria-pressed="true" data-toggle>{t.chip.a}</button></figure>
+            <figure><figcaption>{t.states.hover}</figcaption><button class="grigna-chip is-hover" type="button" aria-pressed="false" tabindex="-1">{t.chip.c}</button></figure>
+            <figure><figcaption>{t.states.focus}</figcaption><button class="grigna-chip is-focus" type="button" aria-pressed="false" tabindex="-1">{t.chip.c}</button></figure>
+          </div>
+          <p class="rule"><strong>{t.rule}</strong> {t.chip.rule}</p>
+        </section>
+
+        <section class="panel" data-panel="card" hidden>
+          <div class="grid grid--cards">
+            {[
+              { label: t.states.simple, cls: '' },
+              { label: t.states.interactive, cls: 'grigna-card--interactive is-hover' },
+              { label: t.states.interactiveFocus, cls: 'grigna-card--interactive is-focus' },
+            ].map((c) => (
+              <figure><figcaption>{c.label}</figcaption>
+                <article class:list={['grigna-card', c.cls]}>
+                  <div class="grigna-card__media"></div>
+                  <div class="grigna-card__body">
+                    <h3 class="card-title">{t.card.title}</h3>
+                    <p class="card-text">{t.card.text}</p>
+                  </div>
+                </article>
+              </figure>
+            ))}
+          </div>
+          <p class="rule"><strong>{t.rule}</strong> {t.card.rule}</p>
+        </section>
+
+        <section class="panel" data-panel="badge" hidden>
+          <div class="grid">
+            {badgeVariants.map((v, i) => (
+              <figure><figcaption>{t.badge.labels[i]}</figcaption><span class:list={['grigna-badge', v !== 'neutral' && `grigna-badge--${v}`]}>{t.badge[v]}</span></figure>
+            ))}
+          </div>
+          <p class="rule"><strong>{t.rule}</strong> {t.badge.rule}</p>
+        </section>
+
+        <section class="panel" data-panel="accordion" hidden>
+          <p class="hint">{t.accordion.hint}</p>
+          <div class="grigna-accordion">
+            {t.accordion.items.map((item, i) => (
+              <details class="grigna-accordion__item" name={`faq-${lang}`} open={i === 0}>
+                <summary class="grigna-accordion__summary">{item.q}</summary>
+                <div class="grigna-accordion__content"><p>{item.a}</p></div>
+              </details>
+            ))}
+          </div>
+          <p class="rule"><strong>{t.rule}</strong> {t.accordion.rule}</p>
+        </section>
+
+        <section class="panel" data-panel="placeholder" hidden>
+          <dl class="facts">
+            <div><dt>{t.placeholder.distance}</dt><dd><span class="grigna-placeholder" style="--w: 5ch" role="img" aria-label={t.placeholder.aria}></span> km</dd></div>
+            <div><dt>{t.placeholder.date}</dt><dd><span class="grigna-placeholder" style="--w: 8ch" role="img" aria-label={t.placeholder.aria}></span></dd></div>
+            <div><dt>{t.placeholder.duration}</dt><dd><span class="grigna-placeholder" style="--w: 4ch" role="img" aria-label={t.placeholder.aria}></span></dd></div>
+          </dl>
+          <p class="rule"><strong>{t.rule}</strong> {t.placeholder.rule}</p>
+        </section>
+      </div>
+    )}
+
+    {demo === 'accessibilita' && (
+      <div class="a11y">
+        <figure><figcaption>{t.a11y.badges}</figcaption>
+          <div class="row">
+            <span class="grigna-badge grigna-badge--success">{t.badge.success}</span>
+            <span class="grigna-badge grigna-badge--warning">{t.badge.warning}</span>
+            <span class="grigna-badge grigna-badge--danger">{t.badge.danger}</span>
+          </div>
+        </figure>
+        <figure><figcaption>{t.a11y.filters}</figcaption>
+          <div class="row" role="group" aria-label={t.chip.group}>
+            <button class="grigna-chip" type="button" aria-pressed="true" data-toggle>{t.chip.a}</button>
+            <button class="grigna-chip" type="button" aria-pressed="false" data-toggle>{t.chip.b}</button>
+            <button class="grigna-chip" type="button" aria-pressed="false" data-toggle>{t.chip.c}</button>
+          </div>
+        </figure>
+        <figure><figcaption>{t.a11y.field}</figcaption>
+          <div class="grigna-field">
+            <label class="grigna-field__label" for={`a11y-${lang}`}>{t.field.numberLabel}</label>
+            <input class="grigna-field__input" id={`a11y-${lang}`} value="abc" aria-invalid="true" aria-describedby={`a11ye-${lang}`} />
+            <p class="grigna-field__error" id={`a11ye-${lang}`}>{t.field.error}</p>
+          </div>
+        </figure>
+      </div>
+    )}
+
+    <script>
+      // Filtri dimostrativi: si attivano e disattivano davvero (aria-pressed).
+      document.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach((b) =>
+        b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'))),
+      );
+      // Esploratore: un componente alla volta.
+      const picks = [...document.querySelectorAll<HTMLButtonElement>('[data-pick]')];
+      picks.forEach((b) =>
+        b.addEventListener('click', () => {
+          picks.forEach((p) => p.setAttribute('aria-pressed', String(p === b)));
+          document.querySelectorAll<HTMLElement>('[data-panel]').forEach((panel) => {
+            panel.hidden = panel.dataset.panel !== b.dataset.pick;
+          });
+        }),
+      );
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Layout delle demo: solo token di Grigna, come chiedono le sue regole. */
+  html,
+  body {
+    margin: 0;
+    background: var(--grigna-color-surface-default);
+    color: var(--grigna-color-text-default);
+    font: var(--grigna-type-body);
+  }
+  .demo {
+    padding: var(--grigna-space-lg);
+  }
+  .demo--vetrina {
+    padding: var(--grigna-space-md);
+  }
+  figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--grigna-space-xs);
+  }
+  figcaption,
+  .hint {
+    margin: 0;
+    font: var(--grigna-type-caption);
+    color: var(--grigna-color-text-muted);
+  }
+  .row,
+  .strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--grigna-space-sm);
+  }
+  .picker {
+    padding-bottom: var(--grigna-space-md);
+    border-bottom: 1px solid var(--grigna-color-border-default);
+  }
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grigna-space-lg);
+    padding-top: var(--grigna-space-lg);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--grigna-space-md);
+  }
+  .grid--wide {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .grid--cards {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  .grid--wide figure,
+  .grid--cards figure {
+    align-items: stretch;
+  }
+  .rule {
+    margin: 0;
+    padding-top: var(--grigna-space-md);
+    border-top: 1px solid var(--grigna-color-border-default);
+    color: var(--grigna-color-text-muted);
+  }
+  .rule strong {
+    color: var(--grigna-color-text-default);
+    font-weight: 600;
+  }
+  .card-title {
+    margin: 0;
+    font: var(--grigna-type-heading-sm);
+  }
+  .card-text {
+    margin: 0;
+    font: var(--grigna-type-caption);
+    color: var(--grigna-color-text-muted);
+  }
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--grigna-space-lg);
+    margin: 0;
+  }
+  .facts dt {
+    font: var(--grigna-type-caption);
+    color: var(--grigna-color-text-muted);
+  }
+  .facts dd {
+    margin: 0;
+    font: var(--grigna-type-body-strong);
+  }
+  .a11y {
+    display: flex;
+    flex-direction: column;
+    gap: var(--grigna-space-lg);
+  }
+  .a11y .grigna-field {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Stati "fermati" per mostrarli tutti insieme: stessi token che Grigna usa per :hover e :focus-visible. */
+  .grigna-button.is-hover {
+    background: var(--grigna-button-secondary-bg-hover);
+  }
+  .grigna-button--primary.is-hover {
+    background: var(--grigna-button-primary-bg-hover);
+  }
+  .grigna-chip.is-hover {
+    background: var(--grigna-chip-bg-hover);
+  }
+  .grigna-card--interactive.is-hover {
+    box-shadow: var(--grigna-card-shadow-hover);
+  }
+  .is-focus {
+    outline: var(--grigna-size-focus-ring) solid var(--grigna-color-focus-ring);
+    outline-offset: 2px;
+  }
+  .grigna-field__input.is-focus {
+    outline-color: var(--grigna-field-border-focus);
+    outline-offset: 0;
+    border-color: var(--grigna-field-border-focus);
+  }
+</style>
