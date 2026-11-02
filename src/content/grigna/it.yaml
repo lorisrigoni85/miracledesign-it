@@ -10,7 +10,7 @@ name: Grigna
 label: Design system · progetto personale
 title: Grigna. Un design system per chi progetta e per gli agenti AI.
 lead: "Un design system serve prima di tutto a chi progetta: dà a designer e sviluppatori le stesse regole, gli stessi nomi e gli stessi componenti. Grigna aggiunge un secondo lettore, l'agente AI. Le regole che rendono coerente il lavoro di un team sono le stesse che impediscono a un agente di inventare colori, spazi e componenti."
-siteLabel: Esplora la documentazione
+siteLabel: Esplora Grigna
 demoTitle: Componenti di Grigna, esempi dal vivo
 facts:
   - value: 3 livelli
@@ -132,5 +132,4 @@ experiment:
   quote: Una demo convincente non è una base su cui costruire.
 
 closing:
-  text: La documentazione completa, per persone e agenti, è online.
   button: Esplora Grigna

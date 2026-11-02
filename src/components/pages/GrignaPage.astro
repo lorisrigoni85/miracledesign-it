@@ -200,7 +200,6 @@ const readerIcons = [
     </section>
 
     <section class="closing">
-      <p>{page.closing.text}</p>
       <a class="btn btn--solid" href={siteUrl} target="_blank" rel="noopener">{page.closing.button} ↗<span class="visually-hidden"> {newTab}</span></a>
     </section>
 
@@ -656,11 +655,6 @@ const readerIcons = [
   }
 
   .closing {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px 32px;
     margin: var(--section-y) 0 64px;
     padding: 32px 0;
     border-top: 1px solid var(--rule-strong);

@@ -224,7 +224,7 @@ const grigna = defineCollection({
       learned: z.string(),
       quote: z.string(),
     }),
-    closing: z.object({ text: z.string(), button: z.string() }),
+    closing: z.object({ button: z.string() }),
   }),
 });
 

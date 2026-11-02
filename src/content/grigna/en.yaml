@@ -9,7 +9,7 @@ name: Grigna
 label: Design system · personal project
 title: Grigna. A design system for designers and for AI agents.
 lead: "A design system serves designers first: it gives designers and developers the same rules, the same names and the same components. Grigna adds a second reader, the AI agent. The rules that keep a team's work consistent are the same ones that stop an agent from inventing colours, spacing and components."
-siteLabel: Explore the documentation
+siteLabel: Explore Grigna
 demoTitle: Grigna components, live examples
 facts:
   - value: 3 tiers
@@ -131,5 +131,4 @@ experiment:
   quote: A convincing demo is not a foundation to build on.
 
 closing:
-  text: The full documentation, for people and agents, is online.
   button: Explore Grigna
