@@ -13,7 +13,7 @@ siteLabel: Explore the documentation
 demoTitle: Grigna components, live examples
 facts:
   - value: 3 tiers
-    label: of tokens, from raw value to component
+    label: of tokens, from the raw starting value to the multi-purpose component
   - value: 7 initial components
     label: in HTML and CSS, no framework, ready to grow
   - value: Light and Dark mode
@@ -21,14 +21,14 @@ facts:
 
 principles:
   label: Six principles
-  intro: Six ideas guide Grigna. When a more specific rule doesn't cover a case, you decide from here.
+  intro: "Six ideas guide Grigna: the principles that always underpin both the design work and the use of the initial components. When a more specific rule doesn't cover a case, you decide from here."
   items:
     - title: The system is the context.
       text: Every choice is written down, has a name and can be checked by a script, not just by an expert eye.
     - title: Clean and bright.
-      text: Light surfaces, plenty of space, a single accent colour. The interface steps back and leaves the stage to the content.
+      text: Light surfaces, plenty of space, a single accent colour. The UI serves the content, nothing else.
     - title: Colour always means something.
-      text: Fir green signals action, feedback colours signal status. Colour never decorates and never tells categories apart.
+      text: Fir green signals action, feedback colours signal status.
     - title: Accessible by construction.
       text: Contrast, touch area and focus are checked rules, not good intentions.
     - title: Fewer choices, more consistency.
@@ -47,7 +47,7 @@ components:
 
 a11y:
   label: Accessible by construction
-  intro: "In Grigna accessibility isn't a final review: it's written into the tokens and checked by the build."
+  intro: "In Grigna accessibility isn't the result of a final review: it's written into the tokens from the start and checked by the build."
   items:
     - title: Contrast
       text: 4.5:1 for text, 3:1 for borders and graphics. If a pairing fails, the build stops.
@@ -66,8 +66,8 @@ a11y:
   quote: Information carried by colour alone doesn't reach everyone.
 
 readers:
-  label: One system, two readers
-  intro: "Every documentation page ends with a “For agents” section: short rules, exact class and token names, what never to invent."
+  label: A DS for AI agents too
+  intro: "Documentation pages end with a “For agents” section: short rules, exact class and token names, and what never to invent."
   items:
     - title: For people
       text: Why each choice was made, when to use an element and when not, right and wrong examples.
@@ -95,16 +95,19 @@ tokens:
     - name: Primitive
       text: The raw value. Never used directly.
       token: fir 500
+      code: color.abete.500
     - name: Semantic
       text: A value with a meaning.
       token: accent
+      code: color.accent.default
     - name: Component
       text: A component's value. It only points to semantic tokens.
       token: primary button background
+      code: button.primary.bg
   dark: "In Dark mode the same accent points to another green, fir 300: the button keeps its name, only the value changes."
 
 experiment:
-  label: The test
+  label: Grigna DS put to the test with two AI agents
   intro: "Does a well-structured design system change what an agent builds? I gave the same request to two identical agents: build a page with a list of cards, filters and a status on each card. One worked in an empty folder, the other inside Grigna. The request didn't mention the system and didn't say real data was missing. One attempt each, no corrections."
   honest: "In all honesty: the page without the system looked better, richer and more “product-like”. The system didn't make it prettier. It made it consistent, verifiable and honest."
   without: Without a system

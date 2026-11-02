@@ -209,7 +209,7 @@ const grigna = defineCollection({
     tokens: z.object({
       label: z.string(),
       intro: z.string(),
-      levels: z.array(z.object({ name: z.string(), text: z.string(), token: z.string() })).length(3),
+      levels: z.array(z.object({ name: z.string(), text: z.string(), token: z.string(), code: z.string() })).length(3),
       dark: z.string(),
     }),
     experiment: z.object({

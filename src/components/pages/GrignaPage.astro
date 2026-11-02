@@ -20,6 +20,13 @@ const page = (await getEntry('grigna', lang))!.data;
 const siteUrl = 'https://grigna.miracledesign.it';
 const newTab = lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a new tab)';
 const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
+// Icone Lucide (user, bot, scan-search, life-buoy) per le quattro righe di "Un DS anche per agenti AI", nell'ordine dello YAML
+const readerIcons = [
+  '<circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>',
+  '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
+  '<path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/>',
+  '<circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/>',
+];
 ---
 <BaseLayout lang={lang} title={page.meta.title} description={page.meta.description} alternates={routes.grigna}>
   <div class="container">
@@ -117,9 +124,15 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
       <h2 id="lettori" class="block__title">{page.readers.label}</h2>
       <p class="block__intro">{page.readers.intro}</p>
       <div class="split">
-        <dl class="rules">
-          {page.readers.items.map((r) => (
-            <div><dt>{r.title}</dt><dd>{r.text}</dd></div>
+        <dl class="rules rules--checked">
+          {page.readers.items.map((r, i) => (
+            <div>
+              <dt>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" set:html={readerIcons[i]} />
+                {r.title}
+              </dt>
+              <dd>{r.text}</dd>
+            </div>
           ))}
         </dl>
         <figure class="agent-rules">
@@ -148,6 +161,7 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
           <li>
             <span class="mono">{String(i + 1).padStart(2, '0')} · {l.name}</span>
             <span class="chain__token"><span class="chain__swatch" aria-hidden="true"></span>{l.token}</span>
+            <code class="chain__code">{l.code}</code>
             <span class="chain__text">{l.text}</span>
           </li>
         ))}
@@ -309,6 +323,13 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
     font-weight: 500;
     line-height: 1.25;
     letter-spacing: -0.015em;
+    font-style: italic;
+  }
+  .quote p::before {
+    content: open-quote;
+  }
+  .quote p::after {
+    content: close-quote;
   }
   .note {
     margin-top: 16px;
@@ -452,6 +473,17 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
     height: 20px;
     flex: none;
   }
+  /* Icone Lucide delle due righe "persone / agenti", stesso ingombro della spunta */
+  .icon {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
   .check circle {
     fill: var(--accent);
   }
@@ -546,6 +578,11 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
     flex: none;
     border-radius: 6px;
     background: #2f6b4f;
+  }
+  .chain__code {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--ink-muted);
   }
   .chain__text {
     color: var(--ink-body);

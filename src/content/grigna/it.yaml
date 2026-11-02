@@ -14,7 +14,7 @@ siteLabel: Esplora la documentazione
 demoTitle: Componenti di Grigna, esempi dal vivo
 facts:
   - value: 3 livelli
-    label: di token, dal valore grezzo al componente
+    label: di token, dal valore grezzo di partenza al componente multifunzione
   - value: 7 componenti iniziali
     label: in HTML e CSS, senza framework, pronti a crescere
   - value: Light e Dark mode
@@ -22,14 +22,14 @@ facts:
 
 principles:
   label: Sei principi
-  intro: Sei idee guidano Grigna. Quando una regola più specifica non copre un caso, si decide partendo da qui.
+  intro: Sei idee guidano Grigna, i principi da tenere sempre alla base per la progettazione e per l'utilizzo dei componenti iniziali. Quando una regola più specifica non copre un caso, si decide partendo da qui.
   items:
     - title: Il sistema è il contesto.
       text: Ogni scelta è scritta, ha un nome ed è verificabile da uno script, non solo da un occhio esperto.
     - title: Pulito e luminoso.
-      text: Superfici chiare, molto spazio, un solo colore d'accento. L'interfaccia si fa da parte e lascia la scena ai contenuti.
+      text: Superfici chiare, molto spazio, un solo colore d'accento. La UI è al servizio dei puri contenuti.
     - title: Il colore ha sempre un significato.
-      text: Il verde abete indica l'azione, i colori di feedback lo stato. Un colore non decora e non distingue categorie.
+      text: Il verde abete indica l'azione, i colori di feedback lo stato.
     - title: Accessibile per costruzione.
       text: Contrasto, area di tocco e focus sono regole controllate, non buone intenzioni.
     - title: Meno scelte, più coerenza.
@@ -48,7 +48,7 @@ components:
 
 a11y:
   label: Accessibile per costruzione
-  intro: "L'accessibilità in Grigna non è una revisione finale: è scritta nei token e controllata dalla build."
+  intro: "L'accessibilità in Grigna non è frutto di una revisione finale: è scritta nei token fin dall'inizio ed è controllata dalla build."
   items:
     - title: Contrasto
       text: 4,5:1 per il testo, 3:1 per bordi e grafica. Se un abbinamento non passa, la build si ferma.
@@ -67,8 +67,8 @@ a11y:
   quote: Un'informazione che passa solo dal colore non arriva a tutti.
 
 readers:
-  label: Un sistema, due lettori
-  intro: "Ogni pagina della documentazione chiude con una sezione «Per gli agenti»: regole brevi, nomi esatti di classi e token, cosa non inventare mai."
+  label: Un DS anche per agenti AI
+  intro: "Le pagine della documentazione si chiudono con una sezione «Per gli agenti»: regole brevi, nomi esatti di classi e token e cosa non inventare mai."
   items:
     - title: Per le persone
       text: Il perché delle scelte, quando usare un elemento e quando no, esempi giusti e sbagliati.
@@ -96,16 +96,19 @@ tokens:
     - name: Primitivo
       text: Il valore grezzo. Non si usa direttamente.
       token: abete 500
+      code: color.abete.500
     - name: Semantico
       text: Un valore con un significato.
       token: accento
+      code: color.accent.default
     - name: Componente
       text: Il valore di un componente. Punta solo ai semantici.
       token: sfondo del bottone primary
+      code: button.primary.bg
   dark: "In Dark mode lo stesso accento punta a un altro verde, abete 300: il bottone non cambia nome, cambia valore."
 
 experiment:
-  label: La prova
+  label: Grigna DS alla prova con due agenti AI
   intro: "Un design system ben strutturato cambia quello che un agente costruisce? Ho dato la stessa richiesta a due agenti uguali: costruire una pagina con un elenco di schede, filtri e uno stato per ogni scheda. Uno lavorava in una cartella vuota, l'altro dentro Grigna. La richiesta non nominava il sistema e non diceva che mancavano dati reali. Un solo tentativo, senza correzioni."
   honest: "Va detto con onestà: la pagina senza sistema era più bella, più ricca e «da prodotto». Il sistema non l'ha resa più bella. L'ha resa coerente, verificabile e onesta."
   without: Senza sistema
