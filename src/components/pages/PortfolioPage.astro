@@ -73,13 +73,13 @@ const newTab = lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a ne
         </li>
       ))}
     </ol>
-    <p class="learned__repo">
-      <a class="link" href={repoUrl} target="_blank" rel="noopener">{page.learned.repo}<span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> {newTab}</span></a>
-    </p>
   </section>
 
   <div class="container">
-    <NextStep lang={lang} page="portfolio" />
+    <!-- Il codice su GitHub a sinistra, Guarda gli altri lavori a destra, sulla stessa riga -->
+    <NextStep lang={lang} page="portfolio">
+      <a class="btn btn--solid" href={repoUrl} target="_blank" rel="noopener">{page.learned.repo} ↗<span class="visually-hidden"> {newTab}</span></a>
+    </NextStep>
   </div>
 </BaseLayout>
 
@@ -151,12 +151,6 @@ const newTab = lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a ne
   }
   .learned__points li > span:last-child {
     color: var(--ink-body);
-  }
-  .learned__repo {
-    margin-top: 40px;
-  }
-  .learned__repo .ext {
-    margin-left: 0.25em;
   }
 
   @media (max-width: 900px) {
