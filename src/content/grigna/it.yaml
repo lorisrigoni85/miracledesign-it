@@ -15,9 +15,9 @@ demoTitle: Componenti di Grigna, esempi dal vivo
 facts:
   - value: 3 livelli
     label: di token, dal valore grezzo al componente
-  - value: 7 componenti
-    label: in HTML e CSS, senza framework
-  - value: Chiaro e scuro
+  - value: 7 componenti iniziali
+    label: in HTML e CSS, senza framework, pronti a crescere
+  - value: Light e Dark mode
     label: stessi nomi, valori diversi
 
 principles:
@@ -39,11 +39,11 @@ principles:
 
 components:
   label: Componenti
-  intro: "Sette componenti, in HTML e CSS senza framework. Ogni pagina della documentazione ha le stesse sezioni nello stesso ordine: esempio dal vivo, quando usarlo e quando no, codice, varianti e stati, token, accessibilità, regole per gli agenti."
+  intro: "Sette componenti iniziali, in HTML e CSS senza framework. Ogni pagina della documentazione ha le stesse sezioni nello stesso ordine: esempio dal vivo, quando usarlo e quando no, codice, varianti e stati, token, accessibilità, regole per gli agenti."
   hint: Scegli un componente e guarda i suoi stati. Gli esempi sono veri, non immagini.
-  theme: Tema
-  light: Chiaro
-  dark: Scuro
+  theme: Modalità
+  light: Light
+  dark: Dark
   quote: Ogni componente dice anche quando non usarlo.
 
 a11y:
@@ -81,7 +81,7 @@ readers:
   example: Bottone, regole per gli agenti
   always: Sempre
   alwaysItems:
-    - Un solo bottone primario per vista.
+    - Un solo bottone primary per vista.
     - Un testo che comincia con un verbo.
   never: Mai
   neverItems:
@@ -91,7 +91,7 @@ readers:
 
 tokens:
   label: Token e temi
-  intro: Tre livelli, dal valore grezzo al componente. Il tema chiaro e quello scuro usano gli stessi nomi; cambia solo il valore. Formato standard W3C Design Tokens.
+  intro: Tre livelli, dal valore grezzo al componente. Light e Dark mode usano gli stessi nomi; cambia solo il valore. Formato standard W3C Design Tokens.
   levels:
     - name: Primitivo
       text: Il valore grezzo. Non si usa direttamente.
@@ -101,8 +101,8 @@ tokens:
       token: accento
     - name: Componente
       text: Il valore di un componente. Punta solo ai semantici.
-      token: sfondo del bottone primario
-  dark: "Nel tema scuro lo stesso accento punta a un altro verde, abete 300: il bottone non cambia nome, cambia valore."
+      token: sfondo del bottone primary
+  dark: "In Dark mode lo stesso accento punta a un altro verde, abete 300: il bottone non cambia nome, cambia valore."
 
 experiment:
   label: La prova

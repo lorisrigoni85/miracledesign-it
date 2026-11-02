@@ -50,7 +50,7 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
 
     <!-- Principi -->
     <section class="block" aria-labelledby="principi">
-      <h2 id="principi" class="section-head"><span>{page.principles.label}</span></h2>
+      <h2 id="principi" class="block__title">{page.principles.label}</h2>
       <p class="block__intro">{page.principles.intro}</p>
       <ol class="principles">
         {page.principles.items.map((p, i) => (
@@ -65,7 +65,7 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
 
     <!-- Componenti: esploratore dal vivo -->
     <section class="block" aria-labelledby="componenti">
-      <h2 id="componenti" class="section-head"><span>{page.components.label}</span></h2>
+      <h2 id="componenti" class="block__title">{page.components.label}</h2>
       <p class="block__intro">{page.components.intro}</p>
       <div class="controls">
         <p class="controls__hint">{page.components.hint}</p>
@@ -82,12 +82,18 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
 
     <!-- Accessibilità -->
     <section class="block" aria-labelledby="accessibilita">
-      <h2 id="accessibilita" class="section-head"><span>{page.a11y.label}</span></h2>
+      <h2 id="accessibilita" class="block__title">{page.a11y.label}</h2>
       <p class="block__intro">{page.a11y.intro}</p>
       <div class="split">
-        <dl class="rules">
+        <dl class="rules rules--checked">
           {page.a11y.items.map((r) => (
-            <div><dt>{r.title}</dt><dd>{r.text}</dd></div>
+            <div>
+              <dt>
+                <svg class="check" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" /><path d="M5.5 10.5l3 3 6-6.5" /></svg>
+                {r.title}
+              </dt>
+              <dd>{r.text}</dd>
+            </div>
           ))}
         </dl>
         <div class="split__demo">
@@ -108,7 +114,7 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
 
     <!-- Due lettori -->
     <section class="block" aria-labelledby="lettori">
-      <h2 id="lettori" class="section-head"><span>{page.readers.label}</span></h2>
+      <h2 id="lettori" class="block__title">{page.readers.label}</h2>
       <p class="block__intro">{page.readers.intro}</p>
       <div class="split">
         <dl class="rules">
@@ -135,7 +141,7 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
 
     <!-- Token e temi -->
     <section class="block" aria-labelledby="token">
-      <h2 id="token" class="section-head"><span>{page.tokens.label}</span></h2>
+      <h2 id="token" class="block__title">{page.tokens.label}</h2>
       <p class="block__intro">{page.tokens.intro}</p>
       <ol class="chain">
         {page.tokens.levels.map((l, i) => (
@@ -151,7 +157,7 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
 
     <!-- La prova -->
     <section class="block" aria-labelledby="prova">
-      <h2 id="prova" class="section-head"><span>{page.experiment.label}</span></h2>
+      <h2 id="prova" class="block__title">{page.experiment.label}</h2>
       <p class="block__intro">{page.experiment.intro}</p>
       <p class="honest">{page.experiment.honest}</p>
       <table class="compare">
@@ -279,6 +285,15 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
   /* Sezioni */
   .block {
     padding-top: var(--section-y);
+  }
+  /* Titoli di sezione veri (h2), con la linea sopra come le altre sezioni del sito */
+  .block__title {
+    padding-top: 24px;
+    border-top: 1px solid var(--rule-strong);
+    font-size: var(--fs-h2-case);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
   }
   .block__intro {
     max-width: 720px;
@@ -422,6 +437,30 @@ const demo = (name: string) => `/demo/grigna/${lang}/${name}/`;
   }
   .rules dt {
     font-weight: 500;
+  }
+  /* Regole garantite: spunta verde davanti al titolo, il testo resta allineato sotto */
+  .rules--checked dt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .rules--checked dd {
+    padding-left: 30px;
+  }
+  .check {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+  .check circle {
+    fill: var(--accent);
+  }
+  .check path {
+    fill: none;
+    stroke: var(--bg);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
   .rules dd {
     margin: 4px 0 0;

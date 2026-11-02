@@ -14,9 +14,9 @@ demoTitle: Grigna components, live examples
 facts:
   - value: 3 tiers
     label: of tokens, from raw value to component
-  - value: 7 components
-    label: in HTML and CSS, no framework
-  - value: Light and dark
+  - value: 7 initial components
+    label: in HTML and CSS, no framework, ready to grow
+  - value: Light and Dark mode
     label: same names, different values
 
 principles:
@@ -38,7 +38,7 @@ principles:
 
 components:
   label: Components
-  intro: "Seven components, in HTML and CSS with no framework. Every documentation page has the same sections in the same order: live example, when to use it and when not, code, variants and states, tokens, accessibility, rules for agents."
+  intro: "Seven initial components, in HTML and CSS with no framework. Every documentation page has the same sections in the same order: live example, when to use it and when not, code, variants and states, tokens, accessibility, rules for agents."
   hint: Pick a component and look at its states. The examples are real, not images.
   theme: Theme
   light: Light
@@ -90,7 +90,7 @@ readers:
 
 tokens:
   label: Tokens and themes
-  intro: Three tiers, from raw value to component. Light and dark themes use the same names; only the value changes. Standard W3C Design Tokens format.
+  intro: Three tiers, from raw value to component. Light and Dark mode use the same names; only the value changes. Standard W3C Design Tokens format.
   levels:
     - name: Primitive
       text: The raw value. Never used directly.
@@ -101,7 +101,7 @@ tokens:
     - name: Component
       text: A component's value. It only points to semantic tokens.
       token: primary button background
-  dark: "In the dark theme the same accent points to another green, fir 300: the button keeps its name, only the value changes."
+  dark: "In Dark mode the same accent points to another green, fir 300: the button keeps its name, only the value changes."
 
 experiment:
   label: The test
