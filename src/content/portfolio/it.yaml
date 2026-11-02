@@ -7,7 +7,7 @@ meta:
 
 name: miracledesign.it
 title: Un nuovo portfolio, progettato da me e costruito con un agente AI.
-lead: "Il vecchio miracledesign.it era una galleria di progetti dal 2016 al 2020. L'ho riprogettato efficientemente, aggiornando le esperienze di questi ultimi anni, e infine pubblicato dirigendo tutto con Claude Code, a ottobre 2026. Ho scritto codice frontend per anni, ma prima di questo progetto non avevo mai usato git per il versioning e il deploy: da designer mi diverto di più con library, token e componenti."
+lead: "Il vecchio miracledesign.it era una galleria di progetti dal 2016 al 2020. L'ho riprogettato efficientemente, aggiornando le esperienze di questi ultimi anni, e infine pubblicato dirigendo tutto con Claude Code."
 mockupAlt: Il sito miracledesign.it su computer e su telefono
 facts:
   - value: 8 giorni
