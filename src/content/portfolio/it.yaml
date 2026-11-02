@@ -25,7 +25,7 @@ moments:
     where: Claude
     title: Prima la specifica, poi il codice.
     text:
-      - "Prima di scrivere una riga ho scritto le regole. In una chat con Claude ho messo nero su bianco **posizionamento, pubblico, i tre argomenti** da sostenere, la mappa del sito e i testi di ogni sezione."
+      - "Prima di scrivere una riga ho scritto le regole. In una chat con Claude ho messo nero su bianco **posizionamento, pubblico, i tre argomenti** da sostenere (sistemi che durano, design guidato da ricerca e dati, un profilo ibrido tra design e codice), la mappa del sito e i testi di ogni sezione."
       - "Il documento diventa la **fonte unica**: l'agente lo legge per primo, e dove una decisione è aperta deve chiedere, non inventare. I segnaposto restano tra parentesi quadre finché non ho un dato vero."
     principle: A un agente si danno regole, non solo richieste.
     diagram: spec
@@ -50,11 +50,9 @@ moments:
       - title: Il logo.
         text: "Il file originale non esisteva più: è stato ricostruito in vettoriale dal vecchio png. L'ho fatto correggere finché le lettere non erano coerenti con il corsivo originale."
       - title: L'apertura della Home.
-        text: La specifica la voleva chiara, con Telepass e Dst in evidenza. Ho scelto un'apertura scura a tutto schermo, con il ritratto e il nome come titolo.
-      - title: Telepass in una pagina sola.
-        text: "La mappa prevedeva una pagina madre e cinque capitoli. Vista costruita era troppo frammentata: è diventata una pagina unica con quattro momenti e un indice che segue lo scorrimento."
-      - title: Cosa togliere.
-        text: Niente caso studio e-commerce con materiale vecchio, niente telefono nel piè di pagina, niente Facebook.
+        text: Una specifica iniziale prevedeva fin da subito la menzione al percorso in Telepass e Dst. Ho optato per un'apertura più di contesto a schermo intero, con nome e cognome come titolo.
+      - title: Raccontare il caso Telepass.
+        text: "La mappatura iniziale prevedeva una pagina madre e cinque capitoli. Vista costruita era troppo frammentata: è diventata una pagina unica con quattro momenti e un indice che segue lo scorrimento."
       - title: Accessibilità.
         text: Contrasto minimo corretto su anni ed etichette dove il grigio era troppo chiaro.
     principle: L'AI accelera l'esecuzione, la direzione resta umana.
@@ -65,10 +63,10 @@ moments:
     where: GitHub Pages · Aruba
     title: Messa online, senza rompere niente.
     text:
-      - "Le decisioni tecniche le ho prese **capendo i compromessi**, non delegandole."
+      - "Le decisioni tecniche sono state ponderate rispetto ai sistemi già in uso, con un **tocco di innovazione**:"
     list:
       - title: Hosting.
-        text: "Netlify scartato perché nel piano gratuito il sito si ferma quando finiscono i crediti; l'FTP di Aruba richiedeva di autorizzare ogni indirizzo IP. Scelto GitHub Pages: gratuito, ogni salvataggio pubblicato in automatico."
+        text: "Netlify è stato accantonato perché con il piano gratuito il sito si sarebbe fermato a crediti esauriti; l'FTP corrente di Aruba avrebbe richiesto ogni volta l'autorizzazione dell'indirizzo IP. La scelta è ricaduta su GitHub Pages: gratuito, ogni salvataggio pubblicato in automatico."
       - title: Dominio e posta.
         text: "Restano su Aruba: ho cambiato solo i record del sito, senza toccare quelli della posta."
       - title: HTTPS.

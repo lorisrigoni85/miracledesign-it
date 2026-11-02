@@ -25,7 +25,7 @@ moments:
     where: Claude
     title: The spec first, then the code.
     text:
-      - "Before writing a line, I wrote the rules. In a chat with Claude I set down **positioning, audience, the three arguments** to make, the site map and the copy for every section."
+      - "Before writing a line, I wrote the rules. In a chat with Claude I set down **positioning, audience, the three arguments** to make (systems that last, design driven by research and data, a hybrid profile between design and code), the site map and the copy for every section."
       - "The document becomes the **single source of truth**: the agent reads it first, and where a decision is still open it has to ask, not invent. Placeholders stay in square brackets until I have real data."
     principle: You give an agent rules, not just requests.
     diagram: spec
@@ -50,11 +50,9 @@ moments:
       - title: The logo.
         text: "The original file no longer existed: it was rebuilt as a vector from the old png. I had it corrected until the letters matched the original script."
       - title: The Home opening.
-        text: The spec wanted it light, with Telepass and Dst up front. I chose a dark full-screen opening, with my portrait and my name as the headline.
-      - title: Telepass on a single page.
-        text: "The map had a parent page and five chapters. Once built, it felt too fragmented: it became a single page with four moments and an index that follows the scroll."
-      - title: What to leave out.
-        text: No e-commerce case study built on old material, no phone number in the footer, no Facebook.
+        text: An early spec called for mentioning my path at Telepass and Dst right away. I went for a full-screen opening with more context, with my first and last name as the headline.
+      - title: Telling the Telepass story.
+        text: "The initial mapping had a parent page and five chapters. Once built, it felt too fragmented: it became a single page with four moments and an index that follows the scroll."
       - title: Accessibility.
         text: Minimum contrast fixed on years and labels where the grey was too light.
     principle: AI speeds up execution, direction stays human.
@@ -65,10 +63,10 @@ moments:
     where: GitHub Pages · Aruba
     title: Going live without breaking anything.
     text:
-      - "I made the technical decisions by **understanding the trade-offs**, not by delegating them."
+      - "The technical decisions were weighed against the systems already in use, with a **touch of innovation**:"
     list:
       - title: Hosting.
-        text: "Netlify was ruled out because on the free plan the site stops when credits run out; Aruba's FTP required allow-listing every IP address. I chose GitHub Pages: free, and every commit is published automatically."
+        text: "Netlify was set aside because on the free plan the site would stop once credits ran out; the existing Aruba FTP would have required authorising the IP address every time. The choice fell on GitHub Pages: free, and every commit is published automatically."
       - title: Domain and email.
         text: "They stay on Aruba: I only changed the website records, without touching the email ones."
       - title: HTTPS.
