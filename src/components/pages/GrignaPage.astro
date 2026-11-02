@@ -199,11 +199,12 @@ const readerIcons = [
       <blockquote class="quote"><p>{page.experiment.quote}</p></blockquote>
     </section>
 
-    <section class="closing">
-      <a class="btn btn--solid" href={siteUrl} target="_blank" rel="noopener">{page.closing.button} ↗<span class="visually-hidden"> {newTab}</span></a>
-    </section>
-
-    <NextStep lang={lang} page="grigna" />
+    <!-- Chiusura: Esplora Grigna a sinistra e Guarda gli altri lavori a destra, sulla stessa riga -->
+    <div class="closing">
+      <NextStep lang={lang} page="grigna">
+        <a class="btn btn--solid" href={siteUrl} target="_blank" rel="noopener">{page.closing.button} ↗<span class="visually-hidden"> {newTab}</span></a>
+      </NextStep>
+    </div>
   </div>
 </BaseLayout>
 
@@ -654,12 +655,11 @@ const readerIcons = [
     border-radius: var(--radius-media);
   }
 
+
   .closing {
-    margin: var(--section-y) 0 64px;
-    padding: 32px 0;
+    margin-top: var(--section-y);
+    padding-top: 32px;
     border-top: 1px solid var(--rule-strong);
-    border-bottom: 1px solid var(--rule);
-    font-size: var(--fs-row);
   }
 
   @media (max-width: 900px) {
