@@ -11,7 +11,7 @@ interface Props {
 }
 const { kind, labels } = Astro.props;
 
-// Salvataggi al giorno dalla storia git, 13–21 ottobre 2026
+// Salvataggi al giorno dalla storia git, 13–21 ottobre 2026 (i giorni non si mostrano in pagina)
 const commits = [
   { day: '13', n: 3 },
   { day: '14', n: 43 },
@@ -55,7 +55,7 @@ const max = Math.max(...commits.map((c) => c.n));
             <li class="bar" style={`--h: ${c.n / max}`}>
               <span class="bar__n mono">{c.n}</span>
               <span class:list={['bar__fill', c.n === max && 'bar__fill--max']}></span>
-              <span class="bar__day mono">{c.day}</span>
+              <span class="bar__base"></span>
             </li>
           ))}
         </ul>
@@ -285,16 +285,14 @@ const max = Math.max(...commits.map((c) => c.n));
   .bar__fill--max {
     background: var(--accent);
   }
-  .bar__n,
-  .bar__day {
+  .bar__n {
     font-size: 12px;
     color: var(--ink-muted);
   }
-  .bar__day {
-    padding-top: 6px;
-    border-top: 1px solid var(--rule-strong);
+  /* Linea di base sotto le barre, senza i giorni: il caso parla di fasi, non di date */
+  .bar__base {
     width: 100%;
-    text-align: center;
+    border-top: 1px solid var(--rule-strong);
   }
 
   /* 19.10 — prima e dopo */

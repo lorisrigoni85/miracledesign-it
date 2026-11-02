@@ -45,7 +45,7 @@ const newTab = lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a ne
     {page.moments.map((m, i) => (
       <article id={m.id} class="moment" data-moment aria-labelledby={`${m.id}-title`}>
         <p class="moment__year" aria-hidden="true">{m.year}</p>
-        <p class="label">{String(i + 1).padStart(2, '0')} · {m.where}</p>
+        <p class="label">{m.where}</p>
         <h2 id={`${m.id}-title`} class="moment__title">{m.title}</h2>
         <div class="moment__text">
           {m.text.map((p) => <p set:html={emphasis(p)} />)}

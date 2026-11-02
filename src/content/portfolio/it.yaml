@@ -2,12 +2,12 @@
 # I numeri vengono dalla storia git del repository e dal rapporto Analytics del 19–25 ottobre 2026.
 
 meta:
-  title: Questo portfolio, costruito con un agente AI — Loris Rigoni | Miracle Design
+  title: Il nuovo portfolio, progettato da me e costruito con un agente AI — Loris Rigoni | Miracle Design
   description: "Come Loris Rigoni ha riprogettato e messo online miracledesign.it in otto giorni dirigendo Claude Code: specifica, ciclo di lavoro con l'agente, scelte di design, messa online e misura."
 
-name: Questo portfolio, ottobre 2026
-title: Questo portfolio. Progettato da me, costruito con un agente AI.
-lead: "Il vecchio miracledesign.it era una galleria di progetti 2016–2020. Serviva un portfolio di carriera. L'ho riprogettato e messo online in otto giorni, dirigendo Claude Code: io decidevo cosa e perché, l'agente scriveva il codice. Ho scritto codice frontend per anni, ma prima di questo progetto non avevo mai usato git per il versioning e il deploy: da designer mi diverto di più con library, token e componenti."
+name: miracledesign.it
+title: Un nuovo portfolio, progettato da me e costruito con un agente AI.
+lead: "Il vecchio miracledesign.it era una galleria di progetti dal 2016 al 2020. L'ho riprogettato efficientemente, aggiornando le esperienze di questi ultimi anni, e infine pubblicato dirigendo tutto con Claude Code, a ottobre 2026. Ho scritto codice frontend per anni, ma prima di questo progetto non avevo mai usato git per il versioning e il deploy: da designer mi diverto di più con library, token e componenti."
 mockupAlt: Il sito miracledesign.it su computer e su telefono
 facts:
   - value: 8 giorni
@@ -20,7 +20,7 @@ facts:
 navLabel: Cinque momenti
 moments:
   - id: specifica
-    year: "12.10"
+    year: Fase 01
     short: La specifica
     where: Claude
     title: Prima la specifica, poi il codice.
@@ -30,17 +30,17 @@ moments:
     principle: A un agente si danno regole, non solo richieste.
     diagram: spec
   - id: ciclo
-    year: "14.10"
+    year: Fase 02
     short: Il ciclo
     where: Claude Code
     title: "Il ciclo: chiedo, guardo, correggo."
     text:
       - "Il lavoro vero è un **ciclo corto**. Chiedo una modifica, la guardo nel browser, la correggo o la approvo."
-      - "Il 14 ottobre ci sono **43 salvataggi in una sera**: logo, header, piè di pagina, archivio, menu, pagina CV. Ogni salvataggio è una decisione piccola e reversibile."
+      - "In una sola sera ci sono **43 salvataggi**: logo, header, piè di pagina, archivio, menu, pagina CV. Ogni salvataggio è una decisione piccola e reversibile."
     principle: Tanti passi piccoli che si vedono, invece di una consegna grande.
     diagram: loop
   - id: scelte
-    year: "19.10"
+    year: Fase 03
     short: Le scelte
     where: Direzione di design
     title: Le scelte che sono rimaste mie.
@@ -60,7 +60,7 @@ moments:
     principle: L'AI accelera l'esecuzione, la direzione resta umana.
     diagram: choices
   - id: online
-    year: "20.10"
+    year: Fase 04
     short: Online
     where: GitHub Pages · Aruba
     title: Messa online, senza rompere niente.
@@ -78,7 +78,7 @@ moments:
     principle: Non serve saper scrivere il codice, serve capire cosa si sta decidendo.
     diagram: pipeline
   - id: misurare
-    year: "27.10"
+    year: Fase 05
     short: Misurare
     where: Google Analytics 4
     title: Misurare.
@@ -97,8 +97,8 @@ diagrams:
     alt: "Schema: un documento di linee guida con posizionamento, pubblico, tre argomenti, mappa e testi, più la regola di non inventare i segnaposto, che Claude Code legge prima di costruire."
   loop:
     steps: [Chiedo, L'agente costruisce, Guardo nel browser, Approvo o correggo]
-    chart: Salvataggi al giorno, 13–21 ottobre
-    alt: "Schema del ciclo di lavoro: chiedo, l'agente costruisce, guardo nel browser, approvo o correggo, e si ricomincia. Sotto, i salvataggi al giorno dal 13 al 21 ottobre: 3, 43, 2, 0, 0, 0, 27, 29, 4."
+    chart: Salvataggi al giorno, ottobre 2026
+    alt: "Schema del ciclo di lavoro: chiedo, l'agente costruisce, guardo nel browser, approvo o correggo, e si ricomincia. Sotto, i salvataggi al giorno in nove giorni di ottobre 2026: 3, 43, 2, 0, 0, 0, 27, 29, 4."
   choices:
     before: "Specifica: pagina madre e 5 capitoli"
     after: "Scelta: una pagina, 4 momenti"
@@ -110,7 +110,7 @@ diagrams:
     mail: Posta intatta
     alt: "Schema della messa online: ogni salvataggio va su GitHub e GitHub Pages lo pubblica su miracledesign.it. Sui DNS di Aruba cambiano solo i record del sito, la posta resta intatta."
   report:
-    title: Rapporto settimanale · 19–25 ottobre
+    title: Rapporto settimanale · prima settimana online
     numbers:
       - value: "39"
         label: visitatori
@@ -121,7 +121,7 @@ diagrams:
       - value: "11"
         label: da LinkedIn
     parts: [5 numeri, 3 osservazioni, 1 suggerimento]
-    alt: "Estratto del rapporto settimanale del 19–25 ottobre: 39 visitatori, 1 minuto e 31 secondi a testa, 65% di visite con vero interesse, 11 visitatori da LinkedIn. Il rapporto è fatto di 5 numeri, 3 osservazioni e 1 suggerimento."
+    alt: "Estratto del rapporto della prima settimana online: 39 visitatori, 1 minuto e 31 secondi a testa, 65% di visite con vero interesse, 11 visitatori da LinkedIn. Il rapporto è fatto di 5 numeri, 3 osservazioni e 1 suggerimento."
 
 learned:
   label: Cosa ho imparato

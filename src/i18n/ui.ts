@@ -8,7 +8,7 @@ export const routes = {
   home: { it: '/', en: '/en/' },
   work: { it: '/lavori/', en: '/en/work/' },
   telepass: { it: '/lavori/telepass/', en: '/en/work/telepass/' },
-  portfolio: { it: '/lavori/questo-portfolio/', en: '/en/work/this-portfolio/' },
+  portfolio: { it: '/lavori/il-nuovo-portfolio/', en: '/en/work/the-new-portfolio/' },
   grigna: { it: '/lavori/grigna/', en: '/en/work/grigna/' },
   archive: { it: '/archivio/', en: '/en/archive/' },
   about: { it: '/chi-sono/', en: '/en/about/' },

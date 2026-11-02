@@ -2,12 +2,12 @@
 # Numbers come from the repository's git history and the Analytics report for 19–25 October 2026.
 
 meta:
-  title: This portfolio, built with an AI agent — Loris Rigoni | Miracle Design
+  title: The new portfolio, designed by me and built with an AI agent — Loris Rigoni | Miracle Design
   description: "How Loris Rigoni redesigned miracledesign.it and put it online in eight days by directing Claude Code: the spec, the working loop with the agent, design choices, going live and measuring."
 
-name: This portfolio, October 2026
-title: This portfolio. Designed by me, built with an AI agent.
-lead: "The old miracledesign.it was a gallery of 2016–2020 projects. I needed a career portfolio. I redesigned it and put it online in eight days by directing Claude Code: I decided what and why, the agent wrote the code. I wrote frontend code for years, but before this project I had never used git for versioning and deployment: as a designer I have more fun with libraries, tokens and components."
+name: miracledesign.it
+title: A new portfolio, designed by me and built with an AI agent.
+lead: "The old miracledesign.it was a gallery of projects from 2016 to 2020. I redesigned it efficiently, updating it with the experience of recent years, and finally published it in October 2026, directing everything with Claude Code. I wrote frontend code for years, but before this project I had never used git for versioning and deployment: as a designer I have more fun with libraries, tokens and components."
 mockupAlt: The miracledesign.it website on desktop and mobile
 facts:
   - value: 8 days
@@ -20,7 +20,7 @@ facts:
 navLabel: Five moments
 moments:
   - id: spec
-    year: "12.10"
+    year: Phase 01
     short: The spec
     where: Claude
     title: The spec first, then the code.
@@ -30,17 +30,17 @@ moments:
     principle: You give an agent rules, not just requests.
     diagram: spec
   - id: loop
-    year: "14.10"
+    year: Phase 02
     short: The loop
     where: Claude Code
     title: "The loop: ask, look, correct."
     text:
       - "The real work is a **short loop**. I ask for a change, look at it in the browser, then correct or approve it."
-      - "On 14 October there are **43 commits in one evening**: logo, header, footer, archive, menu, CV page. Each commit is a small, reversible decision."
+      - "In a single evening there are **43 commits**: logo, header, footer, archive, menu, CV page. Each commit is a small, reversible decision."
     principle: Many small visible steps instead of one big delivery.
     diagram: loop
   - id: choices
-    year: "19.10"
+    year: Phase 03
     short: The choices
     where: Design direction
     title: The choices that stayed mine.
@@ -60,7 +60,7 @@ moments:
     principle: AI speeds up execution, direction stays human.
     diagram: choices
   - id: live
-    year: "20.10"
+    year: Phase 04
     short: Live
     where: GitHub Pages · Aruba
     title: Going live without breaking anything.
@@ -78,7 +78,7 @@ moments:
     principle: You don't need to write the code, you need to understand what you're deciding.
     diagram: pipeline
   - id: measuring
-    year: "27.10"
+    year: Phase 05
     short: Measuring
     where: Google Analytics 4
     title: Measuring.
@@ -97,8 +97,8 @@ diagrams:
     alt: "Diagram: a guidelines document with positioning, audience, three arguments, site map and copy, plus the rule not to invent placeholders, which Claude Code reads before building."
   loop:
     steps: [I ask, The agent builds, I look in the browser, I approve or correct]
-    chart: Commits per day, 13–21 October
-    alt: "Diagram of the working loop: I ask, the agent builds, I look in the browser, I approve or correct, and it starts again. Below, commits per day from 13 to 21 October: 3, 43, 2, 0, 0, 0, 27, 29, 4."
+    chart: Commits per day, October 2026
+    alt: "Diagram of the working loop: I ask, the agent builds, I look in the browser, I approve or correct, and it starts again. Below, commits per day over nine days in October 2026: 3, 43, 2, 0, 0, 0, 27, 29, 4."
   choices:
     before: "Spec: parent page and 5 chapters"
     after: "Choice: one page, 4 moments"
@@ -110,7 +110,7 @@ diagrams:
     mail: Email untouched
     alt: "Diagram of going live: every commit goes to GitHub and GitHub Pages publishes it on miracledesign.it. On Aruba's DNS only the website records change, email stays untouched."
   report:
-    title: Weekly report · 19–25 October
+    title: Weekly report · first week online
     numbers:
       - value: "39"
         label: visitors
@@ -121,7 +121,7 @@ diagrams:
       - value: "11"
         label: from LinkedIn
     parts: [5 numbers, 3 observations, 1 suggestion]
-    alt: "Excerpt of the weekly report for 19–25 October: 39 visitors, 1 minute 31 seconds each, 65% engaged visits, 11 visitors from LinkedIn. The report is made of 5 numbers, 3 observations and 1 suggestion."
+    alt: "Excerpt of the report for the first week online: 39 visitors, 1 minute 31 seconds each, 65% engaged visits, 11 visitors from LinkedIn. The report is made of 5 numbers, 3 observations and 1 suggestion."
 
 learned:
   label: What I learned
