@@ -24,7 +24,7 @@ const images = { telepass: telepassMockup, portfolio: undefined, grigna: lang ==
     </header>
 
     <div class="cases">
-      {page.cases.map((c) => (
+      {page.cases.map((c, i) => (
         <CaseCard
           eyebrow={c.eyebrow}
           title={c.title}
@@ -35,6 +35,7 @@ const images = { telepass: telepassMockup, portfolio: undefined, grigna: lang ==
           image={images[c.image]}
           imageAlt={c.imageAlt}
           framed={c.image === 'grigna'}
+          reverse={i % 2 === 1}
           level="h2"
         >
           {c.image === 'portfolio' && <DeviceMockup slot="media" alt={c.imageAlt} set="portfolio" />}

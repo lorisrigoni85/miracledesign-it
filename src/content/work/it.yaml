@@ -6,7 +6,7 @@ meta:
   description: "I casi studio di Loris Rigoni, Senior Product Designer: piattaforme web, design system, ricerca con utenti e dati."
 
 title: Lavori
-lead: Casi studio raccontati dall'inizio alla fine. Il problema, la ricerca, le scelte e cosa è successo dopo.
+lead: "I miei casi studio: il problema, la ricerca e le scelte."
 
 cases:
   - route: telepass
@@ -18,16 +18,16 @@ cases:
     imageAlt: Il sito telepass.com su computer e su telefono
   - route: grigna
     image: grigna
-    eyebrow: Grigna · design system personale
-    title: Un design system per chi progetta e per gli agenti AI.
-    text: "Principi, componenti con i loro stati e **accessibilità per costruzione**, con regole scritte per due lettori: le persone e gli agenti. E una prova con e senza sistema."
+    eyebrow: Grigna Design System
+    title: Un DS per chi progetta e per agenti AI.
+    text: Come gettare le basi per un design system utile ai designer e agli agenti AI. Il tutto in chiave **accessibile, modulare e incrementale**.
     tags: [Design system, Accessibilità, AI]
     imageAlt: I bottoni di Grigna nelle loro varianti e nei loro stati
   - route: portfolio
     image: portfolio
-    eyebrow: Questo portfolio · ottobre 2026
-    title: Progettato da me, costruito con un agente AI.
-    text: Il sito che stai guardando, riprogettato e messo online in otto giorni **dirigendo Claude Code**. Dalla specifica alle scelte di design, dalla messa online alla misura settimanale.
+    eyebrow: miracledesign.it
+    title: Il mio nuovo portfolio grazie a Claude Code.
+    text: Questo portale è stato aggiornato, ripensato e riprogettato come esperimento tramite **Claude Code**. Dalle specifiche di design iniziali alla messa online finale.
     tags: [AI, Claude Code, Direzione di design]
     imageAlt: Il sito miracledesign.it su computer e su telefono
 

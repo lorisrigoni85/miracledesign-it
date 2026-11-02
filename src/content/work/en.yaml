@@ -6,7 +6,7 @@ meta:
   description: "Case studies by Loris Rigoni, Senior Product Designer: web platforms, design systems, research with users and data."
 
 title: Work
-lead: Case studies told from start to finish. The problem, the research, the choices and what happened next.
+lead: "My case studies: the problem, the research and the choices."
 
 cases:
   - route: telepass
@@ -18,16 +18,16 @@ cases:
     imageAlt: The telepass.com website on desktop and mobile
   - route: grigna
     image: grigna
-    eyebrow: Grigna · personal design system
-    title: A design system for designers and for AI agents.
-    text: "Principles, components and their states, and **accessibility by construction**, with rules written for two readers: people and agents. Plus a test with and without the system."
+    eyebrow: Grigna Design System
+    title: A DS for designers and for AI agents.
+    text: How to lay the foundations of a design system that's useful to designers and to AI agents. All of it **accessible, modular and incremental**.
     tags: [Design system, Accessibility, AI]
     imageAlt: Grigna's buttons in their variants and states
   - route: portfolio
     image: portfolio
-    eyebrow: This portfolio · October 2026
-    title: Designed by me, built with an AI agent.
-    text: The site you're looking at, redesigned and put online in eight days **by directing Claude Code**. From the spec to the design choices, from going live to weekly measurement.
+    eyebrow: miracledesign.it
+    title: My new portfolio, thanks to Claude Code.
+    text: This site was updated, rethought and redesigned as an experiment with **Claude Code**. From the initial design specs to going live.
     tags: [AI, Claude Code, Design direction]
     imageAlt: The miracledesign.it website on desktop and mobile
 

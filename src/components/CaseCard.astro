@@ -15,15 +15,17 @@ interface Props {
   /** Immagine fissa; senza, la parte destra prende lo slot "media" (es. un mockup animato). */
   image?: ImageMetadata;
   imageAlt?: string;
+  /** Immagine a sinistra e testo a destra, per alternare le schede in una lista. */
+  reverse?: boolean;
   /** Bordo e angoli arrotondati attorno all'immagine (schermate su fondo bianco). */
   framed?: boolean;
   /** h3 nella Home (sotto "Lavori in evidenza"), h2 nella pagina Lavori. */
   level?: 'h2' | 'h3';
 }
-const { eyebrow, title, text, stats, href, linkLabel, image, imageAlt, framed = false, level = 'h3' } = Astro.props;
+const { eyebrow, title, text, stats, href, linkLabel, image, imageAlt, reverse = false, framed = false, level = 'h3' } = Astro.props;
 const Heading = level;
 ---
-<article class="case">
+<article class:list={['case', reverse && 'case--reverse']}>
   <div class="case__text">
     <p class="mono">{eyebrow}</p>
     <Heading class="case__title">{title}</Heading>
@@ -50,6 +52,10 @@ const Heading = level;
     gap: 40px 64px;
     padding: 56px 0 64px;
     border-top: 1px solid var(--rule);
+  }
+  /* Su computer l'immagine passa a sinistra; quando le colonne vanno a capo il testo resta sopra */
+  .case--reverse {
+    flex-direction: row-reverse;
   }
   .case__text {
     flex: 1 1 380px;
