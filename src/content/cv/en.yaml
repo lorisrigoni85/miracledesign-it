@@ -27,7 +27,7 @@ experience:
     points:
       - Continue to drive design for Telepass web products, a collaboration running since 2019 across agency, in-house and consultancy roles.
       - Define digital strategy and UX/UI and communication solutions, using product data and market trends to optimise the user experience.
-      - "Use AI in two stages: strategic research on markets, trends and product data, and designing interfaces and prototypes with Figma AI and Claude Design."
+      - "Use AI in two stages: strategic research on markets, trends and product data, and designing interfaces and prototypes with Figma Make and Claude Design."
       - Simplify complex business processes through Design Thinking and Service Design; contribute to pitches and consulting for new clients.
   - role: Product Designer
     period: Jun 2021 – Oct 2024
@@ -64,7 +64,7 @@ skills:
   - group: Tools
     items: Figma · Adobe Creative Suite · Atlassian (Jira, Confluence) · Clarity · Hotjar · Google Analytics · Contentful · Storybook · Zeroheight
   - group: AI
-    items: Claude Code and Claude Design for prototyping and development · Figma AI & Make
+    items: Claude Code and Claude Design for prototyping and development · Figma Design and Make
 
 certifications:
   - name: Google AI
