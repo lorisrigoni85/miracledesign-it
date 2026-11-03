@@ -214,7 +214,7 @@ const grigna = defineCollection({
     }),
     experiment: z.object({
       label: z.string(),
-      intro: z.string(),
+      intro: z.array(z.string()),
       honest: z.string(),
       without: z.string(),
       with: z.string(),
@@ -222,6 +222,7 @@ const grigna = defineCollection({
       shotWithout: z.string(),
       shotWith: z.string(),
       learned: z.string(),
+      improvements: z.array(titled),
       quote: z.string(),
     }),
     closing: z.object({ button: z.string() }),

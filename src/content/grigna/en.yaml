@@ -7,7 +7,7 @@ meta:
 
 name: Grigna
 label: Design system · personal project
-title: Grigna. A design system for designers and for AI agents.
+title: Grigna. A design system for designers and AI agents.
 lead: "A design system serves designers first: it gives designers and developers the same rules, the same names and the same components. Grigna adds a second reader, the AI agent. The rules that keep a team's work consistent are the same ones that stop an agent from inventing colours, spacing and components."
 siteLabel: Explore Grigna
 demoTitle: Grigna components, live examples
@@ -28,11 +28,11 @@ principles:
     - title: Clean and bright.
       text: Light surfaces, plenty of space, a single accent colour. The UI serves the content, nothing else.
     - title: Colour always means something.
-      text: Fir green signals action, feedback colours signal status.
+      text: "Fir green signals action. The other colours are only there to give feedback: success, warning, error or information."
     - title: Accessible by construction.
       text: Contrast, touch area and focus are checked rules, not good intentions.
     - title: Fewer choices, more consistency.
-      text: "You pick a named space, not “16px” or “15px looks better”. If something is missing, it goes into the system."
+      text: "Spaces, sizes and colours are picked from a named scale, not by eye: “medium space”, not “16px” or “15px looks better”. Few values, always the same, so every page stays consistent with the others. If a value is missing, it isn't hand-written: it goes into the system, for everyone."
     - title: No invented content.
       text: "Examples use clear placeholders. And missing data isn't shown: no dashes, “n/a” or estimates."
 
@@ -108,12 +108,14 @@ tokens:
 
 experiment:
   label: Grigna DS put to the test with two AI agents
-  intro: "Does a well-structured design system change what an agent builds? I gave the same request to two identical agents: build a page with a list of cards, filters and a status on each card. One worked in an empty folder, the other inside Grigna. The request didn't mention the system and didn't say real data was missing. One attempt each, no corrections."
+  intro:
+    - "Does a well-structured design system shape what an agent can build? I wanted to stress-test the UI ideation of a sample page built by two agents, with the same request: a list of cards that can be filtered by the information they contain."
+    - "One worked with no framework available, the other with Grigna. Neither had real data. Quite a few interesting reflections came out of it, and I wanted to report them here."
   honest: "In all honesty: the page without the system looked better, richer and more “product-like”. The system didn't make it prettier. It made it consistent, verifiable and honest."
-  without: Without a system
+  without: No reference framework
   with: With Grigna
   rows:
-    - label: Flags from the automatic check
+    - label: "Hand-written values outside any system: colours, spaces, sizes. Counted by Grigna's automatic check"
       without: "142"
       with: "0"
     - label: Different hand-written colours
@@ -123,11 +125,24 @@ experiment:
       without: "11"
       with: "Grigna's 9"
     - label: Content
-      without: 14 invented items, in real places, no warning
-      with: Placeholders, with a warning on the page
-  shotWithout: "The page by the agent without a system: polished, but with invented content and statuses and no warning."
+      without: "14 cards with real places and invented information, presented as real"
+      with: "No invented data: clearly recognisable placeholder text and a notice at the top of the page saying the data isn't real"
+  shotWithout: "The page by the agent with no framework: polished, but with invented content and statuses and no warning."
   shotWith: "The page by the agent with Grigna: plainer, with placeholders declared at the top of the page."
-  learned: "The test also found Grigna's limits. The agent listed what was missing instead of improvising, and that led to six improvements: a placeholder component, missing layout tokens, a filter that couldn't handle too many options, a stricter automatic check."
+  learned: "The test also found Grigna's limits. The agent listed what was missing instead of improvising. That led to **six changes**, already applied to the system:"
+  improvements:
+    - title: A placeholder component.
+      text: "The agent had copied the documentation's examples to the screen, code braces included: “{distance} km”. Now there's a Placeholder component with a clear format, and a rule: braces never reach the screen."
+    - title: The missing layout tokens.
+      text: "There was no token for the page's maximum width or the cards' minimum width: the agent hand-wrote the values and said so. Now they are system tokens, with a breakpoint at 768px."
+    - title: Components that really hide.
+      text: "Some components stayed visible even with the hidden attribute. Now they all respect it."
+    - title: A filter that handles many options.
+      text: "A group with 16 options was too long to read and use. Now there's a pattern: options are split into groups and only the relevant one is shown."
+    - title: A stricter automatic check.
+      text: "The check had missed two values hand-written by the agent with Grigna. Now it also checks widths, grids and braces left on screen."
+    - title: Clearer working rules.
+      text: "The agent had updated the system's working files on its own, even during the test. Now it only does so when actually working on Grigna."
   quote: A convincing demo is not a foundation to build on.
 
 closing:

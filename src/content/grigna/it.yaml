@@ -8,7 +8,7 @@ meta:
 
 name: Grigna
 label: Design system · progetto personale
-title: Grigna. Un design system per chi progetta e per gli agenti AI.
+title: Grigna. Un design system per chi progetta e per agenti AI.
 lead: "Un design system serve prima di tutto a chi progetta: dà a designer e sviluppatori le stesse regole, gli stessi nomi e gli stessi componenti. Grigna aggiunge un secondo lettore, l'agente AI. Le regole che rendono coerente il lavoro di un team sono le stesse che impediscono a un agente di inventare colori, spazi e componenti."
 siteLabel: Esplora Grigna
 demoTitle: Componenti di Grigna, esempi dal vivo
@@ -29,11 +29,11 @@ principles:
     - title: Pulito e luminoso.
       text: Superfici chiare, molto spazio, un solo colore d'accento. La UI è al servizio dei puri contenuti.
     - title: Il colore ha sempre un significato.
-      text: Il verde abete indica l'azione, i colori di feedback lo stato.
+      text: "Il verde abete indica l'azione. Gli altri colori servono solo a dare un riscontro: successo, attenzione, errore o informazione."
     - title: Accessibile per costruzione.
       text: Contrasto, area di tocco e focus sono regole controllate, non buone intenzioni.
     - title: Meno scelte, più coerenza.
-      text: "Si sceglie uno spazio con un nome, non «16px» o «15px che sta meglio». Se manca qualcosa, si aggiunge al sistema."
+      text: "Spazi, misure e colori si scelgono da una scala con i nomi, non a occhio: «spazio medio», non «16px» o «15px che sta meglio». Pochi valori, sempre gli stessi, e ogni pagina resta coerente con le altre. Se un valore manca, non si scrive a mano: si aggiunge al sistema, per tutti."
     - title: Niente contenuti inventati.
       text: "Gli esempi usano segnaposto chiari. E un dato che manca non si mostra: niente trattini, «n.d.» o stime."
 
@@ -109,12 +109,14 @@ tokens:
 
 experiment:
   label: Grigna DS alla prova con due agenti AI
-  intro: "Un design system ben strutturato cambia quello che un agente costruisce? Ho dato la stessa richiesta a due agenti uguali: costruire una pagina con un elenco di schede, filtri e uno stato per ogni scheda. Uno lavorava in una cartella vuota, l'altro dentro Grigna. La richiesta non nominava il sistema e non diceva che mancavano dati reali. Un solo tentativo, senza correzioni."
+  intro:
+    - "Un design system ben strutturato plasma quello che un agente può costruire? Ho voluto stressare l'ideazione UI di una pagina di esempio costruita da due agenti, con la stessa richiesta: prevedere un elenco di schede e renderle filtrabili in base alle informazioni contenute."
+    - "Uno lavorava senza un framework a disposizione, l'altro utilizzando Grigna. Entrambi privi di dati reali. Sono emerse parecchie riflessioni interessanti, che ho voluto riportare qui."
   honest: "Va detto con onestà: la pagina senza sistema era più bella, più ricca e «da prodotto». Il sistema non l'ha resa più bella. L'ha resa coerente, verificabile e onesta."
-  without: Senza sistema
+  without: Nessun framework di riferimento
   with: Con Grigna
   rows:
-    - label: Segnalazioni del controllo automatico
+    - label: "Valori scritti a mano, fuori da ogni sistema: colori, spazi, dimensioni. Li conta il controllo automatico di Grigna"
       without: "142"
       with: "0"
     - label: Colori diversi scritti a mano
@@ -124,11 +126,24 @@ experiment:
       without: "11"
       with: "Le 9 di Grigna"
     - label: Contenuti
-      without: 14 elementi inventati, su luoghi veri, senza avvisi
-      with: Segnaposto, con un avviso in pagina
-  shotWithout: "La pagina dell'agente senza sistema: curata, ma con contenuti e stati inventati e nessun avviso."
+      without: "14 schede con luoghi veri e informazioni inventate, presentate come reali"
+      with: "Nessun dato inventato: testi segnaposto ben riconoscibili e un avviso in cima alla pagina che dice che i dati non sono reali"
+  shotWithout: "La pagina dell'agente senza framework: curata, ma con contenuti e stati inventati e nessun avviso."
   shotWith: "La pagina dell'agente con Grigna: più spoglia, con segnaposto dichiarati in cima alla pagina."
-  learned: "La prova ha trovato anche i limiti di Grigna. L'agente ha elencato da solo cosa mancava invece di improvvisare, e da lì sono nati sei miglioramenti: un componente per i segnaposto, token di layout che mancavano, un filtro che non reggeva troppe opzioni, un controllo automatico più severo."
+  learned: "La prova ha trovato anche i limiti di Grigna. L'agente ha elencato da solo cosa mancava invece di improvvisare. Da lì sono nati **sei interventi**, già applicati al sistema:"
+  improvements:
+    - title: Un componente per i segnaposto.
+      text: "L'agente aveva copiato a schermo gli esempi della documentazione, con le graffe del codice: «{distanza} km». Ora c'è un componente Segnaposto con un formato chiaro, e una regola: le graffe non arrivano mai a schermo."
+    - title: I token di layout che mancavano.
+      text: "Per la larghezza massima della pagina e quella minima delle schede non c'era un token: l'agente ha scritto i valori a mano e l'ha dichiarato. Ora sono token del sistema, con un punto di rottura a 768px."
+    - title: Componenti che si nascondono davvero.
+      text: "Alcuni componenti restavano visibili anche con l'attributo hidden. Ora tutti lo rispettano."
+    - title: Un filtro che regge molte opzioni.
+      text: "Un gruppo con 16 opzioni era troppo lungo da leggere e da usare. Ora c'è uno schema: le opzioni si dividono in gruppi e si mostra solo quello che serve."
+    - title: Un controllo automatico più severo.
+      text: "Il controllo non aveva visto due misure scritte a mano dall'agente con Grigna. Ora verifica anche larghezze, griglie e graffe rimaste a schermo."
+    - title: Regole di lavoro più precise.
+      text: "L'agente aveva aggiornato da solo i file di lavoro del sistema anche durante la prova. Ora lo fa solo quando lavora davvero su Grigna."
   quote: Una demo convincente non è una base su cui costruire.
 
 closing:

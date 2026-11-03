@@ -172,7 +172,7 @@ const readerIcons = [
     <!-- La prova -->
     <section class="block" aria-labelledby="prova">
       <h2 id="prova" class="block__title">{page.experiment.label}</h2>
-      <p class="block__intro">{page.experiment.intro}</p>
+      {page.experiment.intro.map((p) => <p class="block__intro">{p}</p>)}
       <p class="honest">{page.experiment.honest}</p>
       <table class="compare">
         <caption class="visually-hidden">{page.experiment.label}</caption>
@@ -196,6 +196,15 @@ const readerIcons = [
         </figure>
       </div>
       <p class="block__intro" set:html={emphasis(page.experiment.learned)} />
+      <ol class="principles">
+        {page.experiment.improvements.map((p, i) => (
+          <li>
+            <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+            <strong>{p.title}</strong>
+            <span>{p.text}</span>
+          </li>
+        ))}
+      </ol>
       <blockquote class="quote"><p>{page.experiment.quote}</p></blockquote>
     </section>
 
@@ -636,7 +645,7 @@ const readerIcons = [
   .shots figure {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 24px;
     margin: 0;
   }
   .shots figcaption {

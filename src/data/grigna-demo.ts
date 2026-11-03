@@ -29,7 +29,7 @@ export const grignaDemo = {
       draft: 'Salva bozza',
       cancel: 'Annulla',
       small: 'Small',
-      rule: 'Al massimo un bottone primary per vista. E il bottone disabled è meglio evitarlo: non dice a chi lo usa cosa manca per andare avanti. Meglio lasciarlo attivo e, al clic, spiegare cosa completare.',
+      rule: 'Al massimo un bottone primary per vista. Il bottone disabled è meglio evitarlo: è grigio e non risponde, ma non spiega il perché. Chi compila un modulo e trova «Salva» bloccato non sa quale campo manca. Meglio lasciarlo attivo: al clic, il campo da completare si evidenzia con un messaggio che dice cosa scrivere.',
     },
     field: {
       name: 'Campo',
@@ -112,7 +112,7 @@ export const grignaDemo = {
       draft: 'Save draft',
       cancel: 'Cancel',
       small: 'Small',
-      rule: 'At most one primary button per view. And a disabled button is best avoided: it doesn’t tell people what’s missing to move on. Better to keep it active and, on click, explain what to complete.',
+      rule: 'At most one primary button per view. A disabled button is best avoided: it’s grey and doesn’t respond, but it doesn’t say why. Someone filling in a form who finds “Save” blocked doesn’t know which field is missing. Better to keep it active: on click, the field to complete is highlighted with a message saying what to enter.',
     },
     field: {
       name: 'Field',
