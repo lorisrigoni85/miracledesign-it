@@ -64,7 +64,7 @@ skills:
   - group: Tools
     items: Figma · Adobe Creative Suite · Atlassian (Jira, Confluence) · Clarity · Hotjar · Google Analytics · Contentful · Storybook · Zeroheight
   - group: AI
-    items: Claude Code and Claude Design for prototyping and development · Figma AI & Make · ChatGPT · Gemini
+    items: Claude Code and Claude Design for prototyping and development · Figma AI & Make
 
 certifications:
   - name: Google AI
