@@ -32,7 +32,7 @@ principles:
     - title: Accessible by construction.
       text: Contrast, touch area and focus are checked rules, not good intentions.
     - title: Fewer choices, more consistency.
-      text: "Spaces, sizes and colours are picked from a named scale, not by eye: “medium space”, not “16px” or “15px looks better”. Few values, always the same, so every page stays consistent with the others. If a value is missing, it isn't hand-written: it goes into the system, for everyone."
+      text: "Spaces, sizes and colours are chosen with a rationale. If a value is missing, it isn't hand-written: it goes into the system, for everyone."
     - title: No invented content.
       text: "Examples use clear placeholders. And missing data isn't shown: no dashes, “n/a” or estimates."
 

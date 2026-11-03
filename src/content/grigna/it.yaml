@@ -33,7 +33,7 @@ principles:
     - title: Accessibile per costruzione.
       text: Contrasto, area di tocco e focus sono regole controllate, non buone intenzioni.
     - title: Meno scelte, più coerenza.
-      text: "Spazi, misure e colori si scelgono da una scala con i nomi, non a occhio: «spazio medio», non «16px» o «15px che sta meglio». Pochi valori, sempre gli stessi, e ogni pagina resta coerente con le altre. Se un valore manca, non si scrive a mano: si aggiunge al sistema, per tutti."
+      text: "Spazi, misure e colori si scelgono con un razionale. Se un valore manca, non si scrive a mano: si aggiunge al sistema, per tutti."
     - title: Niente contenuti inventati.
       text: "Gli esempi usano segnaposto chiari. E un dato che manca non si mostra: niente trattini, «n.d.» o stime."
 
