@@ -116,7 +116,7 @@ experiment:
   without: Nessun framework di riferimento
   with: Con Grigna
   rows:
-    - label: "Valori scritti a mano, fuori da ogni sistema: colori, spazi, dimensioni. Li conta il controllo automatico di Grigna"
+    - label: "Valori scritti a mano, fuori da ogni sistema: colori, spazi, dimensioni"
       without: "142"
       with: "0"
     - label: Colori diversi scritti a mano

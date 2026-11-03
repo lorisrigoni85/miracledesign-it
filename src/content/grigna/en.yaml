@@ -115,7 +115,7 @@ experiment:
   without: No reference framework
   with: With Grigna
   rows:
-    - label: "Hand-written values outside any system: colours, spaces, sizes. Counted by Grigna's automatic check"
+    - label: "Hand-written values outside any system: colours, spaces, sizes"
       without: "142"
       with: "0"
     - label: Different hand-written colours
