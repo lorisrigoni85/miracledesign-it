@@ -6,6 +6,7 @@ import ritratto from '../../assets/foto/ritratto-chiaro.jpg';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import telepassMockup from '../../assets/foto/telepass-mockup.png';
 import CaseCard from '../CaseCard.astro';
+import SkillsMarquee from '../SkillsMarquee.astro';
 import { emphasis } from '../../utils/emphasis';
 import { ui, routes, type Lang } from '../../i18n/ui';
 import { archive } from '../../data/archive';
@@ -47,6 +48,9 @@ const preview = archive.filter((item) => item.preview);
       </div>
     </div>
   </section>
+
+  <!-- Competenze: due file di chip sotto l'apertura, senza titolo visibile -->
+  <SkillsMarquee {...home.skills} />
 
   <!-- 2. Lavori in evidenza -->
   <section id={home.work.anchor} class="container work" aria-labelledby="work-title">
@@ -275,10 +279,20 @@ const preview = archive.filter((item) => item.preview);
     }
   }
 
-  /* Spazio sopra la linea di sezione: senza, la linea scura toccava il bordo della foto */
+  /* Spazio sopra la linea di sezione: le competenze sopra danno già respiro, basta quanto sopra le chip */
   .work {
-    padding-top: var(--section-y);
+    padding-top: 56px;
     padding-bottom: 32px;
+  }
+  @media (max-width: 600px) {
+    .work {
+      padding-top: 40px;
+    }
+  }
+  /* Sotto le competenze la linea che apre la sezione non serve: resta solo quella sotto l'etichetta */
+  .work .section-head {
+    border-top: none;
+    padding-top: 0;
   }
   .work-actions {
     margin-top: 40px;

@@ -14,6 +14,15 @@ hero:
   primary: See the work
   secondary: Get in touch
 
+skills:
+  # Two rows of chips scrolling under the opening, in opposite directions. Two words per chip at most.
+  label: Skills
+  pause: Pause the skills scrolling
+  play: Resume the skills scrolling
+  rows:
+    - [UX Strategy, Product strategy, User research, Interviews, Usability testing, Think aloud, A/B testing, Funnels, AI analytics, Clarity, Google Analytics, Workshops, Design Thinking, Service Design, Mentoring]
+    - [Design Systems, Web Platforms, Product design, Design tokens, AI agents, Wireframing, Prototyping, AI prototyping, Accessibility, Content design, Frontend, AI specs, E-commerce, Figma, Contentful, Claude Code]
+
 work:
   label: Selected work
   anchor: work

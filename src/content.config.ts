@@ -16,6 +16,13 @@ const home = defineCollection({
       primary: z.string(),
       secondary: z.string(),
     }),
+    /** Chip delle competenze sotto l'apertura: una lista per fila. */
+    skills: z.object({
+      label: z.string(),
+      pause: z.string(),
+      play: z.string(),
+      rows: z.array(z.array(z.string())),
+    }),
     work: z.object({
       label: z.string(),
       anchor: z.string(),

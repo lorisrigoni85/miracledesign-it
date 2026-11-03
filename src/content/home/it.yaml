@@ -14,6 +14,15 @@ hero:
   primary: Guarda i lavori
   secondary: Scrivimi
 
+skills:
+  # Due file di chip che scorrono sotto l'apertura, in direzioni opposte. Al massimo due parole per chip.
+  label: Competenze
+  pause: Ferma lo scorrimento delle competenze
+  play: Riprendi lo scorrimento delle competenze
+  rows:
+    - [UX Strategy, Product strategy, User research, Interviste, Usability test, Think aloud, A/B test, Funnel, Analisi AI, Clarity, Google Analytics, Workshop, Design Thinking, Service Design, Mentoring]
+    - [Design Systems, Web Platforms, Product design, Design token, Agenti AI, Wireframing, Prototipazione, Prototipi AI, Accessibilità, Content design, Frontend, Specifiche AI, E-commerce, Figma, Contentful, Claude Code]
+
 work:
   label: Lavori in evidenza
   anchor: lavori

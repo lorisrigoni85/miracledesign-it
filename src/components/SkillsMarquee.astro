@@ -1,0 +1,168 @@
+---
+/*
+ * Competenze sotto l'apertura della Home: due file di chip che scorrono in direzioni opposte.
+ * Ogni fila contiene l'elenco due volte, così il giro è continuo; la copia è nascosta ai lettori di schermo.
+ * Si ferma con il mouse sopra, con il focus e con il pulsante (WCAG 2.2.2); senza animazioni le chip vanno a capo.
+ */
+interface Props {
+  label: string;
+  pause: string;
+  play: string;
+  rows: string[][];
+}
+const { label, pause, play, rows } = Astro.props;
+---
+<section class="skills" aria-labelledby="skills-title" data-skills>
+  <h2 id="skills-title" class="visually-hidden">{label}</h2>
+  {rows.map((items, i) => (
+    <div class:list={['skills__lane', { 'skills__lane--right': i % 2 === 0 }]} style={`--duration: ${48 + i * 8}s`}>
+      <div class="skills__track">
+        <ul class="skills__list">
+          {items.map((item) => <li class="skills__chip">{item}</li>)}
+        </ul>
+        <ul class="skills__list skills__list--copy" aria-hidden="true">
+          {items.map((item) => <li class="skills__chip">{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  ))}
+  <div class="container skills__controls">
+    <button type="button" class="skills__toggle" aria-label={pause} data-pause={pause} data-play={play}>
+      <svg class="skills__icon skills__icon--pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10" /></svg>
+      <svg class="skills__icon skills__icon--play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" /></svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-skills]').forEach((section) => {
+    const button = section.querySelector<HTMLButtonElement>('.skills__toggle')!;
+    button.addEventListener('click', () => {
+      const paused = section.classList.toggle('is-paused');
+      button.setAttribute('aria-label', (paused ? button.dataset.play : button.dataset.pause)!);
+    });
+  });
+</script>
+
+<style>
+  .skills {
+    padding-top: 56px;
+    overflow: hidden;
+  }
+  /* Le chip sfumano nel fondo ai due lati */
+  .skills__lane {
+    padding-block: 5px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  /* 16px in più tra le due file */
+  .skills__lane + .skills__lane {
+    margin-top: 16px;
+  }
+  .skills__track {
+    display: flex;
+    width: max-content;
+    animation: skills-scroll var(--duration) linear infinite;
+  }
+  .skills__lane--right .skills__track {
+    animation-direction: reverse;
+  }
+  .skills:hover .skills__track,
+  .skills:focus-within .skills__track,
+  .skills.is-paused .skills__track {
+    animation-play-state: paused;
+  }
+  @keyframes skills-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .skills__list {
+    display: flex;
+    gap: 10px;
+    padding: 0 10px 0 0;
+    margin: 0;
+    list-style: none;
+  }
+  .skills__chip {
+    padding: 9px 18px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-pill);
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .skills__controls {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 12px;
+  }
+  .skills__toggle {
+    display: grid;
+    place-items: center;
+    width: var(--tap);
+    height: var(--tap);
+    padding: 0;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition);
+  }
+  .skills__toggle:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .skills__icon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .skills__icon--play,
+  .is-paused .skills__icon--pause {
+    display: none;
+  }
+  .is-paused .skills__icon--play {
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    .skills {
+      padding-top: 40px;
+    }
+    .skills__chip {
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+  }
+
+  /* Senza animazioni: chip ferme, a capo, una sola copia, niente pulsante */
+  @media (prefers-reduced-motion: reduce) {
+    .skills__lane {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-inline: var(--gutter);
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+    .skills__track {
+      width: auto;
+      animation: none;
+    }
+    .skills__list {
+      flex-wrap: wrap;
+      padding: 0;
+    }
+    .skills__list--copy,
+    .skills__controls {
+      display: none;
+    }
+  }
+</style>
