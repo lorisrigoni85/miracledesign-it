@@ -65,11 +65,12 @@ const page = (await getEntry('telepass', lang))!.data;
         <blockquote class="moment__principle"><p>{m.principle}</p></blockquote>
         <TelepassDiagram kind={m.diagram} labels={page.diagrams} />
         {m.link?.image && (
-          <aside class="resource">
+          <aside class:list={['resource', { 'resource--highlight': m.link.highlight }]}>
             <a class="resource__media" href={m.link.url} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
               <Image src={resourceImage(m.link.image)} alt="" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 340px" />
             </a>
             <div class="resource__text">
+              {m.link.title && <h3 class="resource__title">{m.link.title}</h3>}
               {m.link.text && <p set:html={emphasis(m.link.text)} />}
               <a class="link" href={m.link.url} target="_blank" rel="noopener">{m.link.label}<span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> {lang === 'it' ? '(si apre in una nuova scheda)' : '(opens in a new tab)'}</span></a>
             </div>
@@ -127,6 +128,10 @@ const page = (await getEntry('telepass', lang))!.data;
     border: 1px solid var(--rule);
     border-radius: var(--radius-media);
   }
+  .resource--highlight {
+    background: color-mix(in srgb, var(--accent) 14%, var(--bg));
+    border-color: transparent;
+  }
   .resource .ext {
     margin-left: 0.25em;
   }
@@ -152,6 +157,17 @@ const page = (await getEntry('telepass', lang))!.data;
     align-items: flex-start;
     gap: 16px;
     color: var(--ink-body);
+    font-size: 16px;
+    container-type: inline-size;
+  }
+  .resource__title {
+    margin-bottom: -8px;
+    color: var(--ink);
+    font-size: 18px;
+    /* Si riduce con la colonna, così il titolo resta sempre su una riga */
+    font-size: min(18px, calc(100cqi / 16));
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
   @media (max-width: 900px) {
     .positions {

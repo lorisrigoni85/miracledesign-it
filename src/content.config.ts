@@ -90,10 +90,14 @@ const telepass = defineCollection({
         /** Link esterno facoltativo: semplice sotto il testo, oppure scheda con immagine e testo dopo lo schema */
         link: z
           .object({
+            /** Titolo breve della scheda */
+            title: z.string().optional(),
             label: z.string(),
             url: z.string().url(),
             text: z.string().optional(),
             image: z.string().optional(),
+            /** Scheda con sfondo colorato, per dare più peso al contenuto */
+            highlight: z.boolean().optional(),
           })
           .optional(),
         principle: z.string(),

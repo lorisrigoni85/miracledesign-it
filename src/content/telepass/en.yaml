@@ -42,6 +42,13 @@ moments:
     text:
       - "Before redesigning anything, we listened to the people who live with the site every day: key business figures and the managers of internal teams, without leaving out **12 users**, customers and not, through interviews and usability tests."
       - "The workshops then proved to be the perfect tool to bring business and product teams to the same table, and turn our analysis into **shared priorities**."
+    link:
+      title: The Redesign, told on Medium
+      label: Read the article on Medium
+      url: "https://medium.com/telepass-digital/redesigning-your-website-a-step-by-step-guide-145a7b3fbc2a"
+      text: "In 2023 I wrote about how we approach a redesign in **“Redesigning your website”**, an article for the Telepass Digital blog: from data to aligning teams, through to user testing."
+      image: article-cover
+      highlight: true
     principle: Every project that followed answers one of these priorities.
     diagram: research
   - id: redesigning
@@ -55,6 +62,7 @@ moments:
       - "With these foundations in place we could simplify: one typeface, the brand colours used consistently and a leaner library. The cards, for example, came in six different kinds, born over the years for different needs: **they became three**, more flexible, covering the same cases."
       - "Then the most delicate part: replacing the components one at a time, **with the site always online**. Every release had to be coordinated with content data entry and QA testing, because several teams work on the site every day and no one could stop."
     link:
+      title: Resin DS on Zeroheight
       label: Explore Telepass’s Design System
       url: "https://zeroheight.com/943425b5c/p/028e0f-telepass-design-system"
       text: "Resin is documented on **zeroheight**: foundations, components and usage rules in one shared reference for designers and developers. A team result, built day by day together with my colleagues in Telepass’s design and development teams."

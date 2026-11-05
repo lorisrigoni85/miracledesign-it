@@ -42,7 +42,7 @@ const { label, moments } = Astro.props;
         if (on) a.setAttribute('aria-current', 'step');
         else a.removeAttribute('aria-current');
         // Telefono: la barra orizzontale tiene in vista il momento attivo.
-        if (on && window.matchMedia('(max-width: 900px)').matches) {
+        if (on && window.matchMedia('(max-width: 960px)').matches) {
           a.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
         }
       });
@@ -205,9 +205,10 @@ const { label, moments } = Astro.props;
   }
 
   /* Telefono e tablet: indice orizzontale fisso sotto l'header */
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .story {
-      grid-template-columns: 1fr;
+      /* minmax(0, …): la barra dell'indice scorre al suo interno e non allarga la pagina */
+      grid-template-columns: minmax(0, 1fr);
       gap: 0;
       padding-top: 64px;
     }

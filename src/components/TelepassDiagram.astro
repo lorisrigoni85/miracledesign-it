@@ -569,8 +569,8 @@ const newCards = [
     }
   }
 
-  /* Telefono: tutto in verticale */
-  @media (max-width: 600px) {
+  /* Telefono e finestre strette: tutto in verticale (in orizzontale gli schemi chiedono almeno 650 px) */
+  @media (max-width: 680px) {
     .flow,
     .research,
     .biz {
@@ -622,7 +622,7 @@ const newCards = [
     .branches {
       position: relative;
       grid-template-rows: none;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       align-self: stretch;
       margin-top: -16px;
@@ -656,6 +656,12 @@ const newCards = [
     .branch .chip {
       align-self: stretch;
       flex: 1 1 auto;
+    }
+    /* Sui telefoni stretti l'etichetta va a capo invece di allargare la pagina */
+    .pill {
+      flex: 0 1 auto;
+      max-width: 100%;
+      white-space: normal;
     }
   }
 </style>
