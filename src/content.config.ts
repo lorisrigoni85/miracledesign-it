@@ -236,6 +236,11 @@ const grigna = defineCollection({
       improvements: z.array(titled),
       quote: z.string(),
     }),
+    lessons: z.object({
+      label: z.string(),
+      intro: z.string(),
+      points: z.array(titled),
+    }),
     closing: z.object({ button: z.string() }),
   }),
 });

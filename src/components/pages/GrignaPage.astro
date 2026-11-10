@@ -208,6 +208,21 @@ const readerIcons = [
       <blockquote class="quote"><p>{page.experiment.quote}</p></blockquote>
     </section>
 
+    <!-- Cosa ho imparato -->
+    <section class="block" aria-labelledby="imparato">
+      <h2 id="imparato" class="block__title">{page.lessons.label}</h2>
+      <p class="block__intro">{page.lessons.intro}</p>
+      <ol class="principles">
+        {page.lessons.points.map((p, i) => (
+          <li>
+            <span class="mono">{String(i + 1).padStart(2, '0')}</span>
+            <strong>{p.title}</strong>
+            <span>{p.text}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
     <!-- Chiusura: Esplora Grigna a sinistra e Guarda gli altri lavori a destra, sulla stessa riga -->
     <div class="closing">
       <NextStep lang={lang} page="grigna">

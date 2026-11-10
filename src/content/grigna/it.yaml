@@ -146,5 +146,16 @@ experiment:
       text: "L'agente aveva aggiornato da solo i file di lavoro del sistema anche durante la prova. Ora lo fa solo quando lavora davvero su Grigna."
   quote: Una demo convincente non è una base su cui costruire.
 
+lessons:
+  label: Cosa ho imparato
+  intro: "Grigna è nato come progetto personale, per capire cosa cambia quando un design system ha due lettori: le persone e gli agenti AI."
+  points:
+    - title: Scrivere per un agente costringe a decidere.
+      text: "Molte scelte che davo per scontate, come non usare un componente o cosa mostrare se un dato manca, ho dovuto scriverle nero su bianco. Le regole sono diventate quindi regole chiare anche per le persone."
+    - title: I numeri spostano la conversazione dal gusto ai fatti.
+      text: "142 valori scritti a mano contro zero dicono più di qualsiasi opinione sul perché serve un sistema. È un argomento che posso portare a un team o a uno stakeholder."
+    - title: Un agente è un tester instancabile del sistema.
+      text: "Invece di improvvisare, l'agente ha dichiarato cosa mancava. Ogni sua difficoltà è diventata un intervento sul sistema, come farebbe un buon test d'uso."
+
 closing:
   button: Esplora Grigna

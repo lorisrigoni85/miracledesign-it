@@ -145,5 +145,16 @@ experiment:
       text: "The agent had updated the system's working files on its own, even during the test. Now it only does so when actually working on Grigna."
   quote: A convincing demo is not a foundation to build on.
 
+lessons:
+  label: What I learned
+  intro: "Grigna started as a personal project, to understand what changes when a design system has two readers: people and AI agents."
+  points:
+    - title: Writing for an agent forces you to decide.
+      text: "Many choices I took for granted, like how not to use a component or what to show when data is missing, I had to write down in black and white. So the rules became clear rules for people too."
+    - title: Numbers move the conversation from taste to facts.
+      text: "142 hand-written values against zero say more than any opinion about why a system is needed. It's an argument I can bring to a team or a stakeholder."
+    - title: An agent is a tireless tester of the system.
+      text: "Instead of improvising, the agent declared what was missing. Each of its difficulties became a change to the system, just as a good usability test would."
+
 closing:
   button: Explore Grigna
